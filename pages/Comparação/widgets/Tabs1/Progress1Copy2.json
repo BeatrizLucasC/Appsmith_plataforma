@@ -1,0 +1,44 @@
+{
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 27,
+  "counterClockwise": false,
+  "counterClosewise": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "fillColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "fillColor": "{{appsmith.theme.colors.primaryColor}}",
+  "isCanvas": false,
+  "isIndeterminate": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "fb9blrp21f",
+  "leftColumn": 36,
+  "mobileBottomRow": 11,
+  "mobileLeftColumn": 36,
+  "mobileRightColumn": 64,
+  "mobileTopRow": 7,
+  "needsErrorInfo": false,
+  "originalBottomRow": 21,
+  "originalTopRow": 8,
+  "parentColumnSpace": 16.296875,
+  "parentId": "mez6dmnfs4",
+  "parentRowSpace": 10,
+  "progress": "82.7",
+  "progressType": "circular",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 50,
+  "showResult": true,
+  "steps": "",
+  "topRow": 14,
+  "type": "PROGRESS_WIDGET",
+  "version": 1,
+  "widgetId": "mzhjpufizo",
+  "widgetName": "Progress1Copy2"
+}

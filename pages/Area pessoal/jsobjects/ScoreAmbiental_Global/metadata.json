@@ -1,0 +1,28 @@
+{
+  "gitSyncId": "68da75189457e23cd3e1ddb9_8605e9a6-5820-4abf-9e1d-2d852f43bff9",
+  "id": "Area pessoal_ScoreAmbiental_Global",
+  "unpublishedCollection": {
+    "name": "ScoreAmbiental_Global",
+    "pageId": "Area pessoal",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "title",
+        "value": "{\n  text: 'Basic Radar Chart'\n}"
+      },
+      {
+        "name": "legend",
+        "value": "{\n  data: ['Pontuação']\n}"
+      },
+      {
+        "name": "radar",
+        "value": "{\n  indicator: [{\n    name: 'Energia e resíduos',\n    max: 100\n  }, {\n    name: 'Gestão de pragas e doenças',\n    max: 100\n  }, {\n    name: 'Serviço dos ecossistemas e biodiversidade',\n    max: 100\n  }]\n}"
+      },
+      {
+        "name": "series",
+        "value": "[{\n  name: 'Pontuação',\n  type: 'radar',\n  data: [{\n    value: [70, 50, 90],\n    name: 'Pontuação'\n  }]\n}]"
+      }
+    ]
+  }
+}

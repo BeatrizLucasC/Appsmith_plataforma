@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "68da75189457e23cd3e1ddb9_c5b6ea39-edf0-461b-9ef8-6cd5e55e6f08",
+  "id": "Area pessoal_ScoreAmbiental_ER",
+  "unpublishedCollection": {
+    "name": "ScoreAmbiental_ER",
+    "pageId": "Area pessoal",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "options",
+        "value": "{\n  title: {\n    text: 'Pontuação indicadores',\n    left: 'Letf'\n  },\n  grid: {\n    bottom: 100\n  },\n  xAxis: {\n    type: 'category',\n    data: ['Gestão de energia', 'Consumo e eficiência', 'Tarifário', 'Sensibilização', 'Energias renováveis', 'Plano gestão resíduos', 'Gestão de resíduos'],\n    axisLabel: {\n      interval: 0,\n      formatter: function (value) {\n        return value.split(' ').join('\\n');\n      }\n    }\n  },\n  yAxis: {\n    type: 'value'\n  },\n  series: [{\n    name: 'Valores',\n    data: [30, 20, 15, 80, 70, 61, 31],\n    type: 'bar',\n    label: {\n      show: true,\n      position: 'top'\n    }\n  }],\n  tooltip: {\n    trigger: 'axis',\n    axisPointer: {\n      type: 'shadow'\n    }\n  }\n}"
+      }
+    ]
+  }
+}

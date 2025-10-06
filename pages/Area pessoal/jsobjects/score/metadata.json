@@ -1,0 +1,24 @@
+{
+  "gitSyncId": "68da75189457e23cd3e1ddb9_4a385be0-9a0f-489a-af29-aef26c728d1a",
+  "id": "Area pessoal_score",
+  "unpublishedCollection": {
+    "name": "score",
+    "pageId": "Area pessoal",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "title",
+        "value": "{\n  text: \"Radar Chart\"\n}"
+      },
+      {
+        "name": "radar",
+        "value": "[{\n  indicator: [{\n    text: \"Energia e resíduos\",\n    max: 100\n  }, {\n    text: \"Gestão de pragas e doenças\",\n    max: 100\n  }, {\n    text: \"Serviços dos ecossistemas e biodiversidade\",\n    max: 100\n  }],\n  center: [\"50%\", \"50%\"],\n  radius: 80\n}]"
+      },
+      {
+        "name": "series",
+        "value": "[{\n  type: \"radar\",\n  data: [{\n    value: [80, 90, 70, 85]\n  }]\n}]"
+      }
+    ]
+  }
+}

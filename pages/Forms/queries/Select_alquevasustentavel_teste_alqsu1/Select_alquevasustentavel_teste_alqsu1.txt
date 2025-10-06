@@ -1,0 +1,8 @@
+SELECT
+  *
+FROM
+  alquevasustentavel.teste_alqsust_old {{Table3.sortOrder.column ? "ORDER BY " + Table3.sortOrder.column + "  " + (Table3.sortOrder.order !== "desc" ? "" : "DESC") : ""}}
+LIMIT
+  {{Table3.pageSize}}
+OFFSET
+  {{Table3.pageOffset}}
