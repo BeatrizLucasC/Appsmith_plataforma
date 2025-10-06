@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 24,
+  "bottomRow": 21,
   "boxShadow": "none",
   "defaultImage": "https://www.flfrevista.pt/wp-content/uploads/2024/04/2a-2.png",
   "dynamicBindingPathList": [
@@ -18,7 +18,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "49jehvopgj",
-  "leftColumn": 1,
+  "leftColumn": 0,
   "maxZoomLevel": 1,
   "mobileBottomRow": 24,
   "mobileLeftColumn": 47,
@@ -30,8 +30,8 @@
   "parentId": "vqrooxpk5x",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 32,
-  "topRow": 1,
+  "rightColumn": 31,
+  "topRow": 0,
   "type": "IMAGE_WIDGET",
   "version": 1,
   "widgetId": "79zbargji4",
