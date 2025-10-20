@@ -1,0 +1,1 @@
+SELECT * FROM alquevasustentavel."teste" LIMIT 10;
