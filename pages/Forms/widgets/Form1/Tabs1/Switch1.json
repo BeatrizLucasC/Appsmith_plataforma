@@ -4,20 +4,34 @@
   "animateLoading": true,
   "bottomRow": 28,
   "boxShadow": "none",
-  "defaultSwitchState": true,
+  "defaultSwitchState": false,
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "label"
+    },
+    {
+      "key": "isVisible"
+    },
+    {
+      "key": "isDisabled"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    },
+    {
+      "key": "isDisabled"
+    }
+  ],
   "dynamicTriggerPathList": [],
-  "isDisabled": false,
+  "isDisabled": "{{!swt_pergunta2.isSwitchedOn}}",
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{swt_pergunta2.isSwitchedOn}}",
   "key": "kfsem9zaz8",
   "label": "{{Qry_getQuestions.data[2].pergunta}}",
   "labelPosition": "Left",
