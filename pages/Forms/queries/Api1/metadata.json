@@ -70,7 +70,7 @@
       "pluginId": "google-sheets-plugin"
     },
     "dynamicBindingPathList": [],
-    "executeOnLoad": true,
+    "executeOnLoad": false,
     "name": "Api1",
     "pageId": "Forms",
     "userSetOnLoad": false

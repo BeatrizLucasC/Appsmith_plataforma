@@ -76,7 +76,7 @@
         "key": "formData.where.data"
       }
     ],
-    "executeOnLoad": true,
+    "executeOnLoad": false,
     "name": "Total_record_Folha11",
     "pageId": "Forms",
     "userSetOnLoad": false
