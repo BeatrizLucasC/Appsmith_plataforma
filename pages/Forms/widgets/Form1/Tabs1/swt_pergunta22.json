@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignWidget": "LEFT",
   "animateLoading": true,
-  "bottomRow": 22,
+  "bottomRow": 31,
   "boxShadow": "none",
   "defaultSwitchState": false,
   "dynamicBindingPathList": [
@@ -29,11 +29,11 @@
     }
   ],
   "dynamicTriggerPathList": [],
-  "isDisabled": "{{!swt_pergunta1.isSwitchedOn}}",
+  "isDisabled": "{{!swt_pergunta21.isSwitchedOn}}",
   "isLoading": false,
-  "isVisible": "{{swt_pergunta1.isSwitchedOn}}",
+  "isVisible": "{{swt_pergunta21.isSwitchedOn}}",
   "key": "kfsem9zaz8",
-  "label": "{{Qry_getQuestions.data[1].pergunta}}",
+  "label": "{{Qry_getQuestions.data[20].pergunta}}",
   "labelPosition": "Left",
   "leftColumn": 3,
   "maxDynamicHeight": 9000,
@@ -43,10 +43,10 @@
   "mobileRightColumn": 26,
   "mobileTopRow": 17,
   "needsErrorInfo": false,
-  "originalBottomRow": 22,
+  "originalBottomRow": 31,
   "originalTopRow": 17,
   "parentColumnSpace": 10.106021881103516,
-  "parentId": "ube31dodxs",
+  "parentId": "yg5sfxjz2q",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
@@ -54,6 +54,6 @@
   "topRow": 17,
   "type": "SWITCH_WIDGET",
   "version": 1,
-  "widgetId": "l1ninvjcd5",
-  "widgetName": "swt_pergunta2"
+  "widgetId": "ytu2lb5r4t",
+  "widgetName": "swt_pergunta22"
 }
