@@ -24,6 +24,9 @@
     },
     {
       "key": "groupButtons.groupButtonym3rjvkul0.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonvje2equgwh.buttonColor"
     }
   ],
   "dynamicTriggerPathList": [
@@ -39,12 +42,12 @@
       "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
       "buttonType": "SIMPLE",
       "disabledWhenInvalid": false,
-      "iconName": "edit",
+      "iconName": "form",
       "id": "groupButton1",
-      "index": 1,
+      "index": 0,
       "isDisabled": false,
       "isVisible": true,
-      "label": "Preenchimento / edição do formulário",
+      "label": "Preenchimento do formulário",
       "menuItems": {
         "menuItem6lq8il24la": {
           "id": "menuItem6lq8il24la",
@@ -65,7 +68,7 @@
       "disabledWhenInvalid": false,
       "iconName": "help",
       "id": "groupButton2",
-      "index": 3,
+      "index": 4,
       "isDisabled": false,
       "isVisible": true,
       "label": "Ajuda",
@@ -77,9 +80,9 @@
       "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
       "buttonType": "SIMPLE",
       "disabledWhenInvalid": false,
-      "iconName": "alignment-horizontal-center",
+      "iconName": "alignment-left",
       "id": "groupButton3",
-      "index": 2,
+      "index": 3,
       "isDisabled": false,
       "isVisible": true,
       "label": "Comparação",
@@ -126,12 +129,28 @@
       "placement": "CENTER",
       "widgetId": ""
     },
+    "groupButtonvje2equgwh": {
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonType": "SIMPLE",
+      "iconName": "edit",
+      "id": "groupButtonvje2equgwh",
+      "index": 1,
+      "isDisabled": false,
+      "isSeparator": false,
+      "isVisible": true,
+      "itemType": "BUTTON",
+      "label": "Edição do formulário",
+      "menuItems": {},
+      "placement": "CENTER",
+      "variant": "filled",
+      "widgetId": "7twrv916cv"
+    },
     "groupButtonym3rjvkul0": {
       "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
       "buttonType": "SIMPLE",
       "iconName": "eye-open",
       "id": "groupButtonym3rjvkul0",
-      "index": 0,
+      "index": 2,
       "isDisabled": false,
       "isSeparator": false,
       "isVisible": true,
