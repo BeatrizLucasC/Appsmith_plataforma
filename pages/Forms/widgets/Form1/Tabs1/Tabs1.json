@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 95,
+  "bottomRow": 94,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 900,
+      "bottomRow": 890,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -55,7 +55,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 900,
+      "bottomRow": 890,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -101,7 +101,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 900,
+      "bottomRow": 890,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -145,7 +145,7 @@
       "widgetName": "Canvas5"
     }
   ],
-  "defaultTab": "Ambiental",
+  "defaultTab": "Económico",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -186,7 +186,8 @@
   "tabsObj": {
     "tab1": {
       "id": "tab1",
-      "index": 0,
+      "index": 2,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Ambiental",
       "positioning": "vertical",
@@ -195,6 +196,7 @@
     "tab2": {
       "id": "tab2",
       "index": 1,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Social",
       "positioning": "vertical",
@@ -202,7 +204,8 @@
     },
     "tab34wiuozbig": {
       "id": "tab34wiuozbig",
-      "index": 2,
+      "index": 0,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Económico",
       "widgetId": "yg5sfxjz2q"

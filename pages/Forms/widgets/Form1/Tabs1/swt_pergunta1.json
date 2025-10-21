@@ -14,7 +14,12 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onChange"
+    }
+  ],
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
@@ -29,6 +34,7 @@
   "mobileRightColumn": 14,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
+  "onChange": "\n\n",
   "originalBottomRow": 16,
   "originalTopRow": 2,
   "parentColumnSpace": 10.106021881103516,
