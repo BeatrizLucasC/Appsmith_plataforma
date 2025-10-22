@@ -3,17 +3,30 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 32,
+  "bottomRow": 31,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "chartData": {
     "u6xe6k040g": {
-      "data": "{{JS_GraphPontDominio}}",
+      "data": [
+        {
+          "x": "Product1",
+          "y": 20000
+        },
+        {
+          "x": "Product2",
+          "y": 22000
+        },
+        {
+          "x": "Product3",
+          "y": 32000
+        }
+      ],
       "seriesName": "2023"
     }
   },
   "chartName": "Sales Report",
   "chartType": "CUSTOM_ECHART",
-  "customEChartConfig": "{{ ((chartType) => ( JS_GraphPontDominio.options))(Chart9.chartType) }}",
+  "customEChartConfig": "{{ ((chartType) => (  JS_GraphPontTotal.getOptions() ))(Chart_PontGlobal.chartType) }}",
   "customFusionChartConfig": {
     "dataSource": {
       "chart": {
@@ -75,9 +88,6 @@
       "key": "fontFamily"
     },
     {
-      "key": "chartData.u6xe6k040g.data"
-    },
-    {
       "key": "customEChartConfig"
     }
   ],
@@ -88,11 +98,11 @@
   "isVisible": true,
   "key": "4ie9zkdznd",
   "labelOrientation": "auto",
-  "leftColumn": 26,
+  "leftColumn": 0,
   "minWidth": 450,
   "mobileBottomRow": 32,
-  "mobileLeftColumn": 26,
-  "mobileRightColumn": 50,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 24,
   "mobileTopRow": 0,
   "needsErrorInfo": true,
   "parentColumnSpace": 17.305908203125,
@@ -100,13 +110,13 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 24,
   "showDataPointLabel": false,
-  "topRow": 0,
+  "topRow": 1,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "7lxqdqef4q",
-  "widgetName": "Chart9",
+  "widgetId": "7iqh0yt85l",
+  "widgetName": "Chart_PontGlobal",
   "xAxisName": "Product Line",
   "yAxisName": "Revenue($)"
 }

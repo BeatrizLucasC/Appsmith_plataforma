@@ -6,11 +6,6 @@
     "pageId": "Area pessoal",
     "pluginId": "js-plugin",
     "pluginType": "JS",
-    "variables": [
-      {
-        "name": "options",
-        "value": "{\n  title: {\n    text: 'Pontuação por domínio',\n    left: 'center'\n  },\n  dataset: {\n    source: (() => {\n      const data = Qry_PontuacaoDominio.data || [];\n      return [['Pontuação (%)', 'Domínio'], ...data.map(d => [d.pontuacao, d.dominio])];\n    })()\n  },\n  grid: {\n    containLabel: true\n  },\n  xAxis: {\n    name: 'Pontuação (%)',\n    nameLocation: 'middle',\n    nameGap: 30\n  },\n  yAxis: {\n    type: 'category'\n  },\n  visualMap: {\n    orient: 'horizontal',\n    left: 'center',\n    min: 10,\n    max: 100,\n    text: ['High', 'Low'],\n    dimension: 0,\n    inRange: {\n      color: ['#FD665F', '#FFCE34', '#65B581']\n    }\n  },\n  series: [{\n    type: 'bar',\n    encode: {\n      x: 'Pontuação (%)',\n      y: 'Domínio'\n    },\n    label: {\n      show: true,\n      position: 'right',\n      formatter: '{@[0]}%'\n    }\n  }]\n}"
-      }
-    ]
+    "variables": []
   }
 }
