@@ -32,6 +32,9 @@
     },
     {
       "key": "groupButtons.groupButton1.onClick"
+    },
+    {
+      "key": "groupButtons.groupButtonym3rjvkul0.onClick"
     }
   ],
   "groupButtons": {
@@ -138,6 +141,7 @@
       "itemType": "BUTTON",
       "label": "Visualização dos resultados",
       "menuItems": {},
+      "onClick": "{{navigateTo('Area pessoal', {}, 'SAME_WINDOW');}}",
       "placement": "CENTER",
       "variant": "filled",
       "widgetId": "d904buuzsm"

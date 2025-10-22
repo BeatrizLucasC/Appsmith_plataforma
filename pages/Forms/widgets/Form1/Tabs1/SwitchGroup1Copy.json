@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 36,
+  "bottomRow": 44,
   "defaultSelectedValues": "[\n  \"BLUE\"\n]",
   "dynamicBindingPathList": [
     {
@@ -41,7 +41,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 64,
-  "topRow": 16,
+  "topRow": 19,
   "type": "SWITCH_GROUP_WIDGET",
   "version": 1,
   "widgetId": "753oopvzyb",

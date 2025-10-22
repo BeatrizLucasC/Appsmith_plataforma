@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "alignment": "left",
   "animateLoading": true,
-  "bottomRow": 18,
+  "bottomRow": 131,
   "defaultSelectedValues": "[\n  \"BLUE\"\n]",
   "dynamicBindingPathList": [
     {
@@ -34,16 +34,16 @@
   "mobileTopRow": 1,
   "needsErrorInfo": false,
   "options": "[\n  {\n    \"label\": \"Não existe plano, nem ferramentas, nem registos\",\n    \"value\": \"A\"\n  },\n  {\n    \"label\": \"Existe plano, mas não são usadas ferramentas de monitorização nem são registados os parâmetros de apoio à decisão\",\n    \"value\": \"B\"\n  },\n  {\n    \"label\": \"Não existe plano nem registo de parâmetros, mas são usadas ferramentas de monitorização\",\n    \"value\": \"C\"\n  },\n  {\n    \"label\": \"Existe plano de gestão de rega, são usadas ferramentas de monitorização e registados parâmetros de apoio à decisão\",\n    \"value\": \"D\"\n  }\n\n\n\n\n\n\n\n]",
-  "originalBottomRow": 15,
-  "originalTopRow": 1,
+  "originalBottomRow": 131,
+  "originalTopRow": 117,
   "parentColumnSpace": 14.883514404296875,
-  "parentId": "yg5sfxjz2q",
+  "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 64,
-  "topRow": 1,
+  "topRow": 117,
   "type": "SWITCH_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "e6x2ya1ujj",
+  "widgetId": "t9wecqjd8k",
   "widgetName": "Gestao_agua"
 }

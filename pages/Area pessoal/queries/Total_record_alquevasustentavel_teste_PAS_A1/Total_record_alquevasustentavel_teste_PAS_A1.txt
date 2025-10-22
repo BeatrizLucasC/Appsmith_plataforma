@@ -1,0 +1,1 @@
+SELECT COUNT(*) from alquevasustentavel.teste_PAS_Antigo_Completo where Pergunta ilike '%{{Table1Copy.searchText}}%';

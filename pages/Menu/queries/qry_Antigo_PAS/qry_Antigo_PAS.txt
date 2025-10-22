@@ -1,0 +1,1 @@
+SELECT * FROM alquevasustentavel."teste_PAS_Antigo_Completo"

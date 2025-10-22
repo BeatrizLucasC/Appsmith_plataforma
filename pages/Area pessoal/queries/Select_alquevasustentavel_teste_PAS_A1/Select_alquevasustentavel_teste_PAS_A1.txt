@@ -1,0 +1,12 @@
+SELECT
+  *
+FROM
+  alquevasustentavel.teste_PAS_Antigo_Completo
+WHERE
+  "Pergunta" ilike '%{{Table1Copy.searchText}}%'
+ORDER BY
+  "{{Table1Copy.sortOrder.column || 'ID'}}" {{Table1Copy.sortOrder.order !== "desc" ? "" : "DESC"}}
+LIMIT
+  {{Table1Copy.pageSize}}
+OFFSET
+  {{Table1Copy.pageOffset}}
