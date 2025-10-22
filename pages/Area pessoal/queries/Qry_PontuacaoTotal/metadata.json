@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": true,
+    "executeOnLoad": false,
     "name": "Qry_PontuacaoTotal",
     "pageId": "Area pessoal",
     "userSetOnLoad": false
