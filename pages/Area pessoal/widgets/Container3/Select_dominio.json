@@ -17,9 +17,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -40,8 +47,9 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
+  "onOptionChange": "",
   "optionLabel": "name",
-  "optionValue": "code",
+  "optionValue": "",
   "originalBottomRow": 19,
   "originalTopRow": 12,
   "parentColumnSpace": 14.8564453125,
@@ -52,10 +60,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "serverSideFiltering": false,
-  "sourceData": "[\n  {\n    \"name\": \"2025\",\n    \"code\": \"BLUE\"\n  },\n  {\n    \"name\": \"2024\",\n    \"code\": \"GREEN\"\n  },\n  {\n    \"name\": \"2023\",\n    \"code\": \"RED\"\n  }\n]",
+  "sourceData": "",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "1spyb0ergy",
-  "widgetName": "Select1"
+  "widgetName": "Select_dominio"
 }
