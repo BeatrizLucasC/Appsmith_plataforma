@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
+    "executeOnLoad": true,
     "name": "Qry_PontuacaoDominio",
     "pageId": "Area pessoal",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }
