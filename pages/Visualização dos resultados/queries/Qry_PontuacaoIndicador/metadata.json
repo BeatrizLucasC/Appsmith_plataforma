@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
+    "executeOnLoad": true,
     "name": "Qry_PontuacaoIndicador",
     "pageId": "Visualização dos resultados",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }
