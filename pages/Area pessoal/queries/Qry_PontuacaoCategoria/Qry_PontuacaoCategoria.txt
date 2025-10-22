@@ -10,6 +10,8 @@ SELECT
   END AS pontuacao
 FROM respostas r
 JOIN perguntas p ON r.id_pergunta = p.id_pergunta
-WHERE r.id_utilizador = {{appsmith.user.email}}  -- temporarily hardcoded
+WHERE r.id_utilizador = '{{appsmith.user.email}}' -- substituir quando log in estiver on
+-- AND p.dominio = {{Select1.selectedOptionValue}} 
+AND p.dominio LIKE '{{Select1.selectedOptionValue=='Tudo'? '%%':Select1.selectedOptionValue}}' 
 GROUP BY r.id_utilizador, p.categoria
 ORDER BY p.categoria;

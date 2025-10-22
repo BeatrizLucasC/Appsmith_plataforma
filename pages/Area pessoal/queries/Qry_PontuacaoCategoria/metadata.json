@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n  p.categoria,\n  r.id_utilizador,\n  COUNT(*) AS total_perguntas,\n  SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) AS total_yes,\n  CASE\n    WHEN SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) = 0 THEN 25\n    WHEN SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) < COUNT(*) THEN 50\n    WHEN SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) = COUNT(*) THEN 100\n  END AS pontuacao\nFROM respostas r\nJOIN perguntas p ON r.id_pergunta = p.id_pergunta\nWHERE r.id_utilizador = {{appsmith.user.email}}  -- temporarily hardcoded\nGROUP BY r.id_utilizador, p.categoria\nORDER BY p.categoria;\n",
+      "body": "SELECT \n  p.categoria,\n  r.id_utilizador,\n  COUNT(*) AS total_perguntas,\n  SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) AS total_yes,\n  CASE\n    WHEN SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) = 0 THEN 25\n    WHEN SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) < COUNT(*) THEN 50\n    WHEN SUM(CASE WHEN r.resposta = 'Yes' THEN 1 ELSE 0 END) = COUNT(*) THEN 100\n  END AS pontuacao\nFROM respostas r\nJOIN perguntas p ON r.id_pergunta = p.id_pergunta\nWHERE r.id_utilizador = '{{appsmith.user.email}}' -- substituir quando log in estiver on\n-- AND p.dominio = {{Select1.selectedOptionValue}} \nAND p.dominio LIKE '{{Select1.selectedOptionValue=='Tudo'? '%%':Select1.selectedOptionValue}}' \nGROUP BY r.id_utilizador, p.categoria\nORDER BY p.categoria;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000

@@ -5,11 +5,11 @@ INSERT INTO respostas (
   data_submissao,
   resposta
 ) VALUES (
-  '{{ this.params.id_resposta }}',
-  '{{ this.params.id_pergunta }}',
-  '{{ this.params.id_utilizador }}',
-  '{{ this.params.data_submissao }}',
-  '{{ this.params.resposta }}'
+  {{ this.params.id_resposta }},
+  {{ this.params.id_pergunta }},
+  {{ this.params.id_utilizador }},
+  {{ this.params.data_submissao }},
+  {{ this.params.resposta }}
 );
 
 

@@ -31,7 +31,7 @@
   "dynamicTriggerPathList": [],
   "isDisabled": "{{!swt_pergunta47.isSwitchedOn}}",
   "isLoading": false,
-  "isVisible": "{{swt_pergunta47.isSwitchedOn}}",
+  "isVisible": "{{swt_pergunta47.isSwitchedOn}} ",
   "key": "kfsem9zaz8",
   "label": "{{Qry_getQuestions.data[47].pergunta}}",
   "labelPosition": "Left",
