@@ -1,28 +1,28 @@
 export default {
   options: {
     title: {
-      text: 'Pontuação por Dimensão',
+      text: 'Pontuação por categoria',
       left: 'center',
       top: 10,
       textStyle: {
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',
         color: '#000'
       }
     },
     dataset: {
-      source: [
-        ['Score (%)', 'Category'],
-        [89.3, 'Água'],
-        [57.1, 'Solos'],
-        [74.4, 'Condições de trabalho'],
-        [50.1, 'Criação de valor'],
-        [89.7, 'Energia e resíduos'],
-        [68.1, 'Gestão de pragas e doenças'],
-        [19.6, 'Impacto local'],
-        [10.6, 'Produção'],
-        [32.7, 'Serviços dos ecossistemas e biodiversidade']
-      ]
+      source: (() => {
+        const data = Qry_PontuacaoCategoria.data || [];
+        if (!data.length) {
+          return [['Score (%)', 'Category']];
+        }
+
+        // Transform query results into ECharts dataset format
+        const formatted = data.map(row => [row.pontuacao, row.categoria]);
+
+        // Add header row
+        return [['Score (%)', 'Category'], ...formatted];
+      })()
     },
     grid: { containLabel: true },
     xAxis: { 
@@ -48,10 +48,16 @@ export default {
         encode: {
           x: 'Score (%)',
           y: 'Category'
+        },
+        label: {
+          show: true,
+          position: 'right',
+          formatter: '{@[0]}%'  // show % value on bars
         }
       }
     ]
   }
 };
+
 
 

@@ -16,7 +16,7 @@ export default {
       return {
         id_resposta: Date.now().toString() + index,
         id_pergunta: q.id_pergunta,
-        id_utilizador: "anonymous", // replace when login available
+        id_utilizador: appsmith.user.email, // replace when login available
         data_submissao: moment().format("YYYY-MM-DD"),
         resposta: switchValue ? "Yes" : "No",
         dominio: q.dominio

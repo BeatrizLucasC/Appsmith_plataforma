@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "68da75189457e23cd3e1ddb9_fe014962-5c45-454e-8a2f-95c56d3abc18",
+  "id": "Area pessoal_JS_GraphPontCat",
+  "unpublishedCollection": {
+    "name": "JS_GraphPontCat",
+    "pageId": "Area pessoal",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "options",
+        "value": "{\n  title: {\n    text: 'Pontuação por categoria',\n    left: 'center',\n    top: 10,\n    textStyle: {\n      fontSize: 20,\n      fontWeight: 'bold',\n      color: '#000'\n    }\n  },\n  dataset: {\n    source: (() => {\n      const data = Qry_PontuacaoCategoria.data || [];\n      if (!data.length) {\n        return [['Score (%)', 'Category']];\n      }\n      const formatted = data.map(row => [row.pontuacao, row.categoria]);\n      return [['Score (%)', 'Category'], ...formatted];\n    })()\n  },\n  grid: {\n    containLabel: true\n  },\n  xAxis: {\n    name: 'Pontuação (%)',\n    nameLocation: 'middle',\n    nameGap: 30\n  },\n  yAxis: {\n    type: 'category'\n  },\n  visualMap: {\n    orient: 'horizontal',\n    left: 'center',\n    min: 10,\n    max: 100,\n    text: ['High Score', 'Low Score'],\n    dimension: 0,\n    inRange: {\n      color: ['#FD665F', '#FFCE34', '#65B581']\n    }\n  },\n  series: [{\n    type: 'bar',\n    encode: {\n      x: 'Score (%)',\n      y: 'Category'\n    },\n    label: {\n      show: true,\n      position: 'right',\n      formatter: '{@[0]}%'\n    }\n  }]\n}"
+      }
+    ]
+  }
+}
