@@ -14,6 +14,9 @@
     },
     {
       "key": "defaultOptionValue"
+    },
+    {
+      "key": "label"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -37,7 +40,7 @@
   "isRequired": false,
   "isVisible": true,
   "key": "ghnypfmkh0",
-  "label": "Label",
+  "label": "{{ \"\" }}",
   "labelAlignment": "left",
   "labelPosition": "Auto",
   "labelTextColor": "#000000",
@@ -51,16 +54,16 @@
   "mobileRightColumn": 15,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "",
+  "onSelectionChange": "{{\n  (() => {\n    const sel = RadioGroup1.selectedOptionValue; // ajuste o nome se o seu for outro\n    const id = String(currentItem.id_pergunta);\n\n    const next = {\n      ...(appsmith.store.answers || {}),\n      [id]: sel\n    };\n\n    // Se atualizou P2 e a resposta não é \"Sim\", limpa P3\n    if (id === \"p2\" && sel !== \"Sim\") next[\"p3\"] = \"\";\n\n    return storeValue(\"answers\", next);\n  })()\n}}",
   "options": "{{ [\n  { label: \"NA\", value: \"NA\" },\n  { label: \"Sim\", value: \"Sim\" },\n  { label: \"Não\", value: \"Não\" }\n] }}\n",
   "parentColumnSpace": 21.326416015625,
-  "parentId": "acu5epvaoq",
+  "parentId": "ocn8c4fq4r",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "rightColumn": 14,
   "topRow": 15,
   "type": "RADIO_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "v9u0nj86vd",
+  "widgetId": "m73p3r34zl",
   "widgetName": "RadioGroup1"
 }

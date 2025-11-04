@@ -35,7 +35,7 @@
       "mobileTopRow": 0,
       "needsErrorInfo": false,
       "parentColumnSpace": 1,
-      "parentId": "tralrknpjr",
+      "parentId": "37sbbimqul",
       "parentRowSpace": 1,
       "renderMode": "CANVAS",
       "responsiveBehavior": "fill",
@@ -43,7 +43,7 @@
       "type": "CANVAS_WIDGET",
       "useAutoLayout": false,
       "version": 1,
-      "widgetId": "acu5epvaoq",
+      "widgetId": "ocn8c4fq4r",
       "widgetName": "Canvas14"
     }
   ],
@@ -59,17 +59,24 @@
     },
     {
       "key": "boxShadow"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isDeletable": false,
   "isListItemContainer": true,
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{ JS_regrasAmbiental.visibleForItem(currentItem, appsmith.store.answers) }}\n",
   "key": "tfa3t9tker",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
@@ -81,7 +88,7 @@
   "mobileTopRow": 0,
   "needsErrorInfo": false,
   "noContainerOffset": true,
-  "parentId": "pz0glo7n3o",
+  "parentId": "fu3gta7yv1",
   "positioning": "fixed",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
@@ -90,6 +97,6 @@
   "topRow": 0,
   "type": "CONTAINER_WIDGET",
   "version": 1,
-  "widgetId": "tralrknpjr",
+  "widgetId": "37sbbimqul",
   "widgetName": "Container1"
 }
