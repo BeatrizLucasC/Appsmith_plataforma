@@ -25,15 +25,15 @@
       "isDefault": true
     },
     {
-      "id": "Forms",
+      "id": "Preenchimento do formulário",
       "isDefault": false
     },
     {
-      "id": "Area pessoal",
+      "id": "Visualização dos resultados",
       "isDefault": false
     },
     {
-      "id": "Comparação",
+      "id": "Comparação com pares",
       "isDefault": false
     }
   ],

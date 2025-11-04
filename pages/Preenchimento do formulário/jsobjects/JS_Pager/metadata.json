@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "68f8e73778eea055253a3c63_80e576b9-f42d-439e-a282-d3321a53d108",
+  "id": "Preenchimento do formulário_JS_Pager",
+  "unpublishedCollection": {
+    "name": "JS_Pager",
+    "pageId": "Preenchimento do formulário",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "pageSize",
+        "value": "20"
+      }
+    ]
+  }
+}

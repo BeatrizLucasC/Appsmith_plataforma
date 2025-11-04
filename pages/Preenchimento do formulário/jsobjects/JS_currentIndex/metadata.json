@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "68f6489578eea055253a107e_d29add16-9327-4def-9e62-491cb9eb8e50",
+  "id": "Preenchimento do formulário_JS_currentIndex",
+  "unpublishedCollection": {
+    "name": "JS_currentIndex",
+    "pageId": "Preenchimento do formulário",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "index",
+        "value": "0"
+      }
+    ]
+  }
+}
