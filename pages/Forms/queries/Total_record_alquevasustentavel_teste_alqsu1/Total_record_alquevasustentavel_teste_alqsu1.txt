@@ -1,1 +1,0 @@
-SELECT COUNT(*) from alquevasustentavel.teste_alqsust_old;

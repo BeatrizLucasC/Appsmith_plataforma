@@ -23,9 +23,9 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "executeOnLoad": false,
+    "executeOnLoad": true,
     "name": "Qry_getQuestions",
     "pageId": "Area pessoal",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }

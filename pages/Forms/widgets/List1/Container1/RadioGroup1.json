@@ -1,0 +1,65 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignment": "left",
+  "animateLoading": true,
+  "bottomRow": 21,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ (appsmith.store.answers && appsmith.store.answers[currentItem.id_pergunta]) || \"\" }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "options"
+    },
+    {
+      "key": "defaultOptionValue"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "options"
+    },
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "flexVerticalAlignment": "start",
+  "isDisabled": false,
+  "isInline": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "ghnypfmkh0",
+  "label": "Label",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 0,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 15,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 15,
+  "mobileTopRow": 9,
+  "needsErrorInfo": false,
+  "onSelectionChange": "{{\n  storeValue(\"answers\", {\n    ...(appsmith.store.answers || {}),\n    [currentItem.id_pergunta]: RadioGroup1.selectedOptionValue   // ajuste o nome do widget\n  })\n}}",
+  "options": "{{ [\n  { label: \"NA\", value: \"NA\" },\n  { label: \"Sim\", value: \"Sim\" },\n  { label: \"Não\", value: \"Não\" }\n] }}\n",
+  "parentColumnSpace": 21.326416015625,
+  "parentId": "acu5epvaoq",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 12,
+  "topRow": 15,
+  "type": "RADIO_GROUP_WIDGET",
+  "version": 1,
+  "widgetId": "v9u0nj86vd",
+  "widgetName": "RadioGroup1"
+}

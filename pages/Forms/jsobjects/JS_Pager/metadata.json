@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "68f8e73778eea055253a3c63_80e576b9-f42d-439e-a282-d3321a53d108",
+  "id": "Forms_JS_Pager",
+  "unpublishedCollection": {
+    "name": "JS_Pager",
+    "pageId": "Forms",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "pageSize",
+        "value": "20"
+      }
+    ]
+  }
+}

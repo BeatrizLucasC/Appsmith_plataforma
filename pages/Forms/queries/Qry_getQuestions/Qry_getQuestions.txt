@@ -1,1 +1,4 @@
-SELECT * FROM alquevasustentavel."perguntas"
+-- getQuestions
+SELECT id_pergunta, dominio, categoria, numero_ind, indicador, pergunta
+FROM   alquevasustentavel."perguntas"
+ORDER  BY numero_ind, id_pergunta;

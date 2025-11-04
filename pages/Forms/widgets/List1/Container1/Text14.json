@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 15,
   "boxShadow": "none",
   "dynamicBindingPathList": [
     {
@@ -27,8 +27,8 @@
   "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "gws3bw52wp",
-  "leftColumn": 16,
+  "key": "5nqxvmg1b2",
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -38,12 +38,12 @@
   "mobileTopRow": 0,
   "needsErrorInfo": false,
   "overflow": "NONE",
-  "parentId": "k77ybb8u6y",
+  "parentId": "acu5epvaoq",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 28,
+  "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "{{currentItem.name}}",
+  "text": "{{ (currentItem.numero_ind ? currentItem.numero_ind + \" — \" : \"\") + currentItem.pergunta }}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "textStyle": "HEADING",
@@ -51,6 +51,6 @@
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "wg9xoz1dmw",
+  "widgetId": "wy19l4yfuz",
   "widgetName": "Text14"
 }
