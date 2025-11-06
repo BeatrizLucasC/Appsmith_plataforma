@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao\n)\nVALUES \n{{ \n  JS_regrasAmbiental.prepareAmbientalAnswers(appsmith.store.answers)\n    .map(ans => \n      `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', '${ans.resposta.replace(/'/g, \"''\")}', NOW())`\n    )\n    .join(', ')\n}}\nON CONFLICT (id_utilizador, id_pergunta)\nDO UPDATE \nSET \n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW();\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao\n)\nVALUES {{ JS_regrasAmbiental.buildAmbientalValues(appsmith.store.answers) }}\nON CONFLICT (id_utilizador, id_pergunta)\nDO UPDATE \nSET \n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW();\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
