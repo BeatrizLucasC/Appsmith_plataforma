@@ -1,16 +1,12 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_b969dc76-883e-4a9d-a909-1d8e0ca8b28e",
-  "id": "Preencher formulário_JS_regrasAmbiental.isAmbiental",
+  "gitSyncId": "68f8e73778eea055253a3c63_790b3b86-6b42-4140-9a74-c540dd14902e",
+  "id": "Preencher formulário_JS_regrasAmbiental.radioOptions",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [
-        {
-          "name": "row"
-        }
-      ],
+      "jsArguments": [],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -27,8 +23,8 @@
       }
     ],
     "executeOnLoad": false,
-    "fullyQualifiedName": "JS_regrasAmbiental.isAmbiental",
-    "name": "isAmbiental",
+    "fullyQualifiedName": "JS_regrasAmbiental.radioOptions",
+    "name": "radioOptions",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

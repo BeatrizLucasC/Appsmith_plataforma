@@ -76,7 +76,7 @@
   "isDeletable": false,
   "isListItemContainer": true,
   "isLoading": false,
-  "isVisible": "{{ JS_regrasAmbiental.visibleForItem(currentItem, appsmith.store.answers) }}\n",
+  "isVisible": "{{JS_regrasAmbiental.visibleForItem(currentItem)}}\n\n\n\n",
   "key": "tfa3t9tker",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,

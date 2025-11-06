@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_5c525d68-ce32-438d-bed5-06750b573e76",
-  "id": "Preencher formulário_JS_regrasAmbiental.visibleForItem",
+  "gitSyncId": "68f8e73778eea055253a3c63_2bc7744e-63d9-46d3-8f7a-6c68aa85b038",
+  "id": "Preencher formulário_JS_regrasAmbiental.prepareAmbientalAnswers",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -8,7 +8,7 @@
       "encodeParamsToggle": true,
       "jsArguments": [
         {
-          "name": "row"
+          "name": "answers"
         }
       ],
       "paginationType": "NONE",
@@ -27,8 +27,8 @@
       }
     ],
     "executeOnLoad": false,
-    "fullyQualifiedName": "JS_regrasAmbiental.visibleForItem",
-    "name": "visibleForItem",
+    "fullyQualifiedName": "JS_regrasAmbiental.prepareAmbientalAnswers",
+    "name": "prepareAmbientalAnswers",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

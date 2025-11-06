@@ -1,16 +1,12 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_5c525d68-ce32-438d-bed5-06750b573e76",
-  "id": "Preencher formulário_JS_regrasAmbiental.visibleForItem",
+  "gitSyncId": "68f8e73778eea055253a3c63_6367e091-c0f5-47b3-8cc4-4ffa5824b808",
+  "id": "Preencher formulário_JS_regrasAmbiental.confirmReplaceAmbiental",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [
-        {
-          "name": "row"
-        }
-      ],
+      "jsArguments": [],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -27,8 +23,8 @@
       }
     ],
     "executeOnLoad": false,
-    "fullyQualifiedName": "JS_regrasAmbiental.visibleForItem",
-    "name": "visibleForItem",
+    "fullyQualifiedName": "JS_regrasAmbiental.confirmReplaceAmbiental",
+    "name": "confirmReplaceAmbiental",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

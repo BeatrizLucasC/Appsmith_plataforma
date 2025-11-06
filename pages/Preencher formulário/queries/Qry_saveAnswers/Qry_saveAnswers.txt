@@ -1,0 +1,37 @@
+INSERT INTO respostas (
+  id_resposta,
+  id_pergunta,
+  id_utilizador,
+  resposta,
+  data_hora_submissao
+)
+VALUES 
+{{ 
+  JS_regrasAmbiental.prepareAmbientalAnswers(appsmith.store.answers)
+    .map(ans => 
+      `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', '${ans.resposta.replace(/'/g, "''")}', NOW())`
+    )
+    .join(', ')
+}}
+ON CONFLICT (id_utilizador, id_pergunta)
+DO UPDATE 
+SET 
+  resposta = EXCLUDED.resposta,
+  data_hora_submissao = NOW();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

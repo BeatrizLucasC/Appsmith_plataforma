@@ -1,16 +1,16 @@
 {
   "gitSyncId": "68f6489578eea055253a107e_05fea9ed-a76d-4f2d-a654-3a48f74a2d2a",
-  "id": "Preencher formulário_Qry_getAnswers",
+  "id": "Preencher formulário_Qry_saveAnswers",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  data_submissao,\n  resposta\n) VALUES (\n  {{ this.params.id_resposta }},\n  {{ this.params.id_pergunta }},\n  {{ this.params.id_utilizador }},\n  {{ this.params.data_submissao }},\n  {{ this.params.resposta }}\n);\n\n\n\n\n\n\n",
+      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao\n)\nVALUES \n{{ \n  JS_regrasAmbiental.prepareAmbientalAnswers(appsmith.store.answers)\n    .map(ans => \n      `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', '${ans.resposta.replace(/'/g, \"''\")}', NOW())`\n    )\n    .join(', ')\n}}\nON CONFLICT (id_utilizador, id_pergunta)\nDO UPDATE \nSET \n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW();\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "Qry_getAnswers",
+    "name": "Qry_saveAnswers",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }
