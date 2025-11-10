@@ -54,7 +54,7 @@
   "mobileRightColumn": 15,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{JS_regrasAmbiental.onSelectionChange(currentItem,RadioGroup1.selectedOptionValue)}}\n\n\n",
+  "onSelectionChange": "{{ JS_regrasAmbiental.onSelectionChange(currentItem, RadioGroup1.selectedOptionValue) }}\n\n\n",
   "options": "{{JS_regrasAmbiental.radioOptions()}}\n\n",
   "parentColumnSpace": 21.326416015625,
   "parentId": "ocn8c4fq4r",
