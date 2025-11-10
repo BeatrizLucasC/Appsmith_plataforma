@@ -1,150 +1,154 @@
 export default {
-  // 1️⃣ Get only Ambiental questions
+  answers: {},
+
+  // 1️⃣ Get Ambiental questions
   getAmbientalQuestions: () => {
     const data = Qry_getQuestions.data || [];
-    return data.filter(row => {
-      const d = String(row.dominio || "").trim().toLowerCase();
-      return d === "ambiental";
-    });
+    return data.filter(
+      q => String(q.Domínio || "").trim().toLowerCase() === "ambiental"
+    );
   },
 
-  // 2️⃣ Get only *visible* Ambiental questions (filters out hidden ones)
+  // 2️⃣ Compute the visible sequence dynamically based on answers and condition columns
   getVisibleAmbientalQuestions: () => {
     const all = JS_regrasAmbiental.getAmbientalQuestions();
-    const answers = appsmith.store.answers || {};
+    const answers = JS_regrasAmbiental.answers || {};
+    if (!all.length) return [];
 
-    return all.filter(row => {
-      const id = String(row.id_pergunta);
+    // Create a lookup by Código
+    const byId = {};
+    all.forEach(q => {
+      byId[String(q.Código)] = q;
+    });
 
-      // Example: show p3 only if p2 = "Sim"
-      if (id === "p3") {
-        return answers["p2"] === "Sim";
+    const visible = [];
+    let current = all[0]; // start with first question
+
+    while (current) {
+      visible.push(current);
+      const id = String(current.Código);
+      const ans = answers[id];
+
+      // Determine next question ID based on condition
+      let nextId = null;
+
+      if (ans === "Sim" && current["Condição SIM"])
+        nextId = String(current["Condição SIM"]);
+      else if (ans === "Não" && current["Condição NÃO"])
+        nextId = String(current["Condição NÃO"]);
+      else if (ans === "NA" && current["Condição NA"])
+        nextId = String(current["Condição NA"]);
+
+      // If no condition provided → go to next in list
+      if (!nextId) {
+        const idx = all.findIndex(q => String(q.Código) === id);
+        if (idx >= 0 && idx + 1 < all.length) {
+          nextId = String(all[idx + 1].Código);
+        } else {
+          nextId = null;
+        }
       }
 
-      // Add more conditional rules here if needed
-      return true;
-    });
+      // If no nextId found or invalid → stop
+      if (!nextId || !byId[nextId]) break;
+
+      // If next question already visible → avoid infinite loop
+      if (visible.some(q => String(q.Código) === nextId)) break;
+
+      current = byId[nextId];
+    }
+
+    return visible;
   },
 
-  // 3️⃣ Build question label text
-  questionLabel: (row) => {
-    if (!row) return "";
-    return (row.numero_ind ? row.numero_ind + " — " : "") + row.pergunta;
-  },
+  // 3️⃣ Build label
+  questionLabel: (row) =>
+    row ? `${row.Código || ""} — ${row.Pergunta || ""}` : "",
 
-  // 4️⃣ RadioGroup options
+  // 4️⃣ Radio options
   radioOptions: () => [
     { label: "NA", value: "NA" },
     { label: "Sim", value: "Sim" },
     { label: "Não", value: "Não" }
   ],
 
-  // 5️⃣ Default selected value for RadioGroup
+  // 5️⃣ Selected value
   selectedValue: (row) => {
-    const answers = appsmith.store.answers || {};
-    return answers[row.id_pergunta] || "";
+    const answers = JS_regrasAmbiental.answers || {};
+    return answers[row.Código] || "";
   },
 
-  // 6️⃣ Handle onSelectionChange
+  // 6️⃣ Handle user answer change
   onSelectionChange: (row, selectedValue) => {
     if (!row) return;
+    const id = String(row.Código);
 
-    const id = String(row.id_pergunta);
-    const next = {
-      ...(appsmith.store.answers || {}),
+    const updated = {
+      ...JS_regrasAmbiental.answers,
       [id]: selectedValue
     };
 
-    // Example rule: if P2 != "Sim", clear P3
-    if (id === "p2" && selectedValue !== "Sim") {
-      next["p3"] = null;
-    }
-
-    storeValue("answers", next);
+    JS_regrasAmbiental.answers = updated;
   },
 
-  // 7️⃣ Prepare Ambiental answers for saving (include nulls)
-  prepareAmbientalAnswers: (answers) => {
-    const allQuestions = Qry_getQuestions.data || [];
+  // 7️⃣ Prepare answers for saving
+  prepareAmbientalAnswers: () => {
+    const all = JS_regrasAmbiental.getAmbientalQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
+    const answers = JS_regrasAmbiental.answers || {};
 
-    const ambientalQs = allQuestions.filter(
-      q => String(q.dominio || "").trim().toLowerCase() === "ambiental"
-    );
-
-    return ambientalQs.map(q => {
-      const val = answers[q.id_pergunta];
-      return {
-        id_resposta: `${userEmail}_${q.id_pergunta}`,
-        id_pergunta: q.id_pergunta,
-        id_utilizador: userEmail,
-        resposta: val === undefined || val === "" ? null : String(val).trim()
-      };
-    });
+    return all.map(q => ({
+      id_resposta: `${userEmail}_${q.Código}`,
+      id_pergunta: q.Código,
+      id_utilizador: userEmail,
+      resposta:
+        answers[q.Código] === undefined || answers[q.Código] === ""
+          ? null
+          : String(answers[q.Código]).trim()
+    }));
   },
 
-  // 8️⃣ Build SQL values string safely (handles NULLs and quotes)
-  buildAmbientalValues: (answers) => {
-    const prepared = JS_regrasAmbiental.prepareAmbientalAnswers(answers);
+  // 8️⃣ SQL builder
+  buildAmbientalValues: () => {
+    const prepared = JS_regrasAmbiental.prepareAmbientalAnswers();
+    if (!prepared.length) return "('none','none','none',NULL,NOW())";
 
-    if (!prepared || prepared.length === 0) {
-      // Prevent SQL crash if no data
-      return "('none', 'none', 'none', NULL, NOW())";
-    }
-
-    const rows = prepared.map(ans => {
-      const safeValue =
-        ans.resposta === null
-          ? "NULL"
-          : "'" + ans.resposta.replace(/'/g, "''") + "'";
-
-      return (
-        "('" +
-        ans.id_resposta + "', '" +
-        ans.id_pergunta + "', '" +
-        ans.id_utilizador + "', " +
-        safeValue + ", NOW())"
-      );
-    });
-
-    return rows.join(", ");
+    return prepared
+      .map(ans => {
+        const safeVal =
+          ans.resposta === null
+            ? "NULL"
+            : `'${ans.resposta.replace(/'/g, "''")}'`;
+        return `('${ans.id_resposta}','${ans.id_pergunta}','${ans.id_utilizador}',${safeVal},NOW())`;
+      })
+      .join(", ");
   },
 
-  // 9️⃣ Handle submission (checks if user already has answers)
+  // 9️⃣ Submit handler
   onSubmitAmbiental: async () => {
     const userEmail = appsmith.user.email || "unknown_user";
-    const answers = appsmith.store.answers || {};
-
     if (!userEmail) {
       showAlert("No Appsmith user email found.", "error");
       return;
     }
 
-    // Check if answers already exist for this user
     await Qry_checkExistingAmbiental.run();
     const hasExisting = (Qry_checkExistingAmbiental.data || []).length > 0;
 
     if (hasExisting) {
-      showAlert(
-        "You already have saved answers. Are you sure you want to replace them?",
-        "warning"
-      );
-      showModal("Modal_ConfirmReplace"); // Open confirmation modal
+      showModal("Modal_ConfirmReplace");
     } else {
-      // No previous answers → save directly
       await Qry_saveAnswersAmbiental.run();
       showAlert("Answers submitted successfully!", "success");
     }
   },
 
-  // 🔟 Called when user confirms replacement
   confirmReplaceAmbiental: async () => {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmReplace");
     showAlert("Previous answers replaced successfully!", "success");
   },
 
-  // 1️⃣1️⃣ Called when user cancels replacement
   cancelReplaceAmbiental: () => {
     closeModal("Modal_ConfirmReplace");
     showAlert("Submission cancelled.", "info");

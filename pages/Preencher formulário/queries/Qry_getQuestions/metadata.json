@@ -1,17 +1,12 @@
 {
-  "gitSyncId": "68f6489578eea055253a107e_a0373b06-27b3-4f55-85b2-ebfe921ed268",
+  "gitSyncId": "68f8e73778eea055253a3c63_b32e10a9-af75-4b84-bdf2-d7bfd41b04a5",
   "id": "Preencher formulário_Qry_getQuestions",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "-- getQuestions\nSELECT id_pergunta, dominio, categoria, numero_ind, indicador, pergunta\nFROM   alquevasustentavel.\"perguntas\"\nORDER  BY numero_ind, id_pergunta;",
+      "body": "SELECT * FROM alquevasustentavel.\"fPerguntas\" ORDER BY \"Código\";\n\n",
       "encodeParamsToggle": true,
-      "formData": {
-        "entityType": {
-          "data": "ROWS"
-        }
-      },
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
