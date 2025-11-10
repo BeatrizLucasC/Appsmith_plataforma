@@ -7,6 +7,11 @@
     "actionConfiguration": {
       "body": "-- getQuestions\nSELECT id_pergunta, dominio, categoria, numero_ind, indicador, pergunta\nFROM   alquevasustentavel.\"perguntas\"\nORDER  BY numero_ind, id_pergunta;",
       "encodeParamsToggle": true,
+      "formData": {
+        "entityType": {
+          "data": "ROWS"
+        }
+      },
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {

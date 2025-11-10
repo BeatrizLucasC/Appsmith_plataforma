@@ -37,7 +37,7 @@
   "mobileRightColumn": 47,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{JS_regrasAmbiental.cancelReplace()}}\n",
+  "onClick": "{{JS_regrasAmbiental.cancelReplaceAmbiental()}}\n",
   "originalBottomRow": 22,
   "originalTopRow": 18,
   "parentId": "fo9bm5c4of",

@@ -8,18 +8,22 @@ export default {
     });
   },
 
-  // 2️⃣ Control visibility of each question
-  visibleForItem: (row) => {
-    if (!row) return false;
+  // 2️⃣ Get only *visible* Ambiental questions (filters out hidden ones)
+  getVisibleAmbientalQuestions: () => {
+    const all = JS_regrasAmbiental.getAmbientalQuestions();
     const answers = appsmith.store.answers || {};
-    const id = String(row.id_pergunta);
 
-    // Example rule: show P3 only if P2 = "Sim"
-    if (id === "p3") {
-      return answers["p2"] === "Sim";
-    }
+    return all.filter(row => {
+      const id = String(row.id_pergunta);
 
-    return true;
+      // Example: show p3 only if p2 = "Sim"
+      if (id === "p3") {
+        return answers["p2"] === "Sim";
+      }
+
+      // Add more conditional rules here if needed
+      return true;
+    });
   },
 
   // 3️⃣ Build question label text
@@ -28,14 +32,14 @@ export default {
     return (row.numero_ind ? row.numero_ind + " — " : "") + row.pergunta;
   },
 
-  // 4️⃣ Return options for RadioGroup
+  // 4️⃣ RadioGroup options
   radioOptions: () => [
     { label: "NA", value: "NA" },
     { label: "Sim", value: "Sim" },
     { label: "Não", value: "Não" }
   ],
 
-  // 5️⃣ Get default selected value for RadioGroup
+  // 5️⃣ Default selected value for RadioGroup
   selectedValue: (row) => {
     const answers = appsmith.store.answers || {};
     return answers[row.id_pergunta] || "";
@@ -51,7 +55,7 @@ export default {
       [id]: selectedValue
     };
 
-    // Business rule: if P2 changed and not "Sim", clear P3 (set to null)
+    // Example rule: if P2 != "Sim", clear P3
     if (id === "p2" && selectedValue !== "Sim") {
       next["p3"] = null;
     }
@@ -64,20 +68,17 @@ export default {
     const allQuestions = Qry_getQuestions.data || [];
     const userEmail = appsmith.user.email || "unknown_user";
 
-    // Keep only Ambiental questions
     const ambientalQs = allQuestions.filter(
       q => String(q.dominio || "").trim().toLowerCase() === "ambiental"
     );
 
-    // Map all Ambiental questions — even if the answer is null
     return ambientalQs.map(q => {
       const val = answers[q.id_pergunta];
       return {
         id_resposta: `${userEmail}_${q.id_pergunta}`,
         id_pergunta: q.id_pergunta,
         id_utilizador: userEmail,
-        resposta:
-          val === undefined || val === "" ? null : String(val).trim()
+        resposta: val === undefined || val === "" ? null : String(val).trim()
       };
     });
   },
@@ -87,7 +88,7 @@ export default {
     const prepared = JS_regrasAmbiental.prepareAmbientalAnswers(answers);
 
     if (!prepared || prepared.length === 0) {
-      // Prevent SQL crash when no rows
+      // Prevent SQL crash if no data
       return "('none', 'none', 'none', NULL, NOW())";
     }
 
@@ -109,7 +110,7 @@ export default {
     return rows.join(", ");
   },
 
-  // 9️⃣ Handle submission with confirmation modal
+  // 9️⃣ Handle submission (checks if user already has answers)
   onSubmitAmbiental: async () => {
     const userEmail = appsmith.user.email || "unknown_user";
     const answers = appsmith.store.answers || {};
@@ -119,32 +120,32 @@ export default {
       return;
     }
 
-    // Check if the user already has saved answers
-    await Qry_checkExisting.run();
-    const hasExisting = (Qry_checkExisting.data || []).length > 0;
+    // Check if answers already exist for this user
+    await Qry_checkExistingAmbiental.run();
+    const hasExisting = (Qry_checkExistingAmbiental.data || []).length > 0;
 
     if (hasExisting) {
       showAlert(
         "You already have saved answers. Are you sure you want to replace them?",
         "warning"
       );
-      showModal("Modal_ConfirmReplace"); // 👈 show the confirmation modal
+      showModal("Modal_ConfirmReplace"); // Open confirmation modal
     } else {
       // No previous answers → save directly
-      await Qry_saveAnswers.run();
+      await Qry_saveAnswersAmbiental.run();
       showAlert("Answers submitted successfully!", "success");
     }
   },
 
   // 🔟 Called when user confirms replacement
   confirmReplaceAmbiental: async () => {
-    await Qry_saveAnswers.run();
+    await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmReplace");
     showAlert("Previous answers replaced successfully!", "success");
   },
 
   // 1️⃣1️⃣ Called when user cancels replacement
-  cancelReplace: () => {
+  cancelReplaceAmbiental: () => {
     closeModal("Modal_ConfirmReplace");
     showAlert("Submission cancelled.", "info");
   }
