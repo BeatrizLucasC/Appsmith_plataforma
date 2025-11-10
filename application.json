@@ -35,6 +35,10 @@
     {
       "id": "Comparar com pares",
       "isDefault": false
+    },
+    {
+      "id": "Preencher formulário Copy",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

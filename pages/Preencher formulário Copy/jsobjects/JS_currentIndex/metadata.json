@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "690b44e5038d962ab21f3367_c69a13f0-055a-478b-9e58-7d7ab090a56f",
+  "id": "Preencher formulário Copy_JS_currentIndex",
+  "unpublishedCollection": {
+    "name": "JS_currentIndex",
+    "pageId": "Preencher formulário Copy",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "index",
+        "value": "0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 37,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": true,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "gpiffqwzch",
+  "leftColumn": 45,
+  "minWidth": 120,
+  "mobileBottomRow": 37,
+  "mobileLeftColumn": 46,
+  "mobileRightColumn": 62,
+  "mobileTopRow": 33,
+  "needsErrorInfo": false,
+  "onClick": "{{ \n(() => {\n  const answers = JS_QuestionsByDomain.submitAnswersByDomain(\"Ambiental\");\n\n  answers.forEach(a => {\n    Qry_getAnswers.run({\n      id_resposta: a.id_resposta,\n      id_pergunta: a.id_pergunta,\n      id_utilizador: a.id_utilizador,\n      data_submissao: a.data_submissao,\n      resposta: a.resposta\n    });\n  });\n\n  // Reset only switches from Ambiental questions\n  showAlert(\"As respostas às perguntas do domínio Ambiental foram submetidas com sucesso!\", \"success\");\n})();\n}}\n\n\n\n",
+  "originalBottomRow": 45,
+  "originalTopRow": 41,
+  "parentId": "ube31dodxs",
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": true,
+  "responsiveBehavior": "hug",
+  "rightColumn": 61,
+  "text": "Submeter",
+  "topRow": 33,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "xv5h20m6d5",
+  "widgetName": "Butn_submit_amb"
+}

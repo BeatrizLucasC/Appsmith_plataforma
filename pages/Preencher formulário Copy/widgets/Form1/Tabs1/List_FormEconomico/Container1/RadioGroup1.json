@@ -1,0 +1,69 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "alignment": "left",
+  "animateLoading": true,
+  "bottomRow": 21,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ (appsmith.store.answers && appsmith.store.answers[currentItem.id_pergunta]) || \"\" }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "options"
+    },
+    {
+      "key": "defaultOptionValue"
+    },
+    {
+      "key": "label"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "options"
+    },
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSelectionChange"
+    }
+  ],
+  "flexVerticalAlignment": "start",
+  "isDisabled": false,
+  "isInline": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "ghnypfmkh0",
+  "label": "{{ \"\" }}",
+  "labelAlignment": "left",
+  "labelPosition": "Auto",
+  "labelTextColor": "#000000",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 1,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "mobileBottomRow": 15,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 15,
+  "mobileTopRow": 9,
+  "needsErrorInfo": false,
+  "onSelectionChange": "{{\n  (() => {\n    const sel = RadioGroup1.selectedOptionValue; // ajuste o nome se o seu for outro\n    const id = String(currentItem.id_pergunta);\n\n    const next = {\n      ...(appsmith.store.answers || {}),\n      [id]: sel\n    };\n\n    // Se atualizou P2 e a resposta não é \"Sim\", limpa P3\n    if (id === \"p2\" && sel !== \"Sim\") next[\"p3\"] = \"\";\n\n    return storeValue(\"answers\", next);\n  })()\n}}",
+  "options": "{{ [\n  { label: \"NA\", value: \"NA\" },\n  { label: \"Sim\", value: \"Sim\" },\n  { label: \"Não\", value: \"Não\" }\n] }}\n",
+  "parentColumnSpace": 21.326416015625,
+  "parentId": "ocn8c4fq4r",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 14,
+  "topRow": 15,
+  "type": "RADIO_GROUP_WIDGET",
+  "version": 1,
+  "widgetId": "m73p3r34zl",
+  "widgetName": "RadioGroup1"
+}

@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "68f6489578eea055253a107e_a0373b06-27b3-4f55-85b2-ebfe921ed268",
-  "id": "Preencher formulário_Qry_getQuestions",
+  "gitSyncId": "690b44e5038d962ab21f3367_a58fedac-2aff-4b60-a3ce-5809f9092bb6",
+  "id": "Preencher formulário Copy_Qry_getQuestions",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -30,7 +30,7 @@
     "dynamicBindingPathList": [],
     "executeOnLoad": true,
     "name": "Qry_getQuestions",
-    "pageId": "Preencher formulário",
+    "pageId": "Preencher formulário Copy",
     "userSetOnLoad": false
   }
 }
