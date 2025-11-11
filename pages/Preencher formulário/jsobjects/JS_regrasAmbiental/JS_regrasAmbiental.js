@@ -9,6 +9,30 @@ export default {
     );
   },
 
+	// Filtros iniciais
+
+	filterQuestionsByCriteria: () => {
+  const allQuestions = Qry_getQuestions.data || [];
+
+  // Filtrar apenas perguntas do domínio "Ambiental"
+  const ambientalQuestions = allQuestions.filter(
+    q => String(q.Domínio || "").trim().toLowerCase() === "ambiental"
+  );
+
+  const certificacoes = Multiselect_Certificacao.selectedOptions || [];
+  const sistemas = Multiselect_SistemaProducao.selectedOptions || [];
+  const dimensao = Select_Dimensao.selectedOptionValue;
+
+  return ambientalQuestions.filter(q => {
+    const certOk = certificacoes.length === 0 || certificacoes.some(cert => q[cert] === "S");
+    const sistemaOk = sistemas.length === 0 || sistemas.some(sp => q[sp] === "S");
+    const dimensaoCol = dimensao ? `DE_${dimensao}` : null;
+    const dimensaoOk = !dimensaoCol || q[dimensaoCol] === "S";
+
+    return certOk && sistemaOk && dimensaoOk;
+  });
+},
+
   // 2️⃣ Compute the visible sequence dynamically based on answers and condition columns
   getVisibleAmbientalQuestions: () => {
     const all = JS_regrasAmbiental.getAmbientalQuestions();

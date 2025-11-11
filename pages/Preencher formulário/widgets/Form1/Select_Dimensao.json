@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 9,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -19,6 +19,7 @@
       "key": "sourceData"
     }
   ],
+  "dynamicTriggerPathList": [],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -39,8 +40,8 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
-  "optionLabel": "name",
-  "optionValue": "code",
+  "optionLabel": "label",
+  "optionValue": "value",
   "parentColumnSpace": 21.796875,
   "parentId": "1c3meik667",
   "parentRowSpace": 10,
@@ -49,10 +50,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 21,
   "serverSideFiltering": false,
-  "sourceData": "[\n  {\n    \"name\": \"Blue\",\n    \"code\": \"BLUE\"\n  },\n  {\n    \"name\": \"Green\",\n    \"code\": \"GREEN\"\n  },\n  {\n    \"name\": \"Red\",\n    \"code\": \"RED\"\n  }\n]",
+  "sourceData": "[\n  { \"label\": \"Pequena\", \"value\": \"P\" },\n  { \"label\": \"Grande\", \"value\": \"M\" },\n  { \"label\": \"Elevada\", \"value\": \"E\" }\n]",
   "topRow": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "jejc0v1j8h",
-  "widgetName": "Select1"
+  "widgetName": "Select_Dimensao"
 }
