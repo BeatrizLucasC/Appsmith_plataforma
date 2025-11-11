@@ -1,7 +1,7 @@
 export default {
   answers: {},
 
-  // 1️⃣ Get Ambiental questions
+  // 1️⃣ Obter perguntas do domínio Ambiental
   getAmbientalQuestions: () => {
     const data = Qry_getQuestions.data || [];
     return data.filter(
@@ -9,9 +9,9 @@ export default {
     );
   },
 
-  // 2️⃣ Filter Ambiental questions based on widgets
-  filterAmbientalQuestions: () => {
-    const all = JS_regrasAmbiental.getAmbientalQuestions();
+  // 2️⃣ Filtrar perguntas com base nos widgets
+  filterAmbientalQuestions: function () {
+    const all = this.getAmbientalQuestions();
     if (!all.length) return [];
 
     const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
@@ -34,10 +34,10 @@ export default {
     });
   },
 
-  // 3️⃣ Compute the visible sequence dynamically
-  getVisibleAmbientalQuestions: () => {
-    const all = JS_regrasAmbiental.filterAmbientalQuestions();
-    const answers = JS_regrasAmbiental.answers || {};
+  // 3️⃣ Determinar sequência visível com base nas respostas
+  getVisibleAmbientalQuestions: function () {
+    const all = this.filterAmbientalQuestions();
+    const answers = this.answers || {};
     if (!all.length) return [];
 
     const byId = {};
@@ -80,41 +80,41 @@ export default {
     return visible;
   },
 
-  // 4️⃣ Build label
-  questionLabel: (row) =>
+  // 4️⃣ Construir label da pergunta
+  questionLabel: row =>
     row ? `${row.Código || ""} — ${row.Pergunta || ""}` : "",
 
-  // 5️⃣ Radio options
+  // 5️⃣ Opções do radio
   radioOptions: () => [
     { label: "NA", value: "NA" },
     { label: "Sim", value: "Sim" },
     { label: "Não", value: "Não" }
   ],
 
-  // 6️⃣ Selected value
-  selectedValue: (row) => {
-    const answers = JS_regrasAmbiental.answers || {};
+  // 6️⃣ Valor selecionado
+  selectedValue: function (row) {
+    const answers = this.answers || {};
     return answers[row.Código] || "";
   },
 
-  // 7️⃣ Handle user answer change
-  onSelectionChange: (row, selectedValue) => {
+  // 7️⃣ Atualizar resposta do utilizador
+  onSelectionChange: function (row, selectedValue) {
     if (!row) return;
     const id = String(row.Código);
 
     const updated = {
-      ...JS_regrasAmbiental.answers,
+      ...this.answers,
       [id]: selectedValue
     };
 
-    JS_regrasAmbiental.answers = updated;
+    this.answers = updated;
   },
 
-  // 8️⃣ Prepare answers for saving
-  prepareAmbientalAnswers: () => {
-    const all = JS_regrasAmbiental.getVisibleAmbientalQuestions();
+  // 8️⃣ Preparar respostas para guardar
+  prepareAmbientalAnswers: function () {
+    const all = this.getVisibleAmbientalQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
-    const answers = JS_regrasAmbiental.answers || {};
+    const answers = this.answers || {};
     const year = new Date().getFullYear();
 
     return all.map(q => ({
@@ -128,9 +128,9 @@ export default {
     }));
   },
 
-  // 9️⃣ SQL builder
-  buildAmbientalValues: () => {
-    const prepared = JS_regrasAmbiental.prepareAmbientalAnswers();
+  // 9️⃣ Construir valores SQL
+  buildAmbientalValues: function () {
+    const prepared = this.prepareAmbientalAnswers();
     if (!prepared.length) return "('none','none','none',NULL,NOW())";
 
     return prepared
@@ -144,10 +144,10 @@ export default {
       .join(", ");
   },
 
-  // 🔟 Verifica se todas as perguntas visíveis foram respondidas
-  isAmbientalReadyToSubmit: () => {
-    const visibleQuestions = JS_regrasAmbiental.getVisibleAmbientalQuestions();
-    const answers = JS_regrasAmbiental.answers || {};
+  // 🔟 Verificar se todas as perguntas visíveis foram respondidas
+  isAmbientalReadyToSubmit: function () {
+    const visibleQuestions = this.getVisibleAmbientalQuestions();
+    const answers = this.answers || {};
 
     return visibleQuestions.every(q => {
       const resposta = answers[q.Código];
@@ -155,15 +155,15 @@ export default {
     });
   },
 
-  // 1️⃣1️⃣ Submit handler com validação
-  onSubmitAmbiental: async () => {
+  // 1️⃣1️⃣ Submeter respostas com validação
+  onSubmitAmbiental: async function () {
     const userEmail = appsmith.user.email || "unknown_user";
     if (!userEmail) {
       showAlert("Não foi possível identificar o utilizador.", "error");
       return;
     }
 
-    const ready = JS_regrasAmbiental.isAmbientalReadyToSubmit();
+    const ready = this.isAmbientalReadyToSubmit();
     if (!ready) {
       showAlert("Por favor, responda a todas as perguntas visíveis antes de submeter.", "warning");
       return;
@@ -180,15 +180,15 @@ export default {
     }
   },
 
-  // 1️⃣2️⃣ Confirma substituição
-  confirmReplaceAmbiental: async () => {
+  // 1️⃣2️⃣ Confirmar substituição
+  confirmReplaceAmbiental: async function () {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmReplace");
     showAlert("Respostas anteriores substituídas com sucesso!", "success");
   },
 
-  // 1️⃣3️⃣ Cancela substituição
-  cancelReplaceAmbiental: () => {
+  // 1️⃣3️⃣ Cancelar substituição
+  cancelReplaceAmbiental: function () {
     closeModal("Modal_ConfirmReplace");
     showAlert("Submissão cancelada.", "info");
   }
