@@ -9,81 +9,82 @@ export default {
     );
   },
 
-	// Filtros iniciais
+	// Filter Ambiental questions based on widgets
+	filterAmbientalQuestions: () => {
+		const all = JS_regrasAmbiental.getAmbientalQuestions();
+		if (!all.length) return [];
 
-	filterQuestionsByCriteria: () => {
-  const allQuestions = Qry_getQuestions.data || [];
+		const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
+		const selectedSP = Multiselect_SistemaProducao.selectedOptionValues || [];
+		const selectedDE = Select_Dimensao.selectedOptionValue || "";
 
-  // Filtrar apenas perguntas do domínio "Ambiental"
-  const ambientalQuestions = allQuestions.filter(
-    q => String(q.Domínio || "").trim().toLowerCase() === "ambiental"
-  );
+		return all.filter(q => {
+			const certMatch =
+				selectedCert.length === 0 ||
+				selectedCert.some(col => q[col] === "S");
 
-  const certificacoes = Multiselect_Certificacao.selectedOptions || [];
-  const sistemas = Multiselect_SistemaProducao.selectedOptions || [];
-  const dimensao = Select_Dimensao.selectedOptionValue;
+			const spMatch =
+				selectedSP.length === 0 ||
+				selectedSP.some(col => q[col] === "S");
 
-  return ambientalQuestions.filter(q => {
-    const certOk = certificacoes.length === 0 || certificacoes.some(cert => q[cert] === "S");
-    const sistemaOk = sistemas.length === 0 || sistemas.some(sp => q[sp] === "S");
-    const dimensaoCol = dimensao ? `DE_${dimensao}` : null;
-    const dimensaoOk = !dimensaoCol || q[dimensaoCol] === "S";
+			const deMatch =
+				!selectedDE || q[selectedDE] === "S";
 
-    return certOk && sistemaOk && dimensaoOk;
-  });
-},
+			return certMatch && spMatch && deMatch;
+		});
+	},
 
   // 2️⃣ Compute the visible sequence dynamically based on answers and condition columns
-  getVisibleAmbientalQuestions: () => {
-    const all = JS_regrasAmbiental.getAmbientalQuestions();
-    const answers = JS_regrasAmbiental.answers || {};
-    if (!all.length) return [];
+	getVisibleAmbientalQuestions: () => {
+		const all = JS_regrasAmbiental.filterAmbientalQuestions(); // use filtered questions
+		const answers = JS_regrasAmbiental.answers || {};
+		if (!all.length) return [];
 
-    // Create a lookup by Código
-    const byId = {};
-    all.forEach(q => {
-      byId[String(q.Código)] = q;
-    });
+		// Create a lookup by Código
+		const byId = {};
+		all.forEach(q => {
+			byId[String(q.Código)] = q;
+		});
 
-    const visible = [];
-    let current = all[0]; // start with first question
+		const visible = [];
+		let current = all[0]; // start with first question in filtered set
 
-    while (current) {
-      visible.push(current);
-      const id = String(current.Código);
-      const ans = answers[id];
+		while (current) {
+			visible.push(current);
+			const id = String(current.Código);
+			const ans = answers[id];
 
-      // Determine next question ID based on condition
-      let nextId = null;
+			// Determine next question ID based on condition
+			let nextId = null;
 
-      if (ans === "Sim" && current["Condição SIM"])
-        nextId = String(current["Condição SIM"]);
-      else if (ans === "Não" && current["Condição NÃO"])
-        nextId = String(current["Condição NÃO"]);
-      else if (ans === "NA" && current["Condição NA"])
-        nextId = String(current["Condição NA"]);
+			if (ans === "Sim" && current["Condição SIM"])
+				nextId = String(current["Condição SIM"]);
+			else if (ans === "Não" && current["Condição NÃO"])
+				nextId = String(current["Condição NÃO"]);
+			else if (ans === "NA" && current["Condição NA"])
+				nextId = String(current["Condição NA"]);
 
-      // If no condition provided → go to next in list
-      if (!nextId) {
-        const idx = all.findIndex(q => String(q.Código) === id);
-        if (idx >= 0 && idx + 1 < all.length) {
-          nextId = String(all[idx + 1].Código);
-        } else {
-          nextId = null;
-        }
-      }
+			// If no condition provided → go to next in list
+			if (!nextId) {
+				const idx = all.findIndex(q => String(q.Código) === id);
+				if (idx >= 0 && idx + 1 < all.length) {
+					nextId = String(all[idx + 1].Código);
+				} else {
+					nextId = null;
+				}
+			}
 
-      // If no nextId found or invalid → stop
-      if (!nextId || !byId[nextId]) break;
+			// Stop if no next or invalid
+			if (!nextId || !byId[nextId]) break;
 
-      // If next question already visible → avoid infinite loop
-      if (visible.some(q => String(q.Código) === nextId)) break;
+			// Prevent infinite loops
+			if (visible.some(q => String(q.Código) === nextId)) break;
 
-      current = byId[nextId];
-    }
+			current = byId[nextId];
+		}
 
-    return visible;
-  },
+		return visible;
+	},
 
   // 3️⃣ Build label
   questionLabel: (row) =>
@@ -116,21 +117,22 @@ export default {
   },
 
   // 7️⃣ Prepare answers for saving
-  prepareAmbientalAnswers: () => {
-    const all = JS_regrasAmbiental.getAmbientalQuestions();
-    const userEmail = appsmith.user.email || "unknown_user";
-    const answers = JS_regrasAmbiental.answers || {};
+	 prepareAmbientalAnswers: () => {
+		const all = JS_regrasAmbiental.getVisibleAmbientalQuestions();
+		const userEmail = appsmith.user.email || "unknown_user";
+		const answers = JS_regrasAmbiental.answers || {};
+		const year = new Date().getFullYear();
 
-    return all.map(q => ({
-      id_resposta: `${userEmail}_${q.Código}`,
-      id_pergunta: q.Código,
-      id_utilizador: userEmail,
-      resposta:
-        answers[q.Código] === undefined || answers[q.Código] === ""
-          ? null
-          : String(answers[q.Código]).trim()
-    }));
-  },
+		return all.map(q => ({
+			id_resposta: `${userEmail}_${year}_${q.Código}`, 
+			id_pergunta: q.Código,
+			id_utilizador: userEmail,
+			resposta:
+				answers[q.Código] === undefined || answers[q.Código] === ""
+					? null
+					: String(answers[q.Código]).trim()
+		}));
+	},
 
   // 8️⃣ SQL builder
   buildAmbientalValues: () => {

@@ -17,9 +17,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -28,7 +35,7 @@
   "key": "sthlz6bum5",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "Label",
+  "labelText": "Dimensão da Exploração",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 1,
@@ -40,6 +47,7 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
+  "onOptionChange": "{{JS_regrasAmbiental.getVisibleAmbientalQuestions()}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 21.796875,
@@ -48,9 +56,9 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 21,
+  "rightColumn": 40,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Pequena\", \"value\": \"P\" },\n  { \"label\": \"Grande\", \"value\": \"M\" },\n  { \"label\": \"Elevada\", \"value\": \"E\" }\n]",
+  "sourceData": "[\n  { \"label\": \"Pequena\", \"value\": \"DE_P\" },\n  { \"label\": \"Média\", \"value\": \"DE_M\" },\n  { \"label\": \"Elevada\", \"value\": \"DE_E\" }\n]",
   "topRow": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
