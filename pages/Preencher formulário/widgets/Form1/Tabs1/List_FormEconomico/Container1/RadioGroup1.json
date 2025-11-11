@@ -4,7 +4,7 @@
   "animateLoading": true,
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ (appsmith.store.answers && appsmith.store.answers[currentItem.id_pergunta]) || \"\" }}",
+  "defaultOptionValue": "{{JS_regrasAmbiental.selectedValue(currentItem)}}\n",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -54,13 +54,13 @@
   "mobileRightColumn": 15,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{\n  (() => {\n    const sel = RadioGroup1.selectedOptionValue; // ajuste o nome se o seu for outro\n    const id = String(currentItem.id_pergunta);\n\n    const next = {\n      ...(appsmith.store.answers || {}),\n      [id]: sel\n    };\n\n    // Se atualizou P2 e a resposta não é \"Sim\", limpa P3\n    if (id === \"p2\" && sel !== \"Sim\") next[\"p3\"] = \"\";\n\n    return storeValue(\"answers\", next);\n  })()\n}}",
-  "options": "{{ [\n  { label: \"NA\", value: \"NA\" },\n  { label: \"Sim\", value: \"Sim\" },\n  { label: \"Não\", value: \"Não\" }\n] }}\n",
+  "onSelectionChange": "{{ JS_regrasAmbiental.onSelectionChange(currentItem, RadioGroup1.selectedOptionValue) }}\n\n\n",
+  "options": "{{JS_regrasAmbiental.radioOptions()}}\n\n",
   "parentColumnSpace": 21.326416015625,
   "parentId": "ocn8c4fq4r",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
-  "rightColumn": 14,
+  "rightColumn": 21,
   "topRow": 15,
   "type": "RADIO_GROUP_WIDGET",
   "version": 1,

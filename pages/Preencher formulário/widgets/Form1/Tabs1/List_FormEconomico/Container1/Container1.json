@@ -59,24 +59,17 @@
     },
     {
       "key": "boxShadow"
-    },
-    {
-      "key": "isVisible"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
-    {
-      "key": "isVisible"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isDeletable": false,
   "isListItemContainer": true,
   "isLoading": false,
-  "isVisible": "{{ JS_regrasAmbiental.visibleForItem(currentItem, appsmith.store.answers) }}\n",
+  "isVisible": true,
   "key": "tfa3t9tker",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,

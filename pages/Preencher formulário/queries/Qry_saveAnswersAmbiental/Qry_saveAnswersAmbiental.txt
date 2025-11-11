@@ -1,0 +1,13 @@
+INSERT INTO respostas (
+  id_resposta,
+  id_pergunta,
+  id_utilizador,
+  resposta,
+  data_hora_submissao
+)
+VALUES {{ JS_regrasAmbiental.buildAmbientalValues(appsmith.store.answers) }}
+ON CONFLICT (id_utilizador, id_pergunta)
+DO UPDATE 
+SET 
+  resposta = EXCLUDED.resposta,
+  data_hora_submissao = NOW();

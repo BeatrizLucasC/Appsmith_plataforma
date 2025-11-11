@@ -1,0 +1,4 @@
+SELECT 1
+FROM respostas
+WHERE id_utilizador = {{ appsmith.user.email }}
+LIMIT 1;
