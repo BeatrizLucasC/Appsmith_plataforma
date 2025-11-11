@@ -14,11 +14,7 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicPropertyPathList": [
-    {
-      "key": "onClick"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -36,7 +32,7 @@
   "mobileRightColumn": 62,
   "mobileTopRow": 33,
   "needsErrorInfo": false,
-  "onClick": "{{ \n(() => {\n  const answers = JS_QuestionsByDomain.submitAnswersByDomain(\"Ambiental\");\n\n  answers.forEach(a => {\n    Qry_saveAnswersAmbiental.run({\n      id_resposta: a.id_resposta,\n      id_pergunta: a.id_pergunta,\n      id_utilizador: a.id_utilizador,\n      data_submissao: a.data_submissao,\n      resposta: a.resposta\n    });\n  });\n\n  // Reset only switches from Ambiental questions\n  showAlert(\"As respostas às perguntas do domínio Ambiental foram submetidas com sucesso!\", \"success\");\n})();\n}}\n\n\n\n",
+  "onClick": "",
   "originalBottomRow": 25,
   "originalTopRow": 21,
   "parentId": "ube31dodxs",
