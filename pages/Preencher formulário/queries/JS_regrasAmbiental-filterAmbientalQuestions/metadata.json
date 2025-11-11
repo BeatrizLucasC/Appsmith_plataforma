@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_1af24fe7-afb4-4aa3-96d9-d13fade12db8",
-  "id": "Preencher formulário_JS_regrasAmbiental.filterQuestionsByCriteria",
+  "gitSyncId": "68f8e73778eea055253a3c63_e6e5c7b5-0203-41ff-8468-333c75467aeb",
+  "id": "Preencher formulário_JS_regrasAmbiental.filterAmbientalQuestions",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -23,8 +23,8 @@
       }
     ],
     "executeOnLoad": false,
-    "fullyQualifiedName": "JS_regrasAmbiental.filterQuestionsByCriteria",
-    "name": "filterQuestionsByCriteria",
+    "fullyQualifiedName": "JS_regrasAmbiental.filterAmbientalQuestions",
+    "name": "filterAmbientalQuestions",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

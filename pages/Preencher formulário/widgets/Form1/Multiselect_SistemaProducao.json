@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 19,
+  "bottomRow": 17,
   "boxShadow": "none",
   "defaultOptionValue": "",
   "dynamicBindingPathList": [
@@ -17,9 +17,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -28,10 +35,10 @@
   "key": "6mjism5blq",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "Label",
+  "labelText": "Sistema de Produção",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 23,
+  "leftColumn": 1,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -40,6 +47,7 @@
   "mobileRightColumn": 43,
   "mobileTopRow": 12,
   "needsErrorInfo": false,
+  "onOptionChange": "{{JS_regrasAmbiental.getVisibleAmbientalQuestions()}}",
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 13.796875,
@@ -48,10 +56,10 @@
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 43,
+  "rightColumn": 40,
   "serverSideFiltering": false,
   "sourceData": "[\n  { \"label\": \"Culturas Anuais\", \"value\": \"SP_Culturas_Anuais\" },\n  { \"label\": \"Culturas Permanentes\", \"value\": \"SP_Culturas_Permanentes\" },\n  { \"label\": \"Produção Animal\", \"value\": \"SP_Producao_Animal\" }\n]",
-  "topRow": 12,
+  "topRow": 10,
   "type": "MULTI_SELECT_WIDGET_V2",
   "version": 1,
   "widgetId": "u1r7ev0wdu",

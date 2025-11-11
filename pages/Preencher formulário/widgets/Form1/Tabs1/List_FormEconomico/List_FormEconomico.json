@@ -99,7 +99,7 @@
   "itemSpacing": 8,
   "key": "t8mpkzyyd4",
   "leftColumn": 0,
-  "listData": "{{ JS_regrasAmbiental.filterQuestionsByCriteria() }}\n\n\n\n",
+  "listData": "{{JS_regrasAmbiental.getVisibleAmbientalQuestions()}}\n\n\n\n",
   "mainCanvasId": "fu3gta7yv1",
   "mainContainerId": "37sbbimqul",
   "minWidth": 450,
