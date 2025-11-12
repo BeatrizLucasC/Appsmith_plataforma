@@ -5,7 +5,7 @@ INSERT INTO respostas (
   resposta,
   data_hora_submissao
 )
-VALUES {{ JS_regrasSocial.buildSocialValues(appsmith.store.answers) }}
+VALUES {{ JS_regrasSocial.buildSocialValues() }}
 ON CONFLICT (id_utilizador, id_pergunta)
 DO UPDATE 
 SET 

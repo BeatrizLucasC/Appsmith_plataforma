@@ -85,38 +85,37 @@ export default {
   },
 
   // 8️⃣ Prepare answers for saving
-	prepareAmbientalAnswers() {
-		const all = this.getVisibleAmbientalQuestions();
-		const userEmail = appsmith.user.email || "unknown_user";
-		const year = new Date().getFullYear();
-		const answers = this.answers || {};
+  prepareAmbientalAnswers() {
+    const all = this.getVisibleAmbientalQuestions();
+    const userEmail = appsmith.user.email || "unknown_user";
+    const year = new Date().getFullYear();
+    const answers = this.answers || {};
 
-		return all.map(q => ({
-			id_resposta: `${userEmail}_${year}_${q.Código}`,
-			id_pergunta: q.Código,
-			dominio: q.Domínio || "unknown",
-			id_utilizador: userEmail,
-			resposta:
-				answers[q.Código] === undefined || answers[q.Código] === ""
-					? null
-					: String(answers[q.Código]).trim()
-		}));
-	},
+    return all.map(q => ({
+      id_resposta: `${userEmail}_${year}_${q.Código}`,
+      id_pergunta: q.Código,
+      id_utilizador: userEmail,
+      resposta:
+        answers[q.Código] === undefined || answers[q.Código] === ""
+          ? null
+          : String(answers[q.Código]).trim()
+    }));
+  },
 
-	// 9️⃣ Build SQL values for insertion
-	buildAmbientalValues() {
-		const prepared = this.prepareAmbientalAnswers();
-		if (!prepared.length) return "('none','none','unknown','unknown',NULL,NOW())";
+  // 9️⃣ Build SQL values for insertion
+  buildAmbientalValues() {
+    const prepared = this.prepareAmbientalAnswers();
+    if (!prepared.length) return "('none','none','none',NULL,NOW())";
 
-		return prepared
-			.map(ans => {
-				const safeVal = ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
-				const safeDom = `'${ans.dominio.replace(/'/g, "''")}'`;
-				return `('${ans.id_resposta}','${ans.id_pergunta}',${safeDom},'${ans.id_utilizador}',NOW(),${safeVal})`;
-				//                          ^ dominio ^        ^ id_utilizador ^  ^ data_hora_submissao ^ ^ resposta ^
-			})
-			.join(", ");
-	},
+    return prepared
+      .map(ans => {
+        const safeVal = ans.resposta === null
+          ? "NULL"
+          : `'${ans.resposta.replace(/'/g, "''")}'`;
+        return `('${ans.id_resposta}','${ans.id_pergunta}','${ans.id_utilizador}',${safeVal},NOW())`;
+      })
+      .join(", ");
+  },
 
   // 🔟 Verify that all visible questions are answered
   isAmbientalReadyToSubmit() {
