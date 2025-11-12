@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao\n)\nVALUES {{ JS_regrasSocial.buildSocialValues(appsmith.store.answers) }}\nON CONFLICT (id_utilizador, id_pergunta)\nDO UPDATE \nSET \n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW();\n",
+      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao\n)\nVALUES {{ JS_regrasSocial.buildSocialValues() }}\nON CONFLICT (id_utilizador, id_pergunta)\nDO UPDATE \nSET \n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW();\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

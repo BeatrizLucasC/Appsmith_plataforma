@@ -1,4 +1,7 @@
 SELECT 1
-FROM respostas
+FROM frespostas
 WHERE id_utilizador = {{ appsmith.user.email }}
+  AND id_pergunta IN ({{ JS_regrasAmbiental.getVisibleAmbientalQuestions().map(q => `'${String(q.Código)}'`).join(", ") }})
+  AND id_resposta LIKE '{{ appsmith.user.email }}_{{ new Date().getFullYear() }}_%'
 LIMIT 1;
+
