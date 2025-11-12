@@ -1,16 +1,17 @@
 export default {
+  // Store user answers
   answers: {},
 
-  // 1️⃣ Obter perguntas do domínio Ambiental
-  getAmbientalQuestions: () => {
+  // 1️⃣ Get questions for the "Ambiental" domain
+  getAmbientalQuestions() {
     const data = Qry_getQuestions.data || [];
     return data.filter(
       q => String(q.Domínio || "").trim().toLowerCase() === "ambiental"
     );
   },
 
-  // 2️⃣ Filtrar perguntas com base nos widgets
-  filterAmbientalQuestions: function () {
+  // 2️⃣ Filter questions based on selected widgets
+  filterAmbientalQuestions() {
     const all = this.getAmbientalQuestions();
     if (!all.length) return [];
 
@@ -20,31 +21,22 @@ export default {
 
     return all.filter(q => {
       const certMatch =
-        selectedCert.length === 0 ||
-        selectedCert.some(col => q[col] === "S");
-
+        selectedCert.length === 0 || selectedCert.some(col => q[col] === "S");
       const spMatch =
-        selectedSP.length === 0 ||
-        selectedSP.some(col => q[col] === "S");
-
-      const deMatch =
-        !selectedDE || q[selectedDE] === "S";
+        selectedSP.length === 0 || selectedSP.some(col => q[col] === "S");
+      const deMatch = !selectedDE || q[selectedDE] === "S";
 
       return certMatch && spMatch && deMatch;
     });
   },
 
-  // 3️⃣ Determinar sequência visível com base nas respostas
-  getVisibleAmbientalQuestions: function () {
+  // 3️⃣ Determine visible question sequence based on responses
+  getVisibleAmbientalQuestions() {
     const all = this.filterAmbientalQuestions();
     const answers = this.answers || {};
     if (!all.length) return [];
 
-    const byId = {};
-    all.forEach(q => {
-      byId[String(q.Código)] = q;
-    });
-
+    const byId = Object.fromEntries(all.map(q => [String(q.Código), q]));
     const visible = [];
     let current = all[0];
 
@@ -53,69 +45,51 @@ export default {
       const id = String(current.Código);
       const ans = answers[id];
 
-      let nextId = null;
-
-      if (ans === "Sim" && current["Condição SIM"])
-        nextId = String(current["Condição SIM"]);
-      else if (ans === "Não" && current["Condição NÃO"])
-        nextId = String(current["Condição NÃO"]);
-      else if (ans === "NA" && current["Condição NA"])
-        nextId = String(current["Condição NA"]);
+      let nextId =
+        (ans === "Sim" && current["Condição SIM"]) ||
+        (ans === "Não" && current["Condição NÃO"]) ||
+        (ans === "NA" && current["Condição NA"]) ||
+        null;
 
       if (!nextId) {
         const idx = all.findIndex(q => String(q.Código) === id);
-        if (idx >= 0 && idx + 1 < all.length) {
-          nextId = String(all[idx + 1].Código);
-        } else {
-          nextId = null;
-        }
+        nextId = idx >= 0 && idx + 1 < all.length ? String(all[idx + 1].Código) : null;
       }
 
-      if (!nextId || !byId[nextId]) break;
-      if (visible.some(q => String(q.Código) === nextId)) break;
-
+      if (!nextId || !byId[nextId] || visible.some(q => String(q.Código) === nextId)) break;
       current = byId[nextId];
     }
 
     return visible;
   },
 
-  // 4️⃣ Construir label da pergunta
-  questionLabel: row =>
-    row ? `${row.Código || ""} — ${row.Pergunta || ""}` : "",
+  // 4️⃣ Build question label
+  questionLabel: row => (row ? `${row.Código || ""} — ${row.Pergunta || ""}` : ""),
 
-  // 5️⃣ Opções do radio
+  // 5️⃣ Radio button options
   radioOptions: () => [
     { label: "NA", value: "NA" },
     { label: "Sim", value: "Sim" },
     { label: "Não", value: "Não" }
   ],
 
-  // 6️⃣ Valor selecionado
-  selectedValue: function (row) {
-    const answers = this.answers || {};
-    return answers[row.Código] || "";
+  // 6️⃣ Get selected answer value
+  selectedValue(row) {
+    return this.answers?.[row.Código] || "";
   },
 
-  // 7️⃣ Atualizar resposta do utilizador
-  onSelectionChange: function (row, selectedValue) {
+  // 7️⃣ Update answer when user selects an option
+  onSelectionChange(row, selectedValue) {
     if (!row) return;
-    const id = String(row.Código);
-
-    const updated = {
-      ...this.answers,
-      [id]: selectedValue
-    };
-
-    this.answers = updated;
+    this.answers = { ...this.answers, [String(row.Código)]: selectedValue };
   },
 
-  // 8️⃣ Preparar respostas para guardar
-  prepareAmbientalAnswers: function () {
+  // 8️⃣ Prepare answers for saving
+  prepareAmbientalAnswers() {
     const all = this.getVisibleAmbientalQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
-    const answers = this.answers || {};
     const year = new Date().getFullYear();
+    const answers = this.answers || {};
 
     return all.map(q => ({
       id_resposta: `${userEmail}_${year}_${q.Código}`,
@@ -128,43 +102,39 @@ export default {
     }));
   },
 
-  // 9️⃣ Construir valores SQL
-  buildAmbientalValues: function () {
+  // 9️⃣ Build SQL values for insertion
+  buildAmbientalValues() {
     const prepared = this.prepareAmbientalAnswers();
     if (!prepared.length) return "('none','none','none',NULL,NOW())";
 
     return prepared
       .map(ans => {
-        const safeVal =
-          ans.resposta === null
-            ? "NULL"
-            : `'${ans.resposta.replace(/'/g, "''")}'`;
+        const safeVal = ans.resposta === null
+          ? "NULL"
+          : `'${ans.resposta.replace(/'/g, "''")}'`;
         return `('${ans.id_resposta}','${ans.id_pergunta}','${ans.id_utilizador}',${safeVal},NOW())`;
       })
       .join(", ");
   },
 
-  // 🔟 Verificar se todas as perguntas visíveis foram respondidas
-  isAmbientalReadyToSubmit: function () {
+  // 🔟 Verify that all visible questions are answered
+  isAmbientalReadyToSubmit() {
     const visibleQuestions = this.getVisibleAmbientalQuestions();
-    const answers = this.answers || {};
-
     return visibleQuestions.every(q => {
-      const resposta = answers[q.Código];
-      return resposta === "Sim" || resposta === "Não" || resposta === "NA";
+      const resposta = this.answers?.[q.Código];
+      return ["Sim", "Não", "NA"].includes(resposta);
     });
   },
 
-  // 1️⃣1️⃣ Submeter respostas com validação
-  onSubmitAmbiental: async function () {
+  // 1️⃣1️⃣ Submit answers (with existing-check)
+  async onSubmitAmbiental() {
     const userEmail = appsmith.user.email || "unknown_user";
     if (!userEmail) {
       showAlert("Não foi possível identificar o utilizador.", "error");
       return;
     }
 
-    const ready = this.isAmbientalReadyToSubmit();
-    if (!ready) {
+    if (!this.isAmbientalReadyToSubmit()) {
       showAlert("Por favor, responda a todas as perguntas visíveis antes de submeter.", "warning");
       return;
     }
@@ -180,16 +150,16 @@ export default {
     }
   },
 
-  // 1️⃣2️⃣ Confirmar substituição
-  confirmReplaceAmbiental: async function () {
+  // 1️⃣2️⃣ Confirm replacing existing answers
+  async confirmReplaceAmbiental() {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmReplace");
     showAlert("Respostas anteriores substituídas com sucesso!", "success");
   },
 
-  // 1️⃣3️⃣ Cancelar substituição
-  cancelReplaceAmbiental: function () {
+  // 1️⃣3️⃣ Cancel replacement
+  cancelReplaceAmbiental() {
     closeModal("Modal_ConfirmReplace");
     showAlert("Submissão cancelada.", "info");
-  }
+  },
 };
