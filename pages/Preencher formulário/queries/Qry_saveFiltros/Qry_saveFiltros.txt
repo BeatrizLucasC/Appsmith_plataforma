@@ -1,0 +1,16 @@
+INSERT INTO fSelecoesFiltros (
+  utilizador_ano,
+  email_utilizador,
+  ano,
+  certificacoes,
+  sistemas_producao,
+  dimensao,
+  data_registo
+)
+VALUES {{ JS_Filtros.buildValoresFiltros() }}
+ON CONFLICT (utilizador_ano)
+DO UPDATE SET
+  certificacoes = EXCLUDED.certificacoes,
+  sistemas_producao = EXCLUDED.sistemas_producao,
+  dimensao = EXCLUDED.dimensao,
+  data_registo = NOW();

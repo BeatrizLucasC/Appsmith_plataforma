@@ -1,0 +1,10 @@
+SELECT 1
+FROM fSelecoesFiltros
+WHERE utilizador_ano = '{{this.params.utilizador_ano }}'
+LIMIT 1;
+
+
+
+
+
+

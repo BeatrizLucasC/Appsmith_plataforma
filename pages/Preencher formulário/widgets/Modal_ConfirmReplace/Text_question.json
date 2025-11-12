@@ -30,7 +30,7 @@
   "mobileRightColumn": 41,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 12,
+  "originalBottomRow": 10,
   "originalTopRow": 4,
   "overflow": "NONE",
   "parentId": "fo9bm5c4of",
@@ -46,5 +46,5 @@
   "type": "TEXT_WIDGET",
   "version": 1,
   "widgetId": "jdkmxx2ruv",
-  "widgetName": "Text15"
+  "widgetName": "Text_question"
 }
