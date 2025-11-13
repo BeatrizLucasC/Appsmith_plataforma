@@ -2,12 +2,12 @@ export default {
   // Store user answers
   answers: {},
 
-  // 1️⃣ Get all questions for the "Ambiental" domain
-  // Returns an array of questions filtered by the "Ambiental" domain
+  // 1️⃣ Get all questions for the "Económico" domain
+  // Returns an array of questions filtered by the "Económico" domain
   getQuestions() {
     const data = Qry_getQuestions.data || [];
     return data.filter(
-      q => String(q.Domínio || "").trim().toLowerCase() === "ambiental"
+      q => String(q.Domínio || "").trim().toLowerCase() === "económico"
     );
   },
 
@@ -125,7 +125,7 @@ export default {
       })
       .join(", ");
   },
-
+	
   // 🔟 Check if all visible questions have been answered
   isReadyToSubmit() {
     const visibleQuestions = this.getVisibleQuestions();
@@ -155,9 +155,9 @@ export default {
     const hasExisting = Array.isArray(result) && result.length > 0;
 
     if (hasExisting) {
-      showModal("Modal_ConfirmAmbiental");
+      showModal("Modal_ConfirmEconomico");
     } else {
-      await Qry_saveAnswersAmbiental.run();
+      await Qry_saveAnswersEconomico.run();
       showAlert("Respostas submetidas com sucesso!", "success");
     }
   },
@@ -165,15 +165,15 @@ export default {
   // 1️⃣2️⃣ Confirm replacing existing answers
   // Called from modal to overwrite old answers
   async confirmReplace() {
-    await Qry_saveAnswersAmbiental.run();
-    closeModal("Modal_ConfirmAmbiental");
+    await Qry_saveAnswersEconomico.run();
+    closeModal("Modal_ConfirmEconomico");
     showAlert("Respostas anteriores substituídas com sucesso!", "success");
   },
 
   // 1️⃣3️⃣ Cancel replacement
   // Called from modal to cancel overwrite
   cancelReplace() {
-    closeModal("Modal_ConfirmAmbiental");
+    closeModal("Modal_ConfirmEconomico");
     showAlert("Submissão cancelada.", "info");
   },
 };

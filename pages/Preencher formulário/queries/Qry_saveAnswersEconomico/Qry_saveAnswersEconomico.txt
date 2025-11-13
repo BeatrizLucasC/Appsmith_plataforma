@@ -7,7 +7,7 @@ INSERT INTO frespostas (
     ano
 )
 VALUES 
-{{ JS_regrasAmbiental.buildValues()}}  
+{{ JS_regrasEconomico.buildValues() }} 
 ON CONFLICT (id_resposta)
 DO UPDATE SET
     resposta = EXCLUDED.resposta,

@@ -1,0 +1,8 @@
+SELECT 1
+FROM frespostas
+WHERE id_utilizador = {{appsmith.user.email}}
+  AND ano = {{new Date().getFullYear()}}
+LIMIT 1;
+
+
+
