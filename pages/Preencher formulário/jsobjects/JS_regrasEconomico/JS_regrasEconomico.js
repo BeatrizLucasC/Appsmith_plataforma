@@ -93,38 +93,40 @@ export default {
 
   // 8️⃣ Prepare answers for saving
   // Adds metadata (user, year) and ensures all values are strings or null
-  prepareAnswers() {
-    const all = this.getVisibleQuestions();
-    const userEmail = appsmith.user.email || "unknown_user";
-    const year = new Date().getFullYear();
-    const answers = this.answers || {};
+	prepareAnswers() {
+		const all = this.getVisibleQuestions();
+		const userEmail = appsmith.user.email || "unknown_user";
+		const year = new Date().getFullYear();
+		const answers = this.answers || {};
+		const dominio = "económico"; // hardcoded domain
 
-    return all.map(q => ({
-      id_resposta: `${userEmail}_${year}_${q.Código}`, // primary key
-      id_pergunta: q.Código,
-      id_utilizador: userEmail,
-      resposta: answers[q.Código] != null && answers[q.Código] !== ""
-        ? String(answers[q.Código]).trim()
-        : null,
-      ano: year // new column for year
-    }));
-  },
+		return all.map(q => ({
+			id_resposta: `${userEmail}_${year}_${q.Código}`, // primary key
+			id_pergunta: q.Código,
+			id_utilizador: userEmail,
+			resposta:
+				answers[q.Código] != null && answers[q.Código] !== ""
+					? String(answers[q.Código]).trim()
+					: null,
+			ano: year,
+			dominio: dominio
+		}));
+	},
 
-  // 9️⃣ Build SQL values for insertion
-  // Converts prepared answers into a SQL-friendly string for insertion
-  buildValues() {
-    const prepared = this.prepareAnswers();
-    if (!prepared.length) return "('none','none','none',NULL,NOW(),0)";
+	// 9️⃣ Build SQL values for insertion
+	// Converts prepared answers into a SQL-friendly string for insertion
+	buildValues() {
+		const prepared = this.prepareAnswers();
+		if (!prepared.length) return "('none','none','none',NULL,NOW(),0,'ambiental')";
 
-    return prepared
-      .map(ans => {
-        const safeVal = ans.resposta === null
-          ? "NULL"
-          : `'${ans.resposta.replace(/'/g, "''")}'`;
-        return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano})`;
-      })
-      .join(", ");
-  },
+		return prepared
+			.map(ans => {
+				const safeVal =
+					ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
+				return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano}, '${ans.dominio}')`;
+			})
+			.join(", ");
+	},
 	
   // 🔟 Check if all visible questions have been answered
   isReadyToSubmit() {
@@ -149,9 +151,9 @@ export default {
       return;
     }
 
-    await Qry_checkExistingAnswers.run();
+    await Qry_checkExistingEconomico.run();
 
-    const result = Qry_checkExistingAnswers.data;
+    const result = Qry_checkExistingEconomico.data;
     const hasExisting = Array.isArray(result) && result.length > 0;
 
     if (hasExisting) {

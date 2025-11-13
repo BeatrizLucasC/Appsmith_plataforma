@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_2ca6517f-ea2b-454b-ba0d-d369c14e9cdc",
-  "id": "Preencher formulário_Qry_saveAnswersEconomico",
+  "gitSyncId": "68f8e73778eea055253a3c63_8548345f-492c-4a9e-8131-f3fc6b3c7541",
+  "id": "Preencher formulário_Qry_checkExistingAmbiental",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO frespostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao,\n  ano,\n  dominio\n)\nVALUES \n{{ JS_regrasEconomico.buildValues() }}\nON CONFLICT (id_resposta)\nDO UPDATE SET\n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW(),\n  dominio = EXCLUDED.dominio;",
+      "body": "SELECT 1\nFROM frespostas\nWHERE id_utilizador = {{ appsmith.user.email }}\n  AND ano = {{ new Date().getFullYear() }}\n  AND LOWER(dominio) = 'ambiental'\nLIMIT 1;\n\n\n\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": false
+          "value": true
         }
       ],
       "timeoutInMillisecond": 10000
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "Qry_saveAnswersEconomico",
+    "name": "Qry_checkExistingAmbiental",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }
