@@ -14,11 +14,7 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicPropertyPathList": [
-    {
-      "key": "onClick"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
@@ -36,7 +32,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 28,
   "needsErrorInfo": false,
-  "onClick": "{{JS_Filtros.saveFilterSelections()}}",
+  "onClick": "{{JS_Filtros.saveFilterSelections();}}",
   "parentColumnSpace": 25.296875,
   "parentId": "1c3meik667",
   "parentRowSpace": 10,
