@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_20c6c237-7e71-4284-b7dc-8bfb70d56374",
-  "id": "Preencher formulário_Qry_saveAnswersSocial",
+  "gitSyncId": "68f8e73778eea055253a3c63_8548345f-492c-4a9e-8131-f3fc6b3c7541",
+  "id": "Preencher formulário_Qry_checkExistingAnswers",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO frespostas (\n    id_resposta,\n    id_pergunta,\n    id_utilizador,\n    resposta,\n    data_hora_submissao,\n    ano\n)\nVALUES \n{{ JS_regrasSocial.buildValues() }} \nON CONFLICT (id_resposta)\nDO UPDATE SET\n    resposta = EXCLUDED.resposta,\n    data_hora_submissao = NOW();\n\n",
+      "body": "SELECT 1\nFROM frespostas\nWHERE id_utilizador = {{appsmith.user.email}}\n  AND ano = {{new Date().getFullYear()}}\nLIMIT 1;\n\n\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": false
+          "value": true
         }
       ],
       "timeoutInMillisecond": 10000
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "Qry_saveAnswersSocial",
+    "name": "Qry_checkExistingAnswers",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

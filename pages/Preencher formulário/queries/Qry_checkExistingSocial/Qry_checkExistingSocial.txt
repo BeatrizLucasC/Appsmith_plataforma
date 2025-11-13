@@ -1,5 +1,0 @@
-SELECT *
-FROM respostas r
-JOIN perguntas p ON p.id_pergunta = r.id_pergunta
-WHERE r.id_utilizador = {{ appsmith.user.email }}
-  AND LOWER(p.dominio) = 'social';

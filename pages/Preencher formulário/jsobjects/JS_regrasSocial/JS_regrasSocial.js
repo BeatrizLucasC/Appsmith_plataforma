@@ -1,151 +1,195 @@
 export default {
-  // 1️⃣ Get only Social questions
-  getSocialQuestions: () => {
+  // Store user answers
+  answers: {},
+
+  // 1️⃣ Get all questions for the "Social" domain
+  // Returns an array of questions filtered by the "Social" domain
+  getQuestions() {
     const data = Qry_getQuestions.data || [];
-    return data.filter(row => {
-      const d = String(row.dominio || "").trim().toLowerCase();
-      return d === "social";
+    return data.filter(
+      q => String(q.Domínio || "").trim().toLowerCase() === "social"
+    );
+  },
+
+  // 2️⃣ Filter questions based on widget selections
+  // Returns only questions that match selected certifications, production systems, and dimensions
+  filterQuestions() {
+    const all = this.getQuestions();
+    if (!all.length) return [];
+
+    const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
+    const selectedSP = Multiselect_SistemaProducao.selectedOptionValues || [];
+    const selectedDE = Select_Dimensao.selectedOptionValue || "";
+
+    return all.filter(q => {
+      const certMatch =
+        selectedCert.length === 0 || selectedCert.some(col => q[col] === "S");
+      const spMatch =
+        selectedSP.length === 0 || selectedSP.some(col => q[col] === "S");
+      const deMatch = !selectedDE || q[selectedDE] === "S";
+
+      return certMatch && spMatch && deMatch;
     });
   },
 
-  // 2️⃣ Control visibility of each question
-  visibleForItem: (row) => {
-    if (!row) return false;
-    const answers = appsmith.store.answers || {};
-    const id = String(row.id_pergunta);
+  // 3️⃣ Determine visible questions based on previous answers
+  // Handles conditional visibility: some questions appear only if previous answers match certain conditions
+  getVisibleQuestions() {
+    const all = this.filterQuestions();
+    const answers = this.answers || {};
+    if (!all.length) return [];
 
-    // Example rule: show P51 only if P50 = "Sim"
-    if (id === "p51") {
-      return answers["p50"] === "Sim";
+    const byId = Object.fromEntries(all.map(q => [String(q.Código), q]));
+    const visible = [];
+    let current = all[0];
+
+    while (current) {
+      visible.push(current);
+      const id = String(current.Código);
+      const ans = answers[id];
+
+      let nextId =
+        (ans === "Sim" && current["Condição SIM"]) ||
+        (ans === "Não" && current["Condição NÃO"]) ||
+        (ans === "NA" && current["Condição NA"]) ||
+        null;
+
+      if (!nextId) {
+        const idx = all.findIndex(q => String(q.Código) === id);
+        nextId = idx >= 0 && idx + 1 < all.length ? String(all[idx + 1].Código) : null;
+      }
+
+      if (!nextId || !byId[nextId] || visible.some(q => String(q.Código) === nextId)) break;
+      current = byId[nextId];
     }
 
-    return true;
+    return visible;
   },
 
-  // 3️⃣ Build question label text
-  questionLabel: (row) => {
-    if (!row) return "";
-    return (row.numero_ind ? row.numero_ind + " — " : "") + row.pergunta;
-  },
+  // 4️⃣ Build question label
+  // Returns a human-readable label combining code and question text
+  questionLabel: row => (row ? `${row.Código || ""} — ${row.Pergunta || ""}` : ""),
 
-  // 4️⃣ Return options for RadioGroup
+  // 5️⃣ Radio options
+  // Returns the possible answers for each question
   radioOptions: () => [
     { label: "NA", value: "NA" },
     { label: "Sim", value: "Sim" },
     { label: "Não", value: "Não" }
   ],
 
-  // 5️⃣ Get default selected value for RadioGroup
-  selectedValue: (row) => {
-    const answers = appsmith.store.answers || {};
-    return answers[row.id_pergunta] || "";
+  // 6️⃣ Get selected answer
+  // Returns the currently selected answer for a question
+  selectedValue(row) {
+    return this.answers?.[row.Código] || "";
   },
 
-  // 6️⃣ Handle onSelectionChange
-  onSelectionChange: (row, selectedValue) => {
+  // 7️⃣ Update answer when user selects an option
+  // Updates the local answers object
+  onSelectionChange(row, selectedValue) {
     if (!row) return;
-
-    const id = String(row.id_pergunta);
-    const next = {
-      ...(appsmith.store.answers || {}),
-      [id]: selectedValue
-    };
-
-    // Business rule: if P50 changed and not "Sim", clear P51 (set to null)
-    if (id === "p50" && selectedValue !== "Sim") {
-      next["p51"] = null;
-    }
-
-    storeValue("answers", next);
+    this.answers = { ...this.answers, [String(row.Código)]: selectedValue };
   },
 
-  // 7️⃣ Prepare Social answers for saving (include nulls)
-  prepareSocialAnswers: (answers) => {
-    const allQuestions = Qry_getQuestions.data || [];
+  // 8️⃣ Prepare answers for saving
+  // Adds metadata (user, year) and ensures all values are strings or null
+  prepareAnswers() {
+    const all = this.getVisibleQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
+    const year = new Date().getFullYear();
+    const answers = this.answers || {};
 
-    // Keep only Social questions
-    const socialQs = allQuestions.filter(
-      q => String(q.dominio || "").trim().toLowerCase() === "social"
-    );
-
-    // Map all Social questions — even if the answer is null
-    return socialQs.map(q => {
-      const val = answers[q.id_pergunta];
-      return {
-        id_resposta: `${userEmail}_${q.id_pergunta}`,
-        id_pergunta: q.id_pergunta,
-        id_utilizador: userEmail,
-        resposta:
-          val === undefined || val === "" ? null : String(val).trim()
-      };
-    });
+    return all.map(q => ({
+      id_resposta: `${userEmail}_${year}_${q.Código}`, // primary key
+      id_pergunta: q.Código,
+      id_utilizador: userEmail,
+      resposta: answers[q.Código] != null && answers[q.Código] !== ""
+        ? String(answers[q.Código]).trim()
+        : null,
+      ano: year // new column for year
+    }));
   },
 
-  // 8️⃣ Build SQL values string safely (handles NULLs and quotes)
-  buildSocialValues: (answers) => {
-    const prepared = JS_regrasSocial.prepareSocialAnswers(answers);
+  // 9️⃣ Build SQL values for insertion
+  // Converts prepared answers into a SQL-friendly string for insertion
+  buildValues() {
+    const prepared = this.prepareAnswers();
+    if (!prepared.length) return "('none','none','none',NULL,NOW(),0)";
 
-    if (!prepared || prepared.length === 0) {
-      // Prevent SQL crash when no rows
-      return "('none', 'none', 'none', NULL, NOW())";
-    }
-
-    const rows = prepared.map(ans => {
-      const safeValue =
-        ans.resposta === null
+    return prepared
+      .map(ans => {
+        const safeVal = ans.resposta === null
           ? "NULL"
-          : "'" + ans.resposta.replace(/'/g, "''") + "'";
-
-      return (
-        "('" +
-        ans.id_resposta + "', '" +
-        ans.id_pergunta + "', '" +
-        ans.id_utilizador + "', " +
-        safeValue + ", NOW())"
-      );
-    });
-
-    return rows.join(", ");
+          : `'${ans.resposta.replace(/'/g, "''")}'`;
+        return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano})`;
+      })
+      .join(", ");
   },
 
-  // 9️⃣ Handle submission with confirmation modal
-  onSubmitSocial: async () => {
-    const userEmail = appsmith.user.email || "unknown_user";
-    const answers = appsmith.store.answers || {};
+  // 9️⃣ Build SQL values for insertion
+  // Converts prepared answers into a SQL-friendly string for insertion
+  buildValues(){
+    const prepared = this.prepareAnswers();
+    if (!prepared.length) return "('none','none','none',NULL,NOW(),0)";
 
+    return prepared
+      .map(ans => {
+        const safeVal = ans.resposta === null
+          ? "NULL"
+          : `'${ans.resposta.replace(/'/g, "''")}'`;
+        return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano})`;
+      })
+      .join(", ");
+},
+
+  // 🔟 Check if all visible questions have been answered
+  isReadyToSubmit() {
+    const visibleQuestions = this.getVisibleQuestions();
+    return visibleQuestions.every(q => {
+      const resposta = this.answers?.[q.Código];
+      return ["Sim", "Não", "NA"].includes(resposta);
+    });
+  },
+
+  // 1️⃣1️⃣ Submit answers
+  // Checks if previous answers exist, shows modal if needed, otherwise saves
+  async onSubmit() {
+    const userEmail = appsmith.user.email || "unknown_user";
     if (!userEmail) {
-      showAlert("No Appsmith user email found.", "error");
+      showAlert("Não foi possível identificar o utilizador.", "error");
       return;
     }
 
-    // ⚠️ Make sure Qry_checkExistingSocial filters dominio = 'social'
-    await Qry_checkExistingSocial.run();
-    const hasExisting = (Qry_checkExistingSocial.data || []).length > 0;
+    if (!this.isReadyToSubmit()) {
+      showAlert("Por favor, responda a todas as perguntas visíveis antes de submeter.", "warning");
+      return;
+    }
+
+    await Qry_checkExistingAnswers.run();
+
+    const result = Qry_checkExistingAnswers.data;
+    const hasExisting = Array.isArray(result) && result.length > 0;
 
     if (hasExisting) {
-      showAlert(
-        "You already have saved Social answers. Are you sure you want to replace them?",
-        "warning"
-      );
-      showModal("Modal_ConfirmReplaceSocial");
+      showModal("Modal_ConfirmSocial");
     } else {
-      // Save directly if no previous answers
       await Qry_saveAnswersSocial.run();
-      showAlert("Social answers submitted successfully!", "success");
+      showAlert("Respostas submetidas com sucesso!", "success");
     }
   },
 
-  // 🔟 Called when user confirms replacement
-  confirmReplaceSocial: async () => {
+  // 1️⃣2️⃣ Confirm replacing existing answers
+  // Called from modal to overwrite old answers
+  async confirmReplace() {
     await Qry_saveAnswersSocial.run();
-    closeModal("Modal_ConfirmReplaceSocial");
-    showAlert("Previous Social answers replaced successfully!", "success");
+    closeModal("Modal_ConfirmSocial");
+    showAlert("Respostas anteriores substituídas com sucesso!", "success");
   },
 
-  // 1️⃣1️⃣ Called when user cancels replacement
-  cancelReplaceSocial: () => {
-    closeModal("Modal_ConfirmReplaceSocial");
-    showAlert("Submission cancelled.", "info");
-  }
+  // 1️⃣3️⃣ Cancel replacement
+  // Called from modal to cancel overwrite
+  cancelReplace() {
+    closeModal("Modal_ConfirmSocial");
+    showAlert("Submissão cancelada.", "info");
+  },
 };
