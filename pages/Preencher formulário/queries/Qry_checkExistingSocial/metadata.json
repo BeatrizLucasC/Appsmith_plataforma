@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_8548345f-492c-4a9e-8131-f3fc6b3c7541",
-  "id": "Preencher formulário_Qry_checkExistingAnswers",
+  "gitSyncId": "68f8e73778eea055253a3c63_176b5d6d-e070-4a55-bfce-3718c6155d09",
+  "id": "Preencher formulário_Qry_checkExistingSocial",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT 1\nFROM frespostas\nWHERE id_utilizador = {{appsmith.user.email}}\n  AND ano = {{new Date().getFullYear()}}\nLIMIT 1;\n\n\n\n",
+      "body": "SELECT 1\nFROM frespostas\nWHERE id_utilizador = {{ appsmith.user.email }}\n  AND ano = {{ new Date().getFullYear() }}\n  AND LOWER(dominio) = 'social'\nLIMIT 1;\n\n\n\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "Qry_checkExistingAnswers",
+    "name": "Qry_checkExistingSocial",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

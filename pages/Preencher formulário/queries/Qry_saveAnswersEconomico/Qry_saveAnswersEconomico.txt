@@ -1,14 +1,16 @@
 INSERT INTO frespostas (
-    id_resposta,
-    id_pergunta,
-    id_utilizador,
-    resposta,
-    data_hora_submissao,
-    ano
+  id_resposta,
+  id_pergunta,
+  id_utilizador,
+  resposta,
+  data_hora_submissao,
+  ano,
+  dominio
 )
 VALUES 
-{{ JS_regrasEconomico.buildValues() }} 
+{{ JS_regrasEconomico.buildValues() }}
 ON CONFLICT (id_resposta)
 DO UPDATE SET
-    resposta = EXCLUDED.resposta,
-    data_hora_submissao = NOW();
+  resposta = EXCLUDED.resposta,
+  data_hora_submissao = NOW(),
+  dominio = EXCLUDED.dominio;

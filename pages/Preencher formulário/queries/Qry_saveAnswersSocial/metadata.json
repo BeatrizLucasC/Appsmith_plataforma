@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO frespostas (\n    id_resposta,\n    id_pergunta,\n    id_utilizador,\n    resposta,\n    data_hora_submissao,\n    ano\n)\nVALUES \n{{ JS_regrasSocial.buildValues() }} \nON CONFLICT (id_resposta)\nDO UPDATE SET\n    resposta = EXCLUDED.resposta,\n    data_hora_submissao = NOW();\n\n",
+      "body": "INSERT INTO frespostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao,\n  ano,\n  dominio\n)\nVALUES \n{{ JS_regrasSocial.buildValues() }}\nON CONFLICT (id_resposta)\nDO UPDATE SET\n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW(),\n  dominio = EXCLUDED.dominio;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
