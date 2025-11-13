@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "executeOnLoad": true,
+    "executeOnLoad": false,
     "name": "Qry_getQuestions",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
