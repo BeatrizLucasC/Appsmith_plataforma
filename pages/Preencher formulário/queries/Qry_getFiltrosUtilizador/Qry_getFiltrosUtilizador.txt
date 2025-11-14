@@ -1,0 +1,5 @@
+SELECT certificacoes, sistemas_producao, dimensao
+FROM fSelecoesFiltros
+WHERE id_utilizador = '{{ appsmith.user.email }}'
+ORDER BY ano DESC, data_registo DESC
+LIMIT 1;
