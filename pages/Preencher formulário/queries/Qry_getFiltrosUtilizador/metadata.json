@@ -1,16 +1,16 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_2c322832-fddf-4c00-8786-93122ec69372",
-  "id": "Preencher formulário_Qry_saveFiltros",
+  "gitSyncId": "68f8e73778eea055253a3c63_fe552c05-4534-4d11-9b07-38974778f211",
+  "id": "Preencher formulário_Qry_getFiltrosUtilizador",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO fSelecoesFiltros (\n  utilizador_ano,\n  id_utilizador,\n  ano,\n  certificacoes,\n  sistemas_producao,\n  dimensao,\n  data_registo\n)\nVALUES {{ JS_Filtros.buildValoresFiltros() }}\nON CONFLICT (utilizador_ano)\nDO UPDATE SET\n  certificacoes = EXCLUDED.certificacoes,\n  sistemas_producao = EXCLUDED.sistemas_producao,\n  dimensao = EXCLUDED.dimensao,\n  data_registo = NOW();",
+      "body": "SELECT certificacoes, sistemas_producao, dimensao\nFROM fSelecoesFiltros\nWHERE id_utilizador = '{{ appsmith.user.email }}'\nORDER BY ano DESC, data_registo DESC\nLIMIT 1;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": false
+          "value": true
         }
       ],
       "timeoutInMillisecond": 10000
@@ -27,8 +27,8 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
-    "name": "Qry_saveFiltros",
+    "executeOnLoad": true,
+    "name": "Qry_getFiltrosUtilizador",
     "pageId": "Preencher formulário",
     "userSetOnLoad": false
   }

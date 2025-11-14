@@ -1,6 +1,6 @@
 INSERT INTO fSelecoesFiltros (
   utilizador_ano,
-  email_utilizador,
+  id_utilizador,
   ano,
   certificacoes,
   sistemas_producao,
