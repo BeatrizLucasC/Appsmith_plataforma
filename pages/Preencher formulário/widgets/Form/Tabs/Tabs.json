@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 181,
+  "bottomRow": 39,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1450,
+      "bottomRow": 1430,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -55,7 +55,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1450,
+      "bottomRow": 1420,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -101,7 +101,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 1450,
+      "bottomRow": 1430,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -143,9 +143,54 @@
       "version": 1,
       "widgetId": "yg5sfxjz2q",
       "widgetName": "Canvas5"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 340,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "15nfgyhkfv",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 1490,
+      "minWidth": 450,
+      "mobileBottomRow": 1491,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1094.1875,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "oax1bri7sh",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1094.1875,
+      "tabId": "tabz7ad4o0xi9",
+      "tabName": "Filtros",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "s6o0bco9ed",
+      "widgetName": "Canvas17"
     }
   ],
-  "defaultTab": "Ambiental",
+  "defaultTab": "Filtros",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -155,9 +200,32 @@
     },
     {
       "key": "boxShadow"
+    },
+    {
+      "key": "tabsObj.tab1.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2.isVisible"
+    },
+    {
+      "key": "tabsObj.tab34wiuozbig.isVisible"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "tabsObj.tab1.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2.isVisible"
+    },
+    {
+      "key": "tabsObj.tab34wiuozbig.isVisible"
+    },
+    {
+      "key": "tabsObj.tabz7ad4o0xi9.isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
@@ -173,47 +241,55 @@
   "mobileRightColumn": 26,
   "mobileTopRow": 24,
   "needsErrorInfo": false,
-  "originalBottomRow": 181,
-  "originalTopRow": 32,
+  "originalBottomRow": 63,
+  "originalTopRow": 1,
   "parentColumnSpace": 17.9375,
   "parentId": "1c3meik667",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 62,
+  "rightColumn": 63,
   "shouldScrollContents": true,
   "shouldShowTabs": true,
   "tabsObj": {
     "tab1": {
       "id": "tab1",
-      "index": 0,
+      "index": 1,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{JS_Filtros.abasVisiveis()}}",
       "label": "Ambiental",
       "positioning": "vertical",
       "widgetId": "ube31dodxs"
     },
     "tab2": {
       "id": "tab2",
-      "index": 1,
+      "index": 2,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{JS_Filtros.abasVisiveis()}}",
       "label": "Social",
       "positioning": "vertical",
       "widgetId": "mqdhuqki4k"
     },
     "tab34wiuozbig": {
       "id": "tab34wiuozbig",
-      "index": 2,
+      "index": 3,
       "isDuplicateLabel": false,
-      "isVisible": true,
+      "isVisible": "{{JS_Filtros.abasVisiveis()}}",
       "label": "Económico",
       "widgetId": "yg5sfxjz2q"
+    },
+    "tabz7ad4o0xi9": {
+      "id": "tabz7ad4o0xi9",
+      "index": 0,
+      "isDuplicateLabel": false,
+      "isVisible": "true",
+      "label": "Filtros",
+      "widgetId": "s6o0bco9ed"
     }
   },
-  "topRow": 32,
+  "topRow": 1,
   "type": "TABS_WIDGET",
   "version": 3,
   "widgetId": "oax1bri7sh",
-  "widgetName": "Tabs1"
+  "widgetName": "Tabs"
 }

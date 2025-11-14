@@ -6,6 +6,11 @@
     "pageId": "Preencher formulário",
     "pluginId": "js-plugin",
     "pluginType": "JS",
-    "variables": []
+    "variables": [
+      {
+        "name": "filtrosGuardados",
+        "value": "false"
+      }
+    ]
   }
 }

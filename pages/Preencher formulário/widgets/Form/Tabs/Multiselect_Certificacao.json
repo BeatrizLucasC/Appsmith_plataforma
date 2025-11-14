@@ -48,7 +48,7 @@
   "optionLabel": "label",
   "optionValue": "value",
   "parentColumnSpace": 21.796875,
-  "parentId": "1c3meik667",
+  "parentId": "s6o0bco9ed",
   "parentRowSpace": 10,
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
@@ -59,6 +59,6 @@
   "topRow": 18,
   "type": "MULTI_SELECT_WIDGET_V2",
   "version": 1,
-  "widgetId": "8wdjcfp1bu",
+  "widgetId": "1u3fuljwy0",
   "widgetName": "Multiselect_Certificacao"
 }
