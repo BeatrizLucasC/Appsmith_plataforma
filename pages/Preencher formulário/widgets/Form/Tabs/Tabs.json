@@ -182,7 +182,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1094.1875,
       "tabId": "tabz7ad4o0xi9",
-      "tabName": "Filtros",
+      "tabName": "Dados iniciais",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -190,7 +190,7 @@
       "widgetName": "Canvas17"
     }
   ],
-  "defaultTab": "Filtros",
+  "defaultTab": "Dados iniciais",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -283,7 +283,7 @@
       "index": 0,
       "isDuplicateLabel": false,
       "isVisible": "true",
-      "label": "Filtros",
+      "label": "Dados iniciais",
       "widgetId": "s6o0bco9ed"
     }
   },
