@@ -178,4 +178,27 @@ export default {
     closeModal("Modal_ConfirmSocial");
     showAlert("Submissão cancelada.", "info");
   },
+
+  // 1️⃣4️⃣ Carregar respostas anteriores do utilizador
+  loadPreviousAnswers() {
+    const data = Qry_getAnswersSocial.data || [];
+    const mapped = {};
+
+    data.forEach(row => {
+      if (row.id_pergunta && row.resposta) {
+        mapped[String(row.id_pergunta)] = row.resposta;
+      }
+    });
+
+    this.answers = mapped;
+  },
+
+  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
+  async aplicarFiltrosECarregarRespostas() {
+    const perguntas = this.getVisibleQuestions();
+    if (perguntas.length > 0) {
+      await Qry_getAnswersSocial.run();
+      this.loadPreviousAnswers();
+    }
+  }
 };

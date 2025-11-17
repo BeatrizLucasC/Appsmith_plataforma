@@ -2,8 +2,7 @@ export default {
   // Store user answers
   answers: {},
 
-  // 1️⃣ Get all questions for the "Ambiental" domain
-  // Returns an array of questions filtered by the "Ambiental" domain
+  // 1️⃣ Obter todas as perguntas do domínio "Ambiental"
   getQuestions() {
     const data = Qry_getQuestions.data || [];
     return data.filter(
@@ -11,8 +10,7 @@ export default {
     );
   },
 
-  // 2️⃣ Filter questions based on widget selections
-  // Returns only questions that match selected certifications, production systems, and dimensions
+  // 2️⃣ Filtrar perguntas com base nos widgets de seleção
   filterQuestions() {
     const all = this.getQuestions();
     if (!all.length) return [];
@@ -32,8 +30,7 @@ export default {
     });
   },
 
-  // 3️⃣ Determine visible questions based on previous answers
-  // Handles conditional visibility: some questions appear only if previous answers match certain conditions
+  // 3️⃣ Determinar perguntas visíveis com base nas respostas anteriores
   getVisibleQuestions() {
     const all = this.filterQuestions();
     const answers = this.answers || {};
@@ -66,69 +63,63 @@ export default {
     return visible;
   },
 
-  // 4️⃣ Build question label
-  // Returns a human-readable label combining code and question text
+  // 4️⃣ Construir label da pergunta
   questionLabel: row => (row ? `${row.Código || ""} — ${row.Pergunta || ""}` : ""),
 
-  // 5️⃣ Radio options
-  // Returns the possible answers for each question
+  // 5️⃣ Opções do RadioGroup
   radioOptions: () => [
     { label: "NA", value: "NA" },
     { label: "Sim", value: "Sim" },
     { label: "Não", value: "Não" }
   ],
 
-  // 6️⃣ Get selected answer
-  // Returns the currently selected answer for a question
+  // 6️⃣ Obter resposta selecionada
   selectedValue(row) {
     return this.answers?.[row.Código] || "";
   },
 
-  // 7️⃣ Update answer when user selects an option
-  // Updates the local answers object
+  // 7️⃣ Atualizar resposta quando o utilizador seleciona uma opção
   onSelectionChange(row, selectedValue) {
     if (!row) return;
     this.answers = { ...this.answers, [String(row.Código)]: selectedValue };
   },
 
-  // 8️⃣ Prepare answers for saving
-  // Adds metadata (user, year) and ensures all values are strings or null
-	prepareAnswers() {
-		const all = this.getVisibleQuestions();
-		const userEmail = appsmith.user.email || "unknown_user";
-		const year = new Date().getFullYear();
-		const answers = this.answers || {};
-		const dominio = "ambiental"; // hardcoded domain
+  // 8️⃣ Preparar respostas para guardar
+  prepareAnswers() {
+    const all = this.getVisibleQuestions();
+    const userEmail = appsmith.user.email || "unknown_user";
+    const year = new Date().getFullYear();
+    const answers = this.answers || {};
+    const dominio = "ambiental";
 
-		return all.map(q => ({
-			id_resposta: `${userEmail}_${year}_${q.Código}`, // primary key
-			id_pergunta: q.Código,
-			id_utilizador: userEmail,
-			resposta:
-				answers[q.Código] != null && answers[q.Código] !== ""
-					? String(answers[q.Código]).trim()
-					: null,
-			ano: year,
-			dominio: dominio
-		}));
-	},
+    return all.map(q => ({
+      id_resposta: `${userEmail}_${year}_${q.Código}`,
+      id_pergunta: q.Código,
+      id_utilizador: userEmail,
+      resposta:
+        answers[q.Código] != null && answers[q.Código] !== ""
+          ? String(answers[q.Código]).trim()
+          : null,
+      ano: year,
+      dominio: dominio
+    }));
+  },
 
-	// 9️⃣ Build SQL values for insertion
-	// Converts prepared answers into a SQL-friendly string for insertion
-	buildValues() {
-		const prepared = this.prepareAnswers();
-		if (!prepared.length) return "('none','none','none',NULL,NOW(),0,'ambiental')";
+  // 9️⃣ Construir valores SQL para inserção
+  buildValues() {
+    const prepared = this.prepareAnswers();
+    if (!prepared.length) return "('none','none','none',NULL,NOW(),0,'ambiental')";
 
-		return prepared
-			.map(ans => {
-				const safeVal =
-					ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
-				return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano}, '${ans.dominio}')`;
-			})
-			.join(", ");
-	},
+    return prepared
+      .map(ans => {
+        const safeVal =
+          ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
+        return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano}, '${ans.dominio}')`;
+      })
+      .join(", ");
+  },
 
-  // 🔟 Check if all visible questions have been answered
+  // 🔟 Verificar se todas as perguntas visíveis foram respondidas
   isReadyToSubmit() {
     const visibleQuestions = this.getVisibleQuestions();
     return visibleQuestions.every(q => {
@@ -137,8 +128,7 @@ export default {
     });
   },
 
-  // 1️⃣1️⃣ Submit answers
-  // Checks if previous answers exist, shows modal if needed, otherwise saves
+  // 1️⃣1️⃣ Submeter respostas
   async onSubmit() {
     const userEmail = appsmith.user.email || "unknown_user";
     if (!userEmail) {
@@ -164,18 +154,39 @@ export default {
     }
   },
 
-  // 1️⃣2️⃣ Confirm replacing existing answers
-  // Called from modal to overwrite old answers
+  // 1️⃣2️⃣ Confirmar substituição de respostas existentes
   async confirmReplace() {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmAmbiental");
     showAlert("Respostas anteriores substituídas com sucesso!", "success");
   },
 
-  // 1️⃣3️⃣ Cancel replacement
-  // Called from modal to cancel overwrite
+  // 1️⃣3️⃣ Cancelar substituição
   cancelReplace() {
     closeModal("Modal_ConfirmAmbiental");
     showAlert("Submissão cancelada.", "info");
   },
+
+  // 1️⃣4️⃣ Carregar respostas anteriores do utilizador
+  loadPreviousAnswers() {
+    const data = Qry_getAnswersAmbiental.data || [];
+    const mapped = {};
+
+    data.forEach(row => {
+      if (row.id_pergunta && row.resposta) {
+        mapped[String(row.id_pergunta)] = row.resposta;
+      }
+    });
+
+    this.answers = mapped;
+  },
+
+  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
+  async aplicarFiltrosECarregarRespostas() {
+    const perguntas = this.getVisibleQuestions();
+    if (perguntas.length > 0) {
+      await Qry_getAnswersAmbiental.run();
+      this.loadPreviousAnswers();
+    }
+  }
 };
