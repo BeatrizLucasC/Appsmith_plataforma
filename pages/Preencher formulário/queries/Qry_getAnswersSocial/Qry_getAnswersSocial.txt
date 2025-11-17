@@ -1,0 +1,10 @@
+SELECT id_pergunta, resposta
+FROM frespostas
+WHERE id_utilizador = '{{ appsmith.user.email }}'
+  AND dominio = 'social'
+  AND ano = (
+    SELECT MAX(ano)
+    FROM frespostas
+    WHERE id_utilizador = '{{ appsmith.user.email }}'
+      AND dominio = 'social'
+  );
