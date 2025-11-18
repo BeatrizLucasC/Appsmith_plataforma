@@ -54,7 +54,7 @@
   "mobileRightColumn": 15,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{ JS_regrasEconomico.onSelectionChange(currentItem, RadioGroup_Economico.selectedOptionValue) }}\n\n\n",
+  "onSelectionChange": "{{JS_regrasEconomico.onSelectionChange(currentItem, RadioGroup_Economico.selectedOptionValue)}}\n\n\n",
   "options": "{{JS_regrasEconomico.radioOptions()}}",
   "parentColumnSpace": 21.326416015625,
   "parentId": "ocn8c4fq4r",

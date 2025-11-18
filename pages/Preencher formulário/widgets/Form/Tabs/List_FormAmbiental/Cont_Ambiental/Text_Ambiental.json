@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "shouldTruncate": false,
-  "text": "{{JS_regrasAmbiental.questionLabel(currentItem)}}\n",
+  "text": "{{JS_regrasAmbiental.questionLabel(currentItem)}}",
   "textAlign": "LEFT",
   "textColor": "#000000",
   "textStyle": "HEADING",

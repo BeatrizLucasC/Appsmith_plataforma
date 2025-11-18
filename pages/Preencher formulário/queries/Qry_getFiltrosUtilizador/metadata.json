@@ -10,7 +10,7 @@
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
@@ -30,6 +30,6 @@
     "executeOnLoad": true,
     "name": "Qry_getFiltrosUtilizador",
     "pageId": "Preencher formulário",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }
