@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 39,
+  "bottomRow": 56,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
@@ -23,6 +23,7 @@
         }
       ],
       "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
       "flexLayers": [],
       "isDisabled": false,
       "isLoading": false,
@@ -46,7 +47,7 @@
       "rightColumn": 430.5,
       "shouldScrollContents": false,
       "tabId": "tab1",
-      "tabName": "Ambiental",
+      "tabName": "Domínio Ambiental",
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -92,7 +93,7 @@
       "rightColumn": 430.5,
       "shouldScrollContents": false,
       "tabId": "tab2",
-      "tabName": "Social",
+      "tabName": "Domínio Social",
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -137,7 +138,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1094.1875,
       "tabId": "tab34wiuozbig",
-      "tabName": "Económico",
+      "tabName": "Domínio Económico",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -182,7 +183,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 1094.1875,
       "tabId": "tabz7ad4o0xi9",
-      "tabName": "Dados iniciais",
+      "tabName": "Dados Iniciais",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -190,7 +191,7 @@
       "widgetName": "Canvas17"
     }
   ],
-  "defaultTab": "Dados iniciais",
+  "defaultTab": "Dados Iniciais",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -241,8 +242,8 @@
   "mobileRightColumn": 26,
   "mobileTopRow": 24,
   "needsErrorInfo": false,
-  "originalBottomRow": 39,
-  "originalTopRow": 1,
+  "originalBottomRow": 56,
+  "originalTopRow": 18,
   "parentColumnSpace": 17.9375,
   "parentId": "1c3meik667",
   "parentRowSpace": 10,
@@ -257,7 +258,7 @@
       "index": 1,
       "isDuplicateLabel": false,
       "isVisible": "{{JS_Filtros.abasVisiveis()}}",
-      "label": "Ambiental",
+      "label": "Domínio Ambiental",
       "positioning": "vertical",
       "widgetId": "ube31dodxs"
     },
@@ -266,7 +267,7 @@
       "index": 2,
       "isDuplicateLabel": false,
       "isVisible": "{{JS_Filtros.abasVisiveis()}}",
-      "label": "Social",
+      "label": "Domínio Social",
       "positioning": "vertical",
       "widgetId": "mqdhuqki4k"
     },
@@ -275,7 +276,7 @@
       "index": 3,
       "isDuplicateLabel": false,
       "isVisible": "{{JS_Filtros.abasVisiveis()}}",
-      "label": "Económico",
+      "label": "Domínio Económico",
       "widgetId": "yg5sfxjz2q"
     },
     "tabz7ad4o0xi9": {
@@ -283,11 +284,11 @@
       "index": 0,
       "isDuplicateLabel": false,
       "isVisible": "true",
-      "label": "Dados iniciais",
+      "label": "Dados Iniciais",
       "widgetId": "s6o0bco9ed"
     }
   },
-  "topRow": 1,
+  "topRow": 18,
   "type": "TABS_WIDGET",
   "version": 3,
   "widgetId": "oax1bri7sh",
