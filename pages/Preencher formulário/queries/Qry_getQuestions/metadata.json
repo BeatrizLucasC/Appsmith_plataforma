@@ -10,7 +10,7 @@
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000
@@ -26,6 +26,6 @@
     "executeOnLoad": false,
     "name": "Qry_getQuestions",
     "pageId": "Preencher formulário",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }

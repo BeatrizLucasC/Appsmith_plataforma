@@ -4,7 +4,7 @@
   "animateLoading": true,
   "bottomRow": 21,
   "boxShadow": "none",
-  "defaultOptionValue": "{{JS_regrasAmbiental.selectedValue(currentItem)}}\n",
+  "defaultOptionValue": "{{JS_regrasAmbiental.selectedValue(currentItem)}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -54,8 +54,8 @@
   "mobileRightColumn": 15,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "onSelectionChange": "{{ JS_regrasAmbiental.onSelectionChange(currentItem, RadioGroup_Ambiental.selectedOptionValue) }}",
-  "options": "{{JS_regrasAmbiental.radioOptions()}}\n\n",
+  "onSelectionChange": "{{JS_regrasAmbiental.onSelectionChange(currentItem, RadioGroup_Ambiental.selectedOptionValue)}}",
+  "options": "{{JS_regrasAmbiental.radioOptions()}}",
   "parentColumnSpace": 21.326416015625,
   "parentId": "su8rsap9v9",
   "parentRowSpace": 10,

@@ -36,6 +36,8 @@ export default {
     const answers = this.answers || {};
     if (!all.length) return [];
 
+console.log("Perguntas visíveis:", all);
+
     const byId = Object.fromEntries(all.map(q => [String(q.Código), q]));
     const visible = [];
     let current = all[0];
@@ -171,6 +173,8 @@ export default {
   loadPreviousAnswers() {
     const data = Qry_getAnswersAmbiental.data || [];
     const mapped = {};
+
+console.log("Respostas carregadas:", this.answers);
 
     data.forEach(row => {
       if (row.id_pergunta && row.resposta) {
