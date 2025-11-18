@@ -147,7 +147,7 @@ export default {
     }
 
     if (!this.isReadyToSubmit()) {
-      showAlert("Por favor, responda a todas as perguntas visíveis antes de submeter.", "warning");
+      showAlert("É necessário responder a todas as perguntas para submeter as respostas.", "warning");
       return;
     }
 
@@ -160,7 +160,7 @@ export default {
       showModal("Modal_ConfirmSocial");
     } else {
       await Qry_saveAnswersSocial.run();
-      showAlert("Respostas submetidas com sucesso!", "success");
+      showAlert("Respostas do domínio social submetidas com sucesso!", "success");
     }
   },
 
@@ -169,14 +169,14 @@ export default {
   async confirmReplace() {
     await Qry_saveAnswersSocial.run();
     closeModal("Modal_ConfirmSocial");
-    showAlert("Respostas anteriores substituídas com sucesso!", "success");
+    showAlert("Respostas substituídas com sucesso!", "success");
   },
 
   // 1️⃣3️⃣ Cancel replacement
   // Called from modal to cancel overwrite
   cancelReplace() {
     closeModal("Modal_ConfirmSocial");
-    showAlert("Submissão cancelada.", "info");
+    showAlert("Substituição cancelada. As respostas anteriores foram mantidas.", "info");
   },
 
   // 1️⃣4️⃣ Carregar respostas anteriores do utilizador

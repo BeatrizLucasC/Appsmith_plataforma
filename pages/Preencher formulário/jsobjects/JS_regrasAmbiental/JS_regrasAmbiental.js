@@ -137,7 +137,7 @@ export default {
     }
 
     if (!this.isReadyToSubmit()) {
-      showAlert("Por favor, responda a todas as perguntas visíveis antes de submeter.", "warning");
+      showAlert("É necessário responder a todas as perguntas para submeter as respostas.", "warning");
       return;
     }
 
@@ -150,7 +150,7 @@ export default {
       showModal("Modal_ConfirmAmbiental");
     } else {
       await Qry_saveAnswersAmbiental.run();
-      showAlert("Respostas submetidas com sucesso!", "success");
+      showAlert("Respostas do domínio ambiental submetidas com sucesso!", "success");
     }
   },
 
@@ -158,13 +158,13 @@ export default {
   async confirmReplace() {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmAmbiental");
-    showAlert("Respostas anteriores substituídas com sucesso!", "success");
+    showAlert("Respostas substituídas com sucesso!", "success");
   },
 
   // 1️⃣3️⃣ Cancelar substituição
   cancelReplace() {
     closeModal("Modal_ConfirmAmbiental");
-    showAlert("Submissão cancelada.", "info");
+    showAlert("Substituição cancelada. As respostas anteriores foram mantidas.", "info");
   },
 
   // 1️⃣4️⃣ Carregar respostas anteriores do utilizador

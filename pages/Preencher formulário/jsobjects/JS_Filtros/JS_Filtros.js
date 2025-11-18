@@ -47,7 +47,7 @@ export default {
   // 4️⃣ Cancelar substituição
   cancelFilterSelections() {
     closeModal("Modal_ConfirmReplaceFilters");
-    showAlert("Substituição cancelada. As preferências anteriores foram mantidas.", "info");
+    showAlert("Substituição cancelada. As seleções anteriores foram mantidas.", "info");
   },
 
   // 5️⃣ Executar query de substituição
