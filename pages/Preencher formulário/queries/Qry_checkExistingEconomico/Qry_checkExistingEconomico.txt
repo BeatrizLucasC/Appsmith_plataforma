@@ -1,6 +1,6 @@
 SELECT 1
 FROM frespostas
-WHERE id_utilizador = {{ appsmith.user.email }}
+WHERE id_utilizador = '{{ appsmith.user.email }}'
   AND ano = {{ new Date().getFullYear() }}
   AND LOWER(dominio) = 'económico'
 LIMIT 1;
