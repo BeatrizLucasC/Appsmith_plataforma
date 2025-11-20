@@ -1,6 +1,6 @@
 {
   "gitSyncId": "68f8e73778eea055253a3c63_fe552c05-4534-4d11-9b07-38974778f211",
-  "id": "Preencher formulário_Qry_getFiltrosUtilizador",
+  "id": "Preencher formulário_Qry_getFiltros",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -27,8 +27,8 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": true,
-    "name": "Qry_getFiltrosUtilizador",
+    "executeOnLoad": false,
+    "name": "Qry_getFiltros",
     "pageId": "Preencher formulário",
     "userSetOnLoad": true
   }

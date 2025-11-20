@@ -36,8 +36,6 @@ export default {
     const answers = this.answers || {};
     if (!all.length) return [];
 
-console.log("Perguntas visíveis:", all);
-
     const byId = Object.fromEntries(all.map(q => [String(q.Código), q]));
     const visible = [];
     let current = all[0];
@@ -174,8 +172,6 @@ console.log("Perguntas visíveis:", all);
     const data = Qry_getAnswersAmbiental.data || [];
     const mapped = {};
 
-console.log("Respostas carregadas:", this.answers);
-
     data.forEach(row => {
       if (row.id_pergunta && row.resposta) {
         mapped[String(row.id_pergunta)] = row.resposta;
@@ -183,14 +179,21 @@ console.log("Respostas carregadas:", this.answers);
     });
 
     this.answers = mapped;
+
+    console.log("Respostas carregadas:", this.answers);
   },
 
-  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
+  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores (corrigido)
   async aplicarFiltrosECarregarRespostas() {
+    // 1️⃣ Carregar respostas anteriores
+    await Qry_getAnswersAmbiental.run();
+    this.loadPreviousAnswers();
+
+    // 2️⃣ Obter perguntas visíveis com base nos filtros e respostas carregadas
     const perguntas = this.getVisibleQuestions();
-    if (perguntas.length > 0) {
-      await Qry_getAnswersAmbiental.run();
-      this.loadPreviousAnswers();
-    }
+
+    console.log("Perguntas visíveis após carregar respostas:", perguntas);
+
+    return perguntas;
   }
 };
