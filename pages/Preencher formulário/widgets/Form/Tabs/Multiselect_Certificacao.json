@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 25,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltrosUtilizador.data[0]?.certificacoes?.split(\",\")))(Multiselect_Certificacao.options, Multiselect_Certificacao.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.certificacoes?.split(\",\")))(Multiselect_Certificacao.options, Multiselect_Certificacao.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -37,7 +37,7 @@
   "isFilterable": true,
   "isLoading": false,
   "isRequired": false,
-  "isVisible": "{{!Qry_getFiltrosUtilizador.isLoading}}",
+  "isVisible": "{{!Qry_getFiltros.isLoading}}",
   "key": "2c1v7c55qp",
   "labelAlignment": "left",
   "labelPosition": "Top",

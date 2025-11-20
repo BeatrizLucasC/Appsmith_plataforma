@@ -1,0 +1,24 @@
+{
+  "gitSyncId": "68f8e73778eea055253a3c63_fccc54f4-63be-4de3-adb3-4dc83b973e3d",
+  "id": "Preencher formulário_JS_initialize",
+  "unpublishedCollection": {
+    "name": "JS_initialize",
+    "pageId": "Preencher formulário",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "certSelected",
+        "value": "[]"
+      },
+      {
+        "name": "spSelected",
+        "value": "[]"
+      },
+      {
+        "name": "dimSelected",
+        "value": "\"\""
+      }
+    ]
+  }
+}
