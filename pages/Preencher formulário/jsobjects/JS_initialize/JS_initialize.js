@@ -1,8 +1,9 @@
 export default {
+  // Reactive properties to bind to widgets
   certSelected: [],
   spSelected: [],
   dimSelected: "",
-  
+
   async initializePage() {
     // 1️⃣ Load saved filters
     await Qry_getFiltros.run();
@@ -13,15 +14,29 @@ export default {
       this.dimSelected = filtro.dimensao || "";
     }
 
-    // 2️⃣ Load questions
+    // 2️⃣ Load all questions
     await Qry_getQuestions.run();
 
-    // 3️⃣ Load previous answers
+    // 3️⃣ Load previous answers for all domains
+    // Ambiental
     await Qry_getAnswersAmbiental.run();
     JS_regrasAmbiental.loadPreviousAnswers();
 
-    // 4️⃣ Compute visible questions
-    const visibleQuestions = JS_regrasAmbiental.getVisibleQuestions();
-    console.log("Visible questions on page load:", visibleQuestions);
+    // Económico
+    await Qry_getAnswersEconomico.run();
+    JS_regrasEconomico.loadPreviousAnswers();
+
+    // Social
+    await Qry_getAnswersSocial.run();
+    JS_regrasSocial.loadPreviousAnswers();
+
+    // 4️⃣ Compute visible questions for all domains
+    const visAmbiental = JS_regrasAmbiental.getVisibleQuestions();
+    const visEconomico = JS_regrasEconomico.getVisibleQuestions();
+    const visSocial = JS_regrasSocial.getVisibleQuestions();
+
+    console.log("Visible Ambiental questions on page load:", visAmbiental);
+    console.log("Visible Económico questions on page load:", visEconomico);
+    console.log("Visible Social questions on page load:", visSocial);
   }
 };
