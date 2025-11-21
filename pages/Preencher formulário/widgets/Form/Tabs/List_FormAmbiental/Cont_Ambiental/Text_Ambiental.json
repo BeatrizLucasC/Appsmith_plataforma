@@ -41,7 +41,7 @@
   "parentId": "su8rsap9v9",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 62,
+  "rightColumn": 61,
   "shouldTruncate": false,
   "text": "{{JS_regrasAmbiental.questionLabel(currentItem)}}",
   "textAlign": "LEFT",
