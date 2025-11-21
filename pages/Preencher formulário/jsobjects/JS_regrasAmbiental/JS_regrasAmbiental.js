@@ -63,7 +63,7 @@ export default {
     return visible;
   },
 
-  // 4️⃣ Construir label da pergunta
+  // 4️⃣ Construir label da pergunta & texto para botão info
   questionLabel: row => (row ? `${row.Código || ""} — ${row.Pergunta || ""}` : ""),
 
   // 5️⃣ Opções do RadioGroup

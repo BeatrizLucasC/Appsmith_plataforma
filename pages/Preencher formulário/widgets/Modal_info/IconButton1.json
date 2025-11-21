@@ -13,39 +13,32 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
-    {
-      "key": "onClick"
-    }
-  ],
   "dynamicTriggerPathList": [
     {
       "key": "onClick"
     }
   ],
-  "iconName": "info-sign",
+  "iconName": "cross",
+  "iconSize": 24,
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
-  "key": "qz1nenfm2q",
-  "leftColumn": 62,
+  "key": "qctmwk5wlp",
+  "leftColumn": 58,
   "minWidth": 50,
-  "mobileBottomRow": 15,
-  "mobileLeftColumn": 48,
-  "mobileRightColumn": 52,
-  "mobileTopRow": 11,
+  "mobileBottomRow": 4,
+  "mobileLeftColumn": 58,
+  "mobileRightColumn": 64,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onClick": "{{storeValue(\"selectedItem\", currentItem); showModal(\"Modal_info\")}}",
-  "parentColumnSpace": 20.36572265625,
-  "parentId": "su8rsap9v9",
-  "parentRowSpace": 10,
+  "onClick": "{{closeModal(Modal_info.name);}}",
+  "parentId": "pztd1606ju",
   "renderMode": "CANVAS",
   "responsiveBehavior": "hug",
   "rightColumn": 64,
   "topRow": 0,
   "type": "ICON_BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "dssqrqipph",
-  "widgetName": "IconBtn_Ambiental"
+  "widgetId": "yqtwo4sm3x",
+  "widgetName": "IconButton1"
 }

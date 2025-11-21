@@ -14,7 +14,16 @@
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicTriggerPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
   "iconName": "info-sign",
   "isDisabled": false,
   "isLoading": false,
@@ -27,6 +36,7 @@
   "mobileRightColumn": 52,
   "mobileTopRow": 11,
   "needsErrorInfo": false,
+  "onClick": "{{storeValue(\"selectedItem\", currentItem); showModal(\"Modal_info\")}}",
   "parentColumnSpace": 20.36572265625,
   "parentId": "frzxdvfh3y",
   "parentRowSpace": 10,
