@@ -23,9 +23,9 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "executeOnLoad": false,
     "name": "qry_getPontos",
     "pageId": "Menu",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_GraphPontTotal.getOptions",
     "name": "getOptions",
     "pageId": "Visualizar resultados",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

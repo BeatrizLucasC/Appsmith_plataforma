@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "name": "Qry_getAnswers",
     "pageId": "Preencher formulário Copy",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

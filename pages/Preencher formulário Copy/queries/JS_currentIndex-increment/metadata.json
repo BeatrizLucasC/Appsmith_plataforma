@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_currentIndex.increment",
     "name": "increment",
     "pageId": "Preencher formulário Copy",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

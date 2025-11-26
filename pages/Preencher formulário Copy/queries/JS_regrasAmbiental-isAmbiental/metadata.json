@@ -26,10 +26,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_regrasAmbiental.isAmbiental",
     "name": "isAmbiental",
     "pageId": "Preencher formulário Copy",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

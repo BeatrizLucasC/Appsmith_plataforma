@@ -70,9 +70,9 @@
       "pluginId": "google-sheets-plugin"
     },
     "dynamicBindingPathList": [],
-    "executeOnLoad": false,
     "name": "Api1",
     "pageId": "Preencher formulário Copy",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

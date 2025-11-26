@@ -26,10 +26,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_currentIndex.setIndex",
     "name": "setIndex",
     "pageId": "Preencher formulário Copy",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

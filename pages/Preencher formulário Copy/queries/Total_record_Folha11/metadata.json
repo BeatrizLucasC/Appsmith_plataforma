@@ -76,9 +76,9 @@
         "key": "formData.where.data"
       }
     ],
-    "executeOnLoad": false,
     "name": "Total_record_Folha11",
     "pageId": "Preencher formulário Copy",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }
