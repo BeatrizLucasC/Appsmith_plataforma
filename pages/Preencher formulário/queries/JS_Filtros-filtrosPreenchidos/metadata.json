@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_Filtros.filtrosPreenchidos",
     "name": "filtrosPreenchidos",
     "pageId": "Preencher formulário",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

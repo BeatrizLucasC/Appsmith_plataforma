@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_regrasSocial.confirmReplace",
     "name": "confirmReplace",
     "pageId": "Preencher formulário",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

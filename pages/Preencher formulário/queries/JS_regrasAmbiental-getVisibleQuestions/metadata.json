@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_regrasAmbiental.getVisibleQuestions",
     "name": "getVisibleQuestions",
     "pageId": "Preencher formulário",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

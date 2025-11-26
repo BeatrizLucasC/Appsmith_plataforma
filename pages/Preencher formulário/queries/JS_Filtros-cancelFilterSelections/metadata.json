@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "fullyQualifiedName": "JS_Filtros.cancelFilterSelections",
     "name": "cancelFilterSelections",
     "pageId": "Preencher formulário",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }
