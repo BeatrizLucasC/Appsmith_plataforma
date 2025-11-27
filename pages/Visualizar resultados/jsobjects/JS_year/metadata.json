@@ -1,0 +1,20 @@
+{
+  "gitSyncId": "690b44e5038d962ab21f3367_ef9185eb-2dac-4341-9026-14ae9cb5b084",
+  "id": "Visualizar resultados_JS_year",
+  "unpublishedCollection": {
+    "name": "JS_year",
+    "pageId": "Visualizar resultados",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "myVar1",
+        "value": "[]"
+      },
+      {
+        "name": "myVar2",
+        "value": "{}"
+      }
+    ]
+  }
+}

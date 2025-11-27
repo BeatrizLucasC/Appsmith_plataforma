@@ -1,1 +1,1 @@
-SELECT * FROM alquevasustentavel."perguntas"
+SELECT * FROM alquevasustentavel."fPerguntas"

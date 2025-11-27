@@ -1,0 +1,2 @@
+SELECT * FROM alquevasustentavel."v_pontuacao_final" 
+WHERE id_utilizador={{Select_user.selectedOptionLabel}} AND ano= {{Select_ano.selectedOptionLabel}};

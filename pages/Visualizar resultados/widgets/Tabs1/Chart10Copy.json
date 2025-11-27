@@ -3,16 +3,16 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 44,
+  "bottomRow": 172,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "chartData": {
-    "p6gntgxbvh": {
-      "data": "{{ JS_pont_dim_percCopy.combinarPontuacoes()}}",
+    "rckvtgtvz0": {
+      "data": "\n{{Q_pontuacao_final.data.map(item => ({\n    x: item.indicador,\n    y: Number(item.pontuacao_percent).toFixed(2)\n})) }}\n",
       "seriesName": ""
     }
   },
-  "chartName": "",
-  "chartType": "PIE_CHART",
+  "chartName": "Pontuação por indicador",
+  "chartType": "BAR_CHART",
   "customEChartConfig": "{{\n{\n  \"dataset\": {\n    \"source\": [\n      [\n        \"Day\",\n        \"Baidu\",\n        \"Google\",\n        \"Bing\"\n      ],\n      [\n        \"Mon\",\n        620,\n        120,\n        60\n      ],\n      [\n        \"Tue\",\n        732,\n        132,\n        72\n      ],\n      [\n        \"Wed\",\n        701,\n        101,\n        71\n      ],\n      [\n        \"Thu\",\n        734,\n        134,\n        74\n      ],\n      [\n        \"Fri\",\n        1090,\n        290,\n        190\n      ],\n      [\n        \"Sat\",\n        1130,\n        230,\n        130\n      ],\n      [\n        \"Sun\",\n        1120,\n        220,\n        110\n      ]\n    ]\n  },\n  \"tooltip\": {\n    \"trigger\": \"axis\",\n    \"axisPointer\": {\n      \"type\": \"shadow\"\n    }\n  },\n  \"title\": {\n    \"text\": \"Search Engine Usage\",\n    \"left\": \"center\",\n    \"textStyle\": {\n      \"width\": 200,\n      \"overflow\": \"truncate\"\n    }\n  },\n  \"legend\": {\n    \"top\": 40,\n    \"type\": \"scroll\"\n  },\n  \"grid\": {\n    \"left\": 15,\n    \"right\": 15,\n    \"bottom\": 30,\n    \"top\": 100,\n    \"containLabel\": true\n  },\n  \"xAxis\": [\n    {\n      \"type\": \"category\"\n    }\n  ],\n  \"yAxis\": [\n    {\n      \"type\": \"value\"\n    }\n  ],\n  \"series\": [\n    {\n      \"type\": \"bar\",\n      \"stack\": \"Search Engine\"\n    },\n    {\n      \"type\": \"bar\",\n      \"stack\": \"Search Engine\"\n    },\n    {\n      \"type\": \"bar\",\n      \"stack\": \"Search Engine\"\n    }\n  ]\n}\n}}",
   "customFusionChartConfig": {
     "dataSource": {
@@ -78,37 +78,39 @@
       "key": "fontFamily"
     },
     {
-      "key": "chartData.p6gntgxbvh.data"
+      "key": "chartData.rckvtgtvz0.data"
     }
   ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "start",
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "isLoading": false,
   "isVisible": true,
-  "key": "z4lhb3ezwx",
+  "key": "8reyhf4p7y",
   "labelOrientation": "auto",
-  "leftColumn": 40,
+  "leftColumn": 0,
   "minWidth": 450,
-  "mobileBottomRow": 45,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 25,
-  "mobileTopRow": 13,
+  "mobileBottomRow": 259,
+  "mobileLeftColumn": 6,
+  "mobileRightColumn": 30,
+  "mobileTopRow": 227,
   "needsErrorInfo": true,
-  "originalBottomRow": 44,
-  "originalTopRow": 14,
-  "parentColumnSpace": 15.4755859375,
-  "parentId": "wo40px8ef8",
+  "originalBottomRow": 199,
+  "originalTopRow": 134,
+  "parentColumnSpace": 16.484375,
+  "parentId": "f7fm0f1ga5",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 62,
+  "setAdaptiveYMin": false,
   "showDataPointLabel": false,
-  "topRow": 14,
+  "topRow": 107,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "zncd6am98i",
-  "widgetName": "Chart7",
-  "xAxisName": "Indicador",
-  "yAxisName": "Pontuação"
+  "widgetId": "d31y0vze4g",
+  "widgetName": "Chart10Copy",
+  "xAxisName": "Pontuação (%)",
+  "yAxisName": ""
 }

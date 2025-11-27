@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "bcardoso@consulai.com",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -17,9 +17,6 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
-    },
-    {
-      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -32,38 +29,36 @@
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "hnym1n4kr2",
+  "key": "zp8m7o5iff",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "Ano",
+  "labelText": "Utilizador",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 49,
+  "leftColumn": 28,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 29,
-  "mobileLeftColumn": 43,
-  "mobileRightColumn": 63,
-  "mobileTopRow": 22,
+  "mobileBottomRow": 7,
+  "mobileLeftColumn": 28,
+  "mobileRightColumn": 48,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onOptionChange": "",
+  "onOptionChange": "{{Q_pontuacao_final.run();\nQ_pontuacao_global.run();\nQ_pontuacao_dominio.run()}}",
   "optionLabel": "name",
-  "optionValue": "",
-  "originalBottomRow": 19,
-  "originalTopRow": 12,
-  "parentColumnSpace": 14.8564453125,
+  "optionValue": "code",
+  "parentColumnSpace": 10.930908203125,
   "parentId": "3by9h3irf3",
   "parentRowSpace": 10,
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 48,
   "serverSideFiltering": false,
-  "sourceData": "",
+  "sourceData": "[\n  {\n    \"name\": \"bcardoso@consulai.com\",\n    \"code\": \"bcardoso@consulai.com\"\n  },\n  {\n    \"name\": \"ssantos@consulai.com\",\n    \"code\": \"ssantos@consulai.com\"\n  }\n]",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "1spyb0ergy",
-  "widgetName": "Select_dominio"
+  "widgetId": "4gt3ymg16i",
+  "widgetName": "Select_user"
 }

@@ -3,30 +3,17 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 79,
+  "bottomRow": 36,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "chartData": {
     "i6j5c1f48t": {
-      "data": [
-        {
-          "x": "Product1",
-          "y": 20000
-        },
-        {
-          "x": "Product2",
-          "y": 22000
-        },
-        {
-          "x": "Product3",
-          "y": 32000
-        }
-      ],
-      "seriesName": "2023"
+      "data": "\n{{ Q_pontuacao_dominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_global_perc,\n    color: item.nivel === 'Avançado' ? 'green' : item.nivel === 'Intermédio' ? 'orange' : 'red'\n})) }}\n",
+      "seriesName": ""
     }
   },
-  "chartName": "Sales Report",
-  "chartType": "CUSTOM_ECHART",
-  "customEChartConfig": "{{ ((chartType) => ( JS_GraphPontCat.options))(Chart_PontCat.chartType) }}",
+  "chartName": "Score por dimensão",
+  "chartType": "COLUMN_CHART",
+  "customEChartConfig": "{{ ((chartType) => (  JS_pont_dim.combinarPontuacoes() ))(Chart_PontCat.chartType) }}",
   "customFusionChartConfig": {
     "dataSource": {
       "chart": {
@@ -89,8 +76,12 @@
     },
     {
       "key": "customEChartConfig"
+    },
+    {
+      "key": "chartData.i6j5c1f48t.data"
     }
   ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "start",
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
@@ -98,27 +89,27 @@
   "isVisible": true,
   "key": "acht357cy4",
   "labelOrientation": "auto",
-  "leftColumn": 0,
+  "leftColumn": 29,
   "minWidth": 450,
   "mobileBottomRow": 68,
   "mobileLeftColumn": 18,
   "mobileRightColumn": 42,
   "mobileTopRow": 36,
   "needsErrorInfo": true,
-  "originalBottomRow": 101,
-  "originalTopRow": 32,
+  "originalBottomRow": 87,
+  "originalTopRow": 52,
   "parentColumnSpace": 14.8564453125,
   "parentId": "f7fm0f1ga5",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 59,
   "showDataPointLabel": false,
-  "topRow": 31,
+  "topRow": 5,
   "type": "CHART_WIDGET",
   "version": 1,
   "widgetId": "rm9vk4luhw",
   "widgetName": "Chart_PontCat",
-  "xAxisName": "Product Line",
-  "yAxisName": "Revenue($)"
+  "xAxisName": "Dimensão",
+  "yAxisName": "Pontuação (%)"
 }

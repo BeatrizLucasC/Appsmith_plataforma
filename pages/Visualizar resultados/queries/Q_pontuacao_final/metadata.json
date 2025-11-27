@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "68f8e73778eea055253a3c63_de8e5cd4-d8f5-4b8c-9761-3df0e2efb769",
-  "id": "Visualizar resultados_Qry_getQuestions",
+  "gitSyncId": "690b44e5038d962ab21f3367_a73d9d08-8ff0-42d2-ae2b-a5c085354299",
+  "id": "Visualizar resultados_Q_pontuacao_final",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM alquevasustentavel.\"fPerguntas\"",
+      "body": "SELECT * FROM alquevasustentavel.\"v_pontuacao_final\" \nWHERE id_utilizador={{Select_user.selectedOptionLabel}} AND ano= {{Select_ano.selectedOptionLabel}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "pg_alquevaustentavel",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "Qry_getQuestions",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "Q_pontuacao_final",
     "pageId": "Visualizar resultados",
     "runBehaviour": "ON_PAGE_LOAD",
-    "userSetOnLoad": true
+    "userSetOnLoad": false
   }
 }

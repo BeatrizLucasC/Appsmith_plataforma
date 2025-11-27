@@ -1,0 +1,6 @@
+SELECT
+        dominio,
+        SUM(user_pontuacao) AS user_pontuacao,
+        SUM(pontuacao_maxima) AS pontuacao_maxima
+    FROM alquevasustentavel."v_pontuacao_final"
+    GROUP BY dominio

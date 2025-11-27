@@ -29,7 +29,7 @@
     ],
     "name": "Qry_PontuacaoTotal",
     "pageId": "Visualizar resultados",
-    "runBehaviour": "ON_PAGE_LOAD",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }
