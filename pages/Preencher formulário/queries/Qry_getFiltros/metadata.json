@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "executeOnLoad": false,
     "name": "Qry_getFiltros",
     "pageId": "Preencher formulário",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": true
   }
 }
