@@ -29,7 +29,7 @@
   "mobileTopRow": 47,
   "needsErrorInfo": false,
   "parentColumnSpace": 1.845703125,
-  "parentId": "tssufm6r0v",
+  "parentId": "f7u5fnpb29",
   "parentRowSpace": 10,
   "progress": "{{ Q_pontuacao_select_dominio.data[0].pontuacao_global_perc }}",
   "progressType": "circular",
@@ -41,6 +41,6 @@
   "topRow": 4,
   "type": "PROGRESS_WIDGET",
   "version": 1,
-  "widgetId": "evssesynz6",
-  "widgetName": "Progress1Copy"
+  "widgetId": "eva7y891ff",
+  "widgetName": "Progress1CopyCopy"
 }

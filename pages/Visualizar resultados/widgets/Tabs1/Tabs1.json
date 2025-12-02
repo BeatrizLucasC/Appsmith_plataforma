@@ -183,7 +183,7 @@
       "responsiveBehavior": "fill",
       "rightColumn": 813.859375,
       "tabId": "tabv8i86yu9ap",
-      "tabName": "Económica",
+      "tabName": "Económico",
       "topRow": 1,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -219,7 +219,7 @@
   "mobileRightColumn": 26,
   "mobileTopRow": 32,
   "needsErrorInfo": false,
-  "originalBottomRow": 310,
+  "originalBottomRow": 78,
   "originalTopRow": 31,
   "parentColumnSpace": 16.609375,
   "parentId": "0",
@@ -257,7 +257,7 @@
       "id": "tabv8i86yu9ap",
       "index": 3,
       "isVisible": true,
-      "label": "Económica",
+      "label": "Económico",
       "widgetId": "9jnz2zbys4"
     }
   },
