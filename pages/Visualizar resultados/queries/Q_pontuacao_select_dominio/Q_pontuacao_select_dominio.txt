@@ -1,0 +1,23 @@
+WITH pont_dominio AS (
+    SELECT
+				id_utilizador,
+				ano,
+        dominio,
+        SUM(user_pontuacao) AS user_pontuacao,
+        SUM(pontuacao_maxima) AS pontuacao_maxima
+    FROM alquevasustentavel."v_pontuacao_final"
+    GROUP BY id_utilizador, ano, dominio
+)
+SELECT
+		id_utilizador,
+		ano,
+    dominio,
+    ROUND(user_pontuacao / NULLIF(pontuacao_maxima, 0) * 100, 2) AS pontuacao_global_perc,
+    CASE
+        WHEN ROUND(user_pontuacao / NULLIF(pontuacao_maxima, 0) * 100, 2) < 25 THEN 'Básico'
+        WHEN ROUND(user_pontuacao / NULLIF(pontuacao_maxima, 0) * 100, 2) BETWEEN 25 AND 75 THEN 'Intermédio'
+        ELSE 'Avançado'
+    END AS nivel
+FROM pont_dominio
+WHERE id_utilizador={{Select_user.selectedOptionLabel}} AND ano= {{Select_ano.selectedOptionLabel}} AND dominio={{Tabs1.selectedTab}}
+ORDER BY dominio;
