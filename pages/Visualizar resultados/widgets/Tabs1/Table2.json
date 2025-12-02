@@ -40,9 +40,10 @@
     "user_pontuacao",
     "pontuacao_maxima",
     "pontuacao_percent",
-    "customColumn1"
+    "customColumn1",
+    "impacto_ambiental"
   ],
-  "columnUpdatedAt": 1764253850133,
+  "columnUpdatedAt": 1764694479984,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -91,6 +92,9 @@
     },
     {
       "key": "primaryColumns.customColumn1.computedValue"
+    },
+    {
+      "key": "primaryColumns.impacto_ambiental.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -286,6 +290,40 @@
       "label": "id_utilizador",
       "notation": "standard",
       "originalId": "id_utilizador",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "impacto_ambiental": {
+      "alias": "impacto_ambiental",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"impacto_ambiental\"])) : impacto_ambiental })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "impacto_ambiental",
+      "index": 3,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "impacto_ambiental",
+      "notation": "standard",
+      "originalId": "impacto_ambiental",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",
