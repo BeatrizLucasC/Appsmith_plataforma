@@ -8,6 +8,6 @@ SELECT
         ELSE 'Avançado'
     END AS nivel
 FROM alquevasustentavel."v_pontuacao_final"
-WHERE id_utilizador={{Select_user.selectedOptionLabel}} AND ano= {{Select_ano.selectedOptionLabel}}  ----selecionar o user
+WHERE id_utilizador={{Select_user.selectedOptionValue}} AND ano= {{Select_ano.selectedOptionLabel}}  ----selecionar o user
 GROUP BY id_utilizador, ano
 ORDER BY pontuacao_global_perc DESC;

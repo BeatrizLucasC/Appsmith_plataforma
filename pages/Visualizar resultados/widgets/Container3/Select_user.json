@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "bcardoso@consulai.com",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -32,10 +32,10 @@
   "key": "zp8m7o5iff",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "Label",
+  "labelText": "Utilizador",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 28,
+  "leftColumn": 35,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -53,12 +53,12 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 48,
+  "rightColumn": 49,
   "serverSideFiltering": false,
-  "sourceData": "[\n  {\n    \"name\": \"Ambiental\",\n    \"code\": \"Ambiental\"\n  },\n  {\n    \"name\": \"Económico/Produtivo\",\n    \"code\": \"Económico/Produtivo\"\n  },\n  {\n    \"name\": \"Social\",\n    \"code\": \"Social\"\n  },\n{\n    \"name\": \"Tudo\",\n    \"code\": \"Tudo\"\n  }\n]",
+  "sourceData": "[\n  {\n    \"name\": \"bcardoso@consulai.com\",\n    \"code\": \"bcardoso@consulai.com\"\n  },\n  {\n    \"name\": \"ssantos@consulai.com\",\n    \"code\": \"ssantos@consulai.com\"\n  }\n]",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "4gt3ymg16i",
-  "widgetName": "Select1"
+  "widgetName": "Select_user"
 }

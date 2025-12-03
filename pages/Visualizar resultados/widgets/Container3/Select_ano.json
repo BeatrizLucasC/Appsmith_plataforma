@@ -4,13 +4,19 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 7,
   "boxShadow": "none",
-  "defaultOptionValue": "GREEN",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  JS_year.Year()[0] ))(Select_ano.options, Select_ano.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "defaultOptionValue"
+    },
+    {
+      "key": "sourceData"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -38,7 +44,7 @@
   "labelText": "Ano",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 49,
+  "leftColumn": 50,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -48,8 +54,8 @@
   "mobileTopRow": 22,
   "needsErrorInfo": false,
   "onOptionChange": "",
-  "optionLabel": "name",
-  "optionValue": "",
+  "optionLabel": "label",
+  "optionValue": "value",
   "originalBottomRow": 19,
   "originalTopRow": 12,
   "parentColumnSpace": 14.8564453125,
@@ -60,10 +66,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "serverSideFiltering": false,
-  "sourceData": "",
+  "sourceData": "{{ JS_year.Year().map(ano => ({ label: ano, value: ano })) }}",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "1spyb0ergy",
-  "widgetName": "Select_dominio"
+  "widgetName": "Select_ano"
 }

@@ -1,8 +1,8 @@
 {
   "gitSyncId": "692f23e7862bc92544420b37_9ef81f71-aba7-4031-a4e8-d7b0029f6607",
-  "id": "Visualizar resultados_JS_ano",
+  "id": "Visualizar resultados_JS_year",
   "unpublishedCollection": {
-    "name": "JS_ano",
+    "name": "JS_year",
     "pageId": "Visualizar resultados",
     "pluginId": "js-plugin",
     "pluginType": "JS",
