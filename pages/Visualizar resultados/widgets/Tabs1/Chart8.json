@@ -2,16 +2,16 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "allowScroll": false,
   "animateLoading": true,
-  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 33,
-  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "borderRadius": "0px",
+  "bottomRow": 72,
+  "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacao_dominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_percentagem\n})) }}\n\n",
+      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}\n\n",
       "seriesName": ""
     }
   },
-  "chartName": "Sales Report",
+  "chartName": "",
   "chartType": "COLUMN_CHART",
   "customEChartConfig": "{{\n{\n  \"dataset\": {\n    \"source\": [\n      [\n        \"Day\",\n        \"Baidu\",\n        \"Google\",\n        \"Bing\"\n      ],\n      [\n        \"Mon\",\n        620,\n        120,\n        60\n      ],\n      [\n        \"Tue\",\n        732,\n        132,\n        72\n      ],\n      [\n        \"Wed\",\n        701,\n        101,\n        71\n      ],\n      [\n        \"Thu\",\n        734,\n        134,\n        74\n      ],\n      [\n        \"Fri\",\n        1090,\n        290,\n        190\n      ],\n      [\n        \"Sat\",\n        1130,\n        230,\n        130\n      ],\n      [\n        \"Sun\",\n        1120,\n        220,\n        110\n      ]\n    ]\n  },\n  \"tooltip\": {\n    \"trigger\": \"axis\",\n    \"axisPointer\": {\n      \"type\": \"shadow\"\n    }\n  },\n  \"title\": {\n    \"text\": \"Search Engine Usage\",\n    \"left\": \"center\",\n    \"textStyle\": {\n      \"width\": 200,\n      \"overflow\": \"truncate\"\n    }\n  },\n  \"legend\": {\n    \"top\": 40,\n    \"type\": \"scroll\"\n  },\n  \"grid\": {\n    \"left\": 15,\n    \"right\": 15,\n    \"bottom\": 30,\n    \"top\": 100,\n    \"containLabel\": true\n  },\n  \"xAxis\": [\n    {\n      \"type\": \"category\"\n    }\n  ],\n  \"yAxis\": [\n    {\n      \"type\": \"value\"\n    }\n  ],\n  \"series\": [\n    {\n      \"type\": \"bar\",\n      \"stack\": \"Search Engine\"\n    },\n    {\n      \"type\": \"bar\",\n      \"stack\": \"Search Engine\"\n    },\n    {\n      \"type\": \"bar\",\n      \"stack\": \"Search Engine\"\n    }\n  ]\n}\n}}",
   "customFusionChartConfig": {
@@ -66,12 +66,6 @@
       "key": "customEChartConfig"
     },
     {
-      "key": "borderRadius"
-    },
-    {
-      "key": "boxShadow"
-    },
-    {
       "key": "accentColor"
     },
     {
@@ -81,6 +75,7 @@
       "key": "chartData.daky6d1lh1.data"
     }
   ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "start",
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
@@ -88,25 +83,27 @@
   "isVisible": true,
   "key": "z86at2qb85",
   "labelOrientation": "auto",
-  "leftColumn": 29,
+  "leftColumn": 1,
   "minWidth": 450,
   "mobileBottomRow": 33,
   "mobileLeftColumn": 29,
   "mobileRightColumn": 53,
   "mobileTopRow": 1,
   "needsErrorInfo": true,
+  "originalBottomRow": 72,
+  "originalTopRow": 40,
   "parentColumnSpace": 13.796875,
   "parentId": "f7fm0f1ga5",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
-  "showDataPointLabel": false,
-  "topRow": 1,
+  "rightColumn": 31,
+  "showDataPointLabel": true,
+  "topRow": 40,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "hjam1cf2ce",
+  "widgetId": "bcgw01p5in",
   "widgetName": "Chart8",
-  "xAxisName": "Product Line",
-  "yAxisName": "Revenue($)"
+  "xAxisName": "",
+  "yAxisName": "Pontuação (%)"
 }

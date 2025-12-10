@@ -29,7 +29,7 @@
     ],
     "name": "Q_pontuacao_global",
     "pageId": "Visualizar resultados",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

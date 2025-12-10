@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_4e0aec18-d07a-4dd8-8636-6de5ac553ed2",
-  "id": "Visualizar resultados_Qry_pontuacao_dominio",
+  "gitSyncId": "692f23e7862bc92544420b37_993b3141-2d17-479e-b965-17bb0382a6cb",
+  "id": "Visualizar resultados_Qry_pontuacaoCategoria",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_pontuacao_percentagem_dominio WHERE id_utilizador = '{{appsmith.user.email}}';",
+      "body": "SELECT * FROM vw_pontuacao_percentagem_categoria WHERE id_utilizador = '{{appsmith.user.email}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "Qry_pontuacao_dominio",
+    "name": "Qry_pontuacaoCategoria",
     "pageId": "Visualizar resultados",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

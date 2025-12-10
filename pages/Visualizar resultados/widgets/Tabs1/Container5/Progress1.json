@@ -1,6 +1,6 @@
 {
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 26,
+  "bottomRow": 24,
   "counterClockwise": true,
   "counterClosewise": false,
   "dynamicBindingPathList": [
@@ -33,7 +33,7 @@
   "parentColumnSpace": 1.845703125,
   "parentId": "f4ujug3iiv",
   "parentRowSpace": 10,
-  "progress": "{{ Q_pontuacao_global.data[0].pontuacao_global_perc }}",
+  "progress": "{{Qry_pontuacaoDominio.data[0].pontuacao}}",
   "progressType": "circular",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
