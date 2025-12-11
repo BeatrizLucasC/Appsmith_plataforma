@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 34,
+  "bottomRow": 33,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -46,10 +46,10 @@
   "text": "{{Qry_pontuacaoDominio.data[0].nivel}}",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 30,
+  "topRow": 29,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
   "widgetId": "f82e6sapc4",
-  "widgetName": "Txt_nivelDomAmbCopyCopy"
+  "widgetName": "Txt_nivelGlobalMedia"
 }
