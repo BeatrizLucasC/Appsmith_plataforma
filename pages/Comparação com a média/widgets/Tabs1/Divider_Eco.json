@@ -1,0 +1,39 @@
+{
+  "animateLoading": true,
+  "bottomRow": 73,
+  "capSide": 0,
+  "capType": "nc",
+  "dividerColor": "{{appsmith.theme.colors.primaryColor}}",
+  "dynamicBindingPathList": [
+    {
+      "key": "dividerColor"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "isLoading": false,
+  "isVisible": true,
+  "key": "9tglopqsqw",
+  "leftColumn": 3,
+  "minWidth": 450,
+  "mobileBottomRow": 34,
+  "mobileLeftColumn": 2,
+  "mobileRightColumn": 22,
+  "mobileTopRow": 30,
+  "needsErrorInfo": false,
+  "orientation": "horizontal",
+  "originalBottomRow": 73,
+  "originalTopRow": 69,
+  "parentColumnSpace": 13.796875,
+  "parentId": "9jnz2zbys4",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 60,
+  "strokeStyle": "solid",
+  "thickness": "1",
+  "topRow": 69,
+  "type": "DIVIDER_WIDGET",
+  "version": 1,
+  "widgetId": "ijh35kqg55",
+  "widgetName": "Divider_Eco"
+}

@@ -1,0 +1,1 @@
+SELECT * FROM vw_pontuacao_percentagem_global WHERE id_utilizador = '{{appsmith.user.email}}';
