@@ -3,11 +3,11 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "0px",
-  "bottomRow": 71,
+  "bottomRow": 69,
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}\n\n",
+      "data": "{{ Qry_pontuacaoCategoria.data\n    .filter(item => item.dominio === \"Ambiental\")\n    .map(item => ({\n      x: item.categoria,\n      y: item.pontuacao\n    }))\n}}",
       "seriesName": ""
     }
   },
@@ -90,10 +90,10 @@
   "mobileRightColumn": 53,
   "mobileTopRow": 1,
   "needsErrorInfo": true,
-  "originalBottomRow": 71,
+  "originalBottomRow": 69,
   "originalTopRow": 40,
   "parentColumnSpace": 13.796875,
-  "parentId": "f7fm0f1ga5",
+  "parentId": "wo40px8ef8",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
@@ -102,8 +102,8 @@
   "topRow": 40,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "bcgw01p5in",
-  "widgetName": "Chart8",
+  "widgetId": "z7ym5n9puw",
+  "widgetName": "Chart8Copy",
   "xAxisName": "",
   "yAxisName": "Pontuação (%)"
 }
