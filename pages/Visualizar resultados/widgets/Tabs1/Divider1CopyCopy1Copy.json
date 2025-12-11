@@ -1,6 +1,6 @@
 {
   "animateLoading": true,
-  "bottomRow": 34,
+  "bottomRow": 70,
   "capSide": 0,
   "capType": "nc",
   "dividerColor": "{{appsmith.theme.colors.primaryColor}}",
@@ -24,16 +24,16 @@
   "originalBottomRow": 34,
   "originalTopRow": 30,
   "parentColumnSpace": 13.796875,
-  "parentId": "f7fm0f1ga5",
+  "parentId": "3hydrjmf0k",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 60,
   "strokeStyle": "solid",
   "thickness": "1",
-  "topRow": 30,
+  "topRow": 66,
   "type": "DIVIDER_WIDGET",
   "version": 1,
-  "widgetId": "yub560232s",
-  "widgetName": "Divider1"
+  "widgetId": "3d9i97im9z",
+  "widgetName": "Divider1CopyCopy1Copy"
 }

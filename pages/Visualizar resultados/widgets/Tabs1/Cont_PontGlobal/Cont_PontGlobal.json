@@ -30,7 +30,7 @@
       "type": "CANVAS_WIDGET",
       "version": 1,
       "widgetId": "f4ujug3iiv",
-      "widgetName": "Canvas18"
+      "widgetName": "Canvas_PontGlobal"
     }
   ],
   "containerStyle": "card",
@@ -81,5 +81,5 @@
   "type": "CONTAINER_WIDGET",
   "version": 1,
   "widgetId": "lijaxckhk9",
-  "widgetName": "Container5"
+  "widgetName": "Cont_PontGlobal"
 }

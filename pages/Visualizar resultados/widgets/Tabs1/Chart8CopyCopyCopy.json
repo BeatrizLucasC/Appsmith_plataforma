@@ -3,11 +3,11 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "0px",
-  "bottomRow": 71,
+  "bottomRow": 104,
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}\n\n",
+      "data": "{{ Qry_pontuacaoIndicador.data\n    .filter(item => item.dominio === \"Social\")\n    .map(item => ({\n      x: item.indicador,\n      y: item.pontuacao\n    }))\n}}",
       "seriesName": ""
     }
   },
@@ -90,20 +90,20 @@
   "mobileRightColumn": 53,
   "mobileTopRow": 1,
   "needsErrorInfo": true,
-  "originalBottomRow": 71,
-  "originalTopRow": 40,
+  "originalBottomRow": 108,
+  "originalTopRow": 79,
   "parentColumnSpace": 13.796875,
-  "parentId": "f7fm0f1ga5",
+  "parentId": "3hydrjmf0k",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 31,
   "showDataPointLabel": true,
-  "topRow": 40,
+  "topRow": 75,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "bcgw01p5in",
-  "widgetName": "Chart8",
+  "widgetId": "hiz6rmsyiz",
+  "widgetName": "Chart8CopyCopyCopy",
   "xAxisName": "",
   "yAxisName": "Pontuação (%)"
 }

@@ -4,7 +4,7 @@
   "borderColor": "#ffffff",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 66,
+  "bottomRow": 63,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -32,10 +32,10 @@
     }
   },
   "columnOrder": [
-    "dominio",
+    "categoria",
     "nivel"
   ],
-  "columnUpdatedAt": 1765382264167,
+  "columnUpdatedAt": 1765384928311,
   "columnWidthMap": {},
   "compactMode": "TALL",
   "customIsLoading": false,
@@ -60,10 +60,10 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.dominio.computedValue"
+      "key": "primaryColumns.nivel.computedValue"
     },
     {
-      "key": "primaryColumns.nivel.computedValue"
+      "key": "primaryColumns.categoria.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -86,7 +86,7 @@
   "isVisibleSearch": false,
   "key": "4i5uabu0l4",
   "label": "Data",
-  "leftColumn": 32,
+  "leftColumn": 33,
   "minWidth": 450,
   "mobileBottomRow": 127,
   "mobileLeftColumn": 0,
@@ -96,22 +96,22 @@
   "originalBottomRow": 66,
   "originalTopRow": 40,
   "parentColumnSpace": 13.796875,
-  "parentId": "f7fm0f1ga5",
+  "parentId": "3hydrjmf0k",
   "parentRowSpace": 10,
   "primaryColumns": {
-    "dominio": {
-      "alias": "dominio",
+    "categoria": {
+      "alias": "categoria",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"dominio\"])) : dominio })()}}",
+      "computedValue": "{{(() => { const tableData = Table2CopyCopy1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
       "horizontalAlignment": "LEFT",
-      "id": "dominio",
-      "index": 2,
+      "id": "categoria",
+      "index": 0,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -120,9 +120,9 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Domínio",
+      "label": "Categoria",
       "notation": "standard",
-      "originalId": "dominio",
+      "originalId": "categoria",
       "sticky": "",
       "textSize": "1rem",
       "thousandSeparator": true,
@@ -135,7 +135,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nivel\"])) : nivel })()}}",
+      "computedValue": "{{(() => { const tableData = Table2CopyCopy1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nivel\"])) : nivel })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -164,16 +164,16 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 62,
+  "rightColumn": 63,
   "searchKey": "",
-  "tableData": "{{   Qry_pontuacaoDominio.data.map(({ dominio, pontuacao, nivel }) => ({\n    dominio,        // keep\n    nivel           // keep\n  }))\n}}\n",
+  "tableData": "{{\n  Qry_pontuacaoCategoria.data\n    .filter(({ dominio }) => dominio === \"Social\")\n    .map(({ categoria, nivel }) => ({ categoria, nivel }))\n}}\n\n",
   "textSize": "1rem",
-  "topRow": 40,
+  "topRow": 37,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "variant": "VARIANT3",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "v0ye9sz2xl",
-  "widgetName": "Table2"
+  "widgetId": "gzlpk01i6k",
+  "widgetName": "Table2CopyCopy1"
 }
