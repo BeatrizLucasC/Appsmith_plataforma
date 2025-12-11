@@ -3,7 +3,7 @@
   "backgroundColor": "#ffffff",
   "borderColor": "{{appsmith.theme.colors.backgroundColor}}",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 77,
+  "bottomRow": 38,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -32,8 +32,8 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 77,
-  "originalTopRow": 73,
+  "originalBottomRow": 38,
+  "originalTopRow": 34,
   "overflow": "NONE",
   "parentColumnSpace": 1.845703125,
   "parentId": "wo40px8ef8",
@@ -42,13 +42,13 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Pontuação por indicador",
+  "text": "Pontuação por categoria",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 73,
+  "topRow": 34,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "6ptw8qcfpl",
-  "widgetName": "Text22CopyCopy1CopyCopy"
+  "widgetId": "rt6gc0gtgq",
+  "widgetName": "Txt_pontCatAmb"
 }

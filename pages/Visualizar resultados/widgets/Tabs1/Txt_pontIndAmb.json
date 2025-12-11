@@ -1,13 +1,18 @@
 {
   "animateLoading": true,
+  "backgroundColor": "#ffffff",
+  "borderColor": "{{appsmith.theme.colors.backgroundColor}}",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 5,
+  "bottomRow": 77,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "borderColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -18,7 +23,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "aranrxpp2a",
-  "leftColumn": 0,
+  "leftColumn": 1,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -27,23 +32,23 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 5,
-  "originalTopRow": 0,
+  "originalBottomRow": 77,
+  "originalTopRow": 73,
   "overflow": "NONE",
   "parentColumnSpace": 1.845703125,
-  "parentId": "3hydrjmf0k",
+  "parentId": "wo40px8ef8",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Pontuação global",
+  "text": "Pontuação por indicador",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 1,
+  "topRow": 73,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "ee5l76bf6g",
-  "widgetName": "Text22CopyCopy2Copy"
+  "widgetId": "6ptw8qcfpl",
+  "widgetName": "Txt_pontIndAmb"
 }

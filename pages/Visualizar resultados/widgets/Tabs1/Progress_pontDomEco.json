@@ -1,6 +1,6 @@
 {
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 29,
+  "bottomRow": 25,
   "counterClockwise": true,
   "counterClosewise": false,
   "dynamicBindingPathList": [
@@ -31,18 +31,18 @@
   "originalBottomRow": 26,
   "originalTopRow": 5,
   "parentColumnSpace": 1.845703125,
-  "parentId": "3hydrjmf0k",
+  "parentId": "9jnz2zbys4",
   "parentRowSpace": 10,
-  "progress": "{{Qry_pontuacaoDominio.data[1].pontuacao}}",
+  "progress": "{{Qry_pontuacaoDominio.data[2].pontuacao}}",
   "progressType": "circular",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "showResult": true,
   "steps": "1",
-  "topRow": 10,
+  "topRow": 6,
   "type": "PROGRESS_WIDGET",
   "version": 1,
-  "widgetId": "jn9xvzqbb8",
-  "widgetName": "Progress1CopyCopy"
+  "widgetId": "3wdp8p9h7j",
+  "widgetName": "Progress_pontDomEco"
 }
