@@ -7,8 +7,12 @@
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}\n\n",
-      "seriesName": ""
+      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}",
+      "seriesName": "A minha pontuação"
+    },
+    "frnhovg9r2": {
+      "data": "{{ Qry_pontuacaoDominio_m.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_media})) }}",
+      "seriesName": "Pontuação média"
     }
   },
   "chartName": "",
@@ -73,6 +77,9 @@
     },
     {
       "key": "chartData.daky6d1lh1.data"
+    },
+    {
+      "key": "chartData.frnhovg9r2.data"
     }
   ],
   "dynamicPropertyPathList": [],
@@ -98,6 +105,7 @@
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 31,
+  "setAdaptiveYMin": false,
   "showDataPointLabel": true,
   "topRow": 42,
   "type": "CHART_WIDGET",

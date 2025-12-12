@@ -8,7 +8,11 @@
   "chartData": {
     "daky6d1lh1": {
       "data": "{{ Qry_pontuacaoIndicador.data\n    .filter(item => item.dominio === \"Ambiental\")\n    .map(item => ({\n      x: item.indicador,\n      y: item.pontuacao\n    }))\n}}",
-      "seriesName": ""
+      "seriesName": "A minha pontuação"
+    },
+    "otk6m0szpc": {
+      "data": "{{ Qry_pontuacaoIndicador_m.data.filter(item => item.dominio === \"Ambiental\")\n    .map(item => ({\n      x: item.indicador,\n      y: item.pontuacao_media\n    }))\n}}",
+      "seriesName": "Pontuação média"
     }
   },
   "chartName": "",
@@ -73,6 +77,9 @@
     },
     {
       "key": "chartData.daky6d1lh1.data"
+    },
+    {
+      "key": "chartData.otk6m0szpc.data"
     }
   ],
   "dynamicPropertyPathList": [],

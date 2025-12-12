@@ -30,6 +30,6 @@
     "name": "Qry_pontuacaoCategoria",
     "pageId": "Comparação com a média",
     "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }

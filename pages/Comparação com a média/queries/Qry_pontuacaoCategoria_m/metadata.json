@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_1894f1a2-4f83-49d1-82b6-7c30f793fb13",
-  "id": "Comparação com a média_Qry_pontuacaoDominio",
+  "gitSyncId": "692f23e7862bc92544420b37_9e1297e1-17e6-44b1-8229-5657a17b71b7",
+  "id": "Comparação com a média_Qry_pontuacaoCategoria_m",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_pontuacao_percentagem_dominio WHERE id_utilizador = '{{appsmith.user.email}}';",
+      "body": "SELECT * FROM vw_score_user_avg_categoria WHERE id_utilizador = '{{appsmith.user.email}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,7 +27,7 @@
         "key": "body"
       }
     ],
-    "name": "Qry_pontuacaoDominio",
+    "name": "Qry_pontuacaoCategoria_m",
     "pageId": "Comparação com a média",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": true
