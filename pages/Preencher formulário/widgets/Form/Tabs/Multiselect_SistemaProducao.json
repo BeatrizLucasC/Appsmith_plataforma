@@ -64,7 +64,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 40,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Culturas Anuais\", \"value\": \"SP_Culturas_Anuais\" },\n  { \"label\": \"Culturas Permanentes\", \"value\": \"SP_Culturas_Permanentes\" },\n  { \"label\": \"Produção Animal\", \"value\": \"SP_Producao_Animal\" }\n]",
+  "sourceData": "[\n  { \"label\": \"Culturas Anuais\", \"value\": \"sp_culturas_anuais\" },\n  { \"label\": \"Culturas Permanentes\", \"value\": \"sp_culturas_permanentes\" },\n  { \"label\": \"Produção Animal\", \"value\": \"sp_producao_animal\" }\n]",
   "topRow": 10,
   "type": "MULTI_SELECT_WIDGET_V2",
   "version": 1,

@@ -7,7 +7,7 @@
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacaoIndicador.data\n    .filter(item => item.dominio === \"Económico\")\n    .map(item => ({\n      x: item.indicador,\n      y: item.pontuacao\n    }))\n}}",
+      "data": "{{ Qry_pontuacaoIndicador.data\n    .filter(item => item.dominio === \"Económico\")\n    .map(item => ({\n      x: item.indicador,\n      y: item.pontuacao_user\n    }))\n}}",
       "seriesName": ""
     }
   },

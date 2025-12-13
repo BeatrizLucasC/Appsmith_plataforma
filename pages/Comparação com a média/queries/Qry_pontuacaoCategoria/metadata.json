@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_1ac40183-edd8-421a-b19e-e5c3a99b9df4",
+  "gitSyncId": "692f23e7862bc92544420b37_9e1297e1-17e6-44b1-8229-5657a17b71b7",
   "id": "Comparação com a média_Qry_pontuacaoCategoria",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_pontuacao_percentagem_categoria WHERE id_utilizador = '{{appsmith.user.email}}';",
+      "body": "SELECT * FROM vw_score_user_avg_categoria WHERE id_utilizador = '{{appsmith.user.email}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

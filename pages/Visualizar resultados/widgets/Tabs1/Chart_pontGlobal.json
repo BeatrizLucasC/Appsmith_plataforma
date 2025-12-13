@@ -7,7 +7,7 @@
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}\n\n",
+      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_user})) }}\n\n",
       "seriesName": ""
     }
   },

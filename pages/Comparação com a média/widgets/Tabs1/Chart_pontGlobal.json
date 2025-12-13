@@ -7,11 +7,11 @@
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao})) }}",
+      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_user})) }}",
       "seriesName": "A minha pontuação"
     },
     "frnhovg9r2": {
-      "data": "{{ Qry_pontuacaoDominio_m.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_media})) }}",
+      "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_media})) }}",
       "seriesName": "Pontuação média"
     }
   },

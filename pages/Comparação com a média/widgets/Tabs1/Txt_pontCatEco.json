@@ -3,7 +3,7 @@
   "backgroundColor": "#ffffff",
   "borderColor": "{{appsmith.theme.colors.backgroundColor}}",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 40,
+  "bottomRow": 41,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -45,7 +45,7 @@
   "text": "Pontuação por categoria",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 36,
+  "topRow": 37,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

@@ -64,7 +64,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 40,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"GlobalGAP\", \"value\": \"GlobalGAP\" },\n  { \"label\": \"SPRING\", \"value\": \"SPRING\" }\n]",
+  "sourceData": "[\n  { \"label\": \"GlobalGAP\", \"value\": \"globalgap\" },\n  { \"label\": \"SPRING\", \"value\": \"spring\" }\n]",
   "topRow": 18,
   "type": "MULTI_SELECT_WIDGET_V2",
   "version": 1,

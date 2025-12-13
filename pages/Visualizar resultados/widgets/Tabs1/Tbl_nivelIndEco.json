@@ -33,10 +33,10 @@
   },
   "columnOrder": [
     "categoria",
-    "nivel",
-    "indicador"
+    "indicador",
+    "nivel_user"
   ],
-  "columnUpdatedAt": 1765388517139,
+  "columnUpdatedAt": 1765556718003,
   "columnWidthMap": {},
   "compactMode": "TALL",
   "customIsLoading": false,
@@ -61,13 +61,13 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.nivel.computedValue"
-    },
-    {
       "key": "primaryColumns.categoria.computedValue"
     },
     {
       "key": "primaryColumns.indicador.computedValue"
+    },
+    {
+      "key": "primaryColumns.nivel_user.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -165,19 +165,21 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "nivel": {
-      "alias": "nivel",
+    "nivel_user": {
+      "alias": "nivel_user",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Tbl_nivelIndEco.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nivel\"])) : nivel })()}}",
+      "computedValue": "{{(() => { const tableData = Tbl_nivelIndEco.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nivel_user\"])) : nivel_user })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
+      "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "nivel",
-      "index": 4,
+      "id": "nivel_user",
+      "index": 2,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -188,8 +190,9 @@
       "isVisible": true,
       "label": "Nível",
       "notation": "standard",
-      "originalId": "nivel",
+      "originalId": "nivel_user",
       "sticky": "",
+      "textColor": "",
       "textSize": "1rem",
       "thousandSeparator": true,
       "validation": {},
@@ -201,7 +204,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "searchKey": "",
-  "tableData": "{{\n  Qry_pontuacaoIndicador.data\n    .filter(({ dominio }) => dominio === \"Económico\")\n    .map(({ categoria, indicador, nivel }) => ({ categoria, indicador, nivel }))\n}}\n\n",
+  "tableData": "{{\n  Qry_pontuacaoIndicador.data\n    .filter(({ dominio }) => dominio === \"Económico\")\n    .map(({ categoria, indicador, nivel_user }) => ({ categoria, indicador, nivel_user }))\n}}\n\n",
   "textSize": "1rem",
   "topRow": 78,
   "totalRecordsCount": 0,

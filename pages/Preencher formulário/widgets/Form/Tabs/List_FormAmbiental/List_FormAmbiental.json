@@ -71,9 +71,6 @@
       "key": "triggeredItemView"
     },
     {
-      "key": "primaryKeys"
-    },
-    {
       "key": "accentColor"
     },
     {
@@ -84,6 +81,9 @@
     },
     {
       "key": "listData"
+    },
+    {
+      "key": "primaryKeys"
     }
   ],
   "dynamicPropertyPathList": [],
@@ -114,16 +114,16 @@
   "parentColumnSpace": 22.109375,
   "parentId": "ube31dodxs",
   "parentRowSpace": 10,
-  "primaryKeys": "{{List_FormAmbiental.listData.map((currentItem, currentIndex) => currentItem[\"Código\"] )}}",
+  "primaryKeys": "{{List_FormAmbiental.listData.map((currentItem, currentIndex) => currentItem[\"id_pergunta\"] )}}",
   "renderMode": "CANVAS",
   "requiresFlatWidgetChildren": true,
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "selectedItemView": "{{{}}}",
-  "serverSidePagination": false,
+  "serverSidePagination": true,
   "templateHeight": 160,
   "topRow": 0,
-  "totalRecordsCount": "20\n",
+  "totalRecordsCount": "10",
   "triggeredItemView": "{{{}}}",
   "type": "LIST_WIDGET_V2",
   "widgetId": "n9hi05tcd6",

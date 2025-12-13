@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT id_pergunta, resposta\nFROM frespostas\nWHERE id_utilizador = '{{ appsmith.user.email }}'\n  AND dominio = 'económico'\n  AND ano = (\n    SELECT MAX(ano)\n    FROM frespostas\n    WHERE id_utilizador = '{{ appsmith.user.email }}'\n      AND dominio = 'económico'\n  );",
+      "body": "SELECT id_pergunta, resposta\nFROM respostas\nWHERE id_utilizador = '{{ appsmith.user.email }}'\n  AND dominio = 'económico'\n  AND ano = (\n    SELECT MAX(ano)\n    FROM respostas\n    WHERE id_utilizador = '{{ appsmith.user.email }}'\n      AND dominio = 'económico'\n  );",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

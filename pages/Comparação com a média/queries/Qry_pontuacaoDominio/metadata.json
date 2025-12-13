@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_1894f1a2-4f83-49d1-82b6-7c30f793fb13",
+  "gitSyncId": "692f23e7862bc92544420b37_461b5a04-ecdb-497a-a361-eff76159d759",
   "id": "Comparação com a média_Qry_pontuacaoDominio",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_pontuacao_percentagem_dominio WHERE id_utilizador = '{{appsmith.user.email}}';",
+      "body": "SELECT * FROM vw_score_user_avg_dominio WHERE id_utilizador = '{{appsmith.user.email}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

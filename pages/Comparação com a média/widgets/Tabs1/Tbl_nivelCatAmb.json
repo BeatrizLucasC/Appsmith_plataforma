@@ -207,7 +207,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "searchKey": "",
-  "tableData": "{{ Qry_pontuacaoCategoria_m.data\n    .filter(({ dominio }) => dominio === \"Ambiental\")\n    .map(({ categoria, nivel_user, nivel_media }) => ({ categoria, nivel_user, nivel_media }))\n}}\n\n",
+  "tableData": "{{ Qry_pontuacaoCategoria.data\n    .filter(({ dominio }) => dominio === \"Ambiental\")\n    .map(({ categoria, nivel_user, nivel_media }) => ({ categoria, nivel_user, nivel_media }))\n}}\n\n",
   "textSize": "1rem",
   "topRow": 42,
   "totalRecordsCount": 0,

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM alquevasustentavel.\"fPerguntas\" ORDER BY \"Código\";\n\n",
+      "body": "SELECT * FROM alquevasustentavel.perguntas ORDER BY id_pergunta;\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

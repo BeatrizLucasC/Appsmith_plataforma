@@ -207,7 +207,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 62,
   "searchKey": "",
-  "tableData": "{{   Qry_pontuacaoDominio_m.data.map(({ dominio, nivel_user, nivel_media }) => ({\n    dominio, \n    nivel_user,\n\t\tnivel_media \n  }))\n}}\n",
+  "tableData": "{{   Qry_pontuacaoDominio.data.map(({ dominio, nivel_user, nivel_media }) => ({\n    dominio, \n    nivel_user,\n\t\tnivel_media \n  }))\n}}\n",
   "textSize": "1rem",
   "topRow": 42,
   "totalRecordsCount": 0,

@@ -1,1 +1,1 @@
-SELECT * FROM vw_pontuacao_percentagem_global WHERE id_utilizador = '{{appsmith.user.email}}';
+SELECT * FROM vw_score_user_avg_global WHERE id_utilizador = '{{appsmith.user.email}}';

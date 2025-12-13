@@ -43,7 +43,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "{{Qry_pontuacaoDominio.data[2].nivel}}",
+  "text": "{{Qry_pontuacaoDominio.data[2].nivel_user}}",
   "textAlign": "CENTER",
   "textColor": "#231F20",
   "topRow": 25,

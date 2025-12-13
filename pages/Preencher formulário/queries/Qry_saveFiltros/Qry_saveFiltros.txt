@@ -1,4 +1,4 @@
-INSERT INTO fSelecoesFiltros (
+INSERT INTO selecoes_filtros (
   utilizador_ano,
   id_utilizador,
   ano,

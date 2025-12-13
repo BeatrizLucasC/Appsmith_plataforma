@@ -33,7 +33,7 @@
   "parentColumnSpace": 1.845703125,
   "parentId": "3hydrjmf0k",
   "parentRowSpace": 10,
-  "progress": "{{Qry_pontuacaoDominio.data[1].pontuacao}}",
+  "progress": "{{Qry_pontuacaoDominio.data[1].pontuacao_user}}",
   "progressType": "circular",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",

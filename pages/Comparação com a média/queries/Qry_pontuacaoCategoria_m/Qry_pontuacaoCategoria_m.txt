@@ -1,1 +1,0 @@
-SELECT * FROM vw_score_user_avg_categoria WHERE id_utilizador = '{{appsmith.user.email}}';

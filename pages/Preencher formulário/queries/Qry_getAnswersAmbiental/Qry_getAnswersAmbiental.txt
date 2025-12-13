@@ -1,10 +1,10 @@
 SELECT id_pergunta, resposta
-FROM frespostas
+FROM respostas
 WHERE id_utilizador = '{{ appsmith.user.email }}'
   AND dominio = 'ambiental'
   AND ano = (
     SELECT MAX(ano)
-    FROM frespostas
+    FROM respostas
     WHERE id_utilizador = '{{ appsmith.user.email }}'
       AND dominio = 'ambiental'
   );

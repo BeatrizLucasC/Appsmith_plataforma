@@ -1,2 +1,2 @@
-SELECT * FROM alquevasustentavel."fPerguntas" ORDER BY "Código";
+SELECT * FROM alquevasustentavel.perguntas ORDER BY id_pergunta;
 

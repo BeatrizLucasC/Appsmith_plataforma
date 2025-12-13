@@ -1,5 +1,5 @@
 SELECT 1
-FROM fSelecoesFiltros
+FROM selecoes_filtros
 WHERE utilizador_ano = '{{this.params.utilizador_ano }}'
 LIMIT 1;
 
