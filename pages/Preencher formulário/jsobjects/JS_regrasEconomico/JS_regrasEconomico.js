@@ -1,180 +1,180 @@
 export default {
-  // Armazena respostas do utilizador
-  answers: {},
+	// Armazena respostas do utilizador
+	answers: {},
 
-  // 1️⃣ Obter todas as perguntas do domínio "Económico"
-  getQuestions() {
-    const data = Qry_getQuestions.data || [];
-    return data.filter(q => String(q.dominio || "").trim().toLowerCase() === "económico");
-  },
+	// 1️⃣ Obter todas as perguntas do domínio "Económico"
+	getQuestions() {
+		const data = Qry_getQuestions.data || [];
+		return data.filter(q => String(q.dominio || "").trim().toLowerCase() === "económico");
+	},
 
-  // 2️⃣ Filtrar perguntas com base nos widgets
-  // Dimensão e Sistema → OU; Certificação com "N" → bloqueia
-  filterQuestions() {
-    const all = this.getQuestions();
-    if (!all.length) return [];
+	// 2️⃣ Filtrar perguntas com base nos widgets
+	// Dimensão e Sistema → OU; Certificação com "N" → bloqueia
+	filterQuestions() {
+		const all = this.getQuestions();
+		if (!all.length) return [];
 
-    const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
-    const selectedSP = Multiselect_SistemaProducao.selectedOptionValues || [];
-    const selectedDE = Select_Dimensao.selectedOptionValue ? [Select_Dimensao.selectedOptionValue] : [];
+		const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
+		const selectedSP = Multiselect_SistemaProducao.selectedOptionValues || [];
+		const selectedDE = Select_Dimensao.selectedOptionValue ? [Select_Dimensao.selectedOptionValue] : [];
 
-    return all.filter(q => {
-      const hasCertN = selectedCert.some(col => q[col] === "N");
-      if (hasCertN) return false;
+		return all.filter(q => {
+			const hasCertN = selectedCert.some(col => q[col] === "N");
+			if (hasCertN) return false;
 
-      const hasSP = selectedSP.some(col => q[col] === "S");
-      const hasDE = selectedDE.some(col => q[col] === "S");
+			const hasSP = selectedSP.some(col => q[col] === "S");
+			const hasDE = selectedDE.some(col => q[col] === "S");
 
-      if (selectedCert.length === 0 && selectedSP.length === 0 && selectedDE.length === 0) return true;
+			if (selectedCert.length === 0 && selectedSP.length === 0 && selectedDE.length === 0) return true;
 
-      return hasSP || hasDE;
-    });
-  },
+			return hasSP || hasDE;
+		});
+	},
 
-  // ✅ 2.1 Função auxiliar: devolve todas as perguntas filtradas (sem condicionalidades)
-  getAllFilteredQuestions() {
-    return this.filterQuestions();
-  },
+	// ✅ 2.1 Função auxiliar: devolve todas as perguntas filtradas (sem condicionalidades)
+	getAllFilteredQuestions() {
+		return this.filterQuestions();
+	},
 
-  // 3️⃣ Perguntas visíveis com condicionalidades
-  getVisibleQuestions() {
-    const all = this.filterQuestions();
-    const answers = this.answers || {};
-    if (!all.length) return [];
+	// 3️⃣ Perguntas visíveis com condicionalidades
+	getVisibleQuestions() {
+		const all = this.filterQuestions();
+		const answers = this.answers || {};
+		if (!all.length) return [];
 
-    const byId = Object.fromEntries(all.map(q => [String(q.id_pergunta), q]));
-    const visible = [];
-    let currentIndex = 0;
+		const byId = Object.fromEntries(all.map(q => [String(q.id_pergunta), q]));
+		const visible = [];
+		let currentIndex = 0;
 
-    while (currentIndex < all.length) {
-      const current = all[currentIndex];
-      visible.push(current);
+		while (currentIndex < all.length) {
+			const current = all[currentIndex];
+			visible.push(current);
 
-      const id = String(current.id_pergunta);
-      const ans = answers[id];
+			const id = String(current.id_pergunta);
+			const ans = answers[id];
 
-      let nextId = null;
-      if (ans === "Sim" && current.condicao_sim) nextId = current.condicao_sim;
-      else if (ans === "Não" && current.condicao_nao) nextId = current.condicao_nao;
-      else if (ans === "NA" && current.condicao_na) nextId = current.condicao_na;
+			let nextId = null;
+			if (ans === "Sim" && current.condicao_sim) nextId = current.condicao_sim;
+			else if (ans === "Não" && current.condicao_nao) nextId = current.condicao_nao;
+			else if (ans === "NA" && current.condicao_na) nextId = current.condicao_na;
 
-      if (nextId && byId[nextId]) {
-        currentIndex = all.findIndex(q => String(q.id_pergunta) === nextId);
-      } else {
-        currentIndex++;
-      }
-    }
+			if (nextId && byId[nextId]) {
+				currentIndex = all.findIndex(q => String(q.id_pergunta) === nextId);
+			} else {
+				currentIndex++;
+			}
+		}
 
-    return visible;
-  },
+		return visible;
+	},
 
-  // 4️⃣ Construir label da pergunta
-  questionLabel: row => (row ? `${row.id_pergunta || ""} — ${row.pergunta || ""}` : ""),
+	// 4️⃣ Construir label da pergunta
+	questionLabel: row => (row ? `${row.id_pergunta || ""} — ${row.pergunta || ""}` : ""),
 
-  // 5️⃣ Opções do RadioGroup (NA só se coluna "na" = "S")
-  radioOptions(row) {
-    const options = [
-      { label: "Sim", value: "Sim" },
-      { label: "Não", value: "Não" }
-    ];
-    if (row.na === "S") options.unshift({ label: "NA", value: "NA" });
-    return options;
-  },
+	// 5️⃣ Opções do RadioGroup (NA só se coluna "na" = "S")
+	radioOptions(row) {
+		const options = [
+			{ label: "Sim", value: "Sim" },
+			{ label: "Não", value: "Não" }
+		];
+		if (row.na === "S") options.unshift({ label: "NA", value: "NA" });
+		return options;
+	},
 
-  // 6️⃣ Obter resposta selecionada
-  selectedValue(row) {
-    return this.answers?.[row.id_pergunta] || "";
-  },
+	// 6️⃣ Obter resposta selecionada
+	selectedValue(row) {
+		return this.answers?.[row.id_pergunta] || "";
+	},
 
-  // 7️⃣ Atualizar resposta quando o utilizador seleciona
-  onSelectionChange(row, selectedValue) {
-    if (!row) return;
-    this.answers = { ...this.answers, [String(row.id_pergunta)]: selectedValue };
-  },
+	// 7️⃣ Atualizar resposta quando o utilizador seleciona
+	onSelectionChange(row, selectedValue) {
+		if (!row) return;
+		this.answers = { ...this.answers, [String(row.id_pergunta)]: selectedValue };
+	},
 
-  // 8️⃣ Preparar respostas para guardar
-  prepareAnswers() {
-    const all = this.getVisibleQuestions();
-    const userEmail = appsmith.user.email || "unknown_user";
-    const year = new Date().getFullYear();
-    const answers = this.answers || {};
-    const dominio = "economico";
+	// 8️⃣ Preparar respostas para guardar
+	prepareAnswers() {
+		const all = this.getVisibleQuestions();
+		const userEmail = appsmith.user.email || "unknown_user";
+		const year = new Date().getFullYear();
+		const answers = this.answers || {};
+		const dominio = "economico";
 
-    return all.map(q => ({
-      id_resposta: `${userEmail}_${year}_${q.id_pergunta}`,
-      id_pergunta: q.id_pergunta,
-      id_utilizador: userEmail,
-      resposta: answers[q.id_pergunta] ? String(answers[q.id_pergunta]).trim() : null,
-      ano: year,
-      dominio
-    }));
-  },
+		return all.map(q => ({
+			id_resposta: `${userEmail}_${year}_${q.id_pergunta}`,
+			id_pergunta: q.id_pergunta,
+			id_utilizador: userEmail,
+			resposta: answers[q.id_pergunta] ? String(answers[q.id_pergunta]).trim() : null,
+			ano: year,
+			dominio
+		}));
+	},
 
-  // 9️⃣ Construir valores SQL para inserção
-  buildValues() {
-    const prepared = this.prepareAnswers();
-    if (!prepared.length) return "('none','none','none',NULL,NOW(),0,'economico')";
-    return prepared
-      .map(ans => {
-        const safeVal = ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
-        return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano}, '${ans.dominio}')`;
-      })
-      .join(", ");
-  },
+	// 9️⃣ Construir valores SQL para inserção
+	buildValues() {
+		const prepared = this.prepareAnswers();
+		if (!prepared.length) return "('none','none','none',NULL,NOW(),0,'economico')";
+		return prepared
+			.map(ans => {
+			const safeVal = ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
+			return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano}, '${ans.dominio}')`;
+		})
+			.join(", ");
+	},
 
-  // 🔟 Verificar se todas as perguntas visíveis foram respondidas
-  isReadyToSubmit() {
-    const visibleQuestions = this.getVisibleQuestions();
-    return visibleQuestions.every(q => ["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta]));
-  },
+	// 🔟 Verificar se todas as perguntas visíveis foram respondidas
+	isReadyToSubmit() {
+		const visibleQuestions = this.getVisibleQuestions();
+		return visibleQuestions.every(q => ["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta]));
+	},
 
-  // 1️⃣1️⃣ Submeter respostas
-  async onSubmit() {
-    if (!this.isReadyToSubmit()) {
-      showAlert("É necessário responder a todas as perguntas para submeter.", "warning");
-      return;
-    }
-    await Qry_checkExistingEconomico.run();
-    const hasExisting = Array.isArray(Qry_checkExistingEconomico.data) && Qry_checkExistingEconomico.data.length > 0;
-    if (hasExisting) {
-      showModal("Modal_ConfirmEconomico");
-    } else {
-      await Qry_saveAnswersEconomico.run();
-      showAlert("Respostas do domínio económico submetidas com sucesso!", "success");
-    }
-  },
+	// 1️⃣1️⃣ Submeter respostas
+	async onSubmit() {
+		if (!this.isReadyToSubmit()) {
+			showAlert("É necessário responder a todas as perguntas para submeter.", "warning");
+			return;
+		}
+		await Qry_checkExistingEconomico.run();
+		const hasExisting = Array.isArray(Qry_checkExistingEconomico.data) && Qry_checkExistingEconomico.data.length > 0;
+		if (hasExisting) {
+			showModal("Modal_ConfirmEconomico");
+		} else {
+			await Qry_saveAnswersEconomico.run();
+			showAlert("Respostas do domínio económico submetidas com sucesso!", "success");
+		}
+	},
 
-  // 1️⃣2️⃣ Confirmar substituição
-  async confirmReplace() {
-    await Qry_saveAnswersEconomico.run();
-    closeModal("Modal_ConfirmEconomico");
-    showAlert("Respostas substituídas com sucesso!", "success");
-  },
+	// 1️⃣2️⃣ Confirmar substituição
+	async confirmReplace() {
+		await Qry_saveAnswersEconomico.run();
+		closeModal("Modal_ConfirmEconomico");
+		showAlert("Respostas substituídas com sucesso!", "success");
+	},
 
-  // 1️⃣3️⃣ Cancelar substituição
-  cancelReplace() {
-    closeModal("Modal_ConfirmEconomico");
-    showAlert("Substituição cancelada.", "info");
-  },
+	// 1️⃣3️⃣ Cancelar substituição
+	cancelReplace() {
+		closeModal("Modal_ConfirmEconomico");
+		showAlert("Substituição cancelada.", "info");
+	},
 
-  // 1️⃣4️⃣ Carregar respostas anteriores
-  loadPreviousAnswers() {
-    const data = Qry_getAnswersEconomico.data || [];
-    const mapped = {};
-    data.forEach(row => {
-      if (row.id_pergunta && row.resposta) {
-        mapped[String(row.id_pergunta)] = row.resposta;
-      }
-    });
-    this.answers = mapped;
-  },
+	// 1️⃣4️⃣ Carregar respostas anteriores
+	loadPreviousAnswers() {
+		const data = Qry_getAnswersEconomico.data || [];
+		const mapped = {};
+		data.forEach(row => {
+			if (row.id_pergunta && row.resposta) {
+				mapped[String(row.id_pergunta)] = row.resposta;
+			}
+		});
+		this.answers = mapped;
+	},
 
-  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
-  async aplicarFiltrosECarregarRespostas() {
-    const perguntas = this.getAllFilteredQuestions();
-    if (perguntas.length > 0) {
-      await Qry_getAnswersEconomico.run();
-      this.loadPreviousAnswers();
-    }
-  }
+	// 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
+	async aplicarFiltrosECarregarRespostas() {
+		const perguntas = this.getAllFilteredQuestions();
+		if (perguntas.length > 0) {
+			await Qry_getAnswersEconomico.run();
+			this.loadPreviousAnswers();
+		}
+	}
 };

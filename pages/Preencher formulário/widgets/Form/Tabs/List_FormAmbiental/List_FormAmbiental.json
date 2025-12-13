@@ -120,7 +120,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "selectedItemView": "{{{}}}",
-  "serverSidePagination": true,
+  "serverSidePagination": false,
   "templateHeight": 160,
   "topRow": 0,
   "totalRecordsCount": "10",
