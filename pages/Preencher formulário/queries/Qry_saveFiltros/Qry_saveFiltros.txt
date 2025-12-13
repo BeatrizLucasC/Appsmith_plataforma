@@ -7,7 +7,7 @@ INSERT INTO selecoes_filtros (
   dimensao,
   data_registo
 )
-VALUES {{ JS_Filtros.buildValoresFiltros() }}
+VALUES {{ JS_filtros.buildValoresFiltros() }}
 ON CONFLICT (utilizador_ano)
 DO UPDATE SET
   certificacoes = EXCLUDED.certificacoes,

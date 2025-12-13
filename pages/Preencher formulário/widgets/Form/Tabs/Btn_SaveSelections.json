@@ -32,7 +32,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 28,
   "needsErrorInfo": false,
-  "onClick": "{{JS_Filtros.guardarFiltrosEAtivarAbas();\nJS_regrasAmbiental.aplicarFiltrosECarregarRespostas();\nJS_regrasSocial.aplicarFiltrosECarregarRespostas();\nJS_regrasEconomico.aplicarFiltrosECarregarRespostas();}}",
+  "onClick": "{{JS_filtros.guardarFiltrosEAtivarAbas();\nJS_regrasAmbiental.aplicarFiltrosECarregarRespostas();\nJS_regrasSocial.aplicarFiltrosECarregarRespostas();\nJS_regrasEconomico.aplicarFiltrosECarregarRespostas();}}",
   "parentColumnSpace": 25.296875,
   "parentId": "s6o0bco9ed",
   "parentRowSpace": 10,

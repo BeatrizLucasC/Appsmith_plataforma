@@ -37,7 +37,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{JS_Filtros.confirmReplaceFilterSelections()}}",
+  "onClick": "{{JS_filtros.confirmReplaceFilterSelections()}}",
   "originalBottomRow": 19,
   "originalTopRow": 15,
   "parentId": "adht6ewqr0",

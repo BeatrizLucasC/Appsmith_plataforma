@@ -2,7 +2,7 @@ SELECT 1
 FROM respostas
 WHERE id_utilizador = '{{ appsmith.user.email }}'
   AND ano = {{ new Date().getFullYear() }}
-  AND LOWER(dominio) = 'económico'
+  AND LOWER(TRANSLATE(dominio,'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ','aeiouaaeoocAEIOUAAEOOC')) = 'economico'
 LIMIT 1;
 
 

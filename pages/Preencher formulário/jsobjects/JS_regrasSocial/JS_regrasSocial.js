@@ -49,30 +49,41 @@ export default {
     if (!all.length) return [];
 
     const byId = Object.fromEntries(all.map(q => [String(q.id_pergunta), q]));
+
     const visible = [];
+    const visited = new Set();
     let currentIndex = 0;
 
     while (currentIndex < all.length) {
       const current = all[currentIndex];
+      const id = String(current.id_pergunta);
+
+      // Proteção contra loops
+      if (visited.has(id)) break;
+      visited.add(id);
+
       visible.push(current);
 
-      const id = String(current.id_pergunta);
       const ans = answers[id];
-
       let nextId = null;
+
       if (ans === "Sim" && current.condicao_sim) nextId = current.condicao_sim;
       else if (ans === "Não" && current.condicao_nao) nextId = current.condicao_nao;
       else if (ans === "NA" && current.condicao_na) nextId = current.condicao_na;
 
-      if (nextId && byId[nextId]) {
-        // Vai diretamente para a pergunta indicada pela condicionalidade
-        currentIndex = all.findIndex(q => String(q.id_pergunta) === nextId);
+      const nextIndex =
+        nextId && byId[nextId]
+          ? all.findIndex(
+              q => String(q.id_pergunta) === String(nextId)
+            )
+          : -1;
+
+      if (nextIndex >= 0 && nextIndex !== currentIndex) {
+        currentIndex = nextIndex;
       } else {
-        // Caso não haja condicionalidade, continua normalmente
         currentIndex++;
       }
     }
-
     return visible;
   },
 

@@ -57,9 +57,9 @@ export default {
 
   // 6️⃣ Verificar se os filtros estão preenchidos
   filtrosPreenchidos() {
+    // Tornar Multiselect_Certificacao opcional
     return (
       Select_Dimensao.selectedOptionValue &&
-      Multiselect_Certificacao.selectedOptionValues.length > 0 &&
       Multiselect_SistemaProducao.selectedOptionValues.length > 0
     );
   },

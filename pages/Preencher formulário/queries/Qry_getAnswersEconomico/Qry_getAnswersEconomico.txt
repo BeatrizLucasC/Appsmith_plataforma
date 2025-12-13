@@ -1,10 +1,22 @@
 SELECT id_pergunta, resposta
 FROM respostas
 WHERE id_utilizador = '{{ appsmith.user.email }}'
-  AND dominio = 'económico'
+  AND LOWER(
+        TRANSLATE(
+          dominio,
+          'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ',
+          'aeiouaaeoocAEIOUAAEOOC'
+        )
+      ) = 'economico'
   AND ano = (
     SELECT MAX(ano)
     FROM respostas
     WHERE id_utilizador = '{{ appsmith.user.email }}'
-      AND dominio = 'económico'
+      AND LOWER(
+            TRANSLATE(
+              dominio,
+              'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ',
+              'aeiouaaeoocAEIOUAAEOOC'
+            )
+          ) = 'economico'
   );

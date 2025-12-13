@@ -37,7 +37,7 @@
   "mobileRightColumn": 47,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{JS_Filtros.cancelFilterSelections()}}",
+  "onClick": "{{JS_filtros.cancelFilterSelections()}}",
   "originalBottomRow": 19,
   "originalTopRow": 15,
   "parentId": "adht6ewqr0",

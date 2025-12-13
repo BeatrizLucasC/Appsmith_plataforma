@@ -257,7 +257,7 @@
       "id": "tab1",
       "index": 1,
       "isDuplicateLabel": false,
-      "isVisible": "{{JS_Filtros.abasVisiveis()}}",
+      "isVisible": "{{JS_filtros.abasVisiveis()}}",
       "label": "Domínio Ambiental",
       "positioning": "vertical",
       "widgetId": "ube31dodxs"
@@ -266,7 +266,7 @@
       "id": "tab2",
       "index": 2,
       "isDuplicateLabel": false,
-      "isVisible": "{{JS_Filtros.abasVisiveis()}}",
+      "isVisible": "{{JS_filtros.abasVisiveis()}}",
       "label": "Domínio Social",
       "positioning": "vertical",
       "widgetId": "mqdhuqki4k"
@@ -275,7 +275,7 @@
       "id": "tab34wiuozbig",
       "index": 3,
       "isDuplicateLabel": false,
-      "isVisible": "{{JS_Filtros.abasVisiveis()}}",
+      "isVisible": "{{JS_filtros.abasVisiveis()}}",
       "label": "Domínio Económico",
       "widgetId": "yg5sfxjz2q"
     },
