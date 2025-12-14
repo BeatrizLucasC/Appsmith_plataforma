@@ -38,11 +38,12 @@
     "nivel_user",
     "pontuacao_user"
   ],
-  "columnUpdatedAt": 1765731971554,
+  "columnUpdatedAt": 1765753693540,
   "columnWidthMap": {
-    "categoria": 368,
-    "indicador": 603,
-    "nivel_user": 213
+    "categoria": 237,
+    "indicador": 400,
+    "nivel_user": 143,
+    "pontuacao_user": 108.8125
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
