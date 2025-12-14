@@ -12,7 +12,7 @@
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "Open Sans",
+  "fontFamily": "System Default",
   "fontSize": "1.25rem",
   "fontStyle": "BOLD",
   "isLoading": false,
