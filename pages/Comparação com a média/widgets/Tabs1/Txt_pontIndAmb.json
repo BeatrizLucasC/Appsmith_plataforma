@@ -3,7 +3,7 @@
   "backgroundColor": "#ffffff",
   "borderColor": "{{appsmith.theme.colors.backgroundColor}}",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 124,
+  "bottomRow": 108,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -32,8 +32,8 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 124,
-  "originalTopRow": 120,
+  "originalBottomRow": 108,
+  "originalTopRow": 104,
   "overflow": "NONE",
   "parentColumnSpace": 1.845703125,
   "parentId": "wo40px8ef8",
@@ -45,7 +45,7 @@
   "text": "Pontuação por indicador",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 120,
+  "topRow": 104,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
