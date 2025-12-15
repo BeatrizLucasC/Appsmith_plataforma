@@ -3,7 +3,7 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 153,
+  "bottomRow": 154,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "chartData": {
     "3j6zpjga99": {
@@ -26,7 +26,7 @@
   },
   "chartName": "Sales Report",
   "chartType": "CUSTOM_ECHART",
-  "customEChartConfig": "{{ ((chartType) => ( JS_spiderAmbiental.getOptions()))(Chart1.chartType) }}",
+  "customEChartConfig": "{{ ((chartType) => ( JS_spiderAmbiental.getOptions()))(Chart_spiderAmb.chartType) }}",
   "customFusionChartConfig": {
     "dataSource": {
       "chart": {
@@ -105,8 +105,8 @@
   "mobileRightColumn": 45,
   "mobileTopRow": 224,
   "needsErrorInfo": true,
-  "originalBottomRow": 153,
-  "originalTopRow": 85,
+  "originalBottomRow": 154,
+  "originalTopRow": 86,
   "parentColumnSpace": 13.796875,
   "parentId": "wo40px8ef8",
   "parentRowSpace": 10,
@@ -114,11 +114,11 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "showDataPointLabel": false,
-  "topRow": 85,
+  "topRow": 86,
   "type": "CHART_WIDGET",
   "version": 1,
   "widgetId": "sdyevsj3xm",
-  "widgetName": "Chart1",
+  "widgetName": "Chart_spiderAmb",
   "xAxisName": "Product Line",
   "yAxisName": "Revenue($)"
 }

@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 17,
+  "bottomRow": 18,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -21,7 +21,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "nfl0n83ai8",
-  "leftColumn": 1,
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -30,23 +30,23 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 17,
-  "originalTopRow": 1,
+  "originalBottomRow": 18,
+  "originalTopRow": 0,
   "overflow": "NONE",
   "parentColumnSpace": 13.796875,
-  "parentId": "1c3meik667",
+  "parentId": "ihphf9m8ax",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "shouldTruncate": false,
   "text": "Nesta página poderá preencher o formulário e editar as suas respostas após a primeira submissão. \nO formulário está organizado em três domínios: Ambiental, Social e Económico.\n\nComo proceder:\n1. Preencha a página Dados Iniciais com as suas seleções e clique em \"Guardar Seleções\".\n2. Serão disponibilizadas as páginas Domínio Ambiental, Domínio Social e Domínio Económico.\n3. Preencha cada formulário e, no final de cada um, clique em \"Submeter Respostas\".\n\nAs respostas ficam guardadas entre sessões para que possa editar as respostas submetidas rapidamente e sempre que necessário.\n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 1,
+  "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "knv385o9z8",
+  "widgetId": "i7v2blyyjh",
   "widgetName": "Txt_Instructions"
 }
