@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 24,
+  "bottomRow": 8,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -17,7 +17,7 @@
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1rem",
-  "fontStyle": "",
+  "fontStyle": "ITALIC",
   "isLoading": false,
   "isVisible": true,
   "key": "a8o1zlc0fu",
@@ -30,8 +30,8 @@
   "mobileRightColumn": 11,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 15,
-  "originalTopRow": 4,
+  "originalBottomRow": 10,
+  "originalTopRow": 5,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
   "parentId": "jbw36ti6az",
@@ -40,9 +40,9 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "Ao responder ao referencial, o utilizador obtém uma caracterização estruturada do desempenho da sua exploração nos diferentes domínios da sustentabilidade, identificando de forma clara os aspetos em que apresenta resultados mais favoráveis e aqueles em que se evidenciam oportunidades de melhoria. \n\n\n\nA informação disponibilizada permite compreender o posicionamento relativo da exploração face ao conjunto de explorações avaliadas, constituindo uma base objetiva para a autoavaliação.\n\n\n\n\nA plataforma disponibiliza ainda uma página específica que permite comparar os resultados individuais com a média global do referencial de sustentabilidade, reforçando a leitura comparativa e a compreensão do desempenho da exploração no contexto global do Programa Alqueva Sustentável.\n",
+  "text": "Uma plataforma que permite avaliar, compreender e melhorar o desempenho das explorações agrícolas nos diferentes domínios da sustentabilidade.",
   "textAlign": "LEFT",
-  "textColor": "#231F20",
+  "textColor": "#231f20",
   "topRow": 4,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",

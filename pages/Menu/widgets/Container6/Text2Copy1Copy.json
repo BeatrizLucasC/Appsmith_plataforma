@@ -1,10 +1,13 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 28,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
     },
     {
       "key": "borderRadius"
@@ -12,9 +15,9 @@
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "Open Sans",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1rem",
-  "fontStyle": "BOLD",
+  "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
   "key": "a8o1zlc0fu",
@@ -22,28 +25,28 @@
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 4,
+  "mobileBottomRow": 9,
   "mobileLeftColumn": 0,
-  "mobileRightColumn": 14,
-  "mobileTopRow": 0,
+  "mobileRightColumn": 11,
+  "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 5,
-  "originalTopRow": 0,
+  "originalBottomRow": 28,
+  "originalTopRow": 21,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
-  "parentId": "8x81k1d6rc",
+  "parentId": "2uaukbj61v",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 26,
+  "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "REFERENCIAL DO PROGRAMA ALQUEVA SUSTENTÁVEL",
+  "text": "Após submissão, aceda a uma caracterização estruturada do desempenho da sua exploração, com destaque para os pontos fortes e para as oportunidades de melhoria, organizada por domínios de sustentabilidade. \n",
   "textAlign": "LEFT",
-  "textColor": "#2664ac",
-  "topRow": 0,
+  "textColor": "#231F20",
+  "topRow": 21,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "j7632t5noa",
-  "widgetName": "Text1Copy"
+  "widgetId": "pkh4gfp02f",
+  "widgetName": "Text2Copy1Copy"
 }
