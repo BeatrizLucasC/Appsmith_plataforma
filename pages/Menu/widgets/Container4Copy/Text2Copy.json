@@ -1,0 +1,52 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 21,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
+  "fontStyle": "",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "a8o1zlc0fu",
+  "leftColumn": 0,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 9,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 11,
+  "mobileTopRow": 5,
+  "needsErrorInfo": false,
+  "originalBottomRow": 21,
+  "originalTopRow": 4,
+  "overflow": "NONE",
+  "parentColumnSpace": 19.5,
+  "parentId": "8x81k1d6rc",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 63,
+  "shouldTruncate": false,
+  "text": "O Referencial do Programa Alqueva Sustentável é um instrumento de avaliação que permite às explorações agrícolas caracterizar e comparar o seu desempenho em matéria de sustentabilidade.\n\nO referencial estrutura-se em três domínios de intervenção (ambiental, económico e social/governação), organizados em doze categorias e suportados por um conjunto de indicadores que refletem as diferentes realidades produtivas, setores de atividade e dimensões das explorações.\n\nAo responder ao referencial, o utilizador obtém uma caracterização estruturada do desempenho da sua exploração nos diferentes domínios da sustentabilidade, identificando de forma clara os aspetos em que apresenta resultados mais favoráveis e aqueles em que se evidenciam oportunidades de melhoria.\n",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 4,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "rat8f29kf2",
+  "widgetName": "Text2Copy"
+}
