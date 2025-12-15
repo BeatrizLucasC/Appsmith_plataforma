@@ -1,15 +1,15 @@
 {
   "animateLoading": true,
-  "backgroundColor": "#FFFFFF",
+  "backgroundColor": "#2664ac",
   "borderColor": "#ffffff",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 152,
-  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "bottomRow": 125,
+  "boxShadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 250,
+      "bottomRow": 130,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -38,7 +38,7 @@
       "mobileTopRow": 0,
       "needsErrorInfo": false,
       "parentColumnSpace": 1,
-      "parentId": "ztrirkrbrt",
+      "parentId": "uc5n7hk9vz",
       "parentRowSpace": 1,
       "renderMode": "CANVAS",
       "responsiveBehavior": "fill",
@@ -46,17 +46,14 @@
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
-      "widgetId": "8x81k1d6rc",
-      "widgetName": "Canvas13Copy"
+      "widgetId": "fpahxvvqrr",
+      "widgetName": "Canvas14Copy4"
     }
   ],
   "containerStyle": "card",
   "dynamicBindingPathList": [
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "boxShadow"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -66,27 +63,27 @@
   "isLoading": false,
   "isVisible": true,
   "key": "5xys9dts2p",
-  "leftColumn": 0,
+  "leftColumn": 12,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 10,
   "minWidth": 450,
-  "mobileBottomRow": 42,
+  "mobileBottomRow": 58,
   "mobileLeftColumn": 0,
   "mobileRightColumn": 24,
-  "mobileTopRow": 32,
+  "mobileTopRow": 48,
   "needsErrorInfo": false,
-  "originalBottomRow": 152,
-  "originalTopRow": 127,
+  "originalBottomRow": 125,
+  "originalTopRow": 112,
   "parentColumnSpace": 19.8125,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 24,
   "shouldScrollContents": true,
-  "topRow": 127,
+  "topRow": 112,
   "type": "CONTAINER_WIDGET",
   "version": 1,
-  "widgetId": "ztrirkrbrt",
-  "widgetName": "Container4Copy"
+  "widgetId": "uc5n7hk9vz",
+  "widgetName": "Container12"
 }

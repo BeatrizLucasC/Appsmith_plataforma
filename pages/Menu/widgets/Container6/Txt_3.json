@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 21,
+  "bottomRow": 8,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -27,8 +27,8 @@
   "mobileRightColumn": 14,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 21,
-  "originalTopRow": 17,
+  "originalBottomRow": 11,
+  "originalTopRow": 7,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
   "parentId": "2uaukbj61v",
@@ -37,13 +37,13 @@
   "responsiveBehavior": "fill",
   "rightColumn": 29,
   "shouldTruncate": false,
-  "text": "Visualização dos resultados",
+  "text": "Formulário",
   "textAlign": "LEFT",
   "textColor": "#2664ac",
-  "topRow": 17,
+  "topRow": 4,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "j10e72bu7x",
-  "widgetName": "Text1Copy1CopyCopy"
+  "widgetId": "bw2rfrrma3",
+  "widgetName": "Txt_3"
 }

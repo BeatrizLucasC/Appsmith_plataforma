@@ -1,13 +1,10 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 17,
+  "bottomRow": 21,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
-    },
-    {
-      "key": "fontFamily"
     },
     {
       "key": "borderRadius"
@@ -15,7 +12,7 @@
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontFamily": "Open Sans",
   "fontSize": "1rem",
   "fontStyle": "",
   "isLoading": false,
@@ -25,28 +22,28 @@
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 9,
+  "mobileBottomRow": 4,
   "mobileLeftColumn": 0,
-  "mobileRightColumn": 11,
-  "mobileTopRow": 5,
+  "mobileRightColumn": 14,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 17,
-  "originalTopRow": 8,
+  "originalBottomRow": 21,
+  "originalTopRow": 17,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
   "parentId": "2uaukbj61v",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 29,
   "shouldTruncate": false,
-  "text": "Preencha e edite o Referencial do Programa Alqueva Sustentável diretamente na plataforma.\nO processo foi desenhado para ser simples e progressivo, permitindo guardar e retomar o preenchimento sempre que necessário. \n",
+  "text": "Visualização dos resultados",
   "textAlign": "LEFT",
-  "textColor": "#231F20",
-  "topRow": 8,
+  "textColor": "#2664ac",
+  "topRow": 17,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "2cnm06zkad",
-  "widgetName": "Text2Copy1"
+  "widgetId": "j10e72bu7x",
+  "widgetName": "Txt_4"
 }

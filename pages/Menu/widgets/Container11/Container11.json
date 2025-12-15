@@ -1,15 +1,15 @@
 {
   "animateLoading": true,
-  "backgroundColor": "#FFFFFF",
+  "backgroundColor": "#2664ac",
   "borderColor": "#ffffff",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 49,
-  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "bottomRow": 125,
+  "boxShadow": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 60,
+      "bottomRow": 130,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -38,7 +38,7 @@
       "mobileTopRow": 0,
       "needsErrorInfo": false,
       "parentColumnSpace": 1,
-      "parentId": "mtrkrnzj6s",
+      "parentId": "pm25iutgfg",
       "parentRowSpace": 1,
       "renderMode": "CANVAS",
       "responsiveBehavior": "fill",
@@ -46,47 +46,44 @@
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
-      "widgetId": "tlij3s8yyd",
-      "widgetName": "Canvas13Copy1"
+      "widgetId": "2w6t304k9m",
+      "widgetName": "Canvas14Copy5Copy"
     }
   ],
   "containerStyle": "card",
   "dynamicBindingPathList": [
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "boxShadow"
     }
   ],
-  "dynamicHeight": "FIXED",
+  "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isLoading": false,
   "isVisible": true,
   "key": "5xys9dts2p",
-  "leftColumn": 32,
+  "leftColumn": 38,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 10,
   "minWidth": 450,
-  "mobileBottomRow": 42,
+  "mobileBottomRow": 58,
   "mobileLeftColumn": 0,
   "mobileRightColumn": 24,
-  "mobileTopRow": 32,
+  "mobileTopRow": 48,
   "needsErrorInfo": false,
-  "originalBottomRow": 49,
-  "originalTopRow": 43,
+  "originalBottomRow": 125,
+  "originalTopRow": 112,
   "parentColumnSpace": 19.8125,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 50,
   "shouldScrollContents": true,
-  "topRow": 43,
+  "topRow": 112,
   "type": "CONTAINER_WIDGET",
   "version": 1,
-  "widgetId": "mtrkrnzj6s",
-  "widgetName": "Container4Copy1"
+  "widgetId": "pm25iutgfg",
+  "widgetName": "Container11"
 }
