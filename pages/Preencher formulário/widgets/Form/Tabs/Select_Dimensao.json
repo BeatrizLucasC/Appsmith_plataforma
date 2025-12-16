@@ -64,7 +64,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 40,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Pequena\", \"value\": \"de_pequena\" },\n  { \"label\": \"Média\", \"value\": \"de_media\" },\n  { \"label\": \"Grande\", \"value\": \"de_grande\" }\n]",
+  "sourceData": "[\n  { \"label\": \"Pequena (0 - 20 ha )\", \"value\": \"de_pequena\" },\n  { \"label\": \"Média (20 - 100 ha)\", \"value\": \"de_media\" },\n  { \"label\": \"Grande (≥ 100 ha)\", \"value\": \"de_grande\" }\n]",
   "topRow": 2,
   "type": "SELECT_WIDGET",
   "version": 1,

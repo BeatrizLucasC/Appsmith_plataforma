@@ -145,7 +145,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "yyaxokcq5q",
-  "leftColumn": 52,
+  "leftColumn": 51,
   "minWidth": 450,
   "mobileBottomRow": 120,
   "mobileLeftColumn": 27,
@@ -164,6 +164,6 @@
   "topRow": 27,
   "type": "BUTTON_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "7lihd8c0ci",
+  "widgetId": "e7fj8h0yx6",
   "widgetName": "ButtonGroup1"
 }
