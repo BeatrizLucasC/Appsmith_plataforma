@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 13,
+  "bottomRow": 14,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,7 +43,7 @@
   "text": "O Programa Alqueva Sustentável é uma iniciativa de cariz voluntário promovida pela EDIA, dirigida aos agricultores da região do Empreendimento de Fins Múltiplos do Alqueva. \n\nO seu âmbito centra-se na promoção da sustentabilidade do setor primário, procurando atingir diversos objetivos: \n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 4,
+  "topRow": 5,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

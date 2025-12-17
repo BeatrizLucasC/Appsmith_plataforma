@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 21,
+  "bottomRow": 25,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,7 +30,7 @@
   "mobileRightColumn": 11,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 23,
+  "originalBottomRow": 21,
   "originalTopRow": 4,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
@@ -43,7 +43,7 @@
   "text": "O Referencial do Programa Alqueva Sustentável é um instrumento de avaliação que permite às explorações agrícolas caracterizar e comparar o seu desempenho em matéria de sustentabilidade.\n\nO referencial estrutura-se em três domínios de intervenção (ambiental, social e económico), organizados em doze categorias e suportados por um conjunto de indicadores que refletem as diferentes realidades produtivas, setores de atividade e dimensões das explorações.\n\nAo responder ao referencial, o utilizador obtém uma caracterização estruturada do desempenho da sua exploração nos diferentes domínios da sustentabilidade, identificando de forma clara os aspetos em que apresenta resultados mais favoráveis e aqueles em que se evidenciam oportunidades de melhoria.\n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 4,
+  "topRow": 5,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

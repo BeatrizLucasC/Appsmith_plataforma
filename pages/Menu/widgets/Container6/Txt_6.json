@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 28,
+  "bottomRow": 33,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -43,7 +43,7 @@
   "text": "Após submissão, aceda a uma caracterização estruturada do desempenho da sua exploração, com destaque para os pontos fortes e para as oportunidades de melhoria, organizada por domínios de sustentabilidade. \n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 21,
+  "topRow": 24,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

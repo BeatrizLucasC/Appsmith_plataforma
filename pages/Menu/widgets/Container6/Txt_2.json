@@ -39,7 +39,7 @@
   "shouldTruncate": false,
   "text": "ÁREAS E FUNCIONALIDADES DA PLATAFORMA",
   "textAlign": "LEFT",
-  "textColor": "#2664ac",
+  "textColor": "#4473cc",
   "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
