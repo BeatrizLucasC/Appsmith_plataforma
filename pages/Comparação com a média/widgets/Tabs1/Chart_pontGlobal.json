@@ -11,7 +11,7 @@
       "seriesName": "A minha pontuação"
     },
     "frnhovg9r2": {
-      "color": "#8DC240",
+      "color": "#72a943",
       "data": "{{ Qry_pontuacaoDominio.data.map(item => ({\n    x: item.dominio,\n    y: item.pontuacao_media})) }}",
       "seriesName": "Pontuação média"
     }

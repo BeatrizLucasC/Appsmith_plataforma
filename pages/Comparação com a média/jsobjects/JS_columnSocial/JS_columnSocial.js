@@ -3,8 +3,8 @@ export default {
     const dominio = "Social";
 
     // Cores
-    const userColor = "#2664AC";   // A minha pontuação
-    const mediaColor = "#8DC240";  // Pontuação média
+    const userColor = "#4473CC";   // A minha pontuação
+    const mediaColor = "#72A943";  // Pontuação média
 
     // Nomes das séries / dimensões (para legenda e acesso aos valores)
     const DIM_USER = "A minha pontuação";
