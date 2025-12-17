@@ -4,7 +4,7 @@
   "borderColor": "#ffffff",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 115,
+  "bottomRow": 116,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -34,14 +34,18 @@
   "columnOrder": [
     "categoria",
     "nivel_user",
-    "pontuacao_user",
     "nivel_media",
-    "pontuacao_media"
+    "pontuacao_user",
+    "pontuacao_media",
+    "pontuacao_diferenca"
   ],
-  "columnUpdatedAt": 1765760808000,
+  "columnUpdatedAt": 1765963105726,
   "columnWidthMap": {
-    "categoria": 210,
-    "pontuacao_user": 189
+    "categoria": 151,
+    "nivel_media": 132,
+    "nivel_user": 127,
+    "pontuacao_media": 155,
+    "pontuacao_user": 170
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
@@ -79,11 +83,20 @@
     },
     {
       "key": "primaryColumns.pontuacao_media.computedValue"
+    },
+    {
+      "key": "primaryColumns.pontuacao_diferenca.computedValue"
+    },
+    {
+      "key": "primaryColumns.pontuacao_diferenca.cellBackground"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.pontuacao_diferenca.cellBackground"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -108,8 +121,8 @@
   "mobileRightColumn": 34,
   "mobileTopRow": 99,
   "needsErrorInfo": false,
-  "originalBottomRow": 115,
-  "originalTopRow": 78,
+  "originalBottomRow": 116,
+  "originalTopRow": 79,
   "parentColumnSpace": 13.796875,
   "parentId": "wo40px8ef8",
   "parentRowSpace": 10,
@@ -213,6 +226,40 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
+    "pontuacao_diferenca": {
+      "alias": "pontuacao_diferenca",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{(() => { const tableData = Tbl_nivelCatAmbCopyCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (\n(() => {\n  const v = Number(currentRow.pontuacao_diferenca);\n  if (!Number.isFinite(v)) return \"transparent\";\n\n  // Normalização pela query (ajusta se usares outra fonte)\n  const rows = Qry_pontuacaoCategoria.data ?? [];\n  const values = rows.map(r => Number(r.pontuacao_diferenca)).filter(Number.isFinite);\n  const maxAbs = Math.max(...values.map(x => Math.abs(x)), 1);\n\n  // t = intensidade 0..1; usar \"ease-out\" para suavizar (t' = sqrt(t))\n  const tLinear = Math.min(Math.abs(v) / maxAbs, 1);\n  const t = Math.sqrt(tLinear); // curva mais suave\n\n  if (v === 0) {\n    // ZERO: amarelo mais \"cheio\" (menos claro, mais saturado)\n    const hue = 55;          // amarelo limpo\n    const saturation = 92;   // bem saturado\n    const lightness = 75;    // menos claro que 95, fica mais amarelo\n    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n  }\n\n  if (v < 0) {\n    // NEGATIVOS: laranja vivo (evitar castanho): hue 32–35, alta saturação,\n    // lightness desce mas não demais (não ir abaixo de ~50–55)\n    const hue = 33;                  // laranja (não castanho)\n    const saturation = 95;           // bem saturado\n    const lightness = 85 - 30 * t;   // 85% -> 55% (limite mantém laranja vivo)\n    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n  }\n\n  // POSITIVOS: verde mais claro e limpo\n  {\n    const hue = 120;                 // verde\n    const saturation = 55;           // saturação moderada\n    const lightness = 80 - 25 * t;   // 88% -> 64% (clarinho, não escuro)\n    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n  }\n})()\n)) : \n(() => {\n  const v = Number(currentRow.pontuacao_diferenca);\n  if (!Number.isFinite(v)) return \"transparent\";\n\n  // Normalização pela query (ajusta se usares outra fonte)\n  const rows = Qry_pontuacaoCategoria.data ?? [];\n  const values = rows.map(r => Number(r.pontuacao_diferenca)).filter(Number.isFinite);\n  const maxAbs = Math.max(...values.map(x => Math.abs(x)), 1);\n\n  // t = intensidade 0..1; usar \"ease-out\" para suavizar (t' = sqrt(t))\n  const tLinear = Math.min(Math.abs(v) / maxAbs, 1);\n  const t = Math.sqrt(tLinear); // curva mais suave\n\n  if (v === 0) {\n    // ZERO: amarelo mais \"cheio\" (menos claro, mais saturado)\n    const hue = 55;          // amarelo limpo\n    const saturation = 92;   // bem saturado\n    const lightness = 75;    // menos claro que 95, fica mais amarelo\n    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n  }\n\n  if (v < 0) {\n    // NEGATIVOS: laranja vivo (evitar castanho): hue 32–35, alta saturação,\n    // lightness desce mas não demais (não ir abaixo de ~50–55)\n    const hue = 33;                  // laranja (não castanho)\n    const saturation = 95;           // bem saturado\n    const lightness = 85 - 30 * t;   // 85% -> 55% (limite mantém laranja vivo)\n    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n  }\n\n  // POSITIVOS: verde mais claro e limpo\n  {\n    const hue = 120;                 // verde\n    const saturation = 55;           // saturação moderada\n    const lightness = 80 - 25 * t;   // 88% -> 64% (clarinho, não escuro)\n    return `hsl(${hue}, ${saturation}%, ${lightness}%)`;\n  }\n})()\n })()}}",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Tbl_nivelCatAmbCopyCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"pontuacao_diferenca\"]+\"%\")) : currentRow[\"pontuacao_diferenca\"]+\"%\" })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "BOLD",
+      "horizontalAlignment": "LEFT",
+      "id": "pontuacao_diferenca",
+      "index": 5,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Diferença",
+      "notation": "standard",
+      "originalId": "pontuacao_diferenca",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
     "pontuacao_media": {
       "alias": "pontuacao_media",
       "allowCellWrapping": false,
@@ -280,9 +327,9 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "searchKey": "",
-  "tableData": "{{ Qry_pontuacaoCategoria.data\n    .filter(({ dominio }) => dominio === \"Ambiental\")\n    .map(({ categoria, nivel_user, pontuacao_user, nivel_media, pontuacao_media }) => ({ categoria, nivel_user, pontuacao_user, nivel_media, pontuacao_media }))\n}}\n\n",
+  "tableData": "{{ Qry_pontuacaoCategoria.data\n    .filter(({ dominio }) => dominio === \"Ambiental\")\n    .map(({ categoria, nivel_user, pontuacao_user, nivel_media, pontuacao_media, pontuacao_diferenca }) => ({ categoria, nivel_user, pontuacao_user, nivel_media, pontuacao_media,pontuacao_diferenca  }))\n}}\n\n",
   "textSize": "0.875rem",
-  "topRow": 78,
+  "topRow": 79,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "variant": "VARIANT3",

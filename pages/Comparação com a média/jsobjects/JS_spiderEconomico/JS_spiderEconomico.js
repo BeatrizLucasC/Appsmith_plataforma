@@ -64,7 +64,7 @@ export default {
     }));
 
     const COLOR_USER = "#4473CC";
-    const COLOR_MEDIA = "##72A943";
+    const COLOR_MEDIA = "#72A943";
 
     // Tooltip só para o indicador atual
     const tooltipFormatter = function (params) {
