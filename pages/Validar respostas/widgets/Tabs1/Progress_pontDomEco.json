@@ -1,0 +1,48 @@
+{
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 25,
+  "counterClockwise": true,
+  "counterClosewise": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "fillColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "progress"
+    }
+  ],
+  "dynamicPropertyPathList": [],
+  "dynamicTriggerPathList": [],
+  "fillColor": "{{appsmith.theme.colors.primaryColor}}",
+  "isCanvas": false,
+  "isIndeterminate": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "9yupceh2k1",
+  "leftColumn": 0,
+  "mobileBottomRow": 51,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 27,
+  "mobileTopRow": 47,
+  "needsErrorInfo": false,
+  "originalBottomRow": 26,
+  "originalTopRow": 5,
+  "parentColumnSpace": 1.845703125,
+  "parentId": "9jnz2zbys4",
+  "parentRowSpace": 10,
+  "progress": "{{Qry_pontuacaoDominio.data[2].pontuacao_user}}",
+  "progressType": "circular",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "showResult": true,
+  "steps": "1",
+  "topRow": 6,
+  "type": "PROGRESS_WIDGET",
+  "version": 1,
+  "widgetId": "3wdp8p9h7j",
+  "widgetName": "Progress_pontDomEco"
+}

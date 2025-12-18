@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "692f23e7862bc92544420b37_64ada826-98e5-416c-bc55-e5d70f3d86d6",
+  "id": "Validar respostas_JS_spiderSocial",
+  "unpublishedCollection": {
+    "name": "JS_spiderSocial",
+    "pageId": "Validar respostas",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

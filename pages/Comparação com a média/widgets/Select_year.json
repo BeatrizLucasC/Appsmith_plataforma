@@ -4,7 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 61,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => (  JS_year.Year()[0] ))(Select_ano.options, Select_ano.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \n(Qry_years.data &&\n Qry_years.data[0] &&\n Qry_years.data[0].ano)\n\t?\t\tString(Qry_years.data[0].ano)\n    : \"\" \n))(Select_year.options, Select_year.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -13,10 +13,10 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultOptionValue"
+      "key": "sourceData"
     },
     {
-      "key": "sourceData"
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -53,7 +53,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "onOptionChange": "",
+  "onOptionChange": "{{\nQry_pontuacaoGlobal.run();\nQry_pontuacaoDominio.run();\nQry_pontuacaoCategoria.run();\nQry_pontuacaoIndicador.run();\n}}",
   "optionLabel": "label",
   "optionValue": "value",
   "originalBottomRow": 65,
@@ -66,10 +66,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "serverSideFiltering": false,
-  "sourceData": "{{ JS_year.Year().map(ano => ({ label: ano, value: ano })) }}",
+  "sourceData": "{{\n  (Qry_years.data || [])\n    .filter(y => y && y.ano != null)\n    .map(y => ({\n      label: String(y.ano),\n      value: String(y.ano),\n    }))\n}}",
   "topRow": 54,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "cshcf8r6z2",
-  "widgetName": "Select_ano"
+  "widgetId": "ookjd1ozjb",
+  "widgetName": "Select_year"
 }

@@ -1,0 +1,48 @@
+{
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 24,
+  "counterClockwise": true,
+  "counterClosewise": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "fillColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "progress"
+    }
+  ],
+  "dynamicPropertyPathList": [],
+  "dynamicTriggerPathList": [],
+  "fillColor": "{{appsmith.theme.colors.primaryColor}}",
+  "isCanvas": false,
+  "isIndeterminate": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "9yupceh2k1",
+  "leftColumn": 0,
+  "mobileBottomRow": 51,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 27,
+  "mobileTopRow": 47,
+  "needsErrorInfo": false,
+  "originalBottomRow": 24,
+  "originalTopRow": 5,
+  "parentColumnSpace": 1.845703125,
+  "parentId": "zfprjcegvs",
+  "parentRowSpace": 10,
+  "progress": "{{Qry_pontuacaoDominio.data[0].pontuacao_user}}",
+  "progressType": "circular",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "showResult": true,
+  "steps": "1",
+  "topRow": 5,
+  "type": "PROGRESS_WIDGET",
+  "version": 1,
+  "widgetId": "f9b85i4l6q",
+  "widgetName": "Progress_pontDomAmb"
+}

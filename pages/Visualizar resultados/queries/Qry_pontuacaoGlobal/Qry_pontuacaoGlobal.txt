@@ -1,1 +1,3 @@
-SELECT * FROM vw_score_user_avg_global WHERE id_utilizador = '{{appsmith.user.email}}';
+SELECT * FROM vw_score_user_avg_global
+WHERE id_utilizador = '{{appsmith.user.email}}'
+AND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';
