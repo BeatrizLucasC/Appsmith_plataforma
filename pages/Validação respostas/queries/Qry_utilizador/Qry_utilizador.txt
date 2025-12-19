@@ -1,0 +1,8 @@
+SELECT DISTINCT
+  r.id_utilizador AS value,
+  r.id_utilizador AS label
+FROM respostas r
+WHERE (r.validacao IS NULL OR r.validacao = '')
+  -- Fazer com que dependa do ano selecionado
+  AND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';
+

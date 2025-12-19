@@ -1,3 +1,0 @@
-SELECT * FROM vw_score_user_avg_dominio
-WHERE id_utilizador = '{{appsmith.user.email}}'
-AND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';
