@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_7fa02d3d-bed4-4b98-80fe-ca88650502ed",
+  "gitSyncId": "692f23e7862bc92544420b37_6ef7d855-6182-4994-b589-a014d8734904",
   "unpublishedPage": {
     "isHidden": false,
     "layouts": [
@@ -26,7 +26,7 @@
         }
       }
     ],
-    "name": "Validação respostas",
-    "slug": "validacao-respostas"
+    "name": "Consultar respostas",
+    "slug": "consultar-respostas"
   }
 }

@@ -47,7 +47,7 @@
       "rightColumn": 338.625,
       "shouldScrollContents": false,
       "tabId": "tab1",
-      "tabName": "Filtros do formulário",
+      "tabName": "Filtros selecionados",
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -93,7 +93,7 @@
       "rightColumn": 338.625,
       "shouldScrollContents": false,
       "tabId": "tab2",
-      "tabName": "Validar respostas",
+      "tabName": "Respostas submetidas",
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -101,7 +101,7 @@
       "widgetName": "Canvas16"
     }
   ],
-  "defaultTab": "Filtros do formulário",
+  "defaultTab": "Filtros selecionados",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -137,7 +137,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 48,
   "needsErrorInfo": false,
-  "originalBottomRow": 64,
+  "originalBottomRow": 68,
   "originalTopRow": 48,
   "parentColumnSpace": 14.109375,
   "parentId": "0",
@@ -152,7 +152,7 @@
       "id": "tab1",
       "index": 0,
       "isVisible": true,
-      "label": "Filtros do formulário",
+      "label": "Filtros selecionados",
       "positioning": "vertical",
       "widgetId": "3okpq3796r"
     },
@@ -160,7 +160,7 @@
       "id": "tab2",
       "index": 1,
       "isVisible": true,
-      "label": "Validar respostas",
+      "label": "Respostas submetidas",
       "positioning": "vertical",
       "widgetId": "4co4xqnsmp"
     }

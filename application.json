@@ -48,6 +48,10 @@
     {
       "id": "Validação respostas",
       "isDefault": false
+    },
+    {
+      "id": "Consultar respostas",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {
