@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_bd0a0f0e-b11a-4fe3-aa88-144ad67fb8cf",
-  "id": "Consultar respostas_Qry_utilizador",
+  "gitSyncId": "692f23e7862bc92544420b37_5c4f4bec-3d03-4575-be76-e3d9b304f94d",
+  "id": "Resultados_Qry_pontuacaoCategoria",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT DISTINCT\n  r.id_utilizador AS value,\n  r.id_utilizador AS label\nFROM respostas r\nWHERE ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';\n\n",
+      "body": "SELECT * FROM vw_score_user_avg_categoria\nWHERE id_utilizador = {{Select_utilizador.selectedOptionValue}}\nAND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "Qry_utilizador",
-    "pageId": "Consultar respostas",
+    "name": "Qry_pontuacaoCategoria",
+    "pageId": "Resultados",
     "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": false
+    "userSetOnLoad": true
   }
 }

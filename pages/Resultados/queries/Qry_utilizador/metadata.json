@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_bd0a0f0e-b11a-4fe3-aa88-144ad67fb8cf",
-  "id": "Consultar respostas_Qry_utilizador",
+  "gitSyncId": "692f23e7862bc92544420b37_74692e78-c01e-47fe-b696-448300166cd0",
+  "id": "Resultados_Qry_utilizador",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "Qry_utilizador",
-    "pageId": "Consultar respostas",
+    "pageId": "Resultados",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }

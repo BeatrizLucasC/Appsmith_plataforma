@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 5,
+  "bottomRow": 11,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,23 +30,23 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 7,
+  "originalBottomRow": 11,
   "originalTopRow": 1,
   "overflow": "NONE",
   "parentColumnSpace": 10.930908203125,
-  "parentId": "0lisyswk8r",
+  "parentId": "lbjrjlzxq6",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Nesta página poderá consultar as respostas de cada utilizador. ",
+  "text": "Nesta página poderá validar as respostas submetidas por cada utilizador, com base nos filtros ao formulário selecionados pelo utilizador.\n\nApós a visualização das respostas, poderá validar as mesmas através do botão \"validar respostas\" presente no fim da página. ",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "lbljfj20w1",
+  "widgetId": "krzxwssjz1",
   "widgetName": "Txt_intro"
 }
