@@ -1,0 +1,57 @@
+
+WITH filtros AS (
+  SELECT
+    sf.id_utilizador,
+    sf.ano,
+    CASE WHEN COALESCE(sf.certificacoes, '') = '' THEN ARRAY[]::text[]
+         ELSE string_to_array(sf.certificacoes, ',')
+    END AS certs
+  FROM selecoes_filtros sf
+  WHERE sf.id_utilizador = {{Tbl_resumo.selectedRow.email}}
+    AND sf.ano = ({{Tbl_resumo.selectedRow.ano}})::int
+),
+
+-- respostas submetidas
+exp AS (
+  SELECT r.id_pergunta, r.id_utilizador, r.ano, r.resposta
+  FROM respostas r
+  WHERE r.id_utilizador = {{Tbl_resumo.selectedRow.email }}
+    AND r.ano = ({{Tbl_resumo.selectedRow.ano }})::int
+),
+
+exp_full AS (
+  SELECT
+    p.id_pergunta,
+    p.pergunta,
+    p.dominio,
+    p.categoria, 
+    p.indicador, 
+    e.resposta,
+    NULL::text AS "Certificações aplicáveis"   -- vazio nas respostas submetidas
+  FROM exp e
+  JOIN perguntas p ON p.id_pergunta = e.id_pergunta
+),
+
+-- defaults apenas por certificação (se não houver resposta submetida para a pergunta)
+defaults_base AS (
+  SELECT
+    p.id_pergunta,
+    p.pergunta,
+    p.dominio,
+    p.categoria, 
+    p.indicador, 
+    'Sim'::text AS resposta,  -- default das certificações
+    string_agg(DISTINCT c.certificacao, ', ') AS "Certificações aplicáveis"
+  FROM filtros f
+  JOIN certificacoes c
+    ON c.certificacao = ANY(f.certs)
+  JOIN perguntas p
+    ON p.id_pergunta = c.id_pergunta
+  WHERE NOT EXISTS (SELECT 1 FROM exp e WHERE e.id_pergunta = p.id_pergunta)
+  GROUP BY p.id_pergunta, p.pergunta, p.dominio, p.categoria, p.indicador
+)
+
+SELECT * FROM exp_full
+UNION ALL
+SELECT * FROM defaults_base
+ORDER BY dominio, id_pergunta;

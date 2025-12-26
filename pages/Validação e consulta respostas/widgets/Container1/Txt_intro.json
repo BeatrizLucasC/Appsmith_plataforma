@@ -1,0 +1,52 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 22,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "0.875rem",
+  "fontStyle": "",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "3vq4rrdn3g",
+  "leftColumn": 1,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 4,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 17,
+  "mobileTopRow": 0,
+  "needsErrorInfo": false,
+  "originalBottomRow": 22,
+  "originalTopRow": 1,
+  "overflow": "NONE",
+  "parentColumnSpace": 10.930908203125,
+  "parentId": "0lisyswk8r",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 63,
+  "shouldTruncate": false,
+  "text": "Nesta página pode validar e consultar as respostas submetidas pelos utilizadores.\n\nSeparador \"Dados Iniciais\": Apresenta informações-chave sobre cada utilizador e respetivo formulário, incluindo:\n\t- Número de respostas submetidas e validadas\n\t- Filtros selecionados no formulário\n\nSeparador \"Validar\": Apresenta as respostas às perguntas do formulário preenchido por cada utilizador, permitindo a sua validação.\n\nSeparador \"Consultar respostas\": Permite visualizar todas as respostas dos utilizadores, incluindo aquelas atribuídas automaticamente com base nas certificações selecionadas.",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 1,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "lbljfj20w1",
+  "widgetName": "Txt_intro"
+}

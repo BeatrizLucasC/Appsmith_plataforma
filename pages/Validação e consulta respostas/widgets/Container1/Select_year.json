@@ -1,0 +1,75 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 30,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \n(Qry_years.data &&\n Qry_years.data[0] &&\n Qry_years.data[0].ano)\n\t?\t\tString(Qry_years.data[0].ano)\n    : \"\" \n))(Select_year.options, Select_year.serverSideFiltering) }}",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "defaultOptionValue"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "hnym1n4kr2",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelText": "Ano",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 1,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 29,
+  "mobileLeftColumn": 43,
+  "mobileRightColumn": 63,
+  "mobileTopRow": 22,
+  "needsErrorInfo": false,
+  "onOptionChange": "{{\nQry_utilizador.run();\nQry_respostasForm.run();\n}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "originalBottomRow": 30,
+  "originalTopRow": 26,
+  "parentColumnSpace": 14.8564453125,
+  "parentId": "0lisyswk8r",
+  "parentRowSpace": 10,
+  "placeholderText": "Selecione uma opção",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 29,
+  "serverSideFiltering": false,
+  "sourceData": "{{\n  (Qry_years.data || [])\n    .filter(y => y && y.ano != null)\n    .map(y => ({\n      label: String(y.ano),\n      value: String(y.ano),\n    }))\n}}",
+  "topRow": 26,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "iniuy7nmdm",
+  "widgetName": "Select_year"
+}

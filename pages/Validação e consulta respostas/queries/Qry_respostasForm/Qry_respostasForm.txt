@@ -1,0 +1,24 @@
+WITH ultimas_respostas AS (
+  SELECT
+    r.*,
+    ROW_NUMBER() OVER (
+      PARTITION BY r.id_pergunta, r.id_utilizador, r.ano
+      ORDER BY r.data_hora_submissao DESC
+    ) AS rn
+  FROM respostas r
+  WHERE r.id_utilizador = {{ Tbl_resumo.selectedRow.email }}
+    AND r.ano = ({{ Tbl_resumo.selectedRow.ano }})::int
+)
+
+SELECT
+  p.id_pergunta,
+  p.pergunta,
+  p.dominio,
+  p.categoria,
+  p.indicador,
+  ur.resposta
+FROM perguntas p
+INNER JOIN ultimas_respostas ur
+  ON ur.id_pergunta = p.id_pergunta
+ AND ur.rn = 1
+ORDER BY p.dominio, p.id_pergunta;

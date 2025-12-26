@@ -30,7 +30,7 @@
   "icon": "plant",
   "pages": [
     {
-      "id": "Menu",
+      "id": "Página inicial",
       "isDefault": true
     },
     {
@@ -46,15 +46,15 @@
       "isDefault": false
     },
     {
-      "id": "Validação respostas",
-      "isDefault": false
-    },
-    {
-      "id": "Consultar respostas",
+      "id": "Validação e consulta respostas",
       "isDefault": false
     },
     {
       "id": "Resultados",
+      "isDefault": false
+    },
+    {
+      "id": "Página inicial_2",
       "isDefault": false
     }
   ],
