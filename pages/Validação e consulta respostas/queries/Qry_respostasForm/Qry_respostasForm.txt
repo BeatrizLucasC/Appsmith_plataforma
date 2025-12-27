@@ -7,18 +7,24 @@ WITH ultimas_respostas AS (
     ) AS rn
   FROM respostas r
   WHERE r.id_utilizador = {{ Tbl_resumo.selectedRow.email }}
-    AND r.ano = ({{ Tbl_resumo.selectedRow.ano }})::int
+    AND r.ano = {{ Tbl_resumo.selectedRow.ano }}
 )
-
 SELECT
   p.id_pergunta,
   p.pergunta,
   p.dominio,
   p.categoria,
   p.indicador,
-  ur.resposta
+  ur.resposta,
+  CASE
+    WHEN ur.validacao = 'S' THEN 'Validada'
+    WHEN ur.validacao = 'N' THEN 'Por validar'
+    ELSE ur.validacao
+  END AS validacao
 FROM perguntas p
 INNER JOIN ultimas_respostas ur
   ON ur.id_pergunta = p.id_pergunta
  AND ur.rn = 1
-ORDER BY p.dominio, p.id_pergunta;
+ORDER BY
+  CASE WHEN ur.validacao = 'N' THEN 0 ELSE 1 END,
+  p.id_pergunta;

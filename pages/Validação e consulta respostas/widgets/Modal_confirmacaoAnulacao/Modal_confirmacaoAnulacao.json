@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 254,
+  "bottomRow": 258,
   "boxShadow": "none",
   "canEscapeKeyClose": true,
   "canOutsideClickClose": true,
@@ -37,7 +37,7 @@
       "mobileTopRow": 0,
       "needsErrorInfo": false,
       "parentColumnSpace": 1,
-      "parentId": "4f69denfz2",
+      "parentId": "eftonptclr",
       "parentRowSpace": 1,
       "renderMode": "CANVAS",
       "responsiveBehavior": "fill",
@@ -46,8 +46,8 @@
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
-      "widgetId": "m708f79h6w",
-      "widgetName": "Canvas17"
+      "widgetId": "oewlat03ak",
+      "widgetName": "Canvas17Copy"
     }
   ],
   "detachFromLayout": true,
@@ -76,10 +76,10 @@
   "renderMode": "CANVAS",
   "rightColumn": 38,
   "shouldScrollContents": true,
-  "topRow": 14,
+  "topRow": 18,
   "type": "MODAL_WIDGET",
   "version": 2,
-  "widgetId": "4f69denfz2",
-  "widgetName": "Modal_confirmacao",
+  "widgetId": "eftonptclr",
+  "widgetName": "Modal_confirmacaoAnulacao",
   "width": 456
 }

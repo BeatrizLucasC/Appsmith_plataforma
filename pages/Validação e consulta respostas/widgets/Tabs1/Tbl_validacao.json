@@ -4,10 +4,11 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 72,
+  "bottomRow": 74,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
+  "cellBackground": "",
   "childStylesheet": {
     "button": {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
@@ -37,20 +38,21 @@
     "categoria",
     "indicador",
     "pergunta",
-    "resposta"
+    "resposta",
+    "validacao"
   ],
-  "columnUpdatedAt": 1766758809239,
+  "columnUpdatedAt": 1766794522049,
   "columnWidthMap": {
     "categoria": 105,
     "dominio": 100,
     "id_pergunta": 121,
     "indicador": 275,
-    "pergunta": 663
+    "pergunta": 512
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
-  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndex": "",
   "defaultSelectedRowIndices": [
     0
   ],
@@ -64,9 +66,6 @@
     },
     {
       "key": "boxShadow"
-    },
-    {
-      "key": "tableData"
     },
     {
       "key": "primaryColumns.id_pergunta.computedValue"
@@ -85,11 +84,20 @@
     },
     {
       "key": "primaryColumns.resposta.computedValue"
+    },
+    {
+      "key": "primaryColumns.validacao.computedValue"
+    },
+    {
+      "key": "tableData"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "cellBackground"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -114,16 +122,18 @@
   "mobileRightColumn": 34,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 73,
-  "originalTopRow": 20,
+  "originalBottomRow": 72,
+  "originalTopRow": 19,
   "parentColumnSpace": 13.796875,
   "parentId": "4co4xqnsmp",
   "parentRowSpace": 10,
+  "primaryColumnId": "id_pergunta",
   "primaryColumns": {
     "categoria": {
       "alias": "categoria",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",
       "currencyCode": "USD",
@@ -145,6 +155,7 @@
       "notation": "standard",
       "originalId": "categoria",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -155,6 +166,7 @@
       "alias": "dominio",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"dominio\"])) : dominio })()}}",
       "currencyCode": "USD",
@@ -176,6 +188,7 @@
       "notation": "standard",
       "originalId": "dominio",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -186,6 +199,7 @@
       "alias": "id_pergunta",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id_pergunta\"])) : id_pergunta })()}}",
       "currencyCode": "USD",
@@ -207,6 +221,7 @@
       "notation": "standard",
       "originalId": "id_pergunta",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -217,6 +232,7 @@
       "alias": "indicador",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"indicador\"])) : indicador })()}}",
       "currencyCode": "USD",
@@ -238,6 +254,7 @@
       "notation": "standard",
       "originalId": "indicador",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -248,6 +265,7 @@
       "alias": "pergunta",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"pergunta\"])) : pergunta })()}}",
       "currencyCode": "USD",
@@ -269,6 +287,7 @@
       "notation": "standard",
       "originalId": "pergunta",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -279,6 +298,7 @@
       "alias": "resposta",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"resposta\"])) : resposta })()}}",
       "currencyCode": "USD",
@@ -300,6 +320,41 @@
       "notation": "standard",
       "originalId": "resposta",
       "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "validacao": {
+      "alias": "validacao",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"validacao\"])) : validacao })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "validacao",
+      "index": 6,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Estado validação",
+      "notation": "standard",
+      "originalId": "validacao",
+      "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -312,6 +367,7 @@
   "rightColumn": 64,
   "searchKey": "",
   "tableData": "{{Qry_respostasForm.data}}",
+  "textColor": "",
   "textSize": "0.875rem",
   "topRow": 19,
   "totalRecordsCount": 0,

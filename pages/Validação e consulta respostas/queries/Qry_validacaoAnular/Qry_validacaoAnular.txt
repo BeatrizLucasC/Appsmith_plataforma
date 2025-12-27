@@ -1,0 +1,18 @@
+WITH visiveis AS (
+  SELECT value AS id_pergunta
+  FROM jsonb_array_elements_text( ({{ this.params.ids_json || '[]' }})::jsonb ) AS t(value)
+),
+latest_validated AS (
+  SELECT DISTINCT ON (r.id_pergunta)
+    r.id_resposta
+  FROM respostas r
+  JOIN visiveis v ON v.id_pergunta = r.id_pergunta
+  WHERE
+    r.id_utilizador = {{ Tbl_resumo.selectedRow.email }}
+    AND r.ano = {{ Tbl_resumo.selectedRow.ano }}
+    AND r.validacao = 'S'
+  ORDER BY r.id_pergunta, r.data_hora_submissao DESC
+)
+UPDATE respostas r
+SET validacao = 'N'  -- ou NULL, se preferir "sem validação"
+WHERE r.id_resposta IN (SELECT id_resposta FROM latest_validated);

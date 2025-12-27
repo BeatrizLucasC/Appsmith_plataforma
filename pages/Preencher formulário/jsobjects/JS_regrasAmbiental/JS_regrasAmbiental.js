@@ -1,8 +1,12 @@
 export default {
-  // Armazena respostas do utilizador
+  // =========================================
+  // 🔹 Estado
+  // =========================================
   answers: {},
 
-  // 1️⃣ Obter todas as perguntas do domínio "Ambiental"
+  // =========================================
+  // 🔹 1) Obter todas as perguntas do domínio "Ambiental"
+  // =========================================
   getQuestions() {
     const data = Qry_getQuestions.data || [];
     return data.filter(
@@ -10,7 +14,9 @@ export default {
     );
   },
 
-  // 2️⃣ Filtrar perguntas com base nos widgets
+  // =========================================
+  // 🔹 2) Filtrar perguntas com base nos widgets (condicionalidades)
+  // =========================================
   filterQuestions() {
     const all = this.getQuestions();
     if (!all.length) return [];
@@ -43,12 +49,16 @@ export default {
     });
   },
 
-  // 2.1️⃣ Todas as perguntas filtradas (sem condicionalidades)
+  // =========================================
+  // 🔹 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
+  // =========================================
   getAllFilteredQuestions() {
     return this.filterQuestions();
   },
 
-  // 3️⃣ Perguntas visíveis com condicionalidades (versão segura)
+  // =========================================
+  // 🔹 3) Ordenação por condicionalidade com base nas respostas dadas
+  // =========================================
   getVisibleQuestions() {
     const all = this.filterQuestions();
     const answers = this.answers || {};
@@ -81,9 +91,7 @@ export default {
 
       const nextIndex =
         nextId && byId[nextId]
-          ? all.findIndex(
-              q => String(q.id_pergunta) === String(nextId)
-            )
+          ? all.findIndex(q => String(q.id_pergunta) === String(nextId))
           : -1;
 
       if (nextIndex >= 0 && nextIndex !== currentIndex) {
@@ -96,10 +104,14 @@ export default {
     return visible;
   },
 
-  // 4️⃣ Label da pergunta & icone informacao adicional
+  // =========================================
+  // 🔹 4) Label da pergunta
+  // =========================================
   questionLabel: row => row ? `${row.id_pergunta || ""} — ${row.pergunta || ""}` : "",
-	
-  // 5️⃣ Opções do RadioGroup
+
+  // =========================================
+  // 🔹 5) Opções do Radio
+  // =========================================
   radioOptions(row) {
     const options = [
       { label: "Sim", value: "Sim" },
@@ -111,12 +123,16 @@ export default {
     return options;
   },
 
-  // 6️⃣ Valor selecionado
+  // =========================================
+  // 🔹 6) Valor selecionado no Radio
+  // =========================================
   selectedValue(row) {
     return this.answers?.[row.id_pergunta] || "";
   },
 
-  // 7️⃣ Atualizar resposta
+  // =========================================
+  // 🔹 7) Handler de mudança de seleção
+  // =========================================
   onSelectionChange(row, selectedValue) {
     if (!row) return;
     this.answers = {
@@ -125,13 +141,17 @@ export default {
     };
   },
 
-  // 8️⃣ Preparar respostas para guardar
+  // =========================================
+  // 🔹 8) Preparar respostas para guardar (todas as visíveis)
+  //     - Mantemos a preparação de TODAS as visíveis
+  //     - O SQL fará "update só se mudou"
+  // =========================================
   prepareAnswers() {
     const all = this.getVisibleQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
     const year = new Date().getFullYear();
     const answers = this.answers || {};
-    const dominio = "ambiental"; // ✅ CORRIGIDO
+    const dominio = "ambiental";
 
     return all.map(q => ({
       id_resposta: `${userEmail}_${year}_${q.id_pergunta}`,
@@ -145,11 +165,15 @@ export default {
     }));
   },
 
-  // 9️⃣ Construir valores SQL
+  // =========================================
+  // 🔹 9) Construir VALUES para o INSERT
+  //     - ✅ inclui `validacao = 'N'` para novas linhas
+  // =========================================
   buildValues() {
     const prepared = this.prepareAnswers();
     if (!prepared.length) {
-      return "('none','none','none',NULL,NOW(),0,'ambiental')";
+      // "dummy" para evitar VALUES vazio
+      return "('none','none','none',NULL,NOW(),0,'ambiental','N')";
     }
 
     return prepared
@@ -157,7 +181,7 @@ export default {
         const safeVal =
           ans.resposta === null
             ? "NULL"
-            : `'${ans.resposta.replace(/'/g, "''")}'`;
+            : `'${String(ans.resposta).replace(/'/g, "''")}'`;
         return `(
           '${ans.id_resposta}',
           '${ans.id_pergunta}',
@@ -165,13 +189,16 @@ export default {
           ${safeVal},
           NOW(),
           ${ans.ano},
-          '${ans.dominio}'
+          '${ans.dominio}',
+          'N'  -- novas inserções começam invalidadas
         )`;
       })
       .join(", ");
   },
 
-  // 🔟 Verificar se todas as perguntas visíveis foram respondidas
+  // =========================================
+  // 🔹 10) Validação: todas as visíveis respondidas
+  // =========================================
   isReadyToSubmit() {
     const visibleQuestions = this.getVisibleQuestions();
     return visibleQuestions.every(q =>
@@ -179,7 +206,11 @@ export default {
     );
   },
 
-  // 1️⃣1️⃣ Submeter respostas
+  // =========================================
+  // 🔹 11) Submissão (Comportamento A)
+  //     - Sem alterações -> não atualiza nada
+  //     - Com alterações -> só as linhas alteradas são atualizadas e invalidadas
+  // =========================================
   async onSubmit() {
     if (!this.isReadyToSubmit()) {
       showAlert(
@@ -205,34 +236,42 @@ export default {
     }
   },
 
-  // 1️⃣2️⃣ Confirmar substituição
+  // =========================================
+  // 🔹 12) Confirmar substituição
+  // =========================================
   async confirmReplace() {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmAmbiental");
     showAlert("Respostas substituídas com sucesso!", "success");
   },
 
-  // 1️⃣3️⃣ Cancelar substituição
+  // =========================================
+  // 🔹 13) Cancelar substituição
+  // =========================================
   cancelReplace() {
     closeModal("Modal_ConfirmAmbiental");
     showAlert("Substituição cancelada.", "info");
   },
 
-  // 1️⃣4️⃣ Carregar respostas anteriores
+  // =========================================
+  // 🔹 14) Carregar respostas anteriores
+  // =========================================
   loadPreviousAnswers() {
     const data = Qry_getAnswersAmbiental.data || [];
     const mapped = {};
 
     data.forEach(row => {
-      if (row.id_pergunta && row.resposta) {
-        mapped[String(row.id_pergunta)] = row.resposta;
+      if (row.id_pergunta && row.resposta != null) {
+        mapped[String(row.id_pergunta)] = String(row.resposta).trim();
       }
     });
 
     this.answers = mapped;
   },
 
-  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
+  // =========================================
+  // 🔹 15) Aplicar filtros e carregar respostas anteriores
+  // =========================================
   async aplicarFiltrosECarregarRespostas() {
     const perguntas = this.getAllFilteredQuestions();
     if (perguntas.length > 0) {

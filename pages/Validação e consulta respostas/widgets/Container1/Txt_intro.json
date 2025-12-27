@@ -40,7 +40,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Nesta página pode validar e consultar as respostas submetidas pelos utilizadores.\n\nSeparador \"Dados Iniciais\": Apresenta informações-chave sobre cada utilizador e respetivo formulário, incluindo:\n\t- Número de respostas submetidas e validadas\n\t- Filtros selecionados no formulário\n\nSeparador \"Validar\": Apresenta as respostas às perguntas do formulário preenchido por cada utilizador, permitindo a sua validação.\n\nSeparador \"Consultar respostas\": Permite visualizar todas as respostas dos utilizadores, incluindo aquelas atribuídas automaticamente com base nas certificações selecionadas.",
+  "text": "Nesta página pode validar e consultar as respostas submetidas pelos utilizadores.\n\nSeparador \"Dados Iniciais\" -  Apresenta informações-chave sobre cada utilizador e respetivo formulário, incluindo:\n\t- Número de respostas submetidas e validadas\n\t- Filtros selecionados no formulário\n\nSeparador \"Validar\" - Apresenta as respostas às perguntas do formulário preenchido por cada utilizador, permitindo a sua validação.\n\nSeparador \"Consultar respostas\" - Permite visualizar todas as respostas dos utilizadores, incluindo aquelas atribuídas automaticamente com base nas certificações selecionadas.",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

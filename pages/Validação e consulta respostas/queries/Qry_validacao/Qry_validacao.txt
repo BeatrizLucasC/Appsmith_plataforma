@@ -10,9 +10,9 @@ latest AS (
   FROM respostas r
   JOIN visiveis v ON v.id_pergunta = r.id_pergunta
   WHERE
-    r.id_utilizador = {{ Select_utilizador.selectedOptionValue }}
-    AND r.ano = {{ Select_year.selectedOptionValue }}
-    AND r.validacao IS NULL
+    r.id_utilizador = {{Tbl_resumo.selectedRow.email}}
+    AND r.ano = {{Tbl_resumo.selectedRow.ano}}
+    AND (r.validacao IS NULL OR r.validacao = 'N')
   ORDER BY r.id_pergunta, r.data_hora_submissao DESC
 )
 UPDATE respostas r

@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "WITH visiveis AS (\n  -- Lê o parâmetro passado e transforma o JSON em linhas (ex.: [\"1.1.1.1\",\"1.1.1.2\"])\n  SELECT value AS id_pergunta\n  FROM jsonb_array_elements_text( ({{ this.params.ids_json || '[]' }})::jsonb ) AS t(value)\n),\nlatest AS (\n  -- Seleciona a última resposta (não validada) por pergunta, utilizador e ano\n  SELECT DISTINCT ON (r.id_pergunta)\n    r.id_resposta\n  FROM respostas r\n  JOIN visiveis v ON v.id_pergunta = r.id_pergunta\n  WHERE\n    r.id_utilizador = {{ Select_utilizador.selectedOptionValue }}\n    AND r.ano = {{ Select_year.selectedOptionValue }}\n    AND r.validacao IS NULL\n  ORDER BY r.id_pergunta, r.data_hora_submissao DESC\n)\nUPDATE respostas r\nSET validacao = 'S'\nWHERE r.id_resposta IN (SELECT id_resposta FROM latest);",
+      "body": "WITH visiveis AS (\n  -- Lê o parâmetro passado e transforma o JSON em linhas (ex.: [\"1.1.1.1\",\"1.1.1.2\"])\n  SELECT value AS id_pergunta\n  FROM jsonb_array_elements_text( ({{ this.params.ids_json || '[]' }})::jsonb ) AS t(value)\n),\nlatest AS (\n  -- Seleciona a última resposta (não validada) por pergunta, utilizador e ano\n  SELECT DISTINCT ON (r.id_pergunta)\n    r.id_resposta\n  FROM respostas r\n  JOIN visiveis v ON v.id_pergunta = r.id_pergunta\n  WHERE\n    r.id_utilizador = {{Tbl_resumo.selectedRow.email}}\n    AND r.ano = {{Tbl_resumo.selectedRow.ano}}\n    AND (r.validacao IS NULL OR r.validacao = 'N')\n  ORDER BY r.id_pergunta, r.data_hora_submissao DESC\n)\nUPDATE respostas r\nSET validacao = 'S'\nWHERE r.id_resposta IN (SELECT id_resposta FROM latest);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

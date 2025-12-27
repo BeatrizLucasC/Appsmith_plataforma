@@ -1,6 +1,0 @@
-SELECT DISTINCT
-  r.id_utilizador AS value,
-  r.id_utilizador AS label
-FROM respostas r
-WHERE ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';
-
