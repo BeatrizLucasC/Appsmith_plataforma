@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 11,
+  "bottomRow": 6,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,7 +30,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 11,
+  "originalBottomRow": 6,
   "originalTopRow": 1,
   "overflow": "NONE",
   "parentColumnSpace": 10.930908203125,
@@ -40,7 +40,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Nesta página poderá validar as respostas submetidas por cada utilizador, com base nos filtros ao formulário selecionados pelo utilizador.\n\nApós a visualização das respostas, poderá validar as mesmas através do botão \"validar respostas\" presente no fim da página. ",
+  "text": "Nesta página visulaizar os resultados de cada utilizador em detalhe (a nível global, domínio, categoria e indicador) e a comparação com os resultados médios.",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

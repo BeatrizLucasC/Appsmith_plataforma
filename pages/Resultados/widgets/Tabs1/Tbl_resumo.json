@@ -536,7 +536,7 @@
   "searchKey": "",
   "tableData": "{{Qry_dadosIniciais.data}}",
   "textSize": "0.875rem",
-  "topRow": 0,
+  "topRow": 11,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,

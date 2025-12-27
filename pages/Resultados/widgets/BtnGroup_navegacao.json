@@ -18,6 +18,9 @@
     },
     {
       "key": "groupButtons.groupButtonest7ova0i5.buttonColor"
+    },
+    {
+      "key": "groupButtons.groupButtonvtgnr03ovl.buttonColor"
     }
   ],
   "dynamicTriggerPathList": [
@@ -57,7 +60,7 @@
       "index": 2,
       "isDisabled": false,
       "isVisible": true,
-      "label": "Visualização dos resultados",
+      "label": "Resultados em detalhe",
       "menuItems": {},
       "onClick": "{{navigateTo('Visualizar resultados', {}, 'SAME_WINDOW');}}",
       "placement": "START",
@@ -79,6 +82,22 @@
       "placement": "START",
       "variant": "filled",
       "widgetId": "n106r0x30u"
+    },
+    "groupButtonvtgnr03ovl": {
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "buttonType": "SIMPLE",
+      "iconName": "numbered-list",
+      "id": "groupButtonvtgnr03ovl",
+      "index": 3,
+      "isDisabled": false,
+      "isSeparator": false,
+      "isVisible": true,
+      "itemType": "BUTTON",
+      "label": "Ranking utilizadores",
+      "menuItems": {},
+      "placement": "START",
+      "variant": "filled",
+      "widgetId": "d57y8c2y5i"
     }
   },
   "isCanvas": false,
