@@ -1,0 +1,18 @@
+WITH val_por_utilizador AS (
+  SELECT
+    id_utilizador,
+    ano,
+    CASE
+      WHEN COUNT(DISTINCT CASE WHEN dominio IN ('ambiental','social','económico') THEN dominio END) = 3
+       AND SUM(CASE WHEN dominio IN ('ambiental','social','económico') AND validacao <> 'S' THEN 1 ELSE 0 END) = 0
+      THEN 1 ELSE 0
+    END AS formulario_validado
+  FROM respostas
+  GROUP BY id_utilizador, ano
+)
+SELECT
+  ano,
+  SUM(formulario_validado) AS total_formularios_validados
+FROM val_por_utilizador
+GROUP BY ano
+ORDER BY ano;

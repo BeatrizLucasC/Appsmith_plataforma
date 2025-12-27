@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 68,
+  "bottomRow": 54,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -150,11 +150,11 @@
   "mobileRightColumn": 34,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onRowSelected": "{{Qry_respostasAll.run();\nQry_respostasForm.run()}}",
+  "onRowSelected": "{{Qry_pontuacaoIndicador.run();\nQry_pontuacaoDominio.run();\nQry_pontuacaoCategoria.run();\nQry_pontuacaoGlobal.run()}}",
   "originalBottomRow": 69,
   "originalTopRow": 19,
   "parentColumnSpace": 13.796875,
-  "parentId": "3okpq3796r",
+  "parentId": "6u4s1zgs06",
   "parentRowSpace": 10,
   "primaryColumns": {
     "ano": {
@@ -536,11 +536,11 @@
   "searchKey": "",
   "tableData": "{{Qry_dadosIniciais.data}}",
   "textSize": "0.875rem",
-  "topRow": 14,
+  "topRow": 0,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "p4wkofbylv",
+  "widgetId": "1kvov28syl",
   "widgetName": "Tbl_resumo"
 }

@@ -17,9 +17,6 @@
       "key": "groupButtons.groupButton2.buttonColor"
     },
     {
-      "key": "groupButtons.groupButton3.buttonColor"
-    },
-    {
       "key": "groupButtons.groupButtonest7ova0i5.buttonColor"
     }
   ],
@@ -32,9 +29,6 @@
     },
     {
       "key": "groupButtons.groupButton2.onClick"
-    },
-    {
-      "key": "groupButtons.groupButton3.onClick"
     }
   ],
   "groupButtons": {
@@ -48,7 +42,7 @@
       "index": 1,
       "isDisabled": false,
       "isVisible": true,
-      "label": "Formulário",
+      "label": "Validação e consulta das respostas",
       "menuItems": {},
       "onClick": "{{navigateTo('Preencher formulário', {}, 'SAME_WINDOW');}}",
       "placement": "START",
@@ -66,60 +60,6 @@
       "label": "Visualização dos resultados",
       "menuItems": {},
       "onClick": "{{navigateTo('Visualizar resultados', {}, 'SAME_WINDOW');}}",
-      "placement": "START",
-      "widgetId": ""
-    },
-    "groupButton3": {
-      "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
-      "buttonType": "SIMPLE",
-      "disabledWhenInvalid": false,
-      "iconAlign": "left",
-      "iconName": "alignment-left",
-      "id": "groupButton3",
-      "index": 3,
-      "isDisabled": false,
-      "isVisible": true,
-      "label": "Compararação com a média ",
-      "menuItems": {
-        "menuItem1": {
-          "backgroundColor": "#FFFFFF",
-          "disabledWhenInvalid": false,
-          "id": "menuItem1",
-          "index": 0,
-          "isDisabled": false,
-          "isVisible": true,
-          "label": "First Option",
-          "onClick": "",
-          "widgetId": ""
-        },
-        "menuItem2": {
-          "backgroundColor": "#FFFFFF",
-          "disabledWhenInvalid": false,
-          "id": "menuItem2",
-          "index": 1,
-          "isDisabled": false,
-          "isVisible": true,
-          "label": "Second Option",
-          "onClick": "",
-          "widgetId": ""
-        },
-        "menuItem3": {
-          "backgroundColor": "#DD4B34",
-          "disabledWhenInvalid": false,
-          "iconAlign": "right",
-          "iconColor": "#FFFFFF",
-          "iconName": "trash",
-          "id": "menuItem3",
-          "index": 2,
-          "isDisabled": false,
-          "isVisible": true,
-          "label": "Delete",
-          "onClick": "",
-          "textColor": "#FFFFFF",
-          "widgetId": ""
-        }
-      },
-      "onClick": "{{navigateTo('Comparação com a média', {}, 'SAME_WINDOW');}}",
       "placement": "START",
       "widgetId": ""
     },
@@ -164,6 +104,6 @@
   "topRow": 27,
   "type": "BUTTON_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "nm08pg4hee",
-  "widgetName": "ButtonGroup1"
+  "widgetId": "puwceeh683",
+  "widgetName": "BtnGroup_navegacao"
 }

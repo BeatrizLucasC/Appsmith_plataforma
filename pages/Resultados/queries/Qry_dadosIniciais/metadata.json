@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_252bf5c0-1393-45ee-8347-e97e1fa11f09",
-  "id": "Validação e consulta respostas_Qry_dadosIniciais",
+  "gitSyncId": "692f23e7862bc92544420b37_278c18dd-4978-4df1-944a-5be0f7ad6c35",
+  "id": "Resultados_Qry_dadosIniciais",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "Qry_dadosIniciais",
-    "pageId": "Validação e consulta respostas",
+    "pageId": "Resultados",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": true
   }
