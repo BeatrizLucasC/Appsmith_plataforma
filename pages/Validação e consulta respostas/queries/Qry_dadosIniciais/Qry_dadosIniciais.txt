@@ -44,7 +44,7 @@ WITH filtros_raw AS (
       ELSE INITCAP(REPLACE(TRIM(sf.dimensao), '_', ' '))
     END AS dimensao
   FROM selecoes_filtros sf
-  WHERE sf.ano = ({{ Select_year.selectedOptionValue }})::int
+  WHERE sf.ano = {{Select_year.selectedOptionValue}}
 ),
 
 -- seleciona a última seleção de filtros por utilizador/ano
@@ -70,7 +70,7 @@ contagens AS (
     SUM(CASE WHEN r.validacao = 'N' THEN 1 ELSE 0 END) AS respostas_nao_validadas,
     MAX(r.data_hora_submissao) AS ultima_submissao_utc
   FROM respostas r
-  WHERE r.ano = ({{ Select_year.selectedOptionValue }})::int
+  WHERE r.ano = {{Select_year.selectedOptionValue}}
   GROUP BY r.id_utilizador, r.ano
 )
 

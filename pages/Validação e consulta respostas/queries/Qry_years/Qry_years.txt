@@ -1,3 +1,5 @@
 SELECT DISTINCT ano
 FROM vw_score_user_avg_global
 WHERE id_utilizador = '{{appsmith.user.email}}'
+ORDER BY ano DESC;
+

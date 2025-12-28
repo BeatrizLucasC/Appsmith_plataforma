@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "WITH val_por_utilizador AS (\n  SELECT\n    id_utilizador,\n    ano,\n    CASE\n      WHEN COUNT(DISTINCT CASE WHEN dominio IN ('ambiental','social','económico') THEN dominio END) = 3\n       AND SUM(CASE WHEN dominio IN ('ambiental','social','económico') AND validacao <> 'S' THEN 1 ELSE 0 END) = 0\n      THEN 1 ELSE 0\n    END AS formulario_validado\n  FROM respostas\n  GROUP BY id_utilizador, ano\n)\nSELECT\n  ano,\n  SUM(formulario_validado) AS total_formularios_validados\nFROM val_por_utilizador\nGROUP BY ano\nORDER BY ano;",
+      "body": "SELECT\n  ano,\n  COUNT(*) AS total_formularios_validados\nFROM (\n  SELECT id_utilizador, ano\n  FROM respostas\n  WHERE dominio IN ('ambiental','social','economico')\n  GROUP BY id_utilizador, ano\n  HAVING\n    COUNT(DISTINCT dominio) = 3                     -- tem os 3 domínios\n    AND BOOL_AND(validacao = 'S')                   -- e todas as respostas desses domínios são 'S'\n) t\nGROUP BY ano\nORDER BY ano;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

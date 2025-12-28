@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 120,
+  "bottomRow": 128,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
@@ -201,14 +201,22 @@
     },
     {
       "key": "boxShadow"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{\n  (() => {\n    const sel = Number(Select_year.selectedOptionValue);\n    const rows = Qry_pageVisibility.data || [];\n    const found = rows.find(r => Number(r.ano) === sel);\n    // Só mostra se a query já carregou e o ano cumpre a condição (>=5)\n    return !Qry_pageVisibility.isLoading && (found?.ano_ok === true);\n  })()\n}}",
   "key": "ryb6vi73g7",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
@@ -219,8 +227,8 @@
   "mobileRightColumn": 26,
   "mobileTopRow": 32,
   "needsErrorInfo": false,
-  "originalBottomRow": 120,
-  "originalTopRow": 22,
+  "originalBottomRow": 128,
+  "originalTopRow": 30,
   "parentColumnSpace": 16.609375,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -261,7 +269,7 @@
       "widgetId": "9jnz2zbys4"
     }
   },
-  "topRow": 22,
+  "topRow": 30,
   "type": "TABS_WIDGET",
   "version": 3,
   "widgetId": "6bhhpag3m9",

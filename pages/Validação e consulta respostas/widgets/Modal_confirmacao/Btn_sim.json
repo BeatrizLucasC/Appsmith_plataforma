@@ -33,7 +33,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{JS_regrasValidacao.confirmValidacao();}}",
+  "onClick": "{{JS_regrasValidacao.confirmValidacao();\nQry_formsValidados.run()}}",
   "originalBottomRow": 17,
   "originalTopRow": 13,
   "parentId": "m708f79h6w",
