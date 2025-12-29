@@ -1,10 +1,13 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 9,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
     },
     {
       "key": "borderRadius"
@@ -12,8 +15,8 @@
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "Poppins",
-  "fontSize": "0.875rem",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
   "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
@@ -22,28 +25,28 @@
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 4,
+  "mobileBottomRow": 9,
   "mobileLeftColumn": 0,
-  "mobileRightColumn": 14,
-  "mobileTopRow": 0,
+  "mobileRightColumn": 11,
+  "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 5,
-  "originalTopRow": 0,
+  "originalBottomRow": 9,
+  "originalTopRow": 4,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
-  "parentId": "tlij3s8yyd",
+  "parentId": "jbw36ti6az",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 51,
+  "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "Aceda a todas as áreas e funcionalidades aqui:",
+  "text": "Uma plataforma que permite avaliar, compreender e melhorar o desempenho das explorações agrícolas nos diferentes domínios da sustentabilidade.",
   "textAlign": "LEFT",
-  "textColor": "#2664ac",
-  "topRow": 0,
+  "textColor": "#231f20",
+  "topRow": 4,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "wjd0rmomq1",
-  "widgetName": "Text_menu"
+  "widgetId": "j6lyedqdxm",
+  "widgetName": "Txt_welcome2"
 }

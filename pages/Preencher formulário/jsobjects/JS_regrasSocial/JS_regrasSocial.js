@@ -1,48 +1,55 @@
 export default {
-  // Armazena respostas do utilizador
+
+  // Estado
   answers: {},
 
-  // 1️⃣ Obter todas as perguntas do domínio "Social"
+  // 1) Obter todas as perguntas do domínio "Social"
   getQuestions() {
     const data = Qry_getQuestions.data || [];
-    return data.filter(q => String(q.dominio || "").trim().toLowerCase() === "social");
+    return data.filter(
+      q => String(q.dominio || "").trim().toLowerCase() === "social"
+    );
   },
 
-  // 2️⃣ Filtrar perguntas com base nos widgets
-  // Dimensão e Sistema → OU; Certificação com "N" → bloqueia
+  // 2) Filtrar perguntas com base nos widgets (condicionalidades)
   filterQuestions() {
     const all = this.getQuestions();
     if (!all.length) return [];
 
     const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
     const selectedSP = Multiselect_SistemaProducao.selectedOptionValues || [];
-    const selectedDE = Select_Dimensao.selectedOptionValue ? [Select_Dimensao.selectedOptionValue] : [];
+    const selectedDE = Select_Dimensao.selectedOptionValue
+      ? [Select_Dimensao.selectedOptionValue]
+      : [];
 
     return all.filter(q => {
-      // Bloqueio por certificação: se alguma tiver "N", oculta
+      // Bloqueio por certificação
       const hasCertN = selectedCert.some(col => q[col] === "N");
       if (hasCertN) return false;
 
-      // Verificar dimensão e sistema (lógica OU)
       const hasSP = selectedSP.some(col => q[col] === "S");
       const hasDE = selectedDE.some(col => q[col] === "S");
 
-      // Se não houver filtros aplicados, mostra tudo
-      if (selectedCert.length === 0 && selectedSP.length === 0 && selectedDE.length === 0) return true;
+      // Sem filtros → mostra tudo
+      if (
+        selectedCert.length === 0 &&
+        selectedSP.length === 0 &&
+        selectedDE.length === 0
+      ) {
+        return true;
+      }
 
-      // Pergunta aparece se pelo menos uma dimensão OU sistema tiver "S"
+      // OU entre sistema e dimensão
       return hasSP || hasDE;
     });
   },
 
-  // ✅ 2.1 Função auxiliar: devolve todas as perguntas filtradas (sem condicionalidades)
+  // 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
   getAllFilteredQuestions() {
     return this.filterQuestions();
   },
 
-  // 3️⃣ Perguntas visíveis com condicionalidades
-  // Se houver condicionalidade e resposta, salta para a pergunta indicada
-  // Caso contrário, continua normalmente
+  // 3) Ordenação por condicionalidade com base nas respostas dadas
   getVisibleQuestions() {
     const all = this.filterQuestions();
     const answers = this.answers || {};
@@ -73,9 +80,7 @@ export default {
 
       const nextIndex =
         nextId && byId[nextId]
-          ? all.findIndex(
-              q => String(q.id_pergunta) === String(nextId)
-            )
+          ? all.findIndex(q => String(q.id_pergunta) === String(nextId))
           : -1;
 
       if (nextIndex >= 0 && nextIndex !== currentIndex) {
@@ -84,34 +89,40 @@ export default {
         currentIndex++;
       }
     }
+
     return visible;
   },
 
-  // 4️⃣ Construir label da pergunta
-  questionLabel: row => (row ? `${row.id_pergunta || ""} — ${row.pergunta || ""}` : ""),
+  // 4) Label da pergunta (sem traços antes/depois do título)
+  questionLabel: row => row ? `${row.id_pergunta || ""} ${row.pergunta || ""}` : "",
 
-  // 5️⃣ Opções do RadioGroup (NA só se coluna "na" = "S")
+  // 5) Opções do Radio
   radioOptions(row) {
     const options = [
       { label: "Sim", value: "Sim" },
       { label: "Não", value: "Não" }
     ];
-    if (row.na === "S") options.unshift({ label: "NA", value: "NA" });
+    if (row.na === "S") {
+      options.unshift({ label: "NA", value: "NA" });
+    }
     return options;
   },
 
-  // 6️⃣ Obter resposta selecionada
+  // 6) Valor selecionado no Radio
   selectedValue(row) {
     return this.answers?.[row.id_pergunta] || "";
   },
 
-  // 7️⃣ Atualizar resposta quando o utilizador seleciona
+  // 7) Handler de mudança de seleção
   onSelectionChange(row, selectedValue) {
     if (!row) return;
-    this.answers = { ...this.answers, [String(row.id_pergunta)]: selectedValue };
+    this.answers = {
+      ...this.answers,
+      [String(row.id_pergunta)]: selectedValue
+    };
   },
 
-  // 8️⃣ Preparar respostas para guardar
+  // 8) Preparar respostas para guardar (todas as visíveis)
   prepareAnswers() {
     const all = this.getVisibleQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
@@ -123,77 +134,110 @@ export default {
       id_resposta: `${userEmail}_${year}_${q.id_pergunta}`,
       id_pergunta: q.id_pergunta,
       id_utilizador: userEmail,
-      resposta: answers[q.id_pergunta] ? String(answers[q.id_pergunta]).trim() : null,
+      resposta: answers[q.id_pergunta]
+        ? String(answers[q.id_pergunta]).trim()
+        : null,
       ano: year,
       dominio
     }));
   },
 
-  // 9️⃣ Construir valores SQL para inserção
+  // 9) Construir VALUES para o INSERT (inclui validacao='N' para novas linhas)
   buildValues() {
     const prepared = this.prepareAnswers();
-    if (!prepared.length) return "('none','none','none',NULL,NOW(),0,'social')";
+    if (!prepared.length) {
+      // "dummy" para evitar VALUES vazio
+      return "('none','none','none',NULL,NOW(),0,'social','N')";
+    }
+
     return prepared
       .map(ans => {
-        const safeVal = ans.resposta === null ? "NULL" : `'${ans.resposta.replace(/'/g, "''")}'`;
-        return `('${ans.id_resposta}', '${ans.id_pergunta}', '${ans.id_utilizador}', ${safeVal}, NOW(), ${ans.ano}, '${ans.dominio}')`;
+        const safeVal =
+          ans.resposta === null
+            ? "NULL"
+            : `'${String(ans.resposta).replace(/'/g, "''")}'`;
+        return `(
+          '${ans.id_resposta}',
+          '${ans.id_pergunta}',
+          '${ans.id_utilizador}',
+          ${safeVal},
+          NOW(),
+          ${ans.ano},
+          '${ans.dominio}',
+          'N'
+        )`;
       })
       .join(", ");
   },
 
-  // 🔟 Verificar se todas as perguntas visíveis foram respondidas
+  // 10) Validação: todas as visíveis respondidas
   isReadyToSubmit() {
     const visibleQuestions = this.getVisibleQuestions();
-    return visibleQuestions.every(q => ["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta]));
+    return visibleQuestions.every(q =>
+      ["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta])
+    );
   },
 
-  // 1️⃣1️⃣ Submeter respostas
+  // 11) Submissão
   async onSubmit() {
     if (!this.isReadyToSubmit()) {
-      showAlert("É necessário responder a todas as perguntas para submeter.", "warning");
+      showAlert(
+        "É necessário responder a todas as perguntas para submeter.",
+        "warning"
+      );
       return;
     }
+
     await Qry_checkExistingSocial.run();
-    const hasExisting = Array.isArray(Qry_checkExistingSocial.data) && Qry_checkExistingSocial.data.length > 0;
+    const hasExisting =
+      Array.isArray(Qry_checkExistingSocial.data) &&
+      Qry_checkExistingSocial.data.length > 0;
+
     if (hasExisting) {
       showModal("Modal_ConfirmSocial");
     } else {
       await Qry_saveAnswersSocial.run();
-      showAlert("Respostas do domínio social submetidas com sucesso!", "success");
+      showAlert(
+        "Respostas do domínio social submetidas com sucesso!",
+        "success"
+      );
     }
   },
 
-  // 1️⃣2️⃣ Confirmar substituição
+  // 12) Confirmar substituição
   async confirmReplace() {
     await Qry_saveAnswersSocial.run();
     closeModal("Modal_ConfirmSocial");
     showAlert("Respostas substituídas com sucesso!", "success");
   },
 
-  // 1️⃣3️⃣ Cancelar substituição
+  // 13) Cancelar substituição
   cancelReplace() {
     closeModal("Modal_ConfirmSocial");
     showAlert("Substituição cancelada.", "info");
   },
 
-  // 1️⃣4️⃣ Carregar respostas anteriores
+  // 14) Carregar respostas anteriores
   loadPreviousAnswers() {
     const data = Qry_getAnswersSocial.data || [];
     const mapped = {};
+
     data.forEach(row => {
-      if (row.id_pergunta && row.resposta) {
-        mapped[String(row.id_pergunta)] = row.resposta;
+      if (row.id_pergunta && row.resposta != null) {
+        mapped[String(row.id_pergunta)] = String(row.resposta).trim();
       }
     });
+
     this.answers = mapped;
   },
 
-  // 1️⃣5️⃣ Aplicar filtros e carregar respostas anteriores
+  // 15) Aplicar filtros e carregar respostas anteriores
   async aplicarFiltrosECarregarRespostas() {
-    const perguntas = this.getAllFilteredQuestions(); // ✅ usa todas as perguntas filtradas
+    const perguntas = this.getAllFilteredQuestions();
     if (perguntas.length > 0) {
       await Qry_getAnswersSocial.run();
       this.loadPreviousAnswers();
     }
   }
 };
+

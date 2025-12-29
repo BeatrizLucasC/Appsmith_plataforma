@@ -1,12 +1,9 @@
 export default {
-  // =========================================
-  // 🔹 Estado
-  // =========================================
+
+  // Estado
   answers: {},
 
-  // =========================================
-  // 🔹 1) Obter todas as perguntas do domínio "Ambiental"
-  // =========================================
+  // 1) Obter todas as perguntas do domínio "Ambiental"
   getQuestions() {
     const data = Qry_getQuestions.data || [];
     return data.filter(
@@ -14,9 +11,7 @@ export default {
     );
   },
 
-  // =========================================
-  // 🔹 2) Filtrar perguntas com base nos widgets (condicionalidades)
-  // =========================================
+  // 2) Filtrar perguntas com base nos widgets (condicionalidades)
   filterQuestions() {
     const all = this.getQuestions();
     if (!all.length) return [];
@@ -49,24 +44,18 @@ export default {
     });
   },
 
-  // =========================================
-  // 🔹 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
-  // =========================================
+  // 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
   getAllFilteredQuestions() {
     return this.filterQuestions();
   },
 
-  // =========================================
-  // 🔹 3) Ordenação por condicionalidade com base nas respostas dadas
-  // =========================================
+  // 3) Ordenação por condicionalidade com base nas respostas dadas
   getVisibleQuestions() {
     const all = this.filterQuestions();
     const answers = this.answers || {};
     if (!all.length) return [];
 
-    const byId = Object.fromEntries(
-      all.map(q => [String(q.id_pergunta), q])
-    );
+    const byId = Object.fromEntries(all.map(q => [String(q.id_pergunta), q]));
 
     const visible = [];
     const visited = new Set();
@@ -104,14 +93,10 @@ export default {
     return visible;
   },
 
-  // =========================================
-  // 🔹 4) Label da pergunta
-  // =========================================
-  questionLabel: row => row ? `${row.id_pergunta || ""} — ${row.pergunta || ""}` : "",
+  // 4) Label da pergunta (sem traços antes/depois do título)
+  questionLabel: row => row ? `${row.id_pergunta || ""} ${row.pergunta || ""}` : "",
 
-  // =========================================
-  // 🔹 5) Opções do Radio
-  // =========================================
+  // 5) Opções do Radio
   radioOptions(row) {
     const options = [
       { label: "Sim", value: "Sim" },
@@ -123,16 +108,12 @@ export default {
     return options;
   },
 
-  // =========================================
-  // 🔹 6) Valor selecionado no Radio
-  // =========================================
+  // 6) Valor selecionado no Radio
   selectedValue(row) {
     return this.answers?.[row.id_pergunta] || "";
   },
 
-  // =========================================
-  // 🔹 7) Handler de mudança de seleção
-  // =========================================
+  // 7) Handler de mudança de seleção
   onSelectionChange(row, selectedValue) {
     if (!row) return;
     this.answers = {
@@ -141,11 +122,7 @@ export default {
     };
   },
 
-  // =========================================
-  // 🔹 8) Preparar respostas para guardar (todas as visíveis)
-  //     - Mantemos a preparação de TODAS as visíveis
-  //     - O SQL fará "update só se mudou"
-  // =========================================
+  // 8) Preparar respostas para guardar (todas as visíveis)
   prepareAnswers() {
     const all = this.getVisibleQuestions();
     const userEmail = appsmith.user.email || "unknown_user";
@@ -165,10 +142,7 @@ export default {
     }));
   },
 
-  // =========================================
-  // 🔹 9) Construir VALUES para o INSERT
-  //     - ✅ inclui `validacao = 'N'` para novas linhas
-  // =========================================
+  // 9) Construir VALUES para o INSERT (inclui validacao='N' para novas linhas)
   buildValues() {
     const prepared = this.prepareAnswers();
     if (!prepared.length) {
@@ -190,15 +164,13 @@ export default {
           NOW(),
           ${ans.ano},
           '${ans.dominio}',
-          'N'  -- novas inserções começam invalidadas
+          'N'
         )`;
       })
       .join(", ");
   },
 
-  // =========================================
-  // 🔹 10) Validação: todas as visíveis respondidas
-  // =========================================
+  // 10) Validação: todas as visíveis respondidas
   isReadyToSubmit() {
     const visibleQuestions = this.getVisibleQuestions();
     return visibleQuestions.every(q =>
@@ -206,11 +178,7 @@ export default {
     );
   },
 
-  // =========================================
-  // 🔹 11) Submissão (Comportamento A)
-  //     - Sem alterações -> não atualiza nada
-  //     - Com alterações -> só as linhas alteradas são atualizadas e invalidadas
-  // =========================================
+  // 11) Submissão
   async onSubmit() {
     if (!this.isReadyToSubmit()) {
       showAlert(
@@ -236,26 +204,20 @@ export default {
     }
   },
 
-  // =========================================
-  // 🔹 12) Confirmar substituição
-  // =========================================
+  // 12) Confirmar substituição
   async confirmReplace() {
     await Qry_saveAnswersAmbiental.run();
     closeModal("Modal_ConfirmAmbiental");
     showAlert("Respostas substituídas com sucesso!", "success");
   },
 
-  // =========================================
-  // 🔹 13) Cancelar substituição
-  // =========================================
+  // 13) Cancelar substituição
   cancelReplace() {
     closeModal("Modal_ConfirmAmbiental");
     showAlert("Substituição cancelada.", "info");
   },
 
-  // =========================================
-  // 🔹 14) Carregar respostas anteriores
-  // =========================================
+  // 14) Carregar respostas anteriores
   loadPreviousAnswers() {
     const data = Qry_getAnswersAmbiental.data || [];
     const mapped = {};
@@ -269,9 +231,7 @@ export default {
     this.answers = mapped;
   },
 
-  // =========================================
-  // 🔹 15) Aplicar filtros e carregar respostas anteriores
-  // =========================================
+  // 15) Aplicar filtros e carregar respostas anteriores
   async aplicarFiltrosECarregarRespostas() {
     const perguntas = this.getAllFilteredQuestions();
     if (perguntas.length > 0) {
