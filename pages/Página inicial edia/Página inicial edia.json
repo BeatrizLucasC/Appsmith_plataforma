@@ -1,23 +1,24 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_7fa02d3d-bed4-4b98-80fe-ca88650502ed",
+  "gitSyncId": "692f23e7862bc92544420b37_c15f0245-00d1-415e-849b-a8e332871ed9",
   "unpublishedPage": {
     "isHidden": false,
     "layouts": [
       {
         "dsl": {
           "backgroundColor": "none",
-          "bottomRow": 1380,
+          "bottomRow": 940,
           "canExtend": true,
           "containerStyle": "none",
           "detachFromLayout": true,
           "dynamicBindingPathList": [],
+          "dynamicTriggerPathList": [],
           "leftColumn": 0,
-          "minHeight": 690,
+          "minHeight": 1292,
           "parentColumnSpace": 1,
           "parentRowSpace": 1,
-          "rightColumn": 1224,
+          "rightColumn": 4896,
           "snapColumns": 64,
-          "snapRows": 67,
+          "snapRows": 124,
           "topRow": 0,
           "type": "CANVAS_WIDGET",
           "version": 94,
@@ -26,7 +27,7 @@
         }
       }
     ],
-    "name": "Validação e consulta respostas",
-    "slug": "validacao-e-consulta-respostas"
+    "name": "Página inicial edia",
+    "slug": "pagina-inicial-edia"
   }
 }

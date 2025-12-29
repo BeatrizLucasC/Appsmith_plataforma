@@ -1,12 +1,12 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_7fa02d3d-bed4-4b98-80fe-ca88650502ed",
+  "gitSyncId": "692f23e7862bc92544420b37_04bae0f9-f2ac-4329-ba48-86f241b60258",
   "unpublishedPage": {
     "isHidden": false,
     "layouts": [
       {
         "dsl": {
           "backgroundColor": "none",
-          "bottomRow": 1380,
+          "bottomRow": 1110,
           "canExtend": true,
           "containerStyle": "none",
           "detachFromLayout": true,
@@ -26,7 +26,7 @@
         }
       }
     ],
-    "name": "Validação e consulta respostas",
-    "slug": "validacao-e-consulta-respostas"
+    "name": "Resultados em detalhe",
+    "slug": "resultados-em-detalhe"
   }
 }

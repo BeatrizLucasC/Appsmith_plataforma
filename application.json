@@ -50,11 +50,15 @@
       "isDefault": false
     },
     {
-      "id": "Resultados",
+      "id": "Resultados em detalhe",
       "isDefault": false
     },
     {
-      "id": "Página inicial_2",
+      "id": "Página inicial edia",
+      "isDefault": false
+    },
+    {
+      "id": "Ranking utilizadores",
       "isDefault": false
     }
   ],
