@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_f5384729-d159-4ecf-9f11-f69f46447823",
-  "id": "Resultados em detalhe_JS_initialize.initializePage",
+  "gitSyncId": "692f23e7862bc92544420b37_b5475b2d-6e20-4c73-876f-dddf40b5ab16",
+  "id": "Resultados em detalhe_JS_initialize.init",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_initialize.initializePage",
-    "name": "initializePage",
+    "fullyQualifiedName": "JS_initialize.init",
+    "name": "init",
     "pageId": "Resultados em detalhe",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": true

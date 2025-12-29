@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT DISTINCT ano\nFROM vw_score_user_avg_global\nWHERE id_utilizador = '{{appsmith.user.email}}'\nORDER BY ano DESC;\n\n",
+      "body": "SELECT DISTINCT ano\nFROM vw_score_user_avg_global\nORDER BY ano DESC;\n\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,11 +22,7 @@
       "name": "pg_alquevaustentavel",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [
-      {
-        "key": "body"
-      }
-    ],
+    "dynamicBindingPathList": [],
     "name": "Qry_years",
     "pageId": "Validação e consulta respostas",
     "runBehaviour": "AUTOMATIC",

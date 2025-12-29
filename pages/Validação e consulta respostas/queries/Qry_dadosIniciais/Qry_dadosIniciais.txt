@@ -35,7 +35,7 @@ WITH filtros_raw AS (
       ', '
     ) AS sistemas_producao,
 
-    -- dimensao -> rótulo legível
+    -- dimensao -> nome legível
     CASE TRIM(COALESCE(sf.dimensao, ''))
       WHEN 'de_pequena' THEN 'Pequena'
       WHEN 'de_media'   THEN 'Média'
@@ -99,7 +99,7 @@ SELECT
 
 FROM contagens c
 LEFT JOIN utilizadores u
-  ON u.email = c.id_utilizador
+  ON u.nif = c.id_utilizador
 LEFT JOIN filtros f
   ON f.id_utilizador = c.id_utilizador AND f.ano = c.ano
 

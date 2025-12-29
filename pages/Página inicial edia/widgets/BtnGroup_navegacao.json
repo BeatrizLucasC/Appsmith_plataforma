@@ -59,7 +59,7 @@
       "isVisible": true,
       "label": "Resultados em detalhe",
       "menuItems": {},
-      "onClick": "{{navigateTo('Resultados', {}, 'SAME_WINDOW');}}",
+      "onClick": "{{navigateTo('Resultados em detalhe', {}, 'SAME_WINDOW');}}",
       "placement": "CENTER",
       "widgetId": ""
     },

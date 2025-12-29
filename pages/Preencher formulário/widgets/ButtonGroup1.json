@@ -135,7 +135,7 @@
       "itemType": "BUTTON",
       "label": "Página inicial",
       "menuItems": {},
-      "onClick": "{{navigateTo('Menu', {}, 'SAME_WINDOW');}}",
+      "onClick": "{{navigateTo('Página inicial', {}, 'SAME_WINDOW');}}",
       "placement": "START",
       "variant": "filled",
       "widgetId": "n106r0x30u"

@@ -6,7 +6,7 @@ WITH filtros AS (
          ELSE string_to_array(sf.certificacoes, ',')
     END AS certs
   FROM selecoes_filtros sf
-  WHERE sf.id_utilizador = {{Tbl_resumo.selectedRow.email}}
+  WHERE sf.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
     AND sf.ano = ({{Tbl_resumo.selectedRow.ano}})::int
 ),
 
@@ -14,7 +14,7 @@ WITH filtros AS (
 exp AS (
   SELECT r.id_pergunta, r.id_utilizador, r.ano, r.resposta
   FROM respostas r
-  WHERE r.id_utilizador = {{Tbl_resumo.selectedRow.email }}
+  WHERE r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
     AND r.ano = ({{Tbl_resumo.selectedRow.ano }})::int
 ),
 

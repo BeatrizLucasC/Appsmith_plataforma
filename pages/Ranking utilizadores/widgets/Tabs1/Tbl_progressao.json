@@ -43,9 +43,11 @@
   "columnUpdatedAt": 1767007324586,
   "columnWidthMap": {
     "anos": 97,
-    "id_utilizador": 176,
+    "id_utilizador": 199,
     "pontuacao_anterior": 213,
-    "pontuacao_atual": 174
+    "pontuacao_atual": 195,
+    "variacao_abs": 169,
+    "variacao_pct": 164
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -341,7 +343,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "searchKey": "",
   "tableData": "{{Qry_progressaoGlobal.data}}",
   "textSize": "0.875rem",

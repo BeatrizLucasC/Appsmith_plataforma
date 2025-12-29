@@ -135,7 +135,7 @@
       "itemType": "BUTTON",
       "label": "Página inicial",
       "menuItems": {},
-      "onClick": "{{navigateTo('Menu', {}, 'SAME_WINDOW');}}",
+      "onClick": "{{navigateTo('Página inicial', {}, 'SAME_WINDOW');}}",
       "placement": "START",
       "variant": "filled",
       "widgetId": "n106r0x30u"
@@ -145,7 +145,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "yyaxokcq5q",
-  "leftColumn": 51,
+  "leftColumn": 49,
   "minWidth": 450,
   "mobileBottomRow": 120,
   "mobileLeftColumn": 27,

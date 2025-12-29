@@ -46,7 +46,9 @@
     "anos": 97,
     "id_utilizador": 176,
     "pontuacao_anterior": 213,
-    "pontuacao_atual": 174
+    "pontuacao_atual": 193,
+    "variacao_abs": 169,
+    "variacao_pct": 161
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -376,7 +378,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "searchKey": "",
   "tableData": "{{Qry_progressaoAmbiental.data}}",
   "textSize": "0.875rem",

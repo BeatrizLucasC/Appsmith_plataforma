@@ -6,8 +6,8 @@ WITH ultimas_respostas AS (
       ORDER BY r.data_hora_submissao DESC
     ) AS rn
   FROM respostas r
-  WHERE r.id_utilizador = {{ Tbl_resumo.selectedRow.email }}
-    AND r.ano = {{ Tbl_resumo.selectedRow.ano }}
+  WHERE r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
+    AND r.ano = {{Tbl_resumo.selectedRow.ano}}
 )
 SELECT
   p.id_pergunta,
