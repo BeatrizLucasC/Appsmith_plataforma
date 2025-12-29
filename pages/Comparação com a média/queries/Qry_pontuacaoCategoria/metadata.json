@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_score_user_avg_categoria\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\nAND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';",
+      "body": "SELECT *\nFROM vw_score_user_avg_categoria\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\nAND (\n  {{ Select_year.selectedOptionValue === \"\" }}\n  OR ano = {{ Select_year.selectedOptionValue }}\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000

@@ -4,12 +4,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 30,
+  "bottomRow": 48,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 80,
+      "bottomRow": 260,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -57,14 +57,22 @@
     },
     {
       "key": "boxShadow"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isLoading": false,
-  "isVisible": true,
+  "isVisible": "{{\n  (() => {\n    const sel = Number(Select_year.selectedOptionValue);\n    const rows = Qry_pageVisibility.data || [];\n    const found = rows.find(r => Number(r.ano) === sel);\n    // Mostra o aviso quando não cumpre a condição\n    return !Qry_pageVisibility.isLoading && !(found?.ano_ok === true);\n  })()\n}}",
   "key": "woz3jwb9wi",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
@@ -80,7 +88,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 49,
   "shouldScrollContents": true,
   "topRow": 22,
   "type": "CONTAINER_WIDGET",

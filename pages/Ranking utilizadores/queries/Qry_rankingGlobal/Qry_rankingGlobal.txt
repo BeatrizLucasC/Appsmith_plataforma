@@ -4,4 +4,5 @@ SELECT
   pontuacao_user AS pontuacao,
   DENSE_RANK() OVER (PARTITION BY ano ORDER BY pontuacao_user DESC) AS posicao
 FROM vw_score_user_avg_global
+WHERE ano = {{Select_year.selectedOptionValue}}
 ORDER BY ano DESC, pontuacao DESC;

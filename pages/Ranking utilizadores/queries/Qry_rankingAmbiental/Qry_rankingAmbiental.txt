@@ -9,4 +9,5 @@ SELECT
   ) AS posicao
 FROM vw_score_user_avg_dominio
 WHERE dominio = 'Ambiental'
+	AND ano = {{Select_year.selectedOptionValue}}
 ORDER BY ano DESC, pontuacao DESC, id_utilizador ASC;

@@ -2,7 +2,7 @@
   "animateLoading": true,
   "backgroundColor": "#ffffff",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 9,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -12,26 +12,16 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "isVisible"
-    },
-    {
-      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicPropertyPathList": [
-    {
-      "key": "isVisible"
-    }
-  ],
+  "dynamicPropertyPathList": [],
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "0.875rem",
   "fontStyle": "",
   "isLoading": false,
-  "isVisible": "{{\n  (() => {\n    const sel = Number(Select_year.selectedOptionValue);\n    const rows = Qry_pageVisibility.data || [];\n    const found = rows.find(r => Number(r.ano) === sel);\n    // Mostra o aviso quando não cumpre a condição\n    return !Qry_pageVisibility.isLoading && !(found?.ano_ok === true);\n  })()\n}}",
+  "isVisible": true,
   "key": "6j4f5pnr1m",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
@@ -42,20 +32,20 @@
   "mobileRightColumn": 16,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 6,
-  "originalTopRow": 0,
+  "originalBottomRow": 9,
+  "originalTopRow": 1,
   "overflow": "NONE",
   "parentColumnSpace": 13.796875,
   "parentId": "mgmmkvz025",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "Aviso!\n\nA visualização dos resultados para o ano selecionado está pendente da validação dos dados submetidos no formulário. Selecione outro ano, por favor.",
+  "text": "<b>Aviso!</b><br/>\nA visualização dos resultados para o ano selecionado está pendente da validação dos dados submetidos no formulário. Selecione outro ano, por favor.",
   "textAlign": "LEFT",
-  "textColor": "{{appsmith.theme.colors.primaryColor}}",
-  "topRow": 0,
+  "textColor": "#18181b",
+  "topRow": 1,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

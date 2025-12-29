@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT DISTINCT ano\nFROM vw_score_user_avg_global\nWHERE id_utilizador = '{{appsmith.user.email}}'\nORDER BY ano DESC;",
+      "body": "SELECT DISTINCT ano\nFROM vw_score_user_avg_global\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\nORDER BY ano DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000

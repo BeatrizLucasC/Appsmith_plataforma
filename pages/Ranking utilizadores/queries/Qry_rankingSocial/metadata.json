@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  ano,\n  id_utilizador,\n  dominio,\n  pontuacao_user AS pontuacao,\n  DENSE_RANK() OVER (\n    PARTITION BY ano, dominio\n    ORDER BY pontuacao_user DESC\n  ) AS posicao\nFROM vw_score_user_avg_dominio\nWHERE dominio = 'Social'\nORDER BY ano DESC, pontuacao DESC, id_utilizador ASC;",
+      "body": "SELECT\n  ano,\n  id_utilizador,\n  dominio,\n  pontuacao_user AS pontuacao,\n  DENSE_RANK() OVER (\n    PARTITION BY ano, dominio\n    ORDER BY pontuacao_user DESC\n  ) AS posicao\nFROM vw_score_user_avg_dominio\nWHERE dominio = 'Social'\n\tAND ano = {{Select_year.selectedOptionValue}}\nORDER BY ano DESC, pontuacao DESC, id_utilizador ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,7 +22,11 @@
       "name": "pg_alquevaustentavel",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
     "name": "Qry_rankingSocial",
     "pageId": "Ranking utilizadores",
     "runBehaviour": "AUTOMATIC",

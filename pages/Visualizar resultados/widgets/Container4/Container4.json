@@ -5,7 +5,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
   "bottomRow": 48,
-  "bottomRowBeforeCollapse": 51,
+  "bottomRowBeforeCollapse": 48,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
@@ -58,14 +58,22 @@
     },
     {
       "key": "boxShadow"
+    },
+    {
+      "key": "isVisible"
     }
   ],
   "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isLoading": false,
-  "isVisible": false,
+  "isVisible": "{{\n  (() => {\n    const sel = Number(Select_year.selectedOptionValue);\n    const rows = Qry_validacaoAnos.data || [];\n    const found = rows.find(r => Number(r.ano) === sel);\n    return !Qry_validacaoAnos.isLoading && !(found?.ano_validado === true);\n  })()\n}}",
   "key": "woz3jwb9wi",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
@@ -76,7 +84,7 @@
   "mobileRightColumn": 64,
   "mobileTopRow": 72,
   "needsErrorInfo": false,
-  "originalBottomRow": 51,
+  "originalBottomRow": 48,
   "originalTopRow": 22,
   "parentColumnSpace": 14.109375,
   "parentId": "0",
