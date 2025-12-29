@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "bottomRow": 9,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -17,7 +17,7 @@
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1rem",
-  "fontStyle": "ITALIC",
+  "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
   "key": "a8o1zlc0fu",
@@ -30,8 +30,8 @@
   "mobileRightColumn": 11,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 10,
-  "originalTopRow": 5,
+  "originalBottomRow": 9,
+  "originalTopRow": 4,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
   "parentId": "jbw36ti6az",
@@ -43,7 +43,7 @@
   "text": "Uma plataforma que permite avaliar, compreender e melhorar o desempenho das explorações agrícolas nos diferentes domínios da sustentabilidade.",
   "textAlign": "LEFT",
   "textColor": "#231f20",
-  "topRow": 5,
+  "topRow": 4,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

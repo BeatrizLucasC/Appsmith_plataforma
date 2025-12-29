@@ -3,8 +3,8 @@ export default {
     const dominio = "Ambiental";
 
     // Cores
-    const userColor = "#4473CC";   // A minha pontuação
-    const mediaColor = "#72A943";  // Pontuação média
+    const userColor = "#5186c5";   // A minha pontuação
+    const mediaColor = "#15803d";  // Pontuação média
 
     // Nomes das séries / dimensões (para legenda e acesso aos valores)
     const DIM_USER = "A minha pontuação";

@@ -23,9 +23,6 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
-    },
-    {
-      "key": "onOptionChange"
     }
   ],
   "dynamicTriggerPathList": [
@@ -53,7 +50,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "onOptionChange": "{{\nQry_utilizador.run();\n}}",
+  "onOptionChange": "",
   "optionLabel": "label",
   "optionValue": "value",
   "originalBottomRow": 16,
