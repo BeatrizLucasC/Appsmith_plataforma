@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao,\n  ano,\n  dominio\n)\nVALUES \n{{ JS_regrasEconomico.buildValues() }}\nON CONFLICT (id_resposta)\nDO UPDATE SET\n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW(),\n  dominio = EXCLUDED.dominio;",
+      "body": "INSERT INTO respostas (\n  id_resposta,\n  id_pergunta,\n  id_utilizador,\n  resposta,\n  data_hora_submissao,\n  ano,\n  dominio,\n  validacao\n)\nVALUES \n{{ JS_regrasEconomico.buildValues() }}\nON CONFLICT (id_resposta)\nDO UPDATE\nSET\n  resposta = EXCLUDED.resposta,\n  data_hora_submissao = NOW(),\n  dominio = EXCLUDED.dominio,\n  validacao = 'N'\n-- ✅ Só atualiza quando a resposta efectivamente mudou (NULL-safe)\nWHERE respostas.resposta IS DISTINCT FROM EXCLUDED.resposta;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

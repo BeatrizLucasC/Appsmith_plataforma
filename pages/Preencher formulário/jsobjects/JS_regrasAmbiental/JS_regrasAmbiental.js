@@ -125,15 +125,15 @@ export default {
   // 8) Preparar respostas para guardar (todas as visíveis)
   prepareAnswers() {
     const all = this.getVisibleQuestions();
-    const userEmail = appsmith.user.email || "unknown_user";
+    const userId = appsmith.store.autenticacao.nif || "unknown_user";
     const year = new Date().getFullYear();
     const answers = this.answers || {};
     const dominio = "ambiental";
 
     return all.map(q => ({
-      id_resposta: `${userEmail}_${year}_${q.id_pergunta}`,
+      id_resposta: `${userId}_${year}_${q.id_pergunta}`,
       id_pergunta: q.id_pergunta,
-      id_utilizador: userEmail,
+      id_utilizador: userId,
       resposta: answers[q.id_pergunta]
         ? String(answers[q.id_pergunta]).trim()
         : null,

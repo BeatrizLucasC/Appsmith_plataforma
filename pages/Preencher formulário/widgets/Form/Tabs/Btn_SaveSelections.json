@@ -33,6 +33,8 @@
   "mobileTopRow": 28,
   "needsErrorInfo": false,
   "onClick": "{{JS_filtros.guardarFiltrosEAtivarAbas();\nJS_regrasAmbiental.aplicarFiltrosECarregarRespostas();\nJS_regrasSocial.aplicarFiltrosECarregarRespostas();\nJS_regrasEconomico.aplicarFiltrosECarregarRespostas();}}",
+  "originalBottomRow": 32,
+  "originalTopRow": 27,
   "parentColumnSpace": 25.296875,
   "parentId": "s6o0bco9ed",
   "parentRowSpace": 10,

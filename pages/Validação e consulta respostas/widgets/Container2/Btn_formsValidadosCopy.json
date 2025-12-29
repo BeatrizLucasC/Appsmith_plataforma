@@ -38,7 +38,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "xf9bo2p5ld",
-  "leftColumn": 14,
+  "leftColumn": 19,
   "onClick": "",
   "originalBottomRow": 18,
   "originalTopRow": 14,
@@ -49,7 +49,7 @@
   "recaptchaType": "V3",
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
-  "rightColumn": 16,
+  "rightColumn": 21,
   "searchTags": [
     "click",
     "submit"

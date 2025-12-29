@@ -1,6 +1,6 @@
 SELECT id_pergunta, resposta
 FROM respostas
-WHERE id_utilizador = '{{ appsmith.user.email }}'
+WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
   AND LOWER(
         TRANSLATE(
           dominio,
@@ -11,7 +11,7 @@ WHERE id_utilizador = '{{ appsmith.user.email }}'
   AND ano = (
     SELECT MAX(ano)
     FROM respostas
-    WHERE id_utilizador = '{{ appsmith.user.email }}'
+    WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
       AND LOWER(
             TRANSLATE(
               dominio,

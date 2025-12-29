@@ -1,5 +1,5 @@
 SELECT certificacoes, sistemas_producao, dimensao
 FROM selecoes_filtros
-WHERE id_utilizador = '{{ appsmith.user.email }}'
+WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
 ORDER BY ano DESC, data_registo DESC
 LIMIT 1;

@@ -4,7 +4,7 @@ WITH por_dominio AS (
     dominio,
     BOOL_AND(validacao = 'S') AS dominio_validado
   FROM respostas
-  WHERE id_utilizador = {{appsmith.user.email}}
+  WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
     AND dominio IN ('ambiental','social','economico')
   GROUP BY ano, dominio
 ),

@@ -5,12 +5,17 @@ INSERT INTO respostas (
   resposta,
   data_hora_submissao,
   ano,
-  dominio
+  dominio,
+  validacao
 )
 VALUES 
 {{ JS_regrasEconomico.buildValues() }}
 ON CONFLICT (id_resposta)
-DO UPDATE SET
+DO UPDATE
+SET
   resposta = EXCLUDED.resposta,
   data_hora_submissao = NOW(),
-  dominio = EXCLUDED.dominio;
+  dominio = EXCLUDED.dominio,
+  validacao = 'N'
+-- ✅ Só atualiza quando a resposta efectivamente mudou (NULL-safe)
+WHERE respostas.resposta IS DISTINCT FROM EXCLUDED.resposta;

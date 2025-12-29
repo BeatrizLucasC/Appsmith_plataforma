@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT id_pergunta, resposta\nFROM respostas\nWHERE id_utilizador = '{{ appsmith.user.email }}'\n  AND LOWER(\n        TRANSLATE(\n          dominio,\n          'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ',\n          'aeiouaaeoocAEIOUAAEOOC'\n        )\n      ) = 'economico'\n  AND ano = (\n    SELECT MAX(ano)\n    FROM respostas\n    WHERE id_utilizador = '{{ appsmith.user.email }}'\n      AND LOWER(\n            TRANSLATE(\n              dominio,\n              'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ',\n              'aeiouaaeoocAEIOUAAEOOC'\n            )\n          ) = 'economico'\n  );\n",
+      "body": "SELECT id_pergunta, resposta\nFROM respostas\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\n  AND LOWER(\n        TRANSLATE(\n          dominio,\n          'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ',\n          'aeiouaaeoocAEIOUAAEOOC'\n        )\n      ) = 'economico'\n  AND ano = (\n    SELECT MAX(ano)\n    FROM respostas\n    WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\n      AND LOWER(\n            TRANSLATE(\n              dominio,\n              'áéíóúãâêôõçÁÉÍÓÚÃÂÊÔÕÇ',\n              'aeiouaaeoocAEIOUAAEOOC'\n            )\n          ) = 'economico'\n  );\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

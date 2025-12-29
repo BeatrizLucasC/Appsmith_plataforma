@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_score_user_avg_global\nWHERE id_utilizador = '{{appsmith.user.email}}'\nAND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';",
+      "body": "SELECT * FROM vw_score_user_avg_global\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\nAND ano = {{Select_year.selectedOptionValue}} OR ({{Select_year.selectedOptionValue }}) = '';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

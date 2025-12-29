@@ -1,6 +1,6 @@
 SELECT 1
 FROM respostas
-WHERE id_utilizador = '{{ appsmith.user.email }}'
+WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
   AND ano = {{ new Date().getFullYear() }}
   AND LOWER(dominio) = 'social'
 LIMIT 1;

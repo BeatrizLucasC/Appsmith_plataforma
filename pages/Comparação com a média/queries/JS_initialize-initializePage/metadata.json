@@ -25,7 +25,7 @@
     "fullyQualifiedName": "JS_initialize.initializePage",
     "name": "initializePage",
     "pageId": "Comparação com a média",
-    "runBehaviour": "MANUAL",
-    "userSetOnLoad": false
+    "runBehaviour": "ON_PAGE_LOAD",
+    "userSetOnLoad": true
   }
 }

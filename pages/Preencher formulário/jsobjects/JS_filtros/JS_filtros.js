@@ -4,9 +4,9 @@ export default {
 
   // 1️⃣ Construir valores SQL para guardar filtros
   buildValoresFiltros() {
-    const email = appsmith.user.email || "unknown_user";
+    const nif = appsmith.store.autenticacao.nif || "unknown_user";
     const ano = new Date().getFullYear();
-    const utilizador_ano = `${email}_${ano}`;
+    const utilizador_ano = `${nif}_${ano}`;
     const certificacoes = (Multiselect_Certificacao.selectedOptionValues || []).join(",");
     const sistemas = (Multiselect_SistemaProducao.selectedOptionValues || []).join(",");
     const dimensao = Select_Dimensao.selectedOptionValue || "";
@@ -15,14 +15,14 @@ export default {
     const sist = sistemas ? `'${sistemas.replace(/'/g, "''")}'` : "NULL";
     const dim = dimensao ? `'${dimensao.replace(/'/g, "''")}'` : "NULL";
 
-    return `('${utilizador_ano}', '${email}', ${ano}, ${cert}, ${sist}, ${dim}, NOW())`;
+    return `('${utilizador_ano}', '${nif}', ${ano}, ${cert}, ${sist}, ${dim}, NOW())`;
   },
 
   // 2️⃣ Iniciar processo de guardar (verificar existência)
   async saveFilterSelections() {
-    const email = appsmith.user.email || "unknown_user";
+    const nif = appsmith.store.autenticacao.nif || "unknown_user";
     const ano = new Date().getFullYear();
-    const utilizador_ano = `${email}_${ano}`;
+    const utilizador_ano = `${nif}_${ano}`;
 
     await Qry_checkExistingFiltros.run({ utilizador_ano });
     const hasExisting = (Qry_checkExistingFiltros.data || []).length > 0;
