@@ -1,0 +1,42 @@
+WITH params AS (
+  SELECT 
+    {{ Number(Select_year.selectedOptionValue) }} AS ano_sel,
+    {{ Number(Select_year.selectedOptionValue) }} - 1 AS ano_prev
+),
+base AS (
+  SELECT
+    v.id_utilizador,
+    v.dominio,
+    v.ano,
+    COALESCE(v.pontuacao_user, 0) AS pontuacao
+  FROM vw_score_user_avg_dominio v
+  WHERE v.ano IN ((SELECT ano_sel FROM params), (SELECT ano_prev FROM params))
+    AND v.dominio = 'Social'
+),
+comparacao AS (
+  SELECT
+    b.id_utilizador,
+    b.dominio,
+    b.ano,
+    b.pontuacao AS pontuacao_atual,
+    LAG(b.pontuacao) OVER (PARTITION BY b.id_utilizador, b.dominio ORDER BY b.ano) AS pontuacao_anterior_num
+  FROM base b
+)
+SELECT
+  c.id_utilizador,
+  c.dominio,
+  (SELECT ano_sel FROM params)::text || '-' || (SELECT ano_prev FROM params)::text AS anos,
+  c.pontuacao_atual,
+  CASE WHEN c.pontuacao_anterior_num IS NULL THEN 'Não existem dados para o ano anterior'
+       ELSE TO_CHAR(c.pontuacao_anterior_num, 'FM999999990D00') END AS pontuacao_anterior,
+  CASE WHEN c.pontuacao_anterior_num IS NULL THEN 'Não existem dados para o ano anterior'
+       ELSE TO_CHAR((COALESCE(c.pontuacao_atual, 0) - COALESCE(c.pontuacao_anterior_num, 0)), 'FM999999990D00') END AS variacao_abs,
+  CASE WHEN c.pontuacao_anterior_num IS NULL OR c.pontuacao_anterior_num = 0 THEN 'Não existem dados para o ano anterior'
+       ELSE TO_CHAR(((c.pontuacao_atual - c.pontuacao_anterior_num) / c.pontuacao_anterior_num) * 100, 'FM999999990D00') || '%' END AS variacao_pct,
+  CASE WHEN c.pontuacao_anterior_num IS NULL THEN 'Não existem dados para o ano anterior'
+       ELSE (DENSE_RANK() OVER (PARTITION BY c.dominio, c.ano
+                                ORDER BY (COALESCE(c.pontuacao_atual, 0) - COALESCE(c.pontuacao_anterior_num, 0)) DESC))::text END AS posicao
+FROM comparacao c
+WHERE c.ano = (SELECT ano_sel FROM params)
+ORDER BY (COALESCE(c.pontuacao_atual, 0) - COALESCE(c.pontuacao_anterior_num, 0)) DESC,
+         c.id_utilizador ASC;

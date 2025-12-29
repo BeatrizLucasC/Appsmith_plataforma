@@ -1,0 +1,7 @@
+SELECT
+	ano,
+  id_utilizador,
+  pontuacao_user AS pontuacao,
+  DENSE_RANK() OVER (PARTITION BY ano ORDER BY pontuacao_user DESC) AS posicao
+FROM vw_score_user_avg_global
+ORDER BY ano DESC, pontuacao DESC;

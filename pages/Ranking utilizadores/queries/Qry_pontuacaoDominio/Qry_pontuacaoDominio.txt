@@ -1,3 +1,0 @@
-SELECT * FROM vw_score_user_avg_dominio
-WHERE id_utilizador = {{Tbl_resumo.selectedRow.email}}
-AND ano = {{Tbl_resumo.selectedRow.ano}};
