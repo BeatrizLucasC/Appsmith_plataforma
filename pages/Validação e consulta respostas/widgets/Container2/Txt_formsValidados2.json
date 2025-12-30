@@ -1,7 +1,8 @@
 {
   "animateLoading": true,
+  "backgroundColor": "#ffffff",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 10,
+  "bottomRow": 4,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,42 +12,48 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    },
+    {
+      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "0.875rem",
-  "fontStyle": "",
+  "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "c353mknfjh",
-  "leftColumn": 1,
+  "key": "mv3usn08hm",
+  "leftColumn": 17,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
   "mobileBottomRow": 5,
-  "mobileLeftColumn": 0,
-  "mobileRightColumn": 16,
+  "mobileLeftColumn": 20,
+  "mobileRightColumn": 36,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 10,
-  "originalTopRow": 4,
+  "originalBottomRow": 5,
+  "originalTopRow": 1,
   "overflow": "NONE",
-  "parentColumnSpace": 13.796875,
-  "parentId": "6u4s1zgs06",
+  "parentColumnSpace": 19.5,
+  "parentId": "24tfelq3pj",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 19,
   "shouldTruncate": false,
-  "text": "<b>Selecione:</b>\n- um ano no filtro\n- um utilizador através da seleção da linha da tabela correspondente",
+  "text": "{{\n  (\n    (Qry_formsValidados.data || [])\n      .find(r => r.ano == Select_year.selectedOptionValue)?.total_formularios_validados ?? 0\n  )\n}}",
   "textAlign": "LEFT",
-  "textColor": "#231F20",
-  "topRow": 4,
+  "textColor": "{{appsmith.theme.colors.primaryColor}}",
+  "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "2jikzb79gs",
-  "widgetName": "Txt_instructions2"
+  "widgetId": "qscplg51s9",
+  "widgetName": "Txt_formsValidados2"
 }

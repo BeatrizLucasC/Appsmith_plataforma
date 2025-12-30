@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "0.375rem",
-  "bottomRow": 48,
+  "bottomRow": 49,
   "boxShadow": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
   "buttonVariant": "TERTIARY",
   "childStylesheet": {
@@ -116,17 +116,17 @@
   "mobileTopRow": 116,
   "needsErrorInfo": false,
   "orientation": "vertical",
-  "originalBottomRow": 51,
-  "originalTopRow": 30,
+  "originalBottomRow": 60,
+  "originalTopRow": 39,
   "parentColumnSpace": 14.109375,
   "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 64,
-  "topRow": 27,
+  "topRow": 28,
   "type": "BUTTON_GROUP_WIDGET",
   "version": 1,
-  "widgetId": "br0m1u9pe3",
+  "widgetId": "i2v8a444cc",
   "widgetName": "BtnGroup_navegacao"
 }
