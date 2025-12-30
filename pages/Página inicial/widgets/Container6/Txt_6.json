@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 32,
+  "bottomRow": 26,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -16,7 +16,7 @@
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1rem",
+  "fontSize": "0.875rem",
   "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
@@ -30,8 +30,8 @@
   "mobileRightColumn": 11,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 32,
-  "originalTopRow": 23,
+  "originalBottomRow": 26,
+  "originalTopRow": 20,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
   "parentId": "2uaukbj61v",
@@ -43,7 +43,7 @@
   "text": "Após submissão, aceda a uma caracterização estruturada do desempenho da sua exploração, com destaque para os pontos fortes e para as oportunidades de melhoria, organizada por domínios de sustentabilidade. \n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 23,
+  "topRow": 20,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

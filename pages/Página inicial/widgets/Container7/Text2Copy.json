@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 24,
+  "bottomRow": 19,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -16,7 +16,7 @@
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1rem",
+  "fontSize": "0.875rem",
   "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
@@ -30,7 +30,7 @@
   "mobileRightColumn": 11,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "originalBottomRow": 24,
+  "originalBottomRow": 19,
   "originalTopRow": 4,
   "overflow": "NONE",
   "parentColumnSpace": 19.5,
