@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 68,
+  "bottomRow": 74,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -34,33 +34,34 @@
   "columnOrder": [
     "nif",
     "nome",
-    "email",
-    "ano",
+    "ultima_submissao",
     "respostas_total",
     "respostas_validadas",
     "respostas_nao_validadas",
+    "validacao_form",
+    "data_ultima_validacao",
+    "tecnico_validacao_nome",
     "certificacoes",
     "sistemas_producao",
-    "dimensao",
-    "ultima_submissao",
-    "data_ultima_validacao",
-    "tecnico_validacao_nome"
+    "dimensao"
   ],
-  "columnUpdatedAt": 1767092630502,
+  "columnUpdatedAt": 1767103843098,
   "columnWidthMap": {
     "ano": 72,
     "certificacoes": 139,
     "data_registo_filtros": 173,
+    "data_ultima_validacao": 219,
     "dimensao": 158,
     "email": 110,
     "nif": 96,
     "nome": 93,
     "pct_validadas": 155,
     "respostas_nao_validadas": 182,
-    "respostas_total": 187,
+    "respostas_total": 204,
     "respostas_validadas": 172,
     "sistemas_producao": 185,
-    "ultima_submissao": 203
+    "ultima_submissao": 202,
+    "validacao_form": 156
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
@@ -91,12 +92,6 @@
       "key": "primaryColumns.nif.computedValue"
     },
     {
-      "key": "primaryColumns.email.computedValue"
-    },
-    {
-      "key": "primaryColumns.ano.computedValue"
-    },
-    {
       "key": "primaryColumns.certificacoes.computedValue"
     },
     {
@@ -122,11 +117,20 @@
     },
     {
       "key": "primaryColumns.data_ultima_validacao.computedValue"
+    },
+    {
+      "key": "primaryColumns.validacao_form.computedValue"
+    },
+    {
+      "key": "primaryColumns.validacao_form.cellBackground"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.validacao_form.cellBackground"
     }
   ],
   "dynamicTriggerPathList": [
@@ -156,43 +160,12 @@
   "mobileTopRow": 0,
   "needsErrorInfo": false,
   "onRowSelected": "{{Qry_respostasAll.run();\nQry_respostasForm.run()}}",
-  "originalBottomRow": 68,
-  "originalTopRow": 14,
+  "originalBottomRow": 74,
+  "originalTopRow": 24,
   "parentColumnSpace": 13.796875,
   "parentId": "3okpq3796r",
   "parentRowSpace": 10,
   "primaryColumns": {
-    "ano": {
-      "alias": "ano",
-      "allowCellWrapping": false,
-      "allowSameOptionsInNewRow": true,
-      "columnType": "number",
-      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"ano\"])) : ano })()}}",
-      "currencyCode": "USD",
-      "decimals": 0,
-      "enableFilter": true,
-      "enableSort": true,
-      "horizontalAlignment": "LEFT",
-      "id": "ano",
-      "index": 3,
-      "isCellEditable": false,
-      "isCellVisible": true,
-      "isDerived": false,
-      "isDisabled": false,
-      "isDiscardVisible": true,
-      "isEditable": false,
-      "isSaveVisible": true,
-      "isVisible": true,
-      "label": "Ano",
-      "notation": "standard",
-      "originalId": "ano",
-      "sticky": "",
-      "textSize": "0.875rem",
-      "thousandSeparator": true,
-      "validation": {},
-      "verticalAlignment": "CENTER",
-      "width": 150
-    },
     "certificacoes": {
       "alias": "certificacoes",
       "allowCellWrapping": true,
@@ -247,7 +220,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Data validação",
+      "label": "Data última validação",
       "notation": "standard",
       "originalId": "data_ultima_validacao",
       "sticky": "",
@@ -282,37 +255,6 @@
       "label": "Dim. exploração",
       "notation": "standard",
       "originalId": "dimensao",
-      "sticky": "",
-      "textSize": "0.875rem",
-      "thousandSeparator": true,
-      "validation": {},
-      "verticalAlignment": "CENTER",
-      "width": 150
-    },
-    "email": {
-      "alias": "email",
-      "allowCellWrapping": true,
-      "allowSameOptionsInNewRow": true,
-      "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"email\"])) : email })()}}",
-      "currencyCode": "USD",
-      "decimals": 0,
-      "enableFilter": true,
-      "enableSort": true,
-      "horizontalAlignment": "LEFT",
-      "id": "email",
-      "index": 2,
-      "isCellEditable": false,
-      "isCellVisible": true,
-      "isDerived": false,
-      "isDisabled": false,
-      "isDiscardVisible": true,
-      "isEditable": false,
-      "isSaveVisible": true,
-      "isVisible": true,
-      "label": "Email",
-      "notation": "standard",
-      "originalId": "email",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
@@ -570,6 +512,40 @@
       "validation": {},
       "verticalAlignment": "CENTER",
       "width": 150
+    },
+    "validacao_form": {
+      "alias": "validacao_form",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao_form === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao_form === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"validacao_form\"])) : validacao_form })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "validacao_form",
+      "index": 11,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Validação form.",
+      "notation": "standard",
+      "originalId": "validacao_form",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
     }
   },
   "renderMode": "CANVAS",
@@ -578,7 +554,7 @@
   "searchKey": "",
   "tableData": "{{Qry_dadosIniciais.data}}",
   "textSize": "0.875rem",
-  "topRow": 14,
+  "topRow": 24,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,

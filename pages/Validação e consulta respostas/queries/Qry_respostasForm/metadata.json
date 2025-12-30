@@ -5,12 +5,12 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "WITH ultimas_respostas AS (\n  SELECT\n    r.*,\n    ROW_NUMBER() OVER (\n      PARTITION BY r.id_pergunta, r.id_utilizador, r.ano\n      ORDER BY r.data_hora_submissao DESC\n    ) AS rn\n  FROM respostas r\n  WHERE r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}\n    AND r.ano = {{Tbl_resumo.selectedRow.ano}}\n)\nSELECT\n  p.id_pergunta,\n  p.pergunta,\n  p.dominio,\n  p.categoria,\n  p.indicador,\n  ur.resposta,\n  CASE\n    WHEN ur.validacao = 'S' THEN 'Validada'\n    WHEN ur.validacao = 'N' THEN 'Por validar'\n    ELSE ur.validacao\n  END AS validacao\nFROM perguntas p\nINNER JOIN ultimas_respostas ur\n  ON ur.id_pergunta = p.id_pergunta\n AND ur.rn = 1\nORDER BY\n  CASE WHEN ur.validacao = 'N' THEN 0 ELSE 1 END,\n  p.id_pergunta;",
+      "body": "WITH ultimas_respostas AS (\n  SELECT\n    r.*,\n    ROW_NUMBER() OVER (\n      PARTITION BY r.id_pergunta, r.id_utilizador, r.ano\n      ORDER BY r.data_hora_submissao DESC\n    ) AS rn\n  FROM respostas r\n  WHERE r.id_utilizador = '{{Tbl_resumo.selectedRow.nif}}'\n    AND r.ano = '{{Select_year.selectedOptionValue}}'\n)\nSELECT\n  p.id_pergunta,\n  p.pergunta,\n  p.dominio,\n  p.categoria,\n  p.indicador,\n  ur.resposta,\n  CASE\n    WHEN ur.validacao = 'S' THEN 'Validada'\n    WHEN ur.validacao = 'N' THEN 'Por validar'\n    ELSE ur.validacao\n  END AS validacao\nFROM perguntas p\nINNER JOIN ultimas_respostas ur\n  ON ur.id_pergunta = p.id_pergunta\n AND ur.rn = 1\nORDER BY\n  CASE WHEN ur.validacao = 'N' THEN 0 ELSE 1 END,\n  p.id_pergunta;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
         {
-          "value": true
+          "value": false
         }
       ],
       "timeoutInMillisecond": 10000

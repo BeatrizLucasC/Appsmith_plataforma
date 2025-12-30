@@ -6,16 +6,16 @@ WITH filtros AS (
          ELSE string_to_array(sf.certificacoes, ',')
     END AS certs
   FROM selecoes_filtros sf
-  WHERE sf.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
-    AND sf.ano = ({{Tbl_resumo.selectedRow.ano}})::int
+  WHERE sf.id_utilizador = '{{Tbl_resumo.selectedRow.nif}}'
+    AND sf.ano = '{{Select_year.selectedOptionValue}}'
 ),
 
 -- respostas submetidas
 exp AS (
   SELECT r.id_pergunta, r.id_utilizador, r.ano, r.resposta
   FROM respostas r
-  WHERE r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
-    AND r.ano = ({{Tbl_resumo.selectedRow.ano }})::int
+  WHERE r.id_utilizador = '{{Tbl_resumo.selectedRow.nif}}'
+    AND r.ano = '{{Select_year.selectedOptionValue}}'
 ),
 
 exp_full AS (
@@ -40,7 +40,7 @@ defaults_base AS (
     p.categoria, 
     p.indicador, 
     'Sim'::text AS resposta,  -- default das certificações
-    string_agg(DISTINCT c.certificacao, ', ') AS "Certificações aplicáveis"
+    string_agg(DISTINCT c.certificacao, ', ') AS "certificacoes_acplicaveis"
   FROM filtros f
   JOIN certificacoes c
     ON c.certificacao = ANY(f.certs)

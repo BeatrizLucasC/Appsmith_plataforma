@@ -47,7 +47,7 @@ WITH filtros_raw AS (
   WHERE sf.ano = {{ Select_year.selectedOptionValue }}
 ),
  
--- última seleção de filtros por utilizador/ano (data usada só para ordenar)
+-- última seleção de filtros por utilizador/ano (data usada apenas para ordenar)
 filtros AS (
   SELECT DISTINCT ON (fr.id_utilizador, fr.ano)
     fr.id_utilizador,
@@ -60,7 +60,7 @@ filtros AS (
   ORDER BY fr.id_utilizador, fr.ano, fr.data_registo DESC
 ),
  
--- KPIs por utilizador/ano
+-- KPIs por utilizador/ano (só quem tem respostas entra aqui)
 contagens AS (
   SELECT
     r.id_utilizador,
@@ -80,21 +80,35 @@ ultima_validacao AS (
     r.id_utilizador,
     r.ano,
     r.data_hora_validacao AS ultima_validacao_utc,
-    r.tecnico_validacao   -- NIF do técnico
+    r.tecnico_validacao   -- NIF do técnico que validou
   FROM respostas r
   WHERE r.ano = {{ Select_year.selectedOptionValue }}
     AND r.validacao = 'S'
     AND r.data_hora_validacao IS NOT NULL
   ORDER BY r.id_utilizador, r.ano, r.data_hora_validacao DESC
+),
+ 
+-- Estado de validação do formulário por utilizador/ano:
+-- "Validado" se existirem respostas nos 3 domínios (ambiental, social, economico)
+-- e TODAS essas respostas estiverem com validacao = 'S'
+form_estado AS (
+  SELECT
+    r.id_utilizador,
+    r.ano,
+    COUNT(*) FILTER (WHERE r.dominio IN ('ambiental','social','economico'))                     AS total_3d,
+    COUNT(*) FILTER (WHERE r.dominio IN ('ambiental','social','economico') AND r.validacao='S') AS total_validadas_3d,
+    COUNT(DISTINCT r.dominio) FILTER (WHERE r.dominio IN ('ambiental','social','economico'))     AS dominios_respondidos_3d
+  FROM respostas r
+  WHERE r.ano = {{ Select_year.selectedOptionValue }}
+  GROUP BY r.id_utilizador, r.ano
 )
  
 SELECT
-  u.nome,
-  u.nif,
-  u.email,
-  c.ano,
+  -- Dados do utilizador (sem email e sem ano)
+  COALESCE(u.nome, c.id_utilizador::text) AS nome,
+  c.id_utilizador AS nif,
  
-  -- filtros (sem exibir a data de registo dos filtros)
+  -- Filtros (sem exibir a data de registo dos filtros)
   f.certificacoes,
   f.sistemas_producao,
   f.dimensao,
@@ -104,13 +118,13 @@ SELECT
   c.respostas_validadas,
   c.respostas_nao_validadas,
  
-  -- última submissão convertida para Europe/Lisbon
+  -- Última submissão convertida para Europe/Lisbon
   TO_CHAR(
     (c.ultima_submissao_utc AT TIME ZONE 'UTC') AT TIME ZONE 'Europe/Lisbon',
     'DD/MM/YYYY - HH24:MI:SS'
   ) AS ultima_submissao,
  
-  -- técnico e data da última validação (com fallback quando não há validação)
+  -- Técnico e data da última validação (com fallback quando não há validação)
   COALESCE(utech.nome, '—') AS tecnico_validacao_nome,
   COALESCE(
     TO_CHAR(
@@ -118,7 +132,16 @@ SELECT
       'DD/MM/YYYY - HH24:MI:SS'
     ),
     'Validação pendente'
-  ) AS data_ultima_validacao
+  ) AS data_ultima_validacao,
+ 
+  -- Validação do formulário (string pedida)
+  CASE
+    WHEN fs.dominios_respondidos_3d = 3
+     AND fs.total_3d > 0
+     AND fs.total_3d = fs.total_validadas_3d
+    THEN 'Validado'
+    ELSE 'Por validar'
+  END AS "validacao_form"
  
 FROM contagens c
 LEFT JOIN utilizadores u
@@ -129,7 +152,9 @@ LEFT JOIN ultima_validacao uv
   ON uv.id_utilizador = c.id_utilizador AND uv.ano = c.ano
 LEFT JOIN utilizadores utech
   ON utech.nif = uv.tecnico_validacao
+LEFT JOIN form_estado fs
+  ON fs.id_utilizador = c.id_utilizador AND fs.ano = c.ano
  
 ORDER BY
   c.respostas_validadas DESC,
-  COALESCE(u.nome, c.id_utilizador) ASC;
+  COALESCE(u.nome, c.id_utilizador::text) ASC;

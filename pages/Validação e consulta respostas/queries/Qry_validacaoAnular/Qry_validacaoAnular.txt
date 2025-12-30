@@ -9,8 +9,8 @@ latest_validated AS (
   FROM respostas r
   JOIN visiveis v ON v.id_pergunta = r.id_pergunta
   WHERE
-    r.id_utilizador = {{ Tbl_resumo.selectedRow.nif }}
-    AND r.ano = {{ Tbl_resumo.selectedRow.ano }}
+    r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
+    AND r.ano = {{Select_year.selectedOptionValue}}
     AND r.validacao = 'S'
   ORDER BY r.id_pergunta, r.data_hora_submissao DESC
 )

@@ -61,7 +61,7 @@
   "placeholderText": "Selecione uma opção",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 29,
+  "rightColumn": 20,
   "serverSideFiltering": false,
   "sourceData": "{{\n  (Qry_years.data || [])\n    .filter(y => y && y.ano != null)\n    .map(y => ({\n      label: String(y.ano),\n      value: String(y.ano),\n    }))\n}}",
   "topRow": 12,

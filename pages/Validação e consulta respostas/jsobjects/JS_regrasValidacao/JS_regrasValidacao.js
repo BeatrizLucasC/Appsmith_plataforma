@@ -26,6 +26,7 @@ export default {
       await Promise.all([
         Qry_respostasForm.run(),
         Qry_dadosIniciais.run(),
+				Qry_formsValidados.run(),
       ]);
     } catch (e) {
       // Não bloquear fluxo por falha de refresh, mas informar

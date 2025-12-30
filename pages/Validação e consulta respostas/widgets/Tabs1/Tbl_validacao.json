@@ -43,9 +43,9 @@
   ],
   "columnUpdatedAt": 1766794522049,
   "columnWidthMap": {
-    "categoria": 105,
+    "categoria": 114,
     "dominio": 100,
-    "id_pergunta": 121,
+    "id_pergunta": 127,
     "indicador": 275,
     "pergunta": 512
   },
@@ -90,6 +90,27 @@
     },
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.validacao.cellBackground"
+    },
+    {
+      "key": "primaryColumns.resposta.cellBackground"
+    },
+    {
+      "key": "primaryColumns.pergunta.cellBackground"
+    },
+    {
+      "key": "primaryColumns.indicador.cellBackground"
+    },
+    {
+      "key": "primaryColumns.categoria.cellBackground"
+    },
+    {
+      "key": "primaryColumns.dominio.cellBackground"
+    },
+    {
+      "key": "primaryColumns.id_pergunta.cellBackground"
     }
   ],
   "dynamicPropertyPathList": [
@@ -98,6 +119,27 @@
     },
     {
       "key": "cellBackground"
+    },
+    {
+      "key": "primaryColumns.validacao.cellBackground"
+    },
+    {
+      "key": "primaryColumns.resposta.cellBackground"
+    },
+    {
+      "key": "primaryColumns.pergunta.cellBackground"
+    },
+    {
+      "key": "primaryColumns.indicador.cellBackground"
+    },
+    {
+      "key": "primaryColumns.categoria.cellBackground"
+    },
+    {
+      "key": "primaryColumns.dominio.cellBackground"
+    },
+    {
+      "key": "primaryColumns.id_pergunta.cellBackground"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -133,7 +175,7 @@
       "alias": "categoria",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",
       "currencyCode": "USD",
@@ -166,7 +208,7 @@
       "alias": "dominio",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"dominio\"])) : dominio })()}}",
       "currencyCode": "USD",
@@ -199,7 +241,7 @@
       "alias": "id_pergunta",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id_pergunta\"])) : id_pergunta })()}}",
       "currencyCode": "USD",
@@ -232,7 +274,7 @@
       "alias": "indicador",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"indicador\"])) : indicador })()}}",
       "currencyCode": "USD",
@@ -265,7 +307,7 @@
       "alias": "pergunta",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"pergunta\"])) : pergunta })()}}",
       "currencyCode": "USD",
@@ -298,7 +340,7 @@
       "alias": "resposta",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"resposta\"])) : resposta })()}}",
       "currencyCode": "USD",
@@ -331,7 +373,7 @@
       "alias": "validacao",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_validacao.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"validacao\"])) : validacao })()}}",
       "currencyCode": "USD",

@@ -49,7 +49,7 @@
   "recaptchaType": "V3",
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
-  "rightColumn": 19,
+  "rightColumn": 17,
   "searchTags": [
     "click",
     "submit"
