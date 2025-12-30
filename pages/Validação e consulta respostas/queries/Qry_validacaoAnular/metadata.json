@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "WITH visiveis AS (\n  SELECT value AS id_pergunta\n  FROM jsonb_array_elements_text( ({{ this.params.ids_json || '[]' }})::jsonb ) AS t(value)\n),\nlatest_validated AS (\n  SELECT DISTINCT ON (r.id_pergunta)\n    r.id_resposta\n  FROM respostas r\n  JOIN visiveis v ON v.id_pergunta = r.id_pergunta\n  WHERE\n    r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}\n    AND r.ano = {{Tbl_resumo.selectedRow.ano}}\n    AND r.validacao = 'S'\n  ORDER BY r.id_pergunta, r.data_hora_submissao DESC\n)\nUPDATE respostas r\nSET validacao = 'N'  -- ou NULL, se preferir \"sem validação\"\nWHERE r.id_resposta IN (SELECT id_resposta FROM latest_validated);",
+      "body": "WITH visiveis AS (\n  SELECT value AS id_pergunta\n  FROM jsonb_array_elements_text( ({{ this.params.ids_json || '[]' }})::jsonb ) AS t(value)\n),\nlatest_validated AS (\n  -- Seleciona a última resposta VALIDADA por pergunta, utilizador e ano\n  SELECT DISTINCT ON (r.id_pergunta)\n    r.id_resposta\n  FROM respostas r\n  JOIN visiveis v ON v.id_pergunta = r.id_pergunta\n  WHERE\n    r.id_utilizador = {{ Tbl_resumo.selectedRow.nif }}\n    AND r.ano = {{ Tbl_resumo.selectedRow.ano }}\n    AND r.validacao = 'S'\n  ORDER BY r.id_pergunta, r.data_hora_submissao DESC\n)\nUPDATE respostas r\nSET\n  validacao = 'N',                -- se preferir \"sem validação\" em vez de 'N', pode usar NULL\n  data_hora_validacao = NULL,\n  tecnico_validacao = NULL\nWHERE r.id_resposta IN (SELECT id_resposta FROM latest_validated);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

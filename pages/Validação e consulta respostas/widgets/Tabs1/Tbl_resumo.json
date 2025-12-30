@@ -42,23 +42,25 @@
     "certificacoes",
     "sistemas_producao",
     "dimensao",
-    "data_registo_filtros",
-    "ultima_submissao"
+    "ultima_submissao",
+    "data_ultima_validacao",
+    "tecnico_validacao_nome"
   ],
-  "columnUpdatedAt": 1766753120002,
+  "columnUpdatedAt": 1767092630502,
   "columnWidthMap": {
-    "ano": 70,
+    "ano": 72,
     "certificacoes": 139,
     "data_registo_filtros": 173,
     "dimensao": 158,
-    "email": 125,
+    "email": 110,
     "nif": 96,
     "nome": 93,
     "pct_validadas": 155,
     "respostas_nao_validadas": 182,
-    "respostas_total": 189,
-    "respostas_validadas": 171,
-    "sistemas_producao": 185
+    "respostas_total": 187,
+    "respostas_validadas": 172,
+    "sistemas_producao": 185,
+    "ultima_submissao": 203
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
@@ -95,9 +97,6 @@
       "key": "primaryColumns.ano.computedValue"
     },
     {
-      "key": "primaryColumns.data_registo_filtros.computedValue"
-    },
-    {
       "key": "primaryColumns.certificacoes.computedValue"
     },
     {
@@ -117,6 +116,12 @@
     },
     {
       "key": "primaryColumns.ultima_submissao.computedValue"
+    },
+    {
+      "key": "primaryColumns.tecnico_validacao_nome.computedValue"
+    },
+    {
+      "key": "primaryColumns.data_ultima_validacao.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -219,19 +224,21 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
-    "data_registo_filtros": {
-      "alias": "data_registo_filtros",
+    "data_ultima_validacao": {
+      "alias": "data_ultima_validacao",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"data_registo_filtros\"])) : data_registo_filtros })()}}",
+      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"data_ultima_validacao\"])) : data_ultima_validacao })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
       "enableSort": true,
+      "fontStyle": "",
       "horizontalAlignment": "LEFT",
-      "id": "data_registo_filtros",
-      "index": 4,
+      "id": "data_ultima_validacao",
+      "index": 12,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -240,10 +247,11 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Data registo filtros",
+      "label": "Data validação",
       "notation": "standard",
-      "originalId": "data_registo_filtros",
+      "originalId": "data_ultima_validacao",
       "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -498,6 +506,40 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
+    "tecnico_validacao_nome": {
+      "alias": "tecnico_validacao_nome",
+      "allowCellWrapping": true,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"tecnico_validacao_nome\"])) : tecnico_validacao_nome })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "tecnico_validacao_nome",
+      "index": 11,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Técnico resp.",
+      "notation": "standard",
+      "originalId": "tecnico_validacao_nome",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
     "ultima_submissao": {
       "alias": "ultima_submissao",
       "allowCellWrapping": false,
@@ -519,7 +561,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Data submissão respostas",
+      "label": "Data submissão form.",
       "notation": "standard",
       "originalId": "ultima_submissao",
       "sticky": "",

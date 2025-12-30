@@ -3,16 +3,20 @@ WITH visiveis AS (
   FROM jsonb_array_elements_text( ({{ this.params.ids_json || '[]' }})::jsonb ) AS t(value)
 ),
 latest_validated AS (
+  -- Seleciona a última resposta VALIDADA por pergunta, utilizador e ano
   SELECT DISTINCT ON (r.id_pergunta)
     r.id_resposta
   FROM respostas r
   JOIN visiveis v ON v.id_pergunta = r.id_pergunta
   WHERE
-    r.id_utilizador = {{Tbl_resumo.selectedRow.nif}}
-    AND r.ano = {{Tbl_resumo.selectedRow.ano}}
+    r.id_utilizador = {{ Tbl_resumo.selectedRow.nif }}
+    AND r.ano = {{ Tbl_resumo.selectedRow.ano }}
     AND r.validacao = 'S'
   ORDER BY r.id_pergunta, r.data_hora_submissao DESC
 )
 UPDATE respostas r
-SET validacao = 'N'  -- ou NULL, se preferir "sem validação"
+SET
+  validacao = 'N',                -- se preferir "sem validação" em vez de 'N', pode usar NULL
+  data_hora_validacao = NULL,
+  tecnico_validacao = NULL
 WHERE r.id_resposta IN (SELECT id_resposta FROM latest_validated);

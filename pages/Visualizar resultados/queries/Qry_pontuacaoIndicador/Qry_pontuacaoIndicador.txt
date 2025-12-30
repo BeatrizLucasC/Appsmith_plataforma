@@ -1,5 +1,5 @@
 SELECT *
-FROM vw_score_user_avg_categoria
+FROM vw_score_user_avg_indicador
 WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
 AND (
   {{ Select_year.selectedOptionValue === "" }}
