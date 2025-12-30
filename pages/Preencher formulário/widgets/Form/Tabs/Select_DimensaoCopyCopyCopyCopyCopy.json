@@ -2,10 +2,10 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 25,
-  "bottomRowBeforeCollapse": 25,
+  "bottomRow": 73,
+  "bottomRowBeforeCollapse": 9,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.certificacoes?.split(\",\")))(Multiselect_Certificacao.options, Multiselect_Certificacao.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.dimensao))(Select_DimensaoCopyCopyCopyCopyCopy.options, Select_DimensaoCopyCopyCopyCopyCopy.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -14,10 +14,10 @@
       "key": "borderRadius"
     },
     {
-      "key": "defaultOptionValue"
+      "key": "isVisible"
     },
     {
-      "key": "isVisible"
+      "key": "defaultOptionValue"
     }
   ],
   "dynamicHeight": "FIXED",
@@ -39,10 +39,10 @@
   "isLoading": false,
   "isRequired": false,
   "isVisible": "{{!Qry_getFiltros.isLoading}}",
-  "key": "2c1v7c55qp",
+  "key": "sthlz6bum5",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "A exploração agrícola é certificada em quais das seguintes certificações?",
+  "labelText": "A exploração agrícola tem algum tipo de consumo energético no âmbito da sua atividade produtiva?",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 1,
@@ -50,28 +50,28 @@
   "minDynamicHeight": 4,
   "minWidth": 450,
   "mobileBottomRow": 9,
-  "mobileLeftColumn": 23,
-  "mobileRightColumn": 43,
+  "mobileLeftColumn": 1,
+  "mobileRightColumn": 21,
   "mobileTopRow": 2,
   "needsErrorInfo": false,
   "onOptionChange": "",
   "optionLabel": "label",
   "optionValue": "value",
-  "originalBottomRow": 25,
-  "originalTopRow": 18,
+  "originalBottomRow": 9,
+  "originalTopRow": 2,
   "parentColumnSpace": 21.796875,
   "parentId": "s6o0bco9ed",
   "parentRowSpace": 10,
-  "placeholderText": "Select option(s)",
+  "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 52,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Classe de Regante A\", \"value\": \"classe_de_regante_a\" },\n  { \"label\": \"Classe de Regante B\", \"value\": \"classe_de_regante_b\" },\n  { \"label\": \"Classe de Regante B+\", \"value\": \"classe_de_regante_bplus\" },\n  { \"label\": \"GlobalGAP\", \"value\": \"globalgap\" },\n  { \"label\": \"GRASP\", \"value\": \"grasp\" },\n  { \"label\": \"PRODI\", \"value\": \"prodi\" },\n  { \"label\": \"SPRING\", \"value\": \"spring\" }\n]",
-  "topRow": 18,
-  "topRowBeforeCollapse": 18,
-  "type": "MULTI_SELECT_WIDGET_V2",
+  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"consumo_energetico_sim\" },\n  { \"label\": \"Não\", \"value\": \"consumo_energetico_nao\" }\n]",
+  "topRow": 66,
+  "topRowBeforeCollapse": 2,
+  "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "1u3fuljwy0",
-  "widgetName": "Multiselect_Certificacao"
+  "widgetId": "h1q4t3paiz",
+  "widgetName": "Select_DimensaoCopyCopyCopyCopyCopy"
 }

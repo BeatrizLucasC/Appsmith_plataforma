@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 32,
+  "bottomRow": 81,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -45,7 +45,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 12,
   "text": "Guardar Seleções",
-  "topRow": 27,
+  "topRow": 76,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "s2maevpdfm",
