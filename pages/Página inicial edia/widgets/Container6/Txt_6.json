@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 31,
+  "bottomRow": 27,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -16,7 +16,7 @@
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1rem",
+  "fontSize": "0.875rem",
   "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
@@ -43,7 +43,7 @@
   "text": "Analise os resultados ao formulário em detalhe, ao nível do domínio, categoria e indicador do referencial de sustentabilidade. Poderá ter acesso aos resultados por utilizador e a sua comparação com os resultados médios.\n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 22,
+  "topRow": 21,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

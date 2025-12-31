@@ -3,8 +3,8 @@ WITH filtros_raw AS (
     sf.id_utilizador,
     sf.ano,
     sf.data_registo,
- 
-    -- certificacoes em CSV -> rótulos legíveis (ignora vazios)
+
+    -- CSV certificacoes -> rótulos legíveis
     array_to_string(
       ARRAY(
         SELECT CASE TRIM(val)
@@ -18,143 +18,103 @@ WITH filtros_raw AS (
         WHERE TRIM(val) <> ''
       ),
       ', '
-    ) AS certificacoes,
- 
-    -- sistemas_producao em CSV -> rótulos legíveis (ignora vazios)
+    ) AS certificacoes_legivel,
+
+    -- CSV sistemas_producao -> rótulos legíveis
     array_to_string(
       ARRAY(
         SELECT CASE TRIM(val)
-          WHEN 'sp_culturas_anuais'       THEN 'Culturas anuais'
-          WHEN 'sp_culturas_permanentes'  THEN 'Culturas permanentes'
-          WHEN 'sp_producao_animal'       THEN 'Produção animal'
+          WHEN 'sp_culturas_anuais'      THEN 'Culturas anuais'
+          WHEN 'sp_culturas_permanentes' THEN 'Culturas permanentes'
+          WHEN 'sp_producao_animal'      THEN 'Produção animal'
           ELSE INITCAP(REPLACE(TRIM(val), '_', ' '))
         END
         FROM unnest(string_to_array(COALESCE(sf.sistemas_producao, ''), ',')) AS val
         WHERE TRIM(val) <> ''
       ),
       ', '
-    ) AS sistemas_producao,
- 
-    -- dimensao -> nome legível
+    ) AS sistemas_producao_legivel,
+
+    -- dimensão -> rótulo legível
     CASE TRIM(COALESCE(sf.dimensao, ''))
       WHEN 'de_pequena' THEN 'Pequena'
       WHEN 'de_media'   THEN 'Média'
       WHEN 'de_grande'  THEN 'Grande'
       WHEN ''           THEN NULL
       ELSE INITCAP(REPLACE(TRIM(sf.dimensao), '_', ' '))
-    END AS dimensao
+    END AS dimensao_legivel,
+
+    -- CSV mão de obra -> rótulos legíveis
+    array_to_string(
+      ARRAY(
+        SELECT CASE TRIM(val)
+          WHEN 'mao_de_obra_assalariada' THEN 'Mão de obra assalariada'
+          WHEN 'mao_de_obra_familiar'    THEN 'Mão de obra familiar'
+          ELSE INITCAP(REPLACE(TRIM(val), '_', ' '))
+        END
+        FROM unnest(string_to_array(COALESCE(sf.mao_de_obra, ''), ',')) AS val
+        WHERE TRIM(val) <> ''
+      ),
+      ', '
+    ) AS mao_de_obra_legivel,
+
+    -- Binário organizacao_prod -> rótulo legível
+    CASE TRIM(COALESCE(sf.organizacao_prod, ''))
+      WHEN 'op_sim' THEN 'Sim'
+      WHEN 'op_nao' THEN 'Não'
+      WHEN ''       THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.organizacao_prod), '_', ' '))
+    END AS organizacao_prod_legivel,
+
+    CASE TRIM(COALESCE(sf.prox_residencias, ''))
+      WHEN 'prox_residencias_sim' THEN 'Sim, residências ou comunidades a < 250 m das extremidades da exploração.'
+      WHEN 'prox_residencias_nao' THEN 'Não, comunidades a > 250 m das extremidades da exploração.'
+      WHEN ''                     THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.prox_residencias), '_', ' '))
+    END AS prox_residencias_legivel,
+
+    CASE TRIM(COALESCE(sf.fitofarmaceuticos, ''))
+      WHEN 'fitofarmaceuticos_sim' THEN 'Sim'
+      WHEN 'fitofarmaceuticos_nao' THEN 'Não'
+      WHEN ''                      THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.fitofarmaceuticos), '_', ' '))
+    END AS fitofarmaceuticos_legivel,
+
+    CASE TRIM(COALESCE(sf.aguas_residuais, ''))
+      WHEN 'aguas_residuais_sim' THEN 'Sim'
+      WHEN 'aguas_residuais_nao' THEN 'Não'
+      WHEN ''                    THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.aguas_residuais), '_', ' '))
+    END AS aguas_residuais_legivel,
+
+    CASE TRIM(COALESCE(sf.consumo_energetico, ''))
+      WHEN 'consumo_energetico_sim' THEN 'Sim'
+      WHEN 'consumo_energetico_nao' THEN 'Não'
+      WHEN ''                       THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.consumo_energetico), '_', ' '))
+    END AS consumo_energetico_legivel
+
   FROM selecoes_filtros sf
-  WHERE sf.ano = {{ Select_year.selectedOptionValue }}
+  WHERE sf.id_utilizador = '{{Tbl_resumo.selectedRow.nif}}'
+    AND sf.ano = {{ Select_year.selectedOptionValue }}
 ),
- 
--- última seleção de filtros por utilizador/ano (data usada apenas para ordenar)
+
+-- Último registo para o par (utilizador, ano)
 filtros AS (
   SELECT DISTINCT ON (fr.id_utilizador, fr.ano)
-    fr.id_utilizador,
-    fr.ano,
-    fr.data_registo,
-    fr.certificacoes,
-    fr.sistemas_producao,
-    fr.dimensao
+    fr.*
   FROM filtros_raw fr
   ORDER BY fr.id_utilizador, fr.ano, fr.data_registo DESC
-),
- 
--- KPIs por utilizador/ano (só quem tem respostas entra aqui)
-contagens AS (
-  SELECT
-    r.id_utilizador,
-    r.ano,
-    COUNT(*) AS respostas_total,
-    SUM(CASE WHEN r.validacao = 'S' THEN 1 ELSE 0 END) AS respostas_validadas,
-    SUM(CASE WHEN r.validacao = 'N' THEN 1 ELSE 0 END) AS respostas_nao_validadas,
-    MAX(r.data_hora_submissao) AS ultima_submissao_utc
-  FROM respostas r
-  WHERE r.ano = {{ Select_year.selectedOptionValue }}
-  GROUP BY r.id_utilizador, r.ano
-),
- 
--- última validação por utilizador/ano (data + quem validou)
-ultima_validacao AS (
-  SELECT DISTINCT ON (r.id_utilizador, r.ano)
-    r.id_utilizador,
-    r.ano,
-    r.data_hora_validacao AS ultima_validacao_utc,
-    r.tecnico_validacao   -- NIF do técnico que validou
-  FROM respostas r
-  WHERE r.ano = {{ Select_year.selectedOptionValue }}
-    AND r.validacao = 'S'
-    AND r.data_hora_validacao IS NOT NULL
-  ORDER BY r.id_utilizador, r.ano, r.data_hora_validacao DESC
-),
- 
--- Estado de validação do formulário por utilizador/ano:
--- "Validado" se existirem respostas nos 3 domínios (ambiental, social, economico)
--- e TODAS essas respostas estiverem com validacao = 'S'
-form_estado AS (
-  SELECT
-    r.id_utilizador,
-    r.ano,
-    COUNT(*) FILTER (WHERE r.dominio IN ('ambiental','social','economico'))                     AS total_3d,
-    COUNT(*) FILTER (WHERE r.dominio IN ('ambiental','social','economico') AND r.validacao='S') AS total_validadas_3d,
-    COUNT(DISTINCT r.dominio) FILTER (WHERE r.dominio IN ('ambiental','social','economico'))     AS dominios_respondidos_3d
-  FROM respostas r
-  WHERE r.ano = {{ Select_year.selectedOptionValue }}
-  GROUP BY r.id_utilizador, r.ano
 )
- 
+
 SELECT
-  -- Dados do utilizador (sem email e sem ano)
-  COALESCE(u.nome, c.id_utilizador::text) AS nome,
-  c.id_utilizador AS nif,
- 
-  -- Filtros (sem exibir a data de registo dos filtros)
-  f.certificacoes,
-  f.sistemas_producao,
-  f.dimensao,
- 
-  -- KPIs
-  c.respostas_total,
-  c.respostas_validadas,
-  c.respostas_nao_validadas,
- 
-  -- Última submissão convertida para Europe/Lisbon
-  TO_CHAR(
-    (c.ultima_submissao_utc AT TIME ZONE 'UTC') AT TIME ZONE 'Europe/Lisbon',
-    'DD/MM/YYYY - HH24:MI:SS'
-  ) AS ultima_submissao,
- 
-  -- Técnico e data da última validação (com fallback quando não há validação)
-  COALESCE(utech.nome, '—') AS tecnico_validacao_nome,
-  COALESCE(
-    TO_CHAR(
-      (uv.ultima_validacao_utc AT TIME ZONE 'UTC') AT TIME ZONE 'Europe/Lisbon',
-      'DD/MM/YYYY - HH24:MI:SS'
-    ),
-    'Validação pendente'
-  ) AS data_ultima_validacao,
- 
-  -- Validação do formulário (string pedida)
-  CASE
-    WHEN fs.dominios_respondidos_3d = 3
-     AND fs.total_3d > 0
-     AND fs.total_3d = fs.total_validadas_3d
-    THEN 'Validado'
-    ELSE 'Por validar'
-  END AS "validacao_form"
- 
-FROM contagens c
-LEFT JOIN utilizadores u
-  ON u.nif = c.id_utilizador
-LEFT JOIN filtros f
-  ON f.id_utilizador = c.id_utilizador AND f.ano = c.ano
-LEFT JOIN ultima_validacao uv
-  ON uv.id_utilizador = c.id_utilizador AND uv.ano = c.ano
-LEFT JOIN utilizadores utech
-  ON utech.nif = uv.tecnico_validacao
-LEFT JOIN form_estado fs
-  ON fs.id_utilizador = c.id_utilizador AND fs.ano = c.ano
- 
-ORDER BY
-  c.respostas_validadas DESC,
-  COALESCE(u.nome, c.id_utilizador::text) ASC;
+  certificacoes_legivel,
+  sistemas_producao_legivel,
+  dimensao_legivel,
+  mao_de_obra_legivel,
+  organizacao_prod_legivel,
+  prox_residencias_legivel,
+  fitofarmaceuticos_legivel,
+  aguas_residuais_legivel,
+  consumo_energetico_legivel
+FROM filtros fr;

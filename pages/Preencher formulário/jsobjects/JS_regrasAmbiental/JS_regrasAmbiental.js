@@ -1,5 +1,4 @@
 export default {
-
   // Estado
   answers: {},
 
@@ -11,38 +10,55 @@ export default {
     );
   },
 
-  // 2) Filtrar perguntas com base nos widgets (condicionalidades)
-  filterQuestions() {
-    const all = this.getQuestions();
-    if (!all.length) return [];
+	// 2) Filtrar perguntas com base nos widgets (condicionalidades)
+	filterQuestions() {
+		const all = this.getQuestions();
+		if (!all.length) return [];
 
-    const selectedCert = Multiselect_Certificacao.selectedOptionValues || [];
-    const selectedSP = Multiselect_SistemaProducao.selectedOptionValues || [];
-    const selectedDE = Select_Dimensao.selectedOptionValue
-      ? [Select_Dimensao.selectedOptionValue]
-      : [];
+		// Helpers para ler "S"/"N" com segurança
+		const norm = (v) => String(v ?? "").trim().toUpperCase();
+		const isS = (row, col) => norm(row?.[col]) === "S";
+		const isN = (row, col) => norm(row?.[col]) === "N";
 
-    return all.filter(q => {
-      // Bloqueio por certificação
-      const hasCertN = selectedCert.some(col => q[col] === "N");
-      if (hasCertN) return false;
+		const selectedCert = Multiselect_Certificacao?.selectedOptionValues || [];
+		const selectedSP   = Multiselect_SistemaProducao?.selectedOptionValues || [];
+		const selectedDE   = Select_Dimensao?.selectedOptionValue
+			? [Select_Dimensao.selectedOptionValue]
+			: [];
+		const selectedMO   = Multiselect_MaoDeObra?.selectedOptionValues || []; // Ex.: ["mao_de_obra_assalariada","mao_de_obra_familiar"]
+		const opSel        = Select_OP?.selectedOptionValue;                    // "op_sim" | "op_nao"
+		const proxSel      = Select_ProxResidencias?.selectedOptionValue;       // "prox_residencias_sim" | "prox_residencias_nao"
+		const fitoSel      = Select_Fitofarmaceuticos?.selectedOptionValue;     // "fitofarmaceuticos_sim" | "fitofarmaceuticos_nao"
+		const aguasSel     = Select_AguasResiduais?.selectedOptionValue;        // "aguas_residuais_sim" | "aguas_residuais_nao"
+		const energiaSel   = Select_ConsumoEnergetico?.selectedOptionValue;     // "consumo_energetico_sim" | "consumo_energetico_nao"
 
-      const hasSP = selectedSP.some(col => q[col] === "S");
-      const hasDE = selectedDE.some(col => q[col] === "S");
+		// Junta os selects binários que estejam escolhidos
+		const selectedBinaryCols = [opSel, proxSel, fitoSel, aguasSel, energiaSel].filter(Boolean);
 
-      // Sem filtros → mostra tudo
-      if (
-        selectedCert.length === 0 &&
-        selectedSP.length === 0 &&
-        selectedDE.length === 0
-      ) {
-        return true;
-      }
+		// Verifica se não há nenhum filtro positivo ativo
+		const noPositiveFilters =
+			selectedSP.length === 0 &&
+			selectedDE.length === 0 &&
+			selectedMO.length === 0 &&
+			selectedBinaryCols.length === 0;
 
-      // OU entre sistema e dimensão
-      return hasSP || hasDE;
-    });
-  },
+		return all.filter(q => {
+			// 1) Bloqueio por certificação: se alguma coluna escolhida == "N", exclui a pergunta
+			if (selectedCert.some(col => isN(q, col))) return false;
+
+			// 2) Sem nenhum filtro ativo → mostra tudo (comportamento atual)
+			if (noPositiveFilters && selectedCert.length === 0) return true;
+
+			// 3) Filtros positivos (OR entre grupos)
+			const hasSP  = selectedSP.some(col => isS(q, col));
+			const hasDE  = selectedDE.some(col => isS(q, col));
+			const hasMO  = selectedMO.some(col => isS(q, col));
+			const hasBin = selectedBinaryCols.some(col => isS(q, col));
+
+			// OR entre SP, Dimensão, Mão de Obra e Selects binários
+			return hasSP || hasDE || hasMO || hasBin;
+		});
+	},
 
   // 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
   getAllFilteredQuestions() {
@@ -121,26 +137,42 @@ export default {
       [String(row.id_pergunta)]: selectedValue
     };
   },
+  
+	// 8) Preparar respostas para guardar
+	// Inclui todas as perguntas filtradas pelos filtros dos dados iniciais
+	// Força NULL nas que não estão visíveis pela lógica condicional.
+	prepareAnswers() {
+		const allFiltered = this.getAllFilteredQuestions(); // antes: getVisibleQuestions()
+		const visible = this.getVisibleQuestions();         // caminho condicional atual
+		const userId = appsmith.store.autenticacao?.nif || "unknown_user";
+		const year = new Date().getFullYear();
+		const answers = this.answers || {};
+		const dominio = "ambiental";
 
-  // 8) Preparar respostas para guardar (todas as visíveis)
-  prepareAnswers() {
-    const all = this.getVisibleQuestions();
-    const userId = appsmith.store.autenticacao.nif || "unknown_user";
-    const year = new Date().getFullYear();
-    const answers = this.answers || {};
-    const dominio = "ambiental";
+		// Conjunto de IDs visíveis (para decisão de NULL)
+		const visibleIds = new Set(visible.map(q => String(q.id_pergunta)));
 
-    return all.map(q => ({
-      id_resposta: `${userId}_${year}_${q.id_pergunta}`,
-      id_pergunta: q.id_pergunta,
-      id_utilizador: userId,
-      resposta: answers[q.id_pergunta]
-        ? String(answers[q.id_pergunta]).trim()
-        : null,
-      ano: year,
-      dominio
-    }));
-  },
+		return allFiltered.map(q => {
+			const idPerg = String(q.id_pergunta);
+			const currentAns = answers[idPerg];
+
+			// Regra:
+			// - Se a pergunta está visível -> guarda a resposta
+			// - Se a pergunta está oculta pela lógica condicional -> força resposta = NULL
+			const respostaFinal = visibleIds.has(idPerg)
+				? (currentAns ? String(currentAns).trim() : null)
+				: null;
+
+			return {
+				id_resposta: `${userId}_${year}_${idPerg}`,
+				id_pergunta: idPerg,
+				id_utilizador: userId,
+				resposta: respostaFinal,
+				ano: year,
+				dominio
+			};
+		});
+	},
 
   // 9) Construir VALUES para o INSERT (inclui validacao='N' para novas linhas)
   buildValues() {

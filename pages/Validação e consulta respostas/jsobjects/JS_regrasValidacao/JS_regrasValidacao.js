@@ -25,7 +25,7 @@ export default {
       // Pode rodar em paralelo
       await Promise.all([
         Qry_respostasForm.run(),
-        Qry_dadosIniciais.run(),
+        Qry_controlo.run(),
 				Qry_formsValidados.run(),
       ]);
     } catch (e) {

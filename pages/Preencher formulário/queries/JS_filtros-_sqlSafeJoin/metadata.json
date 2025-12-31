@@ -1,12 +1,16 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_6a5c2c92-becb-4d07-9260-a91a67c171df",
-  "id": "Preencher formulário_JS_filtros.cancelFilterSelections",
+  "gitSyncId": "692f23e7862bc92544420b37_98158515-d559-47d6-a367-1bd888db6f04",
+  "id": "Preencher formulário_JS_filtros._sqlSafeJoin",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [],
+      "jsArguments": [
+        {
+          "name": "arr"
+        }
+      ],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -22,8 +26,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_filtros.cancelFilterSelections",
-    "name": "cancelFilterSelections",
+    "fullyQualifiedName": "JS_filtros._sqlSafeJoin",
+    "name": "_sqlSafeJoin",
     "pageId": "Preencher formulário",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

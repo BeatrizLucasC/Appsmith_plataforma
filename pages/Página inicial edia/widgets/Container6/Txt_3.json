@@ -8,6 +8,9 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -39,7 +42,7 @@
   "shouldTruncate": false,
   "text": "Validação e consulta das respostas",
   "textAlign": "LEFT",
-  "textColor": "#2664ac",
+  "textColor": "{{appsmith.theme.colors.primaryColor}}",
   "topRow": 7,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",

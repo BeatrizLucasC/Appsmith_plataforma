@@ -1,4 +1,13 @@
-SELECT certificacoes, sistemas_producao, dimensao
+SELECT
+  certificacoes,
+  sistemas_producao,
+  dimensao,
+  mao_de_obra,
+  organizacao_prod,
+  prox_residencias,
+  fitofarmaceuticos,
+  aguas_residuais,
+  consumo_energetico
 FROM selecoes_filtros
 WHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'
 ORDER BY ano DESC, data_registo DESC

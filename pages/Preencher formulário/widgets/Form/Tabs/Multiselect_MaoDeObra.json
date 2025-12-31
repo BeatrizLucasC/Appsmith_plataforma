@@ -5,7 +5,7 @@
   "bottomRow": 33,
   "bottomRowBeforeCollapse": 25,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.certificacoes?.split(\",\")))(Multiselect_CertificacaoCopy.options, Multiselect_CertificacaoCopy.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.mao_de_obra?.split(\",\")))(Multiselect_MaoDeObra.options, Multiselect_MaoDeObra.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -65,7 +65,7 @@
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
   "sourceData": "[\n  { \"label\": \"Mão de obra assalariada\", \"value\": \"mao_de_obra_assalariada\" },\n  { \"label\": \"Mão de obra familiar\", \"value\": \"mao_de_obra_familiar\" }\n]",
   "topRow": 26,
@@ -73,5 +73,5 @@
   "type": "MULTI_SELECT_WIDGET_V2",
   "version": 1,
   "widgetId": "xu4979gvbr",
-  "widgetName": "Multiselect_CertificacaoCopy"
+  "widgetName": "Multiselect_MaoDeObra"
 }

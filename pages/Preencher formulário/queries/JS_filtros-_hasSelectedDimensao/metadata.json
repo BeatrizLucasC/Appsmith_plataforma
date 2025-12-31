@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_a221ca41-3ba7-4cc1-b795-8e32f6dfefef",
-  "id": "Preencher formulário_JS_filtros.saveFilterSelections",
+  "gitSyncId": "692f23e7862bc92544420b37_d1e388c2-3b5e-4f20-b563-6c832afd4a81",
+  "id": "Preencher formulário_JS_filtros._hasSelectedDimensao",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_filtros.saveFilterSelections",
-    "name": "saveFilterSelections",
+    "fullyQualifiedName": "JS_filtros._hasSelectedDimensao",
+    "name": "_hasSelectedDimensao",
     "pageId": "Preencher formulário",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

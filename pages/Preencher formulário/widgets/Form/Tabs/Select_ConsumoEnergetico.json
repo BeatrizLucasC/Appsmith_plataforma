@@ -2,10 +2,10 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 41,
+  "bottomRow": 73,
   "bottomRowBeforeCollapse": 9,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.dimensao))(Select_DimensaoCopy.options, Select_DimensaoCopy.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.consumo_energetico))(Select_ConsumoEnergetico.options, Select_ConsumoEnergetico.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -42,7 +42,7 @@
   "key": "sthlz6bum5",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "A exploração agrícola está integrada numa Organização de Produtores?",
+  "labelText": "A exploração agrícola tem algum tipo de consumo energético no âmbito da sua atividade produtiva?",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 1,
@@ -65,13 +65,13 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"op_sim\" },\n  { \"label\": \"Não\", \"value\": \"op_nao\" }\n]",
-  "topRow": 34,
+  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"consumo_energetico_sim\" },\n  { \"label\": \"Não\", \"value\": \"consumo_energetico_nao\" }\n]",
+  "topRow": 66,
   "topRowBeforeCollapse": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "amar0xouxu",
-  "widgetName": "Select_DimensaoCopy"
+  "widgetId": "h1q4t3paiz",
+  "widgetName": "Select_ConsumoEnergetico"
 }

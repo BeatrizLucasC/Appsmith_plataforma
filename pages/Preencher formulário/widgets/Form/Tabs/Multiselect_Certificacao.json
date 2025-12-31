@@ -65,7 +65,7 @@
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
   "sourceData": "[\n  { \"label\": \"Classe de Regante A\", \"value\": \"classe_de_regante_a\" },\n  { \"label\": \"Classe de Regante B\", \"value\": \"classe_de_regante_b\" },\n  { \"label\": \"Classe de Regante B+\", \"value\": \"classe_de_regante_bplus\" },\n  { \"label\": \"GlobalGAP\", \"value\": \"globalgap\" },\n  { \"label\": \"GRASP\", \"value\": \"grasp\" },\n  { \"label\": \"PRODI\", \"value\": \"prodi\" },\n  { \"label\": \"SPRING\", \"value\": \"spring\" }\n]",
   "topRow": 18,

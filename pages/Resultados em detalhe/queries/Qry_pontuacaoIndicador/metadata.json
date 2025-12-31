@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM vw_score_user_avg_indicador\nWHERE id_utilizador = {{Tbl_resumo.selectedRow.nif}}\nAND ano = {{Tbl_resumo.selectedRow.ano}};",
+      "body": "SELECT * FROM vw_score_user_avg_indicador\nWHERE id_utilizador = {{Tbl_resumo.selectedRow.nif}}\nAND ano = {{Select_year.selectedOptionValue}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

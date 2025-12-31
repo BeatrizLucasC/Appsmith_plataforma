@@ -2,10 +2,10 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 65,
+  "bottomRow": 49,
   "bottomRowBeforeCollapse": 9,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.dimensao))(Select_DimensaoCopyCopyCopyCopy.options, Select_DimensaoCopyCopyCopyCopy.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.prox_residencias))(Select_ProxResidencias.options, Select_ProxResidencias.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -42,7 +42,7 @@
   "key": "sthlz6bum5",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "A exploração agrícola gera águas residuais no âmbito da sua atividade produtiva?",
+  "labelText": "A exploração agrícola encontra-se próxima de comunidades locais?",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 1,
@@ -65,13 +65,13 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"aguas_residuais_sim\" },\n  { \"label\": \"Não\", \"value\": \"aguas_residuais_nao\" }\n]",
-  "topRow": 58,
+  "sourceData": "[\n  {\n    \"label\": \"Sim, as residências ou comunidades locais mais próximas situam-se a menos de 250 metros das extremidades da exploração agrícola.\",\n    \"value\": \"prox_residencias_sim\"\n  },\n  {\n    \"label\": \"Não, as comunidades mais próximas estão a mais de 250 metros das extremidades da exploração agrícola.\",\n    \"value\": \"prox_residencias_nao\"\n  }\n]",
+  "topRow": 42,
   "topRowBeforeCollapse": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "rgpvrfr1a1",
-  "widgetName": "Select_DimensaoCopyCopyCopyCopy"
+  "widgetId": "cqz1zrs7hp",
+  "widgetName": "Select_ProxResidencias"
 }

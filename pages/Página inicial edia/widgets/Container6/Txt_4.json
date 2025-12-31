@@ -1,13 +1,16 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 22,
+  "bottomRow": 21,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -39,8 +42,8 @@
   "shouldTruncate": false,
   "text": "Resultados em detalhe",
   "textAlign": "LEFT",
-  "textColor": "#2664ac",
-  "topRow": 18,
+  "textColor": "{{appsmith.theme.colors.primaryColor}}",
+  "topRow": 17,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

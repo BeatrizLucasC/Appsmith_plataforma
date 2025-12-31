@@ -65,7 +65,7 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
   "sourceData": "[\n  { \"label\": \"Pequena (0 - 20 ha )\", \"value\": \"de_pequena\" },\n  { \"label\": \"Média (20 - 100 ha)\", \"value\": \"de_media\" },\n  { \"label\": \"Grande (≥ 100 ha)\", \"value\": \"de_grande\" }\n]",
   "topRow": 2,

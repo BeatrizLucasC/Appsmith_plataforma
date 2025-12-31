@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO selecoes_filtros (\n  utilizador_ano,\n  id_utilizador,\n  ano,\n  certificacoes,\n  sistemas_producao,\n  dimensao,\n  data_registo\n)\nVALUES {{ JS_filtros.buildValoresFiltros() }}\nON CONFLICT (utilizador_ano)\nDO UPDATE SET\n  certificacoes = EXCLUDED.certificacoes,\n  sistemas_producao = EXCLUDED.sistemas_producao,\n  dimensao = EXCLUDED.dimensao,\n  data_registo = NOW();",
+      "body": "INSERT INTO selecoes_filtros (\n  utilizador_ano,\n  id_utilizador,\n  ano,\n  certificacoes,\n  sistemas_producao,\n  dimensao,\n  data_registo,\n  mao_de_obra,\n  organizacao_prod,\n  prox_residencias,\n  fitofarmaceuticos,\n  aguas_residuais,\n  consumo_energetico\n)\nVALUES {{ JS_filtros.buildValoresFiltros() }}\nON CONFLICT (utilizador_ano)\nDO UPDATE SET\n  certificacoes      = EXCLUDED.certificacoes,\n  sistemas_producao  = EXCLUDED.sistemas_producao,\n  dimensao           = EXCLUDED.dimensao,\n  mao_de_obra        = EXCLUDED.mao_de_obra,\n  organizacao_prod   = EXCLUDED.organizacao_prod,\n  prox_residencias   = EXCLUDED.prox_residencias,\n  fitofarmaceuticos  = EXCLUDED.fitofarmaceuticos,\n  aguas_residuais    = EXCLUDED.aguas_residuais,\n  consumo_energetico = EXCLUDED.consumo_energetico,\n  data_registo       = NOW();",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

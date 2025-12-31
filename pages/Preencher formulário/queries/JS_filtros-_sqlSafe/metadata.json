@@ -1,12 +1,16 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_8e5897ae-66da-4fce-8206-39300619f295",
-  "id": "Preencher formulário_JS_filtros.replaceFilterSelections",
+  "gitSyncId": "692f23e7862bc92544420b37_58da0360-3f81-4d7f-bf55-cafd317ce069",
+  "id": "Preencher formulário_JS_filtros._sqlSafe",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [],
+      "jsArguments": [
+        {
+          "name": "str"
+        }
+      ],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -22,8 +26,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_filtros.replaceFilterSelections",
-    "name": "replaceFilterSelections",
+    "fullyQualifiedName": "JS_filtros._sqlSafe",
+    "name": "_sqlSafe",
     "pageId": "Preencher formulário",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

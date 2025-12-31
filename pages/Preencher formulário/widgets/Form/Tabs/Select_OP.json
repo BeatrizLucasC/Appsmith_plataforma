@@ -2,10 +2,10 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 57,
+  "bottomRow": 41,
   "bottomRowBeforeCollapse": 9,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.dimensao))(Select_DimensaoCopyCopyCopy.options, Select_DimensaoCopyCopyCopy.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.organizacao_prod))(Select_OP.options, Select_OP.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -42,7 +42,7 @@
   "key": "sthlz6bum5",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "A exploração agrícola procede à aplicação de produtos fitofarmacêuticos no âmbito da sua atividade produtiva?",
+  "labelText": "A exploração agrícola está integrada numa Organização de Produtores?",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 1,
@@ -65,13 +65,13 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"fitofarmaceuticos_sim\" },\n  { \"label\": \"Não\", \"value\": \"fitofarmaceuticos_nao\" }\n]",
-  "topRow": 50,
+  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"op_sim\" },\n  { \"label\": \"Não\", \"value\": \"op_nao\" }\n]",
+  "topRow": 34,
   "topRowBeforeCollapse": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "js4mtxy32l",
-  "widgetName": "Select_DimensaoCopyCopyCopy"
+  "widgetId": "amar0xouxu",
+  "widgetName": "Select_OP"
 }

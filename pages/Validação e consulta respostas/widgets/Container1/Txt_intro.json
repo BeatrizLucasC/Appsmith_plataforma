@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 21,
+  "bottomRow": 24,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,7 +30,7 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 21,
+  "originalBottomRow": 22,
   "originalTopRow": 1,
   "overflow": "NONE",
   "parentColumnSpace": 10.930908203125,
@@ -40,7 +40,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Nesta página pode validar e consultar as respostas submetidas pelos utilizadores.\n\n<b>Separador \"Dados Iniciais\":</b> Apresenta informações-chave sobre cada utilizador e respetivo formulário, incluindo:\n\t- Número de respostas submetidas e validadas\n\t- Filtros selecionados no formulário\n\n<b>Separador \"Validar\":</b> Apresenta as respostas às perguntas do formulário preenchido por cada utilizador, permitindo a sua validação.\n\n<b>Separador \"Consultar respostas\":</b> Permite visualizar todas as respostas dos utilizadores, incluindo aquelas atribuídas automaticamente com base nas certificações selecionadas.",
+  "text": "Nesta página pode validar e consultar as respostas submetidas pelos utilizadores.\n\n<b>Separador \"Página de controlo\":</b> Apresenta o estado de validação do formulários submetidos, incluindo o número de respostas validadas e por validar de cada utilizador.\n\n<b>Separador \"Dados Iniciais - utilizador\":</b> Apresenta os dados inciais selecionados pelo utilizador, na primeira página do formulário.\n\n<b>Separador \"Validar\":</b> Apresenta as respostas às perguntas do formulário preenchido por cada utilizador, permitindo a sua validação.\n\n<b>Separador \"Consultar respostas\":</b> Permite visualizar todas as respostas dos utilizadores, incluindo aquelas atribuídas automaticamente com base nas certificações selecionadas.",
   "textAlign": "LEFT",
   "textColor": "#231F20",
   "topRow": 1,

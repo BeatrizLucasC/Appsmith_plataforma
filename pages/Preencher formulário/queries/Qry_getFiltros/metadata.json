@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT certificacoes, sistemas_producao, dimensao\nFROM selecoes_filtros\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\nORDER BY ano DESC, data_registo DESC\nLIMIT 1;",
+      "body": "SELECT\n  certificacoes,\n  sistemas_producao,\n  dimensao,\n  mao_de_obra,\n  organizacao_prod,\n  prox_residencias,\n  fitofarmaceuticos,\n  aguas_residuais,\n  consumo_energetico\nFROM selecoes_filtros\nWHERE id_utilizador = '{{appsmith.store.autenticacao.nif}}'\nORDER BY ano DESC, data_registo DESC\nLIMIT 1;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

@@ -2,10 +2,10 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 73,
+  "bottomRow": 57,
   "bottomRowBeforeCollapse": 9,
   "boxShadow": "none",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.dimensao))(Select_DimensaoCopyCopyCopyCopyCopy.options, Select_DimensaoCopyCopyCopyCopyCopy.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Qry_getFiltros.data[0]?.fitofarmaceuticos))(Select_Fitofarmaceuticos.options, Select_Fitofarmaceuticos.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -42,7 +42,7 @@
   "key": "sthlz6bum5",
   "labelAlignment": "left",
   "labelPosition": "Top",
-  "labelText": "A exploração agrícola tem algum tipo de consumo energético no âmbito da sua atividade produtiva?",
+  "labelText": "A exploração agrícola procede à aplicação de produtos fitofarmacêuticos no âmbito da sua atividade produtiva?",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
   "leftColumn": 1,
@@ -65,13 +65,13 @@
   "placeholderText": "Select option",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 52,
+  "rightColumn": 60,
   "serverSideFiltering": false,
-  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"consumo_energetico_sim\" },\n  { \"label\": \"Não\", \"value\": \"consumo_energetico_nao\" }\n]",
-  "topRow": 66,
+  "sourceData": "[\n  { \"label\": \"Sim\", \"value\": \"fitofarmaceuticos_sim\" },\n  { \"label\": \"Não\", \"value\": \"fitofarmaceuticos_nao\" }\n]",
+  "topRow": 50,
   "topRowBeforeCollapse": 2,
   "type": "SELECT_WIDGET",
   "version": 1,
-  "widgetId": "h1q4t3paiz",
-  "widgetName": "Select_DimensaoCopyCopyCopyCopyCopy"
+  "widgetId": "js4mtxy32l",
+  "widgetName": "Select_Fitofarmaceuticos"
 }

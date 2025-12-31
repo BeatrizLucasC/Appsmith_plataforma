@@ -47,7 +47,7 @@
       "rightColumn": 338.625,
       "shouldScrollContents": false,
       "tabId": "tab1",
-      "tabName": "Dados iniciais",
+      "tabName": "Página de controlo",
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
@@ -144,9 +144,54 @@
       "version": 1,
       "widgetId": "2oxzdotwtv",
       "widgetName": "Canvas18"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 760,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "4gjucy32jq",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 800,
+      "minWidth": 450,
+      "mobileBottomRow": 801,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 903,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "th89vl5tw5",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 903,
+      "tabId": "tabqphuppf0b4",
+      "tabName": "Dados iniciais - utilizador",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "1atf5ms6vh",
+      "widgetName": "Canvas21"
     }
   ],
-  "defaultTab": "Dados iniciais",
+  "defaultTab": "Página de controlo",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -182,7 +227,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 48,
   "needsErrorInfo": false,
-  "originalBottomRow": 135,
+  "originalBottomRow": 103,
   "originalTopRow": 55,
   "parentColumnSpace": 14.109375,
   "parentId": "0",
@@ -196,22 +241,33 @@
     "tab1": {
       "id": "tab1",
       "index": 0,
+      "isDuplicateLabel": false,
       "isVisible": true,
-      "label": "Dados iniciais",
+      "label": "Página de controlo",
       "positioning": "vertical",
       "widgetId": "3okpq3796r"
     },
     "tab2": {
       "id": "tab2",
-      "index": 1,
+      "index": 2,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Validar respostas",
       "positioning": "vertical",
       "widgetId": "4co4xqnsmp"
     },
+    "tabqphuppf0b4": {
+      "id": "tabqphuppf0b4",
+      "index": 1,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Dados iniciais - utilizador",
+      "widgetId": "1atf5ms6vh"
+    },
     "tabzfnnnu7gcs": {
       "id": "tabzfnnnu7gcs",
-      "index": 2,
+      "index": 3,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Consultar respostas",
       "widgetId": "2oxzdotwtv"

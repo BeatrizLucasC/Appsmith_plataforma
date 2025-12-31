@@ -11,6 +11,9 @@
     },
     {
       "key": "fontFamily"
+    },
+    {
+      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -42,7 +45,7 @@
   "shouldTruncate": false,
   "text": "Aceda a todas as áreas e funcionalidades aqui:",
   "textAlign": "LEFT",
-  "textColor": "#2664ac",
+  "textColor": "{{appsmith.theme.colors.primaryColor}}",
   "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",

@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "692f23e7862bc92544420b37_a869dee8-bd60-4c0e-9966-e6bf75724bfb",
-  "id": "Preencher formulário_JS_filtros.guardarFiltrosEAtivarAbas",
+  "gitSyncId": "692f23e7862bc92544420b37_379e2bbd-9554-4929-9fb6-b64ac7f9c47e",
+  "id": "Preencher formulário_JS_filtros._hasAllBinarySelects",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "JS_filtros.guardarFiltrosEAtivarAbas",
-    "name": "guardarFiltrosEAtivarAbas",
+    "fullyQualifiedName": "JS_filtros._hasAllBinarySelects",
+    "name": "_hasAllBinarySelects",
     "pageId": "Preencher formulário",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
