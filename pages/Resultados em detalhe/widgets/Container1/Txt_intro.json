@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 26,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -21,7 +21,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "3vq4rrdn3g",
-  "leftColumn": 1,
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -30,8 +30,8 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "originalBottomRow": 6,
-  "originalTopRow": 1,
+  "originalBottomRow": 26,
+  "originalTopRow": 0,
   "overflow": "NONE",
   "parentColumnSpace": 10.930908203125,
   "parentId": "lbjrjlzxq6",
@@ -40,10 +40,10 @@
   "responsiveBehavior": "fill",
   "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "Nesta página pode visualizar os resultados de cada utilizador em detalhe (a nível global, domínio, categoria e indicador) e a comparação com os resultados médios.",
+  "text": "Nesta página pode visualizar os resultados de cada utilizador ao formulário.\n\nOs resultados aprensentados poderão resultar de formulários que não estão validados. Esta informação estará presente no separador \" Páigna de controlo\" e formulários podem ser validados na página \"Validar e consultar respostas\".\n\n<b>Separador \"Página de controlo\":</b> Apresenta o estado de validação do formulários submetidos, incluindo o número de respostas validadas e por validar de cada utilizador.\n\n<b>Separador \"Dados Iniciais - utilizador\":</b> Apresenta os dados inciais selecionados pelo utilizador, na primeira página do formulário.\n\n<b>Restantes separadores:</b> Disponibiliza os resultados de cada utilizador em detalhe (a nível global, domínio, categoria e indicador) e a comparação com os resultados médios.\n\n",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 1,
+  "topRow": 0,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

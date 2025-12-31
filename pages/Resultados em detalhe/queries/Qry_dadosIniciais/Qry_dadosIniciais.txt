@@ -1,0 +1,120 @@
+WITH filtros_raw AS (
+  SELECT
+    sf.id_utilizador,
+    sf.ano,
+    sf.data_registo,
+
+    -- CSV certificacoes -> rótulos legíveis
+    array_to_string(
+      ARRAY(
+        SELECT CASE TRIM(val)
+          WHEN 'globalgap' THEN 'GLOBALG.A.P.'
+          WHEN 'grasp'     THEN 'GRASP'
+          WHEN 'spring'    THEN 'SPRING'
+          WHEN 'prodi'     THEN 'PRODI'
+          ELSE INITCAP(REPLACE(TRIM(val), '_', ' '))
+        END
+        FROM unnest(string_to_array(COALESCE(sf.certificacoes, ''), ',')) AS val
+        WHERE TRIM(val) <> ''
+      ),
+      ', '
+    ) AS certificacoes_legivel,
+
+    -- CSV sistemas_producao -> rótulos legíveis
+    array_to_string(
+      ARRAY(
+        SELECT CASE TRIM(val)
+          WHEN 'sp_culturas_anuais'      THEN 'Culturas anuais'
+          WHEN 'sp_culturas_permanentes' THEN 'Culturas permanentes'
+          WHEN 'sp_producao_animal'      THEN 'Produção animal'
+          ELSE INITCAP(REPLACE(TRIM(val), '_', ' '))
+        END
+        FROM unnest(string_to_array(COALESCE(sf.sistemas_producao, ''), ',')) AS val
+        WHERE TRIM(val) <> ''
+      ),
+      ', '
+    ) AS sistemas_producao_legivel,
+
+    -- dimensão -> rótulo legível
+    CASE TRIM(COALESCE(sf.dimensao, ''))
+      WHEN 'de_pequena' THEN 'Pequena'
+      WHEN 'de_media'   THEN 'Média'
+      WHEN 'de_grande'  THEN 'Grande'
+      WHEN ''           THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.dimensao), '_', ' '))
+    END AS dimensao_legivel,
+
+    -- CSV mão de obra -> rótulos legíveis
+    array_to_string(
+      ARRAY(
+        SELECT CASE TRIM(val)
+          WHEN 'mao_de_obra_assalariada' THEN 'Mão de obra assalariada'
+          WHEN 'mao_de_obra_familiar'    THEN 'Mão de obra familiar'
+          ELSE INITCAP(REPLACE(TRIM(val), '_', ' '))
+        END
+        FROM unnest(string_to_array(COALESCE(sf.mao_de_obra, ''), ',')) AS val
+        WHERE TRIM(val) <> ''
+      ),
+      ', '
+    ) AS mao_de_obra_legivel,
+
+    -- Binário organizacao_prod -> rótulo legível
+    CASE TRIM(COALESCE(sf.organizacao_prod, ''))
+      WHEN 'op_sim' THEN 'Sim'
+      WHEN 'op_nao' THEN 'Não'
+      WHEN ''       THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.organizacao_prod), '_', ' '))
+    END AS organizacao_prod_legivel,
+
+    CASE TRIM(COALESCE(sf.prox_residencias, ''))
+      WHEN 'prox_residencias_sim' THEN 'Sim, residências ou comunidades a < 250 m das extremidades da exploração.'
+      WHEN 'prox_residencias_nao' THEN 'Não, comunidades a > 250 m das extremidades da exploração.'
+      WHEN ''                     THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.prox_residencias), '_', ' '))
+    END AS prox_residencias_legivel,
+
+    CASE TRIM(COALESCE(sf.fitofarmaceuticos, ''))
+      WHEN 'fitofarmaceuticos_sim' THEN 'Sim'
+      WHEN 'fitofarmaceuticos_nao' THEN 'Não'
+      WHEN ''                      THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.fitofarmaceuticos), '_', ' '))
+    END AS fitofarmaceuticos_legivel,
+
+    CASE TRIM(COALESCE(sf.aguas_residuais, ''))
+      WHEN 'aguas_residuais_sim' THEN 'Sim'
+      WHEN 'aguas_residuais_nao' THEN 'Não'
+      WHEN ''                    THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.aguas_residuais), '_', ' '))
+    END AS aguas_residuais_legivel,
+
+    CASE TRIM(COALESCE(sf.consumo_energetico, ''))
+      WHEN 'consumo_energetico_sim' THEN 'Sim'
+      WHEN 'consumo_energetico_nao' THEN 'Não'
+      WHEN ''                       THEN NULL
+      ELSE INITCAP(REPLACE(TRIM(sf.consumo_energetico), '_', ' '))
+    END AS consumo_energetico_legivel
+
+  FROM selecoes_filtros sf
+  WHERE sf.id_utilizador = '{{Tbl_resumo.selectedRow.nif}}'
+    AND sf.ano = {{ Select_year.selectedOptionValue }}
+),
+
+-- Último registo para o par (utilizador, ano)
+filtros AS (
+  SELECT DISTINCT ON (fr.id_utilizador, fr.ano)
+    fr.*
+  FROM filtros_raw fr
+  ORDER BY fr.id_utilizador, fr.ano, fr.data_registo DESC
+)
+
+SELECT
+  certificacoes_legivel,
+  sistemas_producao_legivel,
+  dimensao_legivel,
+  mao_de_obra_legivel,
+  organizacao_prod_legivel,
+  prox_residencias_legivel,
+  fitofarmaceuticos_legivel,
+  aguas_residuais_legivel,
+  consumo_energetico_legivel
+FROM filtros fr;

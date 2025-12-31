@@ -5,12 +5,12 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": 1,
-  "bottomRow": 147,
+  "bottomRow": 121,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 940,
+      "bottomRow": 920,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -192,7 +192,7 @@
     },
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 940,
+      "bottomRow": 680,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": false,
       "containerStyle": "none",
@@ -234,6 +234,51 @@
       "version": 1,
       "widgetId": "6u4s1zgs06",
       "widgetName": "Canvas14"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 680,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "l7hdkfp9w4",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 720,
+      "minWidth": 450,
+      "mobileBottomRow": 721,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1063,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "6bhhpag3m9",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1063,
+      "tabId": "tabvcl4zv7be1",
+      "tabName": "Dados iniciais - utilizador",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "a4l637sm4n",
+      "widgetName": "Canvas21"
     }
   ],
   "defaultTab": "Página de controlo",
@@ -264,7 +309,7 @@
   "mobileRightColumn": 26,
   "mobileTopRow": 32,
   "needsErrorInfo": false,
-  "originalBottomRow": 147,
+  "originalBottomRow": 121,
   "originalTopRow": 49,
   "parentColumnSpace": 16.609375,
   "parentId": "0",
@@ -277,7 +322,7 @@
   "tabsObj": {
     "tab1": {
       "id": "tab1",
-      "index": 1,
+      "index": 2,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Resultados Globais",
@@ -286,7 +331,7 @@
     },
     "tab2": {
       "id": "tab2",
-      "index": 2,
+      "index": 3,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Domínio Ambiental",
@@ -303,7 +348,7 @@
     },
     "tabuyxk5ssbrj": {
       "id": "tabuyxk5ssbrj",
-      "index": 3,
+      "index": 4,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Domínio Social",
@@ -311,11 +356,19 @@
     },
     "tabv8i86yu9ap": {
       "id": "tabv8i86yu9ap",
-      "index": 4,
+      "index": 5,
       "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Domínio Económico",
       "widgetId": "9jnz2zbys4"
+    },
+    "tabvcl4zv7be1": {
+      "id": "tabvcl4zv7be1",
+      "index": 1,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Dados iniciais - utilizador",
+      "widgetId": "a4l637sm4n"
     }
   },
   "topRow": 49,
