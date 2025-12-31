@@ -20,43 +20,57 @@ export default {
 		const isS = (row, col) => norm(row?.[col]) === "S";
 		const isN = (row, col) => norm(row?.[col]) === "N";
 
+		// Widgets (seleções dos filtros)
 		const selectedCert = Multiselect_Certificacao?.selectedOptionValues || [];
+
 		const selectedSP   = Multiselect_SistemaProducao?.selectedOptionValues || [];
 		const selectedDE   = Select_Dimensao?.selectedOptionValue
 			? [Select_Dimensao.selectedOptionValue]
 			: [];
-		const selectedMO   = Multiselect_MaoDeObra?.selectedOptionValues || []; // Ex.: ["mao_de_obra_assalariada","mao_de_obra_familiar"]
-		const opSel        = Select_OP?.selectedOptionValue;                    // "op_sim" | "op_nao"
-		const proxSel      = Select_ProxResidencias?.selectedOptionValue;       // "prox_residencias_sim" | "prox_residencias_nao"
-		const fitoSel      = Select_Fitofarmaceuticos?.selectedOptionValue;     // "fitofarmaceuticos_sim" | "fitofarmaceuticos_nao"
-		const aguasSel     = Select_AguasResiduais?.selectedOptionValue;        // "aguas_residuais_sim" | "aguas_residuais_nao"
-		const energiaSel   = Select_ConsumoEnergetico?.selectedOptionValue;     // "consumo_energetico_sim" | "consumo_energetico_nao"
+		const selectedMO   = Multiselect_MaoDeObra?.selectedOptionValues || [];
 
-		// Junta os selects binários que estejam escolhidos
+		const opSel        = Select_OP?.selectedOptionValue;               // "op_sim" | "op_nao"
+		const proxSel      = Select_ProxResidencias?.selectedOptionValue;  // "prox_residencias_sim" | "prox_residencias_nao"
+		const fitoSel      = Select_Fitofarmaceuticos?.selectedOptionValue;// "fitofarmaceuticos_sim" | "fitofarmaceuticos_nao"
+		const aguasSel     = Select_AguasResiduais?.selectedOptionValue;   // "aguas_residuais_sim" | "aguas_residuais_nao"
+		const energiaSel   = Select_ConsumoEnergetico?.selectedOptionValue;// "consumo_energetico_sim" | "consumo_energetico_nao"
+
 		const selectedBinaryCols = [opSel, proxSel, fitoSel, aguasSel, energiaSel].filter(Boolean);
 
-		// Verifica se não há nenhum filtro positivo ativo
-		const noPositiveFilters =
-			selectedSP.length === 0 &&
-			selectedDE.length === 0 &&
-			selectedMO.length === 0 &&
-			selectedBinaryCols.length === 0;
+		// ❗ "Outros filtros" são obrigatórios: todos os grupos têm de ter pelo menos uma seleção
+		const allOtherGroupsSelected =
+			selectedSP.length > 0 &&
+			selectedDE.length > 0 &&
+			selectedMO.length > 0 &&
+			selectedBinaryCols.length > 0;
+
+		if (!allOtherGroupsSelected) return [];
 
 		return all.filter(q => {
-			// 1) Bloqueio por certificação: se alguma coluna escolhida == "N", exclui a pergunta
-			if (selectedCert.some(col => isN(q, col))) return false;
+			// --- Certificações ---
+			const hasCertN = selectedCert.some(col => isN(q, col));
+			if (hasCertN) return false;
 
-			// 2) Sem nenhum filtro ativo → mostra tudo (comportamento atual)
-			if (noPositiveFilters && selectedCert.length === 0) return true;
+			// Regra permissiva: sem certificações selecionadas é OK; se houver, não pode ter "N"
+			const certOK = selectedCert.length === 0 ? true : !hasCertN;
 
-			// 3) Filtros positivos (OR entre grupos)
-			const hasSP  = selectedSP.some(col => isS(q, col));
-			const hasDE  = selectedDE.some(col => isS(q, col));
-			const hasMO  = selectedMO.some(col => isS(q, col));
-			const hasBin = selectedBinaryCols.some(col => isS(q, col));
+			// --- Outros filtros ---
+			// SP (multiselect): pelo menos UMA seleção tem de ser "S"
+			const spOK  = selectedSP.some(col => isS(q, col));
 
-			// OR entre SP, Dimensão, Mão de Obra e Selects binários
-			return hasSP || hasDE || hasMO || hasBin;
+			// Dimensão (single select): tem de ser "S"
+			const deOK  = selectedDE.every(col => isS(q, col));
+
+			// Mão de Obra (multiselect): pelo menos UMA seleção tem de ser "S"
+			const moOK  = selectedMO.some(col => isS(q, col));
+
+			// Binários: cada selecionado tem de ser "S"
+			const binOK = selectedBinaryCols.every(col => isS(q, col));
+
+			const otherOK = spOK && deOK && moOK && binOK;
+
+			// Decisão final segundo a tabela desejada
+			return certOK && otherOK;
 		});
 	},
 
