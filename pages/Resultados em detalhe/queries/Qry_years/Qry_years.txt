@@ -1,4 +1,4 @@
 SELECT DISTINCT ano
-FROM vw_score_user_avg_global
+FROM vw_score_form_pergunta
 ORDER BY ano DESC;
 
