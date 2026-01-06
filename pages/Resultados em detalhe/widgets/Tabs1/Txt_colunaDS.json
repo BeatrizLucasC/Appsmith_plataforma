@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 80,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,48 +11,42 @@
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "text"
-    },
-    {
-      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "0.875rem",
-  "fontStyle": "BOLD",
+  "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
-  "key": "mv3usn08hm",
+  "key": "c353mknfjh",
   "leftColumn": 1,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
   "mobileBottomRow": 5,
-  "mobileLeftColumn": 20,
-  "mobileRightColumn": 36,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 16,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 5,
-  "originalTopRow": 0,
+  "originalBottomRow": 80,
+  "originalTopRow": 74,
   "overflow": "NONE",
-  "parentColumnSpace": 19.5,
-  "parentId": "24tfelq3pj",
+  "parentColumnSpace": 13.796875,
+  "parentId": "6u4s1zgs06",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 17,
+  "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "{{'Total de formulários validados em ' + Select_year.selectedOptionValue + ': '}}",
+  "text": "<b>Coluna \"Domínios submetidos\":</b>\nIdentifica os domínios do formulário que já foram submetidos pelo utilizador (Ambiental, Social e Económico).\nCaso todos domínios tenham sido submetidos pelo utilizador, o formulário é considerado incompleto. Caso contrário, o formulário é considerado completo.",
   "textAlign": "LEFT",
-  "textColor": "{{appsmith.theme.colors.primaryColor}}",
-  "topRow": 0,
+  "textColor": "#231F20",
+  "topRow": 74,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "eqoy29kjwr",
-  "widgetName": "Txt_formsValidados"
+  "widgetId": "ur2nzofrpx",
+  "widgetName": "Txt_colunaDS"
 }

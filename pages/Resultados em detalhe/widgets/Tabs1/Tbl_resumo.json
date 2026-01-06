@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 66,
+  "bottomRow": 73,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -34,29 +34,33 @@
   "columnOrder": [
     "nif",
     "nome",
+    "ultima_submissao",
     "respostas_total",
     "respostas_validadas",
     "respostas_nao_validadas",
-    "ultima_submissao",
-    "tecnico_validacao_nome",
+    "dominios_submetidos",
+    "validacao_form",
     "data_ultima_validacao",
-    "validacao_form"
+    "tecnico_validacao_nome"
   ],
-  "columnUpdatedAt": 1767149157053,
+  "columnUpdatedAt": 1767698417505,
   "columnWidthMap": {
-    "ano": 70,
+    "ano": 72,
     "certificacoes": 139,
-    "data_registo_filtros": 175,
-    "dimensao": 161,
-    "email": 196,
+    "data_registo_filtros": 173,
+    "data_ultima_validacao": 219,
+    "dimensao": 158,
+    "dominios_submetidos": 198,
+    "email": 110,
     "nif": 96,
     "nome": 93,
     "pct_validadas": 155,
-    "respostas_nao_validadas": 179,
-    "respostas_total": 202,
-    "respostas_validadas": 178,
+    "respostas_nao_validadas": 182,
+    "respostas_total": 204,
+    "respostas_validadas": 172,
     "sistemas_producao": 185,
-    "ultima_submissao": 194
+    "ultima_submissao": 202,
+    "validacao_form": 156
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
@@ -106,11 +110,20 @@
     },
     {
       "key": "primaryColumns.validacao_form.computedValue"
+    },
+    {
+      "key": "primaryColumns.validacao_form.cellBackground"
+    },
+    {
+      "key": "primaryColumns.dominios_submetidos.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.validacao_form.cellBackground"
     }
   ],
   "dynamicTriggerPathList": [
@@ -139,8 +152,8 @@
   "mobileRightColumn": 34,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onRowSelected": "{{Qry_pontuacaoIndicador.run();\nQry_pontuacaoDominio.run();\nQry_pontuacaoCategoria.run();\nQry_pontuacaoGlobal.run()}}",
-  "originalBottomRow": 66,
+  "onRowSelected": "{{Qry_respostasAll.run();\nQry_respostasForm.run()}}",
+  "originalBottomRow": 73,
   "originalTopRow": 23,
   "parentColumnSpace": 13.796875,
   "parentId": "6u4s1zgs06",
@@ -148,7 +161,7 @@
   "primaryColumns": {
     "data_ultima_validacao": {
       "alias": "data_ultima_validacao",
-      "allowCellWrapping": false,
+      "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
@@ -160,7 +173,7 @@
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
       "id": "data_ultima_validacao",
-      "index": 7,
+      "index": 12,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -172,6 +185,40 @@
       "label": "Data última validação",
       "notation": "standard",
       "originalId": "data_ultima_validacao",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "dominios_submetidos": {
+      "alias": "dominios_submetidos",
+      "allowCellWrapping": true,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"dominios_submetidos\"])) : dominios_submetidos })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "dominios_submetidos",
+      "index": 9,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Domínios submetidos",
+      "notation": "standard",
+      "originalId": "dominios_submetidos",
       "sticky": "",
       "textColor": "",
       "textSize": "0.875rem",
@@ -337,7 +384,7 @@
     },
     "tecnico_validacao_nome": {
       "alias": "tecnico_validacao_nome",
-      "allowCellWrapping": false,
+      "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
@@ -349,7 +396,7 @@
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
       "id": "tecnico_validacao_nome",
-      "index": 6,
+      "index": 11,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -404,7 +451,7 @@
       "alias": "validacao_form",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.validacao_form === \"Por validar\" ? \"#fde2e2\" : \"\" )) : currentRow.validacao_form === \"Por validar\" ? \"#fde2e2\" : \"\"  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_resumo.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"validacao_form\"])) : validacao_form })()}}",
       "currencyCode": "USD",
@@ -414,7 +461,7 @@
       "fontStyle": "",
       "horizontalAlignment": "LEFT",
       "id": "validacao_form",
-      "index": 8,
+      "index": 11,
       "isCellEditable": false,
       "isCellVisible": true,
       "isDerived": false,
@@ -423,7 +470,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "Estado validação",
+      "label": "Validação form.",
       "notation": "standard",
       "originalId": "validacao_form",
       "sticky": "",
@@ -446,6 +493,6 @@
   "type": "TABLE_WIDGET_V2",
   "version": 2,
   "verticalAlignment": "CENTER",
-  "widgetId": "1kvov28syl",
+  "widgetId": "5mnq7fiijx",
   "widgetName": "Tbl_resumo"
 }
