@@ -41,10 +41,11 @@
   ],
   "columnUpdatedAt": 1765963356212,
   "columnWidthMap": {
-    "categoria": 191,
-    "nivel_media": 126,
+    "categoria": 228,
+    "nivel_media": 141,
     "nivel_user": 136,
-    "pontuacao_user": 166
+    "pontuacao_media": 176,
+    "pontuacao_user": 187
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,
@@ -128,7 +129,7 @@
   "primaryColumns": {
     "categoria": {
       "alias": "categoria",
-      "allowCellWrapping": false,
+      "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Tbl_nivelCatAmbCopyCopyCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",

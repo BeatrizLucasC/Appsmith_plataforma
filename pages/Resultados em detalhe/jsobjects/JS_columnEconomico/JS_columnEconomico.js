@@ -1,6 +1,6 @@
 export default {
   getOption: () => {
-    const dominio = "Ambiental";
+    const dominio = "Económico";
 
     // Cores
     const userColor = "#5186c5";   // A minha pontuação

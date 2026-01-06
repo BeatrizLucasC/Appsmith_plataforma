@@ -42,12 +42,12 @@
   ],
   "columnUpdatedAt": 1765965092967,
   "columnWidthMap": {
-    "categoria": 173,
-    "indicador": 154,
+    "categoria": 213,
+    "indicador": 260,
     "nivel_media": 125,
     "nivel_user": 134,
-    "pontuacao_media": 102,
-    "pontuacao_user": 115
+    "pontuacao_media": 172,
+    "pontuacao_user": 184
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -131,7 +131,7 @@
   "primaryColumns": {
     "categoria": {
       "alias": "categoria",
-      "allowCellWrapping": false,
+      "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",
@@ -162,7 +162,7 @@
     },
     "indicador": {
       "alias": "indicador",
-      "allowCellWrapping": false,
+      "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"indicador\"])) : indicador })()}}",
