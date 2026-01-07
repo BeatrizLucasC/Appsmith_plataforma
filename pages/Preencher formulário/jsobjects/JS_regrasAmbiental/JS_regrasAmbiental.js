@@ -1,14 +1,14 @@
 export default {
-  // Estado
-  answers: {},
+	// Estado
+	answers: {},
 
-  // 1) Obter todas as perguntas do domínio "Ambiental"
-  getQuestions() {
-    const data = Qry_getQuestions.data || [];
-    return data.filter(
-      q => String(q.dominio || "").trim().toLowerCase() === "ambiental"
-    );
-  },
+	// 1) Obter todas as perguntas do domínio "Ambiental"
+	getQuestions() {
+		const data = Qry_getQuestions.data || [];
+		return data.filter(
+			q => String(q.dominio || "").trim().toLowerCase() === "ambiental"
+		);
+	},
 
 	// 2) Filtrar perguntas com base nos widgets (condicionalidades)
 	filterQuestions() {
@@ -25,8 +25,8 @@ export default {
 
 		const selectedSP   = Multiselect_SistemaProducao?.selectedOptionValues || [];
 		const selectedDE   = Select_Dimensao?.selectedOptionValue
-			? [Select_Dimensao.selectedOptionValue]
-			: [];
+		? [Select_Dimensao.selectedOptionValue]
+		: [];
 		const selectedMO   = Multiselect_MaoDeObra?.selectedOptionValues || [];
 
 		const opSel        = Select_OP?.selectedOptionValue;               // "op_sim" | "op_nao"
@@ -39,10 +39,10 @@ export default {
 
 		// ❗ "Outros filtros" são obrigatórios: todos os grupos têm de ter pelo menos uma seleção
 		const allOtherGroupsSelected =
-			selectedSP.length > 0 &&
-			selectedDE.length > 0 &&
-			selectedMO.length > 0 &&
-			selectedBinaryCols.length > 0;
+					selectedSP.length > 0 &&
+					selectedDE.length > 0 &&
+					selectedMO.length > 0 &&
+					selectedBinaryCols.length > 0;
 
 		if (!allOtherGroupsSelected) return [];
 
@@ -74,215 +74,208 @@ export default {
 		});
 	},
 
-  // 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
-  getAllFilteredQuestions() {
-    return this.filterQuestions();
-  },
+	// 2.1) Todas as perguntas filtradas (sem condicionalidades de resposta)
+	getAllFilteredQuestions() {
+		return this.filterQuestions();
+	},
 
-  // 3) Ordenação por condicionalidade com base nas respostas dadas
-  getVisibleQuestions() {
-    const all = this.filterQuestions();
-    const answers = this.answers || {};
-    if (!all.length) return [];
+	// 3) Ordenação por condicionalidade com base nas respostas dadas
+	getVisibleQuestions() {
+		const all = this.filterQuestions();
+		const answers = this.answers || {};
+		if (!all.length) return [];
 
-    const byId = Object.fromEntries(all.map(q => [String(q.id_pergunta), q]));
+		const byId = Object.fromEntries(all.map(q => [String(q.id_pergunta), q]));
 
-    const visible = [];
-    const visited = new Set();
-    let currentIndex = 0;
+		const visible = [];
+		const visited = new Set();
+		let currentIndex = 0;
 
-    while (currentIndex < all.length) {
-      const current = all[currentIndex];
-      const id = String(current.id_pergunta);
+		while (currentIndex < all.length) {
+			const current = all[currentIndex];
+			const id = String(current.id_pergunta);
 
-      // Proteção contra loops
-      if (visited.has(id)) break;
-      visited.add(id);
+			// Proteção contra loops
+			if (visited.has(id)) break;
+			visited.add(id);
 
-      visible.push(current);
+			visible.push(current);
 
-      const ans = answers[id];
-      let nextId = null;
+			const ans = answers[id];
+			let nextId = null;
 
-      if (ans === "Sim" && current.condicao_sim) nextId = current.condicao_sim;
-      else if (ans === "Não" && current.condicao_nao) nextId = current.condicao_nao;
-      else if (ans === "NA" && current.condicao_na) nextId = current.condicao_na;
+			if (ans === "Sim" && current.condicao_sim) nextId = current.condicao_sim;
+			else if (ans === "Não" && current.condicao_nao) nextId = current.condicao_nao;
+			else if (ans === "NA" && current.condicao_na) nextId = current.condicao_na;
 
-      const nextIndex =
-        nextId && byId[nextId]
-          ? all.findIndex(q => String(q.id_pergunta) === String(nextId))
-          : -1;
+			const nextIndex =
+						nextId && byId[nextId]
+			? all.findIndex(q => String(q.id_pergunta) === String(nextId))
+			: -1;
 
-      if (nextIndex >= 0 && nextIndex !== currentIndex) {
-        currentIndex = nextIndex;
-      } else {
-        currentIndex++;
-      }
-    }
+			if (nextIndex >= 0 && nextIndex !== currentIndex) {
+				currentIndex = nextIndex;
+			} else {
+				currentIndex++;
+			}
+		}
 
-    return visible;
-  },
+		return visible;
+	},
 
-  // 4) Label da pergunta (sem traços antes/depois do título)
-  questionLabel: row => row ? `${row.id_pergunta || ""} ${row.pergunta || ""}` : "",
+	// 4) Label da pergunta (sem traços antes/depois do título)
+	questionLabel: row => row ? `${row.id_pergunta || ""} ${row.pergunta || ""}` : "",
 
-  // 5) Opções do Radio
-  radioOptions(row) {
-    const options = [
-      { label: "Sim", value: "Sim" },
-      { label: "Não", value: "Não" }
-    ];
-    if (row.na === "S") {
-      options.unshift({ label: "NA", value: "NA" });
-    }
-    return options;
-  },
+	// 5) Opções do Radio
+	radioOptions(row) {
+		const options = [
+			{ label: "Sim", value: "Sim" },
+			{ label: "Não", value: "Não" }
+		];
+		if (row.na === "S") {
+			options.unshift({ label: "NA", value: "NA" });
+		}
+		return options;
+	},
 
-  // 6) Valor selecionado no Radio
-  selectedValue(row) {
-    return this.answers?.[row.id_pergunta] || "";
-  },
+	// 6) Valor selecionado no Radio
+	selectedValue(row) {
+		return this.answers?.[row.id_pergunta] || "";
+	},
 
-  // 7) Handler de mudança de seleção
-  onSelectionChange(row, selectedValue) {
-    if (!row) return;
-    this.answers = {
-      ...this.answers,
-      [String(row.id_pergunta)]: selectedValue
-    };
-  },
-  
+	// 7) Handler de mudança de seleção
+	onSelectionChange(row, selectedValue) {
+		if (!row) return;
+		this.answers = {
+			...this.answers,
+			[String(row.id_pergunta)]: selectedValue
+		};
+	},
+
 	// 8) Preparar respostas para guardar
 	// Inclui todas as perguntas filtradas pelos filtros dos dados iniciais
 	// Força NULL nas que não estão visíveis pela lógica condicional.
-	prepareAnswers() {
-		const allFiltered = this.getAllFilteredQuestions(); // antes: getVisibleQuestions()
-		const visible = this.getVisibleQuestions();         // caminho condicional atual
-		const userId = appsmith.store.autenticacao?.nif || "unknown_user";
-		const year = new Date().getFullYear();
-		const answers = this.answers || {};
-		const dominio = "ambiental";
+	// Parâmetro onlyVisible: true => apenas perguntas visíveis; false => todas as filtradas
 
-		// Conjunto de IDs visíveis (para decisão de NULL)
-		const visibleIds = new Set(visible.map(q => String(q.id_pergunta)));
+	 prepareAnswers({ onlyVisible = true } = {}) {
+			const questions = onlyVisible ? this.getVisibleQuestions() : this.getAllFilteredQuestions();
+			const userId = appsmith.store.autenticacao?.nif || "unknown_user";
+			const year = new Date().getFullYear();
+			const answers = this.answers || {};
+			const dominio = "ambiental";
 
-		return allFiltered.map(q => {
-			const idPerg = String(q.id_pergunta);
-			const currentAns = answers[idPerg];
+			return questions.map(q => {
+				const idPerg = String(q.id_pergunta);
+				const currentAns = answers[idPerg]; // "Sim" | "Não" | "NA" | undefined
 
-			// Regra:
-			// - Se a pergunta está visível -> guarda a resposta
-			// - Se a pergunta está oculta pela lógica condicional -> força resposta = NULL
-			const respostaFinal = visibleIds.has(idPerg)
-				? (currentAns ? String(currentAns).trim() : null)
-				: null;
+				// Se visível mas ainda sem resposta -> guarda NULL (para manter id na última utilização)
+				const respostaFinal = currentAns ? String(currentAns).trim() : null;
 
-			return {
-				id_resposta: `${userId}_${year}_${idPerg}`,
-				id_pergunta: idPerg,
-				id_utilizador: userId,
-				resposta: respostaFinal,
-				ano: year,
-				dominio
-			};
-		});
+				return {
+					id_resposta: `${userId}_${year}_${idPerg}`,
+					id_pergunta: idPerg,
+					id_utilizador: userId,
+					resposta: respostaFinal,
+					ano: year,
+					dominio
+				};
+			});
+		},
+
+	// 9) Construir VALUES para o INSERT (inclui validacao='N' para novas linhas)
+	// Por defeito, envia só visíveis (onlyVisible = true)
+	 buildValues({ onlyVisible = true } = {}) {
+			const prepared = this.prepareAnswers({ onlyVisible });
+			if (!prepared.length) {
+				// Evita executar o SQL quando não há perguntas visíveis
+				// Sugestão: no botão "Guardar", usa isReadyToSubmit() para bloquear o submit
+				return "";
+			}
+
+			return prepared
+				.map(ans => {
+					const safeVal = ans.resposta === null ? "NULL" : `'${String(ans.resposta).replace(/'/g, "''")}'`;
+					return `(
+						'${ans.id_resposta}',
+						'${ans.id_pergunta}',
+						'${ans.id_utilizador}',
+						${safeVal},
+						NOW(),
+						${ans.ano},
+						'${ans.dominio}',
+						'N'
+					)`;
+				})
+				.join(", ");
+		},
+
+	// 10) Validação: todas as visíveis respondidas
+	isReadyToSubmit() {
+		const visibleQuestions = this.getVisibleQuestions();
+		return visibleQuestions.every(q =>
+																	["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta])
+																 );
 	},
 
-  // 9) Construir VALUES para o INSERT (inclui validacao='N' para novas linhas)
-  buildValues() {
-    const prepared = this.prepareAnswers();
-    if (!prepared.length) {
-      // "dummy" para evitar VALUES vazio
-      return "('none','none','none',NULL,NOW(),0,'ambiental','N')";
-    }
+	// 11) Submissão
+	async onSubmit() {
+		if (!this.isReadyToSubmit()) {
+			showAlert(
+				"É necessário responder a todas as perguntas para submeter.",
+				"warning"
+			);
+			return;
+		}
 
-    return prepared
-      .map(ans => {
-        const safeVal =
-          ans.resposta === null
-            ? "NULL"
-            : `'${String(ans.resposta).replace(/'/g, "''")}'`;
-        return `(
-          '${ans.id_resposta}',
-          '${ans.id_pergunta}',
-          '${ans.id_utilizador}',
-          ${safeVal},
-          NOW(),
-          ${ans.ano},
-          '${ans.dominio}',
-          'N'
-        )`;
-      })
-      .join(", ");
-  },
+		await Qry_checkExistingAmbiental.run();
+		const hasExisting =
+					Array.isArray(Qry_checkExistingAmbiental.data) &&
+					Qry_checkExistingAmbiental.data.length > 0;
 
-  // 10) Validação: todas as visíveis respondidas
-  isReadyToSubmit() {
-    const visibleQuestions = this.getVisibleQuestions();
-    return visibleQuestions.every(q =>
-      ["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta])
-    );
-  },
+		if (hasExisting) {
+			showModal("Modal_ConfirmAmbiental");
+		} else {
+			await Qry_saveAnswersAmbiental.run();
+			showAlert(
+				"Respostas do domínio ambiental submetidas com sucesso!",
+				"success"
+			);
+		}
+	},
 
-  // 11) Submissão
-  async onSubmit() {
-    if (!this.isReadyToSubmit()) {
-      showAlert(
-        "É necessário responder a todas as perguntas para submeter.",
-        "warning"
-      );
-      return;
-    }
+	// 12) Confirmar substituição
+	async confirmReplace() {
+		await Qry_saveAnswersAmbiental.run();
+		closeModal("Modal_ConfirmAmbiental");
+		showAlert("Respostas substituídas com sucesso!", "success");
+	},
 
-    await Qry_checkExistingAmbiental.run();
-    const hasExisting =
-      Array.isArray(Qry_checkExistingAmbiental.data) &&
-      Qry_checkExistingAmbiental.data.length > 0;
+	// 13) Cancelar substituição
+	cancelReplace() {
+		closeModal("Modal_ConfirmAmbiental");
+		showAlert("Substituição cancelada.", "info");
+	},
 
-    if (hasExisting) {
-      showModal("Modal_ConfirmAmbiental");
-    } else {
-      await Qry_saveAnswersAmbiental.run();
-      showAlert(
-        "Respostas do domínio ambiental submetidas com sucesso!",
-        "success"
-      );
-    }
-  },
+	// 14) Carregar respostas anteriores
+	loadPreviousAnswers() {
+		const data = Qry_getAnswersAmbiental.data || [];
+		const mapped = {};
 
-  // 12) Confirmar substituição
-  async confirmReplace() {
-    await Qry_saveAnswersAmbiental.run();
-    closeModal("Modal_ConfirmAmbiental");
-    showAlert("Respostas substituídas com sucesso!", "success");
-  },
+		data.forEach(row => {
+			if (row.id_pergunta && row.resposta != null) {
+				mapped[String(row.id_pergunta)] = String(row.resposta).trim();
+			}
+		});
 
-  // 13) Cancelar substituição
-  cancelReplace() {
-    closeModal("Modal_ConfirmAmbiental");
-    showAlert("Substituição cancelada.", "info");
-  },
+		this.answers = mapped;
+	},
 
-  // 14) Carregar respostas anteriores
-  loadPreviousAnswers() {
-    const data = Qry_getAnswersAmbiental.data || [];
-    const mapped = {};
-
-    data.forEach(row => {
-      if (row.id_pergunta && row.resposta != null) {
-        mapped[String(row.id_pergunta)] = String(row.resposta).trim();
-      }
-    });
-
-    this.answers = mapped;
-  },
-
-  // 15) Aplicar filtros e carregar respostas anteriores
-  async aplicarFiltrosECarregarRespostas() {
-    const perguntas = this.getAllFilteredQuestions();
-    if (perguntas.length > 0) {
-      await Qry_getAnswersAmbiental.run();
-      this.loadPreviousAnswers();
-    }
-  }
+	// 15) Aplicar filtros e carregar respostas anteriores
+	async aplicarFiltrosECarregarRespostas() {
+		const perguntas = this.getAllFilteredQuestions();
+		if (perguntas.length > 0) {
+			await Qry_getAnswersAmbiental.run();
+			this.loadPreviousAnswers();
+		}
+	}
 };
