@@ -211,27 +211,53 @@ export default {
 
 	// 11) Submissão
 	async onSubmit() {
-		await Qry_checkExistingAmbiental.run();
-		const hasExisting =
-					Array.isArray(Qry_checkExistingAmbiental.data) &&
-					Qry_checkExistingAmbiental.data.length > 0;
+		try {
+			await Qry_checkExistingAmbiental.run();
+			const hasExisting =
+				Array.isArray(Qry_checkExistingAmbiental.data) &&
+				Qry_checkExistingAmbiental.data.length > 0;
 
-		if (hasExisting) {
-			showModal("Modal_ConfirmAmbiental");
-		} else {
+			if (hasExisting) {
+				showModal("Modal_ConfirmAmbiental");
+				return;
+			}
+
+			// Grava
 			await Qry_saveAnswersAmbiental.run();
-			showAlert(
-				"Respostas do domínio ambiental submetidas com sucesso!",
-				"success"
-			);
+
+			// Refresh do query de leitura para refletir a BD
+			if (typeof Qry_getAnswersAmbiental?.run === "function") {
+				await Qry_getAnswersAmbiental.run();
+			}
+
+			showAlert("Respostas do domínio ambiental submetidas com sucesso!", "success");
+		} catch (e) {
+			console.error("Erro em onSubmit:", e);
+			showAlert("Ocorreu um erro ao submeter. Tenta novamente.", "error");
 		}
 	},
 
 	// 12) Confirmar substituição
 	async confirmReplace() {
-		await Qry_saveAnswersAmbiental.run();
-		closeModal("Modal_ConfirmAmbiental");
-		showAlert("Respostas substituídas com sucesso!", "success");
+		try {
+			await Qry_saveAnswersAmbiental.run();
+
+			// Refresh do query de leitura
+			if (typeof Qry_getAnswersAmbiental?.run === "function") {
+				await Qry_getAnswersAmbiental.run();
+			}
+
+			closeModal("Modal_ConfirmAmbiental");
+
+			if (this.isFormPersistedCompletely()) {
+				showAlert("Formulário completo. Respostas substituídas com sucesso!", "success");
+			} else {
+				showAlert("Respostas substituídas. Existem ainda perguntas visíveis sem resposta na BD.", "info");
+			}
+		} catch (e) {
+			console.error("Erro em confirmReplace:", e);
+			showAlert("Ocorreu um erro ao substituir. Tenta novamente.", "error");
+		}
 	},
 
 	// 13) Cancelar substituição
@@ -261,5 +287,188 @@ export default {
 			await Qry_getAnswersAmbiental.run();
 			this.loadPreviousAnswers();
 		}
-	}
+	},
+	
+	// NOVO: Fonte de dados de respostas persistidas
+	answersSource() {
+		const rows = Array.isArray(Qry_getAnswersAmbiental?.data)
+			? Qry_getAnswersAmbiental.data
+			: [];
+		return rows;
+	},
+
+	// === NOVO: Mapa de respostas persistidas do utilizador atual (apenas domínio/ano correntes) ===
+	getPersistedAnswersMap() {
+		const userId = appsmith.store.autenticacao?.nif || "unknown_user";
+		const year = new Date().getFullYear();
+		const dominio = "ambiental";
+
+		const src = this.answersSource().filter(r =>
+			String(r?.id_utilizador || "") === String(userId) &&
+			String(r?.dominio || "").trim().toLowerCase() === dominio &&
+			Number(r?.ano) === year
+		);
+
+		const map = {};
+		src.forEach(r => {
+			const id = String(r?.id_pergunta);
+			// Considera "respondida" se r.resposta não é null e não é ""
+			map[id] = (r?.resposta === null || r?.resposta === undefined || String(r?.resposta).trim() === "")
+				? ""
+				: String(r.resposta).trim();
+		});
+		return map;
+	},
+
+	// === NOVO: Mapa de respostas final (persistidas + sessão atual) ===
+	getMergedAnswersMap() {
+		const persisted = this.getPersistedAnswersMap();
+		const live = this.answers || {};
+		// Resposta em memória sobrepõe a persistida
+		return { ...persisted, ...Object.fromEntries(Object.entries(live).map(([k, v]) => [String(k), v || ""])) };
+	},
+
+	// === NOVO: Opções do filtro de estado da resposta ===
+	statusOptions() {
+		return [
+			{ label: "Selecionar todas", value: "all" },
+			{ label: "Respondidas", value: "answered" },
+			{ label: "Não respondidas", value: "unanswered" }
+		];
+	},
+
+	// === NOVO: Opções de categorias (ordenadas) com "Selecionar todas" ===
+	categoryOptions() {
+		const all = this.getAllFilteredQuestions(); // já traz só domínio "ambiental" e condicionalidades dos filtros de topo
+		const uniq = new Set();
+		all.forEach(q => {
+			if (q?.categoria) uniq.add(String(q.categoria));
+		});
+		const cats = Array.from(uniq).sort((a, b) => a.localeCompare(b, "pt", { sensitivity: "base" }));
+		// Sentinel "__ALL__" representa "Selecionar todas"
+		return [
+			{ label: "Selecionar todas", value: "__ALL__" },
+			...cats.map(c => ({ label: c, value: c }))
+		];
+	},
+
+	// === NOVO: Devolve as categorias efetivas a usar (se "__ALL__" estiver presente ou vazio -> todas) ===
+	effectiveCategoryValues() {
+		const selected = Multiselect_Categorias?.selectedOptionValues || [];
+		const opts = this.categoryOptions().filter(o => o.value !== "__ALL__").map(o => o.value);
+		if (selected.length === 0 || selected.includes("__ALL__")) return opts; // todas
+		// mantém só as existentes
+		return selected.filter(v => opts.includes(v));
+	},
+
+	// === NOVO: Filtragem pós-visibilidade por Categoria + Estado de resposta ===
+	applyUISubFilters(list) {
+		const catVals = this.effectiveCategoryValues();
+		const mergedAnswers = this.getMergedAnswersMap();
+		const status = Select_statusRespostas?.selectedOptionValue || "all";
+
+		return (list || [])
+			// Categoria
+			.filter(q => !q?.categoria || catVals.includes(String(q.categoria)))
+			// Estado de resposta do utilizador
+			.filter(q => {
+				if (status === "all") return true;
+				const id = String(q.id_pergunta);
+				const ans = (mergedAnswers[id] || "").trim(); // "Sim"/"Não"/"NA" ou ""
+				const isAnswered = ans !== "";
+				return status === "answered" ? isAnswered : !isAnswered;
+			});
+	},
+
+	// === NOVO: Fonte final para o teu List widget (visíveis pela lógica + filtros UI) ===
+	listData() {
+		const visible = this.getVisibleQuestions(); // respeita condicionalidade
+		return this.applyUISubFilters(visible);
+	},
+
+	// === NOVO: Contagens para o indicador x/y (z%)
+	// Por omissão: considera apenas perguntas VISÍVEIS pela lógica condicional
+	// e aplica o filtro de CATEGORIA. NÃO aplica o filtro de "estado" (senão ficava 100% quando "Respondidas").
+	progressCounts() {
+		const baseVisible = this.getVisibleQuestions();
+		const afterCategory = this.applyUISubFilters(baseVisible.filter(q => q)); // aplica cat + (iremos ignorar status)
+
+		// Ignorar o estado ao calcular -> recontamos sem o pedaço do status
+		const catVals = this.effectiveCategoryValues();
+		const onlyCat = baseVisible.filter(q => !q?.categoria || catVals.includes(String(q.categoria)));
+
+		const mergedAnswers = this.getMergedAnswersMap();
+		const y = onlyCat.length;
+		let x = 0;
+		onlyCat.forEach(q => {
+			const id = String(q.id_pergunta);
+			const ans = (mergedAnswers[id] || "").trim();
+			if (ans !== "") x += 1;
+		});
+		const z = y > 0 ? Math.round((x / y) * 100) : 0;
+		return { x, y, z };
+	},
+
+	// === NOVO: Texto do indicador x/y (z%) ===
+	progressText() {
+		const { x, y, z } = this.progressCounts();
+		return `${x}/${y} (${z}%)`;
+	},
+
+
+	// COMPLETUDE PERSISTIDA GLOBAL: usa APENAS as linhas devolvidas pelo query (já filtradas)
+	isFormPersistedCompletely() {
+		// Conjunto base: perguntas visíveis pela lógica condicional (global)
+		const visible = this.getVisibleQuestions();
+		if (!Array.isArray(visible) || visible.length === 0) return false;
+
+		// Lê respostas da BD já filtradas (id_utilizador atual, dominio ambiental, ano = MAX(ano))
+		const src = this.answersSource();
+
+		// Criar mapa id_pergunta -> resposta (string não-vazia)
+		const persistedMap = {};
+		src.forEach(r => {
+			const id = String(r?.id_pergunta);
+			const val = (r?.resposta === null || r?.resposta === undefined)
+				? ""
+				: String(r.resposta).trim();
+			persistedMap[id] = val;
+		});
+
+		// Todas as VISÍVEIS precisam de resposta SUBMETIDA (não-vazia) na BD
+		return visible.every(q => {
+			const id = String(q.id_pergunta);
+			const ans = (persistedMap[id] || "").trim();
+			return ans !== "";
+		});
+	},
+
+	// COMPLETUDE LOCAL GLOBAL (mantém, mas mostro aqui para contexto)
+	isFormCompleteLocally() {
+		const visible = this.getVisibleQuestions();
+		const mergedAnswers = this.getMergedAnswersMap();
+		if (!Array.isArray(visible) || visible.length === 0) return false;
+
+		return visible.every(q => {
+			const id = String(q.id_pergunta);
+			const ans = (mergedAnswers[id] || "").trim();
+			return ans !== "";
+		});
+	},
+
+	statusText() {
+		const allAnsweredLocally = this.isFormCompleteLocally();
+		const allAnsweredPersisted = this.isFormPersistedCompletely();
+
+		if (allAnsweredLocally && allAnsweredPersisted) {
+			return "Estado: Formulário completo";
+		}
+		return "Estado: Respostas em falta. Responda a todas as perguntas e submeta o formulário, por favor";
+	},
+
+	// === (Opcional) Boolean agregado para estilos/ícones ===
+	isFormComplete() {
+		return this.isFormCompleteLocally() && this.isFormPersistedCompletely();
+	},
+
 };

@@ -29,7 +29,7 @@
     ],
     "name": "Qry_pontuacaoCategoria",
     "pageId": "Visualizar resultados",
-    "runBehaviour": "AUTOMATIC",
+    "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }
 }

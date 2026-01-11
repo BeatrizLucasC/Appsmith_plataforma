@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 13,
+  "bottomRow": 27,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -11,40 +11,53 @@
     },
     {
       "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    },
+    {
+      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "textColor"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "1rem",
-  "fontStyle": "",
+  "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
-  "key": "okm8abh6r6",
+  "key": "myx08yinw9",
   "leftColumn": 1,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 5,
+  "mobileBottomRow": 22,
   "mobileLeftColumn": 1,
-  "mobileRightColumn": 41,
-  "mobileTopRow": 1,
+  "mobileRightColumn": 17,
+  "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "originalBottomRow": 13,
-  "originalTopRow": 4,
+  "originalBottomRow": 74,
+  "originalTopRow": 69,
   "overflow": "NONE",
-  "parentId": "fo9bm5c4of",
+  "parentColumnSpace": 17.3125,
+  "parentId": "ube31dodxs",
+  "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 51,
   "shouldTruncate": false,
-  "text": "Já existem respostas do domínio ambiental guardadas.\n\n<b>Deseja substituir as respostas existentes?",
+  "text": "{{JS_regrasAmbiental.statusText()}}",
   "textAlign": "LEFT",
-  "textColor": "#231F20",
-  "topRow": 4,
+  "textColor": "{{ JS_regrasAmbiental.isFormComplete() ? \"#1F7A1F\" : \"#B00020\" }}",
+  "topRow": 23,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "jdkmxx2ruv",
-  "widgetName": "Text_question"
+  "widgetId": "h3a7x49x8o",
+  "widgetName": "Txt_statusForm"
 }
