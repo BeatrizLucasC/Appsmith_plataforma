@@ -29,7 +29,7 @@
     ],
     "name": "Qry_years",
     "pageId": "Visualizar resultados",
-    "runBehaviour": "MANUAL",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }
