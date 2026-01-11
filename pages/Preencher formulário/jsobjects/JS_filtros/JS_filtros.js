@@ -162,7 +162,7 @@ export default {
 
   // 7️⃣ Verificar se as abas devem estar visíveis
   abasVisiveis() {
-    return this.filtrosPreenchidos() && this.filtrosGuardados === true;
+    return this.filtrosPreenchidos() || this.filtrosGuardados === true;
   },
 
   // 8️⃣ Guardar filtros e ativar visibilidade das abas

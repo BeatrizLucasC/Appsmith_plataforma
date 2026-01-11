@@ -209,24 +209,8 @@ export default {
 				.join(", ");
 		},
 
-	// 10) Validação: todas as visíveis respondidas
-	isReadyToSubmit() {
-		const visibleQuestions = this.getVisibleQuestions();
-		return visibleQuestions.every(q =>
-																	["Sim", "Não", "NA"].includes(this.answers?.[q.id_pergunta])
-																 );
-	},
-
 	// 11) Submissão
 	async onSubmit() {
-		if (!this.isReadyToSubmit()) {
-			showAlert(
-				"É necessário responder a todas as perguntas para submeter.",
-				"warning"
-			);
-			return;
-		}
-
 		await Qry_checkExistingAmbiental.run();
 		const hasExisting =
 					Array.isArray(Qry_checkExistingAmbiental.data) &&
