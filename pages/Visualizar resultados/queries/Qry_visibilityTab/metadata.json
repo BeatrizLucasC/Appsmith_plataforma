@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  (COUNT(*) FILTER (WHERE dominio = 'ambiental')  > 0) AS ambiental_has,\n  (COUNT(*) FILTER (WHERE dominio = 'economico')  > 0) AS economico_has,\n  (COUNT(*) FILTER (WHERE dominio = 'social')     > 0) AS social_has\nFROM respostas\nWHERE id_utilizador = '{{ appsmith.store.autenticacao.nif }}'\n  AND (\n    {{ Select_year.selectedOptionValue === \"\" }}\n    OR ano = '{{ Select_year.selectedOptionValue }}'\n  )\n  AND dominio IN ('ambiental', 'economico', 'social');",
+      "body": "WITH base AS (\n  SELECT dominio\n  FROM respostas\n  WHERE id_utilizador = '{{ appsmith.store.autenticacao.nif }}'\n    AND (\n      {{ Select_year.selectedOptionValue === \"\" }}\n      OR ano = '{{ Select_year.selectedOptionValue }}'\n    )\n    AND dominio IN ('ambiental', 'economico', 'social')\n  GROUP BY dominio\n)\nSELECT\n  EXISTS (SELECT 1 FROM base WHERE dominio = 'ambiental')  AS ambiental_has,\n  EXISTS (SELECT 1 FROM base WHERE dominio = 'economico')  AS economico_has,\n  EXISTS (SELECT 1 FROM base WHERE dominio = 'social')     AS social_has;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

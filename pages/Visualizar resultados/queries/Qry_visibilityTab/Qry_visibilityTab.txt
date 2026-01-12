@@ -1,11 +1,15 @@
+WITH base AS (
+  SELECT dominio
+  FROM respostas
+  WHERE id_utilizador = '{{ appsmith.store.autenticacao.nif }}'
+    AND (
+      {{ Select_year.selectedOptionValue === "" }}
+      OR ano = '{{ Select_year.selectedOptionValue }}'
+    )
+    AND dominio IN ('ambiental', 'economico', 'social')
+  GROUP BY dominio
+)
 SELECT
-  (COUNT(*) FILTER (WHERE dominio = 'ambiental')  > 0) AS ambiental_has,
-  (COUNT(*) FILTER (WHERE dominio = 'economico')  > 0) AS economico_has,
-  (COUNT(*) FILTER (WHERE dominio = 'social')     > 0) AS social_has
-FROM respostas
-WHERE id_utilizador = '{{ appsmith.store.autenticacao.nif }}'
-  AND (
-    {{ Select_year.selectedOptionValue === "" }}
-    OR ano = '{{ Select_year.selectedOptionValue }}'
-  )
-  AND dominio IN ('ambiental', 'economico', 'social');
+  EXISTS (SELECT 1 FROM base WHERE dominio = 'ambiental')  AS ambiental_has,
+  EXISTS (SELECT 1 FROM base WHERE dominio = 'economico')  AS economico_has,
+  EXISTS (SELECT 1 FROM base WHERE dominio = 'social')     AS social_has;
