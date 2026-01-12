@@ -53,7 +53,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 22,
   "needsErrorInfo": false,
-  "onOptionChange": "{{\nQry_pontuacaoGlobal.run();\nQry_pontuacaoDominio.run();\nQry_pontuacaoCategoria.run();\nQry_pontuacaoIndicador.run();\n}}",
+  "onOptionChange": "{{\nQry_pontuacaoGlobal.run();\nQry_pontuacaoDominio.run();\nQry_pontuacaoCategoria.run();\nQry_pontuacaoIndicador.run();\nQry_visibilityPage.run();\nQry_visibilityTab.run();\n}}",
   "optionLabel": "label",
   "optionValue": "value",
   "originalBottomRow": 65,
