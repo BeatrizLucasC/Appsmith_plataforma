@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 21,
+  "bottomRow": 22,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -14,17 +14,25 @@
     },
     {
       "key": "text"
+    },
+    {
+      "key": "textColor"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicPropertyPathList": [
+    {
+      "key": "textColor"
+    }
+  ],
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
-  "fontSize": "1rem",
-  "fontStyle": "BOLD",
+  "fontSize": "0.875rem",
+  "fontStyle": "",
   "isLoading": false,
   "isVisible": true,
   "key": "myx08yinw9",
-  "leftColumn": 25,
+  "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -33,23 +41,23 @@
   "mobileRightColumn": 17,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "originalBottomRow": 68,
-  "originalTopRow": 17,
+  "originalBottomRow": 25,
+  "originalTopRow": 21,
   "overflow": "NONE",
   "parentColumnSpace": 17.3125,
-  "parentId": "ube31dodxs",
+  "parentId": "iw2c42nse8",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 41,
+  "rightColumn": 63,
   "shouldTruncate": false,
-  "text": "{{ JS_regrasAmbiental.debugMissingPersistedIds() }}",
+  "text": "<b>Estado: </b></>{{JS_regrasAmbiental.statusText()}}",
   "textAlign": "LEFT",
-  "textColor": "#231F20",
-  "topRow": 17,
+  "textColor": "{{ JS_regrasAmbiental.isFormComplete() ? \"#1F7A1F\" : \"#000000\" }}",
+  "topRow": 18,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "51fh1m32ek",
-  "widgetName": "Txt_statusAnswersCopy"
+  "widgetId": "h3a7x49x8o",
+  "widgetName": "Txt_statusForm"
 }

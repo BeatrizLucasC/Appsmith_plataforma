@@ -289,7 +289,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "searchKey": "",
-  "tableData": "{{   Qry_pontuacaoDominio.data.map(({ dominio, pontuacao_user, pontuacao_media, nivel_user, nivel_media, pontuacao_diferenca }) => ({\n    dominio, \n\t\tpontuacao_user,\n\t\tpontuacao_media,\n    nivel_user,\n\t\tnivel_media,\n\t\tpontuacao_diferenca\n  }))\n}}\n",
+  "tableData": "{{   Qry_pontuacaoDominio.data.map(({ dominio, pontuacao_user, pontuacao_media, nivel_user, nivel_media, pontuacao_diferenca }) => ({\n    dominio, \n\t\tpontuacao_user,\n\t\tpontuacao_media,\n    nivel_user,\n\t\tnivel_media,\n\t\tpontuacao_diferenca\n  }))\n}}",
   "textSize": "0.875rem",
   "topRow": 73,
   "totalRecordsCount": 0,
