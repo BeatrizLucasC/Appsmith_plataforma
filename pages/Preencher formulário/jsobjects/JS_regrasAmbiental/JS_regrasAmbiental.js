@@ -415,6 +415,12 @@ export default {
 		return `${x}/${y} (${z}%)`;
 	},
 
+	// === NOVO: Valor barra progresso (z%) ===
+	perguntasRespondidasPct() {
+		const { z } = this.progressCounts();
+		const pct = Number(z) || 0;
+		return Math.min(100, Math.max(0, pct));
+	},
 
 	// COMPLETUDE PERSISTIDA GLOBAL: usa APENAS as linhas devolvidas pelo query (já filtradas)
 	isFormPersistedCompletely() {
@@ -461,9 +467,9 @@ export default {
 		const allAnsweredPersisted = this.isFormPersistedCompletely();
 
 		if (allAnsweredLocally && allAnsweredPersisted) {
-			return "Estado: Formulário completo";
+			return "Formulário completo.";
 		}
-		return "Estado: Respostas em falta. Responda a todas as perguntas e submeta o formulário, por favor";
+		return "Respostas em falta. Responda a todas as perguntas e submeta o formulário, por favor.";
 	},
 
 	// === (Opcional) Boolean agregado para estilos/ícones ===

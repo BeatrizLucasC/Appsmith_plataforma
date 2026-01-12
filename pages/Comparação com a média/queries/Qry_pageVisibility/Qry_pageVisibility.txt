@@ -26,7 +26,7 @@ users_validos AS (
 SELECT
   ano,
   COUNT(DISTINCT id_utilizador)        AS n_utilizadores_validos,
-  (COUNT(DISTINCT id_utilizador) >= 3) AS ano_ok
+  (COUNT(DISTINCT id_utilizador) >= 1) AS ano_ok
 FROM users_validos
 GROUP BY ano
 ORDER BY ano DESC;
