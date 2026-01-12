@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 64,
+  "bottomRow": 62,
   "boxShadow": "none",
   "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( \n(Qry_years.data &&\n Qry_years.data[0] &&\n Qry_years.data[0].ano)\n\t?\t\tString(Qry_years.data[0].ano)\n    : \"\" \n))(Select_year.options, Select_year.serverSideFiltering) }}",
   "dynamicBindingPathList": [
@@ -67,7 +67,7 @@
   "rightColumn": 63,
   "serverSideFiltering": false,
   "sourceData": "{{\n  (Qry_years.data || [])\n    .filter(y => y && y.ano != null)\n    .map(y => ({\n      label: String(y.ano),\n      value: String(y.ano),\n    }))\n}}",
-  "topRow": 57,
+  "topRow": 55,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "dvec24jlqw",
