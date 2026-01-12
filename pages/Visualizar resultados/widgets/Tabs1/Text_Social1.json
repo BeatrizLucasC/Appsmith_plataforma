@@ -1,24 +1,25 @@
 {
   "animateLoading": true,
-  "backgroundColor": "#ffffff",
-  "borderColor": "{{appsmith.theme.colors.backgroundColor}}",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 37,
+  "bottomRow": 29,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
     },
     {
+      "key": "fontFamily"
+    },
+    {
       "key": "borderRadius"
     },
     {
-      "key": "borderColor"
+      "key": "text"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
   "dynamicTriggerPathList": [],
-  "fontFamily": "Poppins",
-  "fontSize": "1.25rem",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
   "fontStyle": "BOLD",
   "isLoading": false,
   "isVisible": true,
@@ -32,23 +33,23 @@
   "mobileRightColumn": 21,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 38,
-  "originalTopRow": 34,
+  "originalBottomRow": 28,
+  "originalTopRow": 24,
   "overflow": "NONE",
   "parentColumnSpace": 1.845703125,
   "parentId": "3hydrjmf0k",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 64,
   "shouldTruncate": false,
-  "text": "Pontuação por categoria",
+  "text": "{{Qry_pontuacaoDominio.data[2].nivel_user}}",
   "textAlign": "CENTER",
   "textColor": "#231F20",
-  "topRow": 33,
+  "topRow": 25,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "jgziceh2rg",
-  "widgetName": "Text22CopyCopy1CopyCopy1"
+  "widgetId": "jzuys15jzx",
+  "widgetName": "Text_Social1"
 }

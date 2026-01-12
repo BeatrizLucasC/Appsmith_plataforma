@@ -3,11 +3,11 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "0px",
-  "bottomRow": 76,
+  "bottomRow": 77,
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
-      "data": "{{ \n Qry_pontuacaoCategoria.data\n    .filter(item => item.dominio === \"Social\")\n    .map(item => ({\n      x: item.categoria.replace(\" \", \"\\n\"), // quebra de linha opcional\n      y: item.pontuacao_user\n    }))\n    .sort((a, b) => a.y - b.y)\n}}",
+      "data": "{{ \n Qry_pontuacaoCategoria.data\n    .filter(item => item.dominio === \"Económico\")\n    .map(item => ({\n      x: item.categoria.replace(\" \", \"\\n\"), // quebra de linha opcional\n      y: item.pontuacao_user\n    }))\n    .sort((a, b) => a.y - b.y)\n}}",
       "seriesName": ""
     }
   },
@@ -90,21 +90,21 @@
   "mobileRightColumn": 53,
   "mobileTopRow": 1,
   "needsErrorInfo": true,
-  "originalBottomRow": 77,
-  "originalTopRow": 38,
+  "originalBottomRow": 78,
+  "originalTopRow": 39,
   "parentColumnSpace": 13.796875,
-  "parentId": "3hydrjmf0k",
+  "parentId": "9jnz2zbys4",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 38,
+  "rightColumn": 34,
   "setAdaptiveYMin": false,
   "showDataPointLabel": true,
-  "topRow": 37,
+  "topRow": 38,
   "type": "CHART_WIDGET",
   "version": 1,
-  "widgetId": "l7kbsp7pix",
-  "widgetName": "Chart_pontCatAmbCopy",
+  "widgetId": "9pvcyuve00",
+  "widgetName": "Chart_pontCatEco",
   "xAxisName": "",
   "yAxisName": "Pontuação (%)"
 }
