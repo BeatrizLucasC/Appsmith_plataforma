@@ -108,7 +108,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Tbl_nivelCatAmbCopy1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",
+      "computedValue": "{{(() => { const tableData = Tbl_nivelCatEco.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"categoria\"])) : categoria })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -140,7 +140,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Tbl_nivelCatAmbCopy1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nivel_user\"])) : nivel_user })()}}",
+      "computedValue": "{{(() => { const tableData = Tbl_nivelCatEco.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"nivel_user\"])) : nivel_user })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -182,5 +182,5 @@
   "version": 2,
   "verticalAlignment": "CENTER",
   "widgetId": "3rboucgusv",
-  "widgetName": "Tbl_nivelCatAmbCopy1"
+  "widgetName": "Tbl_nivelCatEco"
 }

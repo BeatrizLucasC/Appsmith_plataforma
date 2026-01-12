@@ -3,7 +3,7 @@
   "allowScroll": false,
   "animateLoading": true,
   "borderRadius": "0px",
-  "bottomRow": 61,
+  "bottomRow": 78,
   "boxShadow": "none",
   "chartData": {
     "daky6d1lh1": {
@@ -90,7 +90,7 @@
   "mobileRightColumn": 53,
   "mobileTopRow": 1,
   "needsErrorInfo": true,
-  "originalBottomRow": 61,
+  "originalBottomRow": 78,
   "originalTopRow": 38,
   "parentColumnSpace": 13.796875,
   "parentId": "wo40px8ef8",
