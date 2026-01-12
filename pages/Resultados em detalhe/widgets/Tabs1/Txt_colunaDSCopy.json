@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 88,
+  "bottomRow": 86,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -30,8 +30,8 @@
   "mobileRightColumn": 16,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "originalBottomRow": 86,
-  "originalTopRow": 80,
+  "originalBottomRow": 88,
+  "originalTopRow": 82,
   "overflow": "NONE",
   "parentColumnSpace": 13.796875,
   "parentId": "6u4s1zgs06",
@@ -43,7 +43,7 @@
   "text": "<b>Coluna \"Validação form.\":</b>\nSempre que o formulário se encontre incompleto, será apresentado o estado \"Por validar\", sinalizando que a validação total do formulário apenas é possível após a submissão de todos os domínios obrigatórios pelo utilizador. ",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 82,
+  "topRow": 80,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,

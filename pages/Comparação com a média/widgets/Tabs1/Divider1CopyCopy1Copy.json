@@ -1,14 +1,10 @@
 {
   "animateLoading": true,
-  "bottomRow": 98,
+  "bottomRow": 100,
   "capSide": 0,
   "capType": "nc",
-  "dividerColor": "{{appsmith.theme.colors.primaryColor}}",
-  "dynamicBindingPathList": [
-    {
-      "key": "dividerColor"
-    }
-  ],
+  "dividerColor": "#15803d",
+  "dynamicBindingPathList": [],
   "dynamicTriggerPathList": [],
   "isLoading": false,
   "isVisible": true,
@@ -31,7 +27,7 @@
   "rightColumn": 60,
   "strokeStyle": "solid",
   "thickness": "1",
-  "topRow": 94,
+  "topRow": 96,
   "type": "DIVIDER_WIDGET",
   "version": 1,
   "widgetId": "3d9i97im9z",
