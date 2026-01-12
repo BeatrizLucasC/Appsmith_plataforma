@@ -100,7 +100,7 @@
   "isVisible": true,
   "isVisibleDownload": false,
   "isVisibleFilters": false,
-  "isVisiblePagination": false,
+  "isVisiblePagination": true,
   "isVisibleSearch": true,
   "key": "4i5uabu0l4",
   "label": "Data",

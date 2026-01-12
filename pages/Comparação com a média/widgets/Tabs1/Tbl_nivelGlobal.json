@@ -41,10 +41,10 @@
   "columnUpdatedAt": 1767725786721,
   "columnWidthMap": {
     "dominio": 112,
-    "nivel_media": 157,
+    "nivel_media": 187,
     "nivel_user": 154,
     "pontuacao_media": 160,
-    "pontuacao_user": 168
+    "pontuacao_user": 209
   },
   "compactMode": "DEFAULT",
   "customIsLoading": false,

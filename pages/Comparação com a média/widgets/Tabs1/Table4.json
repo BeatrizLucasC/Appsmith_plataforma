@@ -41,11 +41,11 @@
   ],
   "columnUpdatedAt": 1768216640280,
   "columnWidthMap": {
-    "categoria": 163,
-    "indicador": 226,
-    "nivel_media": 112,
+    "categoria": 139,
+    "indicador": 161,
+    "nivel_media": 135,
     "pontuacao_media": 109,
-    "pontuacao_user": 95
+    "pontuacao_user": 185
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
