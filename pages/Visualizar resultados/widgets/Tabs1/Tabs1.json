@@ -200,13 +200,13 @@
       "key": "isVisible"
     },
     {
-      "key": "tabsObj.tab2.isVisible"
-    },
-    {
       "key": "tabsObj.tabuyxk5ssbrj.isVisible"
     },
     {
       "key": "tabsObj.tabv8i86yu9ap.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2.isVisible"
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
@@ -215,13 +215,13 @@
       "key": "isVisible"
     },
     {
-      "key": "tabsObj.tab2.isVisible"
-    },
-    {
       "key": "tabsObj.tabuyxk5ssbrj.isVisible"
     },
     {
       "key": "tabsObj.tabv8i86yu9ap.isVisible"
+    },
+    {
+      "key": "tabsObj.tab2.isVisible"
     }
   ],
   "dynamicTriggerPathList": [],
@@ -261,7 +261,7 @@
     "tab2": {
       "id": "tab2",
       "index": 1,
-      "isVisible": "{{Qry_visibilityTab.data?.ambiental_has === true }}",
+      "isVisible": "{{Boolean(Qry_visibilityTab.data?.[0]?.ambiental_has)}}",
       "label": "Domínio Ambiental",
       "positioning": "vertical",
       "widgetId": "wo40px8ef8"
@@ -269,14 +269,14 @@
     "tabuyxk5ssbrj": {
       "id": "tabuyxk5ssbrj",
       "index": 2,
-      "isVisible": "{{Qry_visibilityTab.data?.social_has === true }}",
+      "isVisible": "{{Boolean(Qry_visibilityTab.data?.[0]?.social_has)}}",
       "label": "Domínio Social",
       "widgetId": "3hydrjmf0k"
     },
     "tabv8i86yu9ap": {
       "id": "tabv8i86yu9ap",
       "index": 3,
-      "isVisible": "{{Qry_visibilityTab.data?.economico_has === true }}",
+      "isVisible": "{{Boolean(Qry_visibilityTab.data?.[0]?.economico_has)}}",
       "label": "Domínio Económico",
       "widgetId": "9jnz2zbys4"
     }
