@@ -1,0 +1,44 @@
+{
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 31,
+  "counterClosewise": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "fillColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "progress"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "fillColor": "{{appsmith.theme.colors.primaryColor}}",
+  "isCanvas": false,
+  "isIndeterminate": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "5t3p4imwhk",
+  "leftColumn": 0,
+  "mobileBottomRow": 31,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 23,
+  "mobileTopRow": 27,
+  "needsErrorInfo": false,
+  "parentColumnSpace": 18.875,
+  "parentId": "14aja8kbn2",
+  "parentRowSpace": 10,
+  "progress": "{{ JS_regrasEconomico.perguntasRespondidasPct() }}",
+  "progressType": "linear",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 64,
+  "showResult": false,
+  "steps": 1,
+  "topRow": 27,
+  "type": "PROGRESS_WIDGET",
+  "version": 1,
+  "widgetId": "9pa18m7hel",
+  "widgetName": "Progress_Eco"
+}
