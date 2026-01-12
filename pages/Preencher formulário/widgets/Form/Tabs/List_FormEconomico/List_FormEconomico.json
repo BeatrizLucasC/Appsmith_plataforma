@@ -99,7 +99,7 @@
   "itemSpacing": 8,
   "key": "t8mpkzyyd4",
   "leftColumn": 0,
-  "listData": "{{JS_regrasEconomico.getVisibleQuestions()}}",
+  "listData": "{{JS_regrasEconomico.listData()}}",
   "mainCanvasId": "fu3gta7yv1",
   "mainContainerId": "37sbbimqul",
   "minWidth": 450,

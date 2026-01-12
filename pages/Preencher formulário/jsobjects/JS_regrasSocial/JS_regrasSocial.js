@@ -355,7 +355,7 @@ export default {
 
   // Devolve as categorias a usar (se "__ALL__" estiver presente ou vazio -> todas)
   effectiveCategoryValues() {
-    const selected = Multiselect_Categorias?.selectedOptionValues || [];
+    const selected = Multiselect_CategoriasSocial?.selectedOptionValues || [];
     const opts = this.categoryOptions().filter(o => o.value !== "__ALL__").map(o => o.value);
     if (selected.length === 0 || selected.includes("__ALL__")) return opts; // todas
     // mantém só as existentes
@@ -367,7 +367,7 @@ export default {
   applyUISubFilters(list) {
     const catVals = this.effectiveCategoryValues();
     const mergedAnswers = this.getMergedAnswersMap();
-    const status = Select_statusRespostas?.selectedOptionValue || "all";
+    const status = Select_statusRespostasSocial?.selectedOptionValue || "all";
 
     return (list || [])
       // Categoria
