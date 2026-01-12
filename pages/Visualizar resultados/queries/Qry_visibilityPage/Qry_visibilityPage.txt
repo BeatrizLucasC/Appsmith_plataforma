@@ -1,0 +1,7 @@
+SELECT (COUNT(*) > 1) AS visible
+FROM respostas
+WHERE id_utilizador = '{{ appsmith.store.autenticacao.nif }}'
+  AND (
+    {{ Select_year.selectedOptionValue === "" }}
+    OR ano = '{{ Select_year.selectedOptionValue }}'
+  );
