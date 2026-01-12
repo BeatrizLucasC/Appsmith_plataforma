@@ -1,4 +1,4 @@
-INSERT INTO respostas (
+WITH payload (
   id_resposta,
   id_pergunta,
   id_utilizador,
@@ -7,15 +7,54 @@ INSERT INTO respostas (
   ano,
   dominio,
   validacao
+) AS (
+  VALUES
+  {{ JS_regrasSocial.buildValues({ onlyVisible: true }) }}
+),
+has_payload AS (
+  SELECT EXISTS (SELECT 1 FROM payload) AS ok
+),
+upsert AS (
+  INSERT INTO respostas (
+    id_resposta,
+    id_pergunta,
+    id_utilizador,
+    resposta,
+    data_hora_submissao,
+    ano,
+    dominio,
+    validacao
+  )
+  SELECT
+    p.id_resposta,
+    p.id_pergunta,
+    p.id_utilizador,
+    p.resposta,
+    NOW(),
+    p.ano,
+    p.dominio,
+    COALESCE(p.validacao, 'N')
+  FROM payload p
+  ON CONFLICT (id_resposta) DO UPDATE
+  SET
+    resposta            = EXCLUDED.resposta,
+    data_hora_submissao = NOW(),
+    dominio             = EXCLUDED.dominio,
+    validacao           = 'N'
+  WHERE respostas.resposta IS DISTINCT FROM EXCLUDED.resposta
 )
-VALUES 
-{{ JS_regrasSocial.buildValues() }}
-ON CONFLICT (id_resposta)
-DO UPDATE
-SET
-  resposta = EXCLUDED.resposta,
-  data_hora_submissao = NOW(),
-  dominio = EXCLUDED.dominio,
-  validacao = 'N'
--- ✅ Só atualiza quando a resposta efectivamente mudou (NULL-safe)
-WHERE respostas.resposta IS DISTINCT FROM EXCLUDED.resposta;
+DELETE FROM respostas r
+USING (
+  SELECT DISTINCT id_utilizador, ano, dominio FROM payload
+) ctx,
+has_payload hp
+WHERE
+  hp.ok = true                                    -- só limpa se há payload real
+  AND r.id_utilizador = ctx.id_utilizador
+  AND r.ano           = ctx.ano
+  AND r.dominio       = ctx.dominio
+  AND NOT EXISTS (
+    SELECT 1
+    FROM payload p
+    WHERE p.id_pergunta = r.id_pergunta
+  );

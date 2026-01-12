@@ -289,7 +289,8 @@ export default {
 		}
 	},
 	
-	// NOVO: Fonte de dados de respostas persistidas
+	// 16) Filtro com Estado das Perguntas
+	// Fonte de dados de respostas submetidas/persistentes
 	answersSource() {
 		const rows = Array.isArray(Qry_getAnswersAmbiental?.data)
 			? Qry_getAnswersAmbiental.data
@@ -297,7 +298,7 @@ export default {
 		return rows;
 	},
 
-	// === NOVO: Mapa de respostas persistidas do utilizador atual (apenas domínio/ano correntes) ===
+	// Mapa de respostas submetidas/persistentes do utilizador atual (apenas domínio/ano corrente)
 	getPersistedAnswersMap() {
 		const userId = appsmith.store.autenticacao?.nif || "unknown_user";
 		const year = new Date().getFullYear();
@@ -320,15 +321,15 @@ export default {
 		return map;
 	},
 
-	// === NOVO: Mapa de respostas final (persistidas + sessão atual) ===
+	// Mapa de respostas final (submetidas/persistentes + sessão atual)
 	getMergedAnswersMap() {
 		const persisted = this.getPersistedAnswersMap();
 		const live = this.answers || {};
-		// Resposta em memória sobrepõe a persistida
+		// Resposta em memória sobrepõe a submetida/persistente
 		return { ...persisted, ...Object.fromEntries(Object.entries(live).map(([k, v]) => [String(k), v || ""])) };
 	},
 
-	// === NOVO: Opções do filtro de estado da resposta ===
+	// Opções do filtro de estado da resposta
 	statusOptions() {
 		return [
 			{ label: "Selecionar todas", value: "all" },
@@ -337,7 +338,8 @@ export default {
 		];
 	},
 
-	// === NOVO: Opções de categorias (ordenadas) com "Selecionar todas" ===
+	// 17) Filtro categorias 
+	// Opções de categorias (ordenadas) com "Selecionar todas"
 	categoryOptions() {
 		const all = this.getAllFilteredQuestions(); // já traz só domínio "ambiental" e condicionalidades dos filtros de topo
 		const uniq = new Set();
@@ -352,7 +354,7 @@ export default {
 		];
 	},
 
-	// === NOVO: Devolve as categorias efetivas a usar (se "__ALL__" estiver presente ou vazio -> todas) ===
+	// Devolve as categorias a usar (se "__ALL__" estiver presente ou vazio -> todas)
 	effectiveCategoryValues() {
 		const selected = Multiselect_Categorias?.selectedOptionValues || [];
 		const opts = this.categoryOptions().filter(o => o.value !== "__ALL__").map(o => o.value);
@@ -361,7 +363,8 @@ export default {
 		return selected.filter(v => opts.includes(v));
 	},
 
-	// === NOVO: Filtragem pós-visibilidade por Categoria + Estado de resposta ===
+	// 18) Visibilidade prguntas formulário
+	// Filtragem formulário pós-visibilidade por Categoria + Estado de resposta
 	applyUISubFilters(list) {
 		const catVals = this.effectiveCategoryValues();
 		const mergedAnswers = this.getMergedAnswersMap();
@@ -380,13 +383,14 @@ export default {
 			});
 	},
 
-	// === NOVO: Fonte final para o teu List widget (visíveis pela lógica + filtros UI) ===
+	// Fonte final para o teu List widget (visíveis pela lógica + filtros UI)
 	listData() {
 		const visible = this.getVisibleQuestions(); // respeita condicionalidade
 		return this.applyUISubFilters(visible);
 	},
 
-	// === NOVO: Contagens para o indicador x/y (z%)
+	// 19) Indicador de perguntas respondidas - x/y (z%)
+	// Contagens
 	// Por omissão: considera apenas perguntas VISÍVEIS pela lógica condicional
 	// e aplica o filtro de CATEGORIA. NÃO aplica o filtro de "estado" (senão ficava 100% quando "Respondidas").
 	progressCounts() {
@@ -409,20 +413,21 @@ export default {
 		return { x, y, z };
 	},
 
-	// === NOVO: Texto do indicador x/y (z%) ===
+	// Texto do indicador x/y (z%) ===
 	progressText() {
 		const { x, y, z } = this.progressCounts();
 		return `${x}/${y} (${z}%)`;
 	},
 
-	// === NOVO: Valor barra progresso (z%) ===
+	// Valor barra progresso (z%) ===
 	perguntasRespondidasPct() {
 		const { z } = this.progressCounts();
 		const pct = Number(z) || 0;
 		return Math.min(100, Math.max(0, pct));
 	},
 
-	// COMPLETUDE PERSISTIDA GLOBAL: usa APENAS as linhas devolvidas pelo query (já filtradas)
+	// 20) Text widget com estado do formulário
+	// Usa APENAS as linhas devolvidas pelo query (já filtradas)
 	isFormPersistedCompletely() {
 		// Conjunto base: perguntas visíveis pela lógica condicional (global)
 		const visible = this.getVisibleQuestions();
@@ -449,7 +454,7 @@ export default {
 		});
 	},
 
-	// COMPLETUDE LOCAL GLOBAL (mantém, mas mostro aqui para contexto)
+	// Estado local gobal
 	isFormCompleteLocally() {
 		const visible = this.getVisibleQuestions();
 		const mergedAnswers = this.getMergedAnswersMap();
@@ -472,9 +477,8 @@ export default {
 		return "Respostas em falta. Responda a todas as perguntas e submeta o formulário, por favor.";
 	},
 
-	// === (Opcional) Boolean agregado para estilos/ícones ===
+	//Boolean agregado para estilos de texto
 	isFormComplete() {
 		return this.isFormCompleteLocally() && this.isFormPersistedCompletely();
 	},
-
 };
