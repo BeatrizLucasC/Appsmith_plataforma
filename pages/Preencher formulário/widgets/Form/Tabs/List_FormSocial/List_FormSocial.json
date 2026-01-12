@@ -99,7 +99,7 @@
   "itemSpacing": 8,
   "key": "t8mpkzyyd4",
   "leftColumn": 0,
-  "listData": "{{JS_regrasSocial.getVisibleQuestions()}}",
+  "listData": "{{JS_regrasSocial.listData()}}",
   "mainCanvasId": "m2wkwrycuo",
   "mainContainerId": "roj7blraa5",
   "minWidth": 450,
