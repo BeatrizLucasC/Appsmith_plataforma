@@ -396,29 +396,26 @@ export default {
     return this.applyUISubFilters(visible);
   },
 
-  // 19) Indicador de perguntas respondidas - x/y (z%)
-  // Contagens
-  // Por omissão: considera apenas perguntas VISÍVEIS pela lógica condicional
-  // e aplica o filtro de CATEGORIA. NÃO aplica o filtro de "estado" (senão ficava 100% quando "Respondidas").
-  progressCounts() {
-    const baseVisible = this.getVisibleQuestions();
-    const afterCategory = this.applyUISubFilters(baseVisible.filter(q => q)); // aplica cat + (iremos ignorar status)
+	// 19) Indicador de perguntas respondidas - x/y (z%)
+	// Considera apenas perguntas visíveis pelas opções dos dados iniciais e pela lógica condicional
+	progressCounts() {
+		// Conjunto base: perguntas visíveis pela lógica condicional global (sem categorias)
+		const baseVisible = this.getVisibleQuestions();
 
-    // Ignorar o estado ao calcular -> recontamos sem o pedaço do status
-    const catVals = this.effectiveCategoryValues();
-    const onlyCat = baseVisible.filter(q => !q?.categoria || catVals.includes(String(q.categoria)));
+		const mergedAnswers = this.getMergedAnswersMap();
 
-    const mergedAnswers = this.getMergedAnswersMap();
-    const y = onlyCat.length;
-    let x = 0;
-    onlyCat.forEach(q => {
-      const id = String(q.id_pergunta);
-      const ans = (mergedAnswers[id] || "").trim();
-      if (ans !== "") x += 1;
-    });
-    const z = y > 0 ? Math.round((x / y) * 100) : 0;
-    return { x, y, z };
-  },
+		const y = Array.isArray(baseVisible) ? baseVisible.length : 0;
+		let x = 0;
+
+		(baseVisible || []).forEach(q => {
+			const id = String(q.id_pergunta);
+			const ans = (mergedAnswers[id] || "").trim();
+			if (ans !== "") x += 1;
+		});
+
+		const z = y > 0 ? Math.round((x / y) * 100) : 0;
+		return { x, y, z };
+	},
 
   // Texto do indicador x/y (z%) ===
   progressText() {

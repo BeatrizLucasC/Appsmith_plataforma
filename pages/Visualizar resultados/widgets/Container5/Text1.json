@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 22,
+  "bottomRow": 21,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -13,14 +13,20 @@
       "key": "borderRadius"
     },
     {
+      "key": "isVisible"
+    },
+    {
       "key": "text"
     },
     {
       "key": "textColor"
     }
   ],
-  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicHeight": "FIXED",
   "dynamicPropertyPathList": [
+    {
+      "key": "isVisible"
+    },
     {
       "key": "textColor"
     }
@@ -28,36 +34,34 @@
   "dynamicTriggerPathList": [],
   "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
   "fontSize": "0.875rem",
-  "fontStyle": "",
+  "fontStyle": "BOLD",
   "isLoading": false,
-  "isVisible": true,
-  "key": "myx08yinw9",
-  "leftColumn": 0,
+  "isVisible": "{{!Qry_visibilityIcon.isLoading && Qry_visibilityIcon.data?.[0] !== undefined }}",
+  "key": "n6qk0kb2ie",
+  "leftColumn": 5,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 22,
-  "mobileLeftColumn": 1,
-  "mobileRightColumn": 17,
-  "mobileTopRow": 18,
+  "mobileBottomRow": 18,
+  "mobileLeftColumn": 5,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 14,
   "needsErrorInfo": false,
-  "originalBottomRow": 25,
-  "originalTopRow": 21,
   "overflow": "NONE",
-  "parentColumnSpace": 17.3125,
-  "parentId": "w4kw6oaj5c",
+  "parentColumnSpace": 14.8564453125,
+  "parentId": "dxzm26krdr",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 63,
+  "rightColumn": 26,
   "shouldTruncate": false,
-  "text": "<b>Estado: </b></>{{JS_regrasSocial.statusText()}}",
+  "text": "{{ Qry_visibilityIcon.data?.[0]?.is_validated \n  ? \"Respostas validadas\"\n  : \"Respostas pendentes  de validação\"\n}}\n",
   "textAlign": "LEFT",
-  "textColor": "{{ JS_regrasAmbiental.isFormComplete() ? \"#000000\" : \"#1F7A1F\" }}",
-  "topRow": 18,
+  "textColor": "{{Qry_visibilityIcon.data?.[0]?.is_validated ? \"#15803d\" : \"#5186c5\"}}",
+  "topRow": 17,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
-  "widgetId": "q99v424axl",
-  "widgetName": "Txt_statusFormSocial"
+  "widgetId": "rf7snsmx62",
+  "widgetName": "Text1"
 }

@@ -1,0 +1,27 @@
+WITH por_dom AS (
+  SELECT
+    ano,
+    id_utilizador,
+    dominio,
+    BOOL_AND(validacao = 'S') AS dominio_validado
+  FROM respostas
+  WHERE dominio IN ('ambiental','social','economico')
+  GROUP BY ano, id_utilizador, dominio
+),
+por_user AS (
+  SELECT
+    ano,
+    id_utilizador,
+    COUNT(*) AS dominios_encontrados,
+    BOOL_AND(dominio_validado) AS todos_dominios_validos
+  FROM por_dom
+  GROUP BY ano, id_utilizador
+)
+SELECT
+  (COUNT(*) = 1) AS is_validated
+FROM por_user
+WHERE
+  ano = '{{Select_year.selectedOptionValue}}'
+  AND id_utilizador = '{{ appsmith.store.autenticacao.nif }}'
+  AND dominios_encontrados = 3
+  AND todos_dominios_validos = TRUE;

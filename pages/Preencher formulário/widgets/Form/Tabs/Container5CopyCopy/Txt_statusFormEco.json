@@ -53,7 +53,7 @@
   "shouldTruncate": false,
   "text": "<b>Estado: </b></>{{JS_regrasEconomico.statusText()}}",
   "textAlign": "LEFT",
-  "textColor": "{{ JS_regrasAmbiental.isFormComplete() ? \"#1F7A1F\" : \"#000000\" }}",
+  "textColor": "{{ JS_regrasAmbiental.isFormComplete() ? \"#000000\" : \"#1F7A1F\" }}",
   "topRow": 18,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
